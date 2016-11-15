@@ -1,0 +1,145 @@
+﻿@model NIMBOLE.Models.Models.EmployeeRoleModel
+@using Kendo.Mvc.UI;
+@using NIMBOLE.Common
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Edit", "EmployeeRoles", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-group">
+        <div class="col-md-12">
+            <div class="block-header bg-info">
+                <h1 class="block-title">@NIMBOLE.GlobalResources.Resources.EditRole</h1>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-6">
+                <label for="InputRoleCode">
+                    @NIMBOLE.GlobalResources.Resources.RoleCode
+                </label>
+                @Html.TextBoxFor(m => m.ERoleCode, new { @placeholder = @NIMBOLE.GlobalResources.Resources.RoleCode, @class = "form-control", @tabindex = "1", @minlength = 1, @maxlength = 25 })
+                @Html.ValidationMessageFor(m => m.ERoleCode)
+                @Html.HiddenFor(model => model.Id)
+        </div>
+        <div class="col-sm-6">
+                <label for="InputSourceCode">
+                    @NIMBOLE.GlobalResources.Resources.Description  
+                </label>
+                @Html.TextBoxFor(m => m.Description, new { @placeholder = @NIMBOLE.GlobalResources.Resources.Description, @class = "form-control", @tabindex = "2", @minlength = 1, @maxlength = 500 })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-xs-1">
+            <div class="form-material">
+                <label>
+                    @NIMBOLE.GlobalResources.Resources.Status
+                    @Html.CheckBoxFor(m => m.Status, new { @checked = "checked", @tabindex = "3" })
+                </label>
+            </div>
+        </div>
+        <div class="col-xs-11">
+            <div class="form-material">
+                <label>
+                    @NIMBOLE.GlobalResources.Resources.ActiveInactive
+                </label>
+            </div>
+        </div>
+    </div>
+    <div id="divModules">
+    </div>
+    @Html.Hidden("hdnStatus")
+    @Html.HiddenFor(model => model.SelectedModules)
+    <script>
+        $(document).ready(function () {
+            var selectedMdlsAry = '@Model.SelectedModules';
+            selectedMdlsAry = selectedMdlsAry.split(",");
+            var i = 0;
+            var url = '/EmployeeRoles/GetModulesList?Tid=' + '@Model.TenantId';
+
+            var isEnable = [];
+            $.getJSON(url, function (data) {
+                $.each(data, function (key, val) {
+                    var ERoleCode = val.ERoleCode;
+                    var Description = val.Description;
+                    var blnResult = false;
+                    if (ERoleCode == selectedMdlsAry[i]) {
+                        blnResult = "checked=''";
+                        isEnable["" + i] = true;
+                        i++;
+                    }
+                    else {
+                        blnResult = '';
+                        isEnable["" + i] = false;
+                    }
+                    var user = '<div class="col-lg-6"><div class="form-group">' +
+                        "<label><input type='checkbox' name='SelectedModule" + ERoleCode + "' value='" + ERoleCode + "' " + blnResult + "> " + Description + " </input></label>"
+                        + '</div></div>';
+                    $('#divModules').append(user);
+                });
+            });
+        });
+    </script>
+
+    <script>
+        $(function () {
+            var favorite = [];
+            $('#btnSubmit').click(function (e) {
+                if ($("#Description").val() === "") {
+                    alert("Please enter description");
+                    this.disabled = false;
+                }
+                else {
+                    this.disabled = true;
+                    e.preventDefault();
+                    $.each($("input[name^='SelectedModule']:checked"), function () {
+                        favorite.push($(this).val());
+                    });
+                    var rCode = "";
+                    var rDescription = "";
+                    rCode = $("#ERoleCode").val();
+                    rDescription = $("#Description").val();
+                    var rId = $("#Id").val();
+                    var statusComming = $("#hdnStatus").val();
+                    if (statusComming == "") {
+                        statusComming = '@Model.Status';
+                        var rStatus = statusComming.valueOf();
+                    }
+                    else {
+                        var rStatus = statusComming.valueOf();
+                    }
+                    var modules = favorite.join(",");
+                    var url = "/EmployeeRoles/Edit?rId=" + rId + "&SelectedModules=" + favorite.join(",") + "&rCode=" + rCode + "&rDescription=" + rDescription + "&rStatus=" + rStatus;
+                    //setTimeout(function () {
+                    $.ajax({
+                        url: '@Url.Action("Edit","EmployeeRoles")',
+                        data: { 'rId': rId, 'SelectedModules': modules, 'rCode': rCode, 'rDescription': rDescription, 'rStatus': rStatus },
+                        type: "POST",
+                        success: function (data) {
+                            console.log('Working');
+                            window.location.href = '/EmployeeRoles/Index';
+                        },
+                        error: function (error) {
+                            alert("error occured");
+                        }
+                    });
+                }
+                //}, 100);
+            });
+
+        });
+        $('#Status').click(function () {
+            $("#hdnStatus").val(this.checked);
+        });
+    </script>
+
+    <div class="form-group">
+        <div class="col-xs-12" style="text-align: right;">
+            <input type="button" id="btnSubmit" class="btn btn-success" value=@NIMBOLE.GlobalResources.Resources.Update tabindex="4">
+            <input type="button" value=@NIMBOLE.GlobalResources.Resources.Cancel class="btn btn-danger" onclick="location.href = '/EmployeeRoles/Index'" tabindex="5" />
+        </div>
+    </div>
+
+}

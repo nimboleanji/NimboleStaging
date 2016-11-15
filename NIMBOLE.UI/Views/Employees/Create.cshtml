@@ -1,0 +1,554 @@
+﻿@model NIMBOLE.Models.Models.EmployeeModel
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.common.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.common-bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.mobile.all.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.dataviz.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.dataviz.bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/kendo/2014.3.1411/jszip.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2014.3.1411/kendo.core.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2014.3.1411/kendo.web.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2014.3.1411/kendo.aspnetmvc.min.js")"></script>
+}
+
+@using (Html.BeginForm("Create", "Employees", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <main id="main-container" style="padding-left:10px;padding-right:10px;padding-top:45px">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="block block-themed">
+                    <div class="block-header bg-info">
+                        <ul class="block-options">
+                            <li>
+                                <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-refresh"></i></button>
+                            </li>
+                            <li>
+                                <button type="button" data-toggle="block-option" data-action="content_toggle"></button>
+                            </li>
+                        </ul>
+                        <h3 class="block-title">@NIMBOLE.GlobalResources.Resources.NewEmployee</h3>
+                    </div>
+
+                    <div class="block-content">
+                        <form class="form-horizontal push-10-t push-10" action="base_forms_premade.html" method="post" onsubmit="return false;">
+                            <div class="form-group">
+                                @*Left Column*@
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="InputFirstName">
+                                            @NIMBOLE.GlobalResources.Resources.FirstName <span class="text-danger">*</span>
+                                        </label>
+                                        @Html.TextBoxFor(model => model.FirstName, new { @placeholder = @NIMBOLE.GlobalResources.Resources.FirstName, @class = "form-control", @tabindex = "1" })
+                                        @Html.ValidationMessageFor(m => m.FirstName)
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Email">
+                                            @NIMBOLE.GlobalResources.Resources.Email <span class="text-danger">*</span>
+                                        </label>
+                                        @Html.TextBoxFor(model => model.EmployeeEmail, new { @placeholder = @NIMBOLE.GlobalResources.Resources.Email, @class = "form-control", @tabindex = "3" })
+                                        @Html.ValidationMessageFor(m => m.EmployeeEmail)
+                                    </div>
+                                       <div class="form-group">
+                                        <label>
+                                            @NIMBOLE.GlobalResources.Resources.ReportsTo @NIMBOLE.GlobalResources.Resources.Designation <span class="text-danger">*</span>
+                                        </label>
+                                        @Html.HiddenFor(model => model.EmpDesiganationRoleId)
+                                           <select class="form-control" id="EmpRoleDesignation" name=EmpDesignation size="1"><option value="">@NIMBOLE.GlobalResources.Resources.Select</option></select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for=" InputAddress1">
+                                            @NIMBOLE.GlobalResources.Resources.Address1
+                                        </label>
+                                        @Html.TextBoxFor(model => model.objAddressModel.HouseNo, new { @placeholder = @NIMBOLE.GlobalResources.Resources.Address1, @class = "form-control", @tabindex = "7" })
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="InputRoleId">
+                                            @NIMBOLE.GlobalResources.Resources.Location <span class="text-danger">*</span>
+                                        </label>
+                                        @Html.HiddenFor(model => model.Location)
+                                        <select class="form-control" id="empLocation" name="Location">
+                                            <option value="">@NIMBOLE.GlobalResources.Resources.Select</option>
+                                        </select>
+                                    </div>
+                                   
+                                    <div class="form-group">
+                                        <label for="InputState">
+                                            @NIMBOLE.GlobalResources.Resources.State
+                                        </label>
+                                        @Html.HiddenFor(model => model.objAddressModel.StateId)
+                                        <select class="form-control" id="State" name="State" size="1"><option value="0">@NIMBOLE.GlobalResources.Resources.Select</option></select>
+                                    </div>
+
+
+
+                                    <div class="form-group">
+                                        <label for="InputZip">
+                                            @NIMBOLE.GlobalResources.Resources.ZipCode
+                                        </label>
+                                        @Html.TextBoxFor(model => model.objAddressModel.ZipCode, new { @placeholder = @NIMBOLE.GlobalResources.Resources.ZipCode, @class = "form-control", @tabindex = "12", @onkeydown = "return ValidateNumber(event);", @minlength = 6, @maxlength = 6 })
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="InputMobile">
+                                            @NIMBOLE.GlobalResources.Resources.Mobile
+                                        </label>
+                                        @Html.TextBoxFor(model => model.objAddressModel.Mobile, new { @placeholder = @NIMBOLE.GlobalResources.Resources.Mobile, @class = "form-control", @tabindex = "14", @onkeydown = "return ValidateNumber(event);" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="InputSecondaryFax">
+                                            @NIMBOLE.GlobalResources.Resources.Fax
+                                        </label>
+                                        @Html.TextBoxFor(model => model.objAddressModel.Fax, new { @placeholder = @NIMBOLE.GlobalResources.Resources.Fax, @class = "form-control", @tabindex = "16", @onkeydown = "return ValidateNumber(event);" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="InputBornPlace">
+                                            @NIMBOLE.GlobalResources.Resources.BornPlace
+                                        </label>
+                                        @Html.TextBoxFor(model => model.BornPlace, new { @placeholder = @NIMBOLE.GlobalResources.Resources.BornPlace, @class = "form-control", @tabindex = "18" })
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="InputBornPlace">
+                                            @NIMBOLE.GlobalResources.Resources.JoinDate
+                                        </label>
+                                        @(Html.Kendo().DatePickerFor(model => model.JoinDate)
+        //.Min(DateTime.Now)
+        //.Value(DateTime.Now)
+                                        .HtmlAttributes(new { @style = "width: 100%;", @tabindex = "20", @onkeydown = "javascript:return false;" })
+                                        )
+                                        @*@Html.TextBoxFor(model => model.JoinDate, new { @placeholder = @NIMBOLE.GlobalResources.Resources.JoinDate, @class = "form-control", @tabindex = "20" })
+            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>*@
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="InputBornPlace">
+                                            @NIMBOLE.GlobalResources.Resources.BankId
+                                        </label>
+                                        @Html.TextBoxFor(model => model.BankId, new { @placeholder = @NIMBOLE.GlobalResources.Resources.BankId, @class = "form-control", @tabindex = "22" })
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="InputBornPlace">
+                                            @NIMBOLE.GlobalResources.Resources.BankDetails
+                                        </label>
+                                        @Html.TextBoxFor(model => model.BankDetails, new { @placeholder = @NIMBOLE.GlobalResources.Resources.BankDetails, @class = "form-control", @tabindex = "24" })
+                                    </div>
+                                </div>
+                                @*Right Column*@
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="InputLastName">
+                                            @NIMBOLE.GlobalResources.Resources.LastName
+                                        </label>
+                                        @Html.TextBoxFor(model => model.LastName, new { @placeholder = @NIMBOLE.GlobalResources.Resources.LastName, @class = "form-control", @tabindex = "2" })
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>
+                                            @NIMBOLE.GlobalResources.Resources.Designation <span class="text-danger">*</span>
+                                        </label>
+                                        @Html.HiddenFor(model => model.EmpRoleId)
+                                        <select class="form-control" id="EmpRole" name=Designation size="1"><option value="">@NIMBOLE.GlobalResources.Resources.Select</option></select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="InputReportsTo">
+                                            @NIMBOLE.GlobalResources.Resources.ReportsTo
+                                        </label>
+                                        @Html.HiddenFor(model => model.ReportingTo)
+                                        <select class="form-control" id="empReports" name="ReportsToEmployee">
+                                            <option value="0">@NIMBOLE.GlobalResources.Resources.Select</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="InputStreet">
+                                            @NIMBOLE.GlobalResources.Resources.Address2
+                                        </label>
+                                        @Html.TextBoxFor(model => model.objAddressModel.StreetName, new { @placeholder = @NIMBOLE.GlobalResources.Resources.Address2, @class = "form-control", @tabindex = "8" })
+                                    </div>
+
+                                    <script>
+                                        function BindLocation() {
+                                            $.ajax({
+                                                type: "GET",
+                                                contentType: "application/json; charset=utf-8",
+                                                // url: "/Employees/GetAllEmployeeRoles",
+                                                url: "/Location/SelectLocation",
+                                                data: "{}",
+                                                dataType: "json",
+                                                success: function (Result) {
+                                                    for (var i = 0; i < Result.length; i++) {
+                                                        $("#empLocation").append('<option value="'
+                                                                    + Result[i].Id + '">' +
+                                                                    Result[i].Description + '</option>');
+                                                    }
+                                                },
+                                                error: function (Result) {
+                                                }
+                                            });
+                                        }
+                                        $("#empLocation").change(function () {
+                                            var value = this.value;
+                                            if (value != -1 || value != '') {
+                                                $('#Location').val(value);
+                                            }
+                                        });
+                                    </script>
+                                    <div class="form-group">
+                                        <label for="InputCountry">
+                                            @NIMBOLE.GlobalResources.Resources.Country
+                                        </label>
+                                        @Html.HiddenFor(model => model.objAddressModel.CountryId)
+                                        <select class="form-control" id="Country" name="country" size="1"><option value="0">@NIMBOLE.GlobalResources.Resources.Select</option> </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="InputCity">
+                                            @NIMBOLE.GlobalResources.Resources.City
+                                        </label>
+                                        @Html.HiddenFor(model => model.objAddressModel.CityId)
+                                        <select class="form-control" id="City" name="City" size="1"><option value="0">@NIMBOLE.GlobalResources.Resources.Select</option></select>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label for="InputPhone">
+                                            @NIMBOLE.GlobalResources.Resources.OfficePhone
+                                        </label>
+                                        @Html.TextBoxFor(model => model.objAddressModel.Phone, new { @placeholder = @NIMBOLE.GlobalResources.Resources.OfficePhone, @class = "form-control", @tabindex = "13", @onkeydown = "return ValidateNumber(event);" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="InputHomePhone">
+                                            @NIMBOLE.GlobalResources.Resources.HomePhone
+                                        </label>
+                                        @Html.TextBoxFor(model => model.objAddressModel.HomePhone, new { @placeholder = @NIMBOLE.GlobalResources.Resources.HomePhone, @class = "form-control", @tabindex = "15", @onkeydown = "return ValidateNumber(event);" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="InputSkypeName">
+                                            @NIMBOLE.GlobalResources.Resources.SkypeName
+                                        </label>
+                                        @Html.TextBoxFor(model => model.objAddressModel.SkypeName, new { @placeholder = @NIMBOLE.GlobalResources.Resources.SkypeName, @class = "form-control", @tabindex = "17" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="InputBornDate">
+                                            @NIMBOLE.GlobalResources.Resources.BornDate
+                                        </label>
+                                        @(Html.Kendo().DatePickerFor(model => model.BornDate)
+        //.Value(DateTime.Now)
+                                        .HtmlAttributes(new { @style = "width: 100%;", @tabindex = "19", @onkeydown = "javascript:return false;" })
+                                        )
+                                        @*@Html.TextBoxFor(model => model.BornDate, new { @placeholder = @NIMBOLE.GlobalResources.Resources.BornDate, @class = "form-control", @tabindex = "19" })*@
+                                        @*<span class="input-group-addon"><i class="fa fa-calendar"></i></span>*@
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="InputBornPlace">
+                                            @NIMBOLE.GlobalResources.Resources.ResignDate
+                                        </label>
+                                        @(Html.Kendo().DatePickerFor(model => model.ResignDate)
+        //.Value(DateTime.Now)
+                                        .HtmlAttributes(new { @style = "width: 100%;", @tabindex = "21", @onkeydown = "javascript:return false;" })
+                                        )
+                                        @*@Html.TextBoxFor(model => model.ResignDate, new { @placeholder = @NIMBOLE.GlobalResources.Resources.ResignDate, @class = "form-control", @tabindex = "21" })
+            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>*@
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="InputBornPlace">
+                                            @NIMBOLE.GlobalResources.Resources.BankNumber
+                                        </label>
+                                        @Html.TextBoxFor(model => model.BankNumber, new { @placeholder = @NIMBOLE.GlobalResources.Resources.BankNumber, @class = "form-control", @tabindex = "23" })
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12 form-group">
+                                    <label for="Comments">
+                                        @NIMBOLE.GlobalResources.Resources.Comments
+                                    </label>
+                                    @Html.TextAreaFor(model => model.Comments, new { @class = "form-control", @style = "width:100%;height:100px;resize:none;", maxlength = 500, @tabindex = "25" })
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-6  form-material">
+                                    <label for="exampleInputPhoto">@NIMBOLE.GlobalResources.Resources.Image</label>
+                                    <br />
+                                    <input type="file" name="uploadFile" accept="image/*" style="display: inline;" onchange="readURL(this);" tabindex="26" />
+                                </div>
+                                <div id="divLogo" class="col-lg-6 form-group">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12" style="text-align: right;">
+                                    <input type="button" id="btnSubmit" class="btn btn-success" value=@NIMBOLE.GlobalResources.Resources.Save tabindex="27">
+                                    <input type="button" value=@NIMBOLE.GlobalResources.Resources.Cancel class="btn btn-danger" onclick="location.href = '/Employees/Index'" tabindex="28" />
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @Html.Hidden("hdnDesignation")
+        @Html.Hidden("hdnReportsToEmployee")
+        @Html.Hidden("ReportsToDesignation")
+    </main>
+
+    <script>
+        $(document).ready(function () {
+            $("#EmpRole").attr("disable", true);
+            BindReportsToDesignation();
+            BindDesignation();
+            BindLocation();
+            BindCountries();
+        });
+        function BindDesignation() {
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                url: "/Employees/GetAllEmployeeRoles",
+                data: "{}",
+                dataType: "json",
+                success: function (Result) {
+                    for (var i = 0; i < Result.length; i++) {
+                        $("#EmpRole").append('<option value="'
+                                    + Result[i].Id + '">' +
+                                    Result[i].Name + '</option>');
+                    }
+                },
+                error: function (Result) {
+                }
+            });
+        }
+        $("#EmpRole").change(function () {
+            var value = this.value;
+            if (value != -1 || value != '') {
+                $('#Designation').val(value);
+                $('#hdnDesignation').val(value);
+                //BindReportsTo(value);
+            }
+        });
+        function BindReportsToDesignation() {
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                url: "/Employees/GetAllEmployeeRoles",
+                data: "{}",
+                dataType: "json",
+                success: function (Result) {
+                    for (var i = 0; i < Result.length; i++) {
+                        $("#EmpRoleDesignation").append('<option value="'
+                                    + Result[i].Id + '">' +
+                                    Result[i].Name + '</option>');
+                    }
+                },
+                error: function (Result) {
+                }
+            });
+        }
+        $("#EmpRoleDesignation").change(function () {
+            var value = this.value;
+            if (value != -1 || value != '') {
+                $('#EmpDesignation').val(value);
+                $('#ReportsToDesignation').val(value);
+                BindReportsTo(value);
+            }
+        });
+        function BindReportsTo(value) {
+            $('#empReports')
+               .find('option')
+               .remove()
+               .end()
+               .append('<option value="0">@NIMBOLE.GlobalResources.Resources.Select</option>')
+            ;
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                url: "/Employees/GetAllReportsEmployees?EmpRoleId=" + value,
+                data: "{}",
+                dataType: "json",
+                success: function (Result) {
+                    for (var i = 0; i < Result.length; i++) {
+                        $("#empReports").append('<option value="'
+                                    + Result[i].Id + '">' +
+                                    Result[i].Name + '</option>');
+                    }
+                },
+                error: function (Result) {
+                }
+            });
+        }
+        $("#empReports").change(function () {
+            var value = this.value;
+            if (value != -1 || value != '') {
+                $('#ReportsToEmployee').val(value);
+                $('#hdnReportsToEmployee').val(value);
+            }
+        });
+        function BindCountries() {
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                url: "/AddressAutoComplete/GetCountryNames",
+                data: "{}",
+                dataType: "json",
+                success: function (Result) {
+                    for (var i = 0; i < Result.length; i++) {
+                        $("#Country").append('<option value="'
+                                    + Result[i].CountryId + '">' +
+                                    Result[i].CountryName + '</option>');
+                    }
+                },
+
+                error: function (Result) {
+                }
+            });
+        }
+        $("#Country").change(function () {
+            var value = this.value;
+            if (value != -1 || value != '') {
+                BindStates(value);
+                $('#objAddressModel_CountryId').val(parseInt(value));
+            }
+        });
+        function BindStates(countryId) {
+            $('#State')
+                .find('option')
+                .remove()
+                .end()
+                .append('<option value="0">@NIMBOLE.GlobalResources.Resources.Select</option>')
+            ;
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                url: "/AddressAutoComplete/GetStateNamesCreate?Countries=" + countryId,
+                data: "{}",
+                dataType: "json",
+                success: function (Result) {
+                    for (var i = 0; i < Result.length; i++) {
+                        $("#State").append('<option value="'
+                                    + Result[i].Id + '">' +
+                                    Result[i].Name + '</option>');
+                    }
+                },
+                error: function (Result) {
+                }
+            });
+        }
+        $("#State").change(function () {
+            var value = this.value;
+            if (value != -1 || value != '' || value != "") {
+                BindCities(value);
+                $('#objAddressModel_StateId').val(parseInt(value));
+            }
+        });
+        function BindCities(stateId) {
+            $('#City')
+              .find('option')
+              .remove()
+              .end()
+            .append('<option value="0">@NIMBOLE.GlobalResources.Resources.Select</option>');
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                url: "/AddressAutoComplete/GetCityNamesCreate?states=" + stateId,
+                data: "{}",
+                dataType: "json",
+                success: function (Result) {
+                    for (var i = 0; i < Result.length; i++) {
+                        $("#City").append('<option value="'
+                                    + Result[i].Id + '">' +
+                                    Result[i].Name + '</option>');
+                    }
+                },
+                error: function (Result) {
+                }
+            });
+        }
+        $("#City").change(function () {
+            var value = this.value;
+            if (value != -1 || value != '' || value != "") {
+                $('#objAddressModel_CityId').val(parseInt(value));
+            }
+        });
+    </script>
+
+    <script>
+        //Script for Validation
+        var listcontrols = {
+            "FirstName": "true,allcharacters,1,100"
+            , "EmployeeEmail": "true,email"
+             , "EmpRole": "true,select"
+            , "empLocation": "true,select"
+              , "empReports": "false,select"
+            , "objAddressModel_ZipCode": "false,zipcode,6,6"
+            //, "objAddressModel_Phone": "false,mobile"
+            //, "objAddressModel_HomePhone": "false,mobile"
+            //, "objAddressModel_Mobile": "false,mobile"
+            //, "objAddressModel_Fax": "false,mobile"
+            , "LastName": "false,characters,1,100"
+            , "objAddressModel_HouseNo": "false,allcharacters,1,100"
+            , "objAddressModel_StreetName": "false,allcharacters,1,100"
+            , "objAddressModel_SkypeName": "false,allcharacters,1,100"
+        };
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#imgLogo').remove();
+                    var img = $('<img id="imgLogo" class="imageScale" height="99" width="150">');
+                    img.attr('src', e.target.result);
+                    img.appendTo('#divLogo');
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+            else {
+                $('#imgLogo').remove();
+            }
+        }
+        $(document).ready(function () {
+            $('#btnSubmit').click(function (e) {
+                debugger;
+                //  To disable
+                $('#btnSubmit').attr('disabled', true);
+                if (listcontrols) {
+                    var flag = 0;
+                    var texttype = "";
+                    $.each(listcontrols, function (key, value) {
+                        debugger;
+                        texttype = value.split(',')[1];
+                        var element = $('#' + key);
+                        if (texttype == "select") {
+
+                            if (typeof element.prev().attr('style') !== typeof undefined) {
+                                element.prev().removeAttr("style");
+                            }
+                        }
+                        if (validateControl(key, value.split(',')[0], value.split(',')[1], value.split(',')[2], value.split(',')[3]) == false) {
+
+                            flag = flag + 1;
+                        }
+                    });
+                    $('#EmpRoleId').attr("style", "width:100%;display:none;");
+                    $('#Location').attr("style", "width:100%;display:none;");
+                    $('#ReportingTo').attr("style", "width:100%;display:none;");
+                    if (flag != 0) {
+                        this.disabled = false;
+                        return false;
+                    }
+                    else {
+                        this.disabled = true;
+                        $('form')[0].submit();
+                    }
+                }
+            });
+        });
+    </script>
+}

@@ -1,0 +1,86 @@
+﻿@model NIMBOLE.Models.Models.FinancialYearModel
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Create", "FinancialYear", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-group">
+        <div class="col-md-12">
+            <div class="block-header bg-info">
+                <h1 class="block-title">@NIMBOLE.GlobalResources.Resources.New</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-6">
+            <label for="InputFinancialYear">
+                @NIMBOLE.GlobalResources.Resources.FinancialYear (yyyy-yyyy) <span class="text-danger">*</span>
+            </label>
+            @Html.TextBoxFor(model => model.FinancialYear, new { @placeholder = @NIMBOLE.GlobalResources.Resources.FinancialYear, @class = "form-control", @tabindex = "1", @onkeydown = "return ValidateNumberwithHypen(event);" })
+        </div>
+        <div class="col-sm-6">
+            <label for="InputDescription">
+                @NIMBOLE.GlobalResources.Resources.Description
+                @Html.HiddenFor(model => model.TenantId)
+            </label>
+            @Html.TextBoxFor(model => model.Description, new { @placeholder = @NIMBOLE.GlobalResources.Resources.Description, @class = "form-control", @tabindex = "2", @minlength = 1, @maxlength = 500 })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-xs-12" style="text-align: right;">
+            <br />
+            <input id="btnSubmit" type="button" class="btn btn-success" value=@NIMBOLE.GlobalResources.Resources.Save tabindex="3">
+            <input type="button" value=@NIMBOLE.GlobalResources.Resources.Cancel class="btn btn-danger" onclick="location.href = '/FinancialYear/Index'" tabindex="4" />
+        </div>
+    </div>
+}
+<script>
+    //Script for Validation
+    var listcontrols = {
+        "FinancialYear": "true,yearrange,1,9"
+    };
+
+    $(document).ready(function () {
+        $('#btnSubmit').click(function (e) {
+            debugger;
+            this.disabled = true;
+            if (listcontrols) {
+                var flag = 0;
+                var texttype = "";
+                $.each(listcontrols, function (key, value) {
+                    texttype = value.split(',')[1];
+                    var element = $('#' + key);
+                    if (texttype == "select") {
+                        if (typeof element.prev().attr('style') !== typeof undefined) {
+                            element.prev().removeAttr("style");
+                        }
+                    }
+                    if (validateControl(key, value.split(',')[0], value.split(',')[1], value.split(',')[2], value.split(',')[3]) == false) {
+                        flag = flag + 1;
+                    }
+                });
+                if (flag != 0) {
+                    this.disabled = false;
+                    return false;
+                }
+                else {
+                    var FinancialYear = $("#FinancialYear").val();
+                    var values = FinancialYear.split('-');
+                    var Fvalue = values[0];
+                    var Lvalue = values[1];
+                    if (Fvalue > Lvalue) {
+                        alert("Please enter valid financial year.");
+                        this.disabled = false;
+                        return false;
+                    }
+                    this.disabled = true;
+                    $('form')[0].submit();
+                }
+            }
+        });
+    });
+</script>
+

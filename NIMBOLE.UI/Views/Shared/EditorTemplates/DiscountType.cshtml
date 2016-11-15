@@ -1,0 +1,21 @@
+﻿@model NIMBOLE.Models.Models.TranLeadProdCompModel
+
+@(Html.Kendo().DropDownListFor(model => model.DiscountType)
+        .HtmlAttributes(new { @style = "width: 100%;",@placeholder = @NIMBOLE.GlobalResources.Resources.Select })
+        .DataTextField("Text")
+        .DataValueField("Value")
+        .OptionLabel(@NIMBOLE.GlobalResources.Resources.Select)
+        .AutoBind(true)
+         .BindTo(new List<SelectListItem>()
+          {
+            new SelectListItem()
+          {
+            Text = "Amount",
+            Value="1"
+          },
+           new SelectListItem()
+            {
+            Text="Percentage" ,
+            Value="2"
+            }
+          }))

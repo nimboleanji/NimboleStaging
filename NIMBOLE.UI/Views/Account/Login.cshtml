@@ -1,0 +1,129 @@
+﻿@model NIMBOLE.Models.Models.TransLoginModel
+
+@{
+    ViewBag.Title = "Nimbole | Login";
+    Layout = "~/Views/Shared/_EmptyLayout.cshtml";
+}
+<style>
+    .validation-summary-errors {
+        color:red;
+    }
+</style>
+@using (Html.BeginForm())
+{
+    <div id="lgnFrm">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                    <div class="login-panel panel panel-default">
+                        <div class="panel-body">
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary()
+                            @*<div id="loginFrm" style="display:none;">*@
+                            <fieldset>
+
+                                <div class="form-group">
+                                    @Html.TextBoxFor(m => m.objLoginModel.EmailAddress, new { @placeholder = "E-mail", @class = "form-control" })
+                                    <label>@Html.ValidationMessageFor(m => m.objLoginModel.EmailAddress)</label>
+                                </div>
+                                <div class="form-group">
+                                    @Html.PasswordFor(m => m.objLoginModel.Password, new { @placeholder = "Password", @class = "form-control" })
+                                    <label>@Html.ValidationMessageFor(m => m.objLoginModel.Password)</label>
+                                    <label style="color:#e80c4d;" id="verification">@ViewData["VerificationError"]</label>
+                                </div>
+                                @*<div class="checkbox">
+                                        <label>
+                                            <input name="remember" type="checkbox" value="Remember Me">Remember Me
+                                        </label>
+                                    </div>*@
+                                <!-- Change this to a button or input when using this as a form -->
+                                @Html.HiddenFor(m => m.objLoginModel.TenantId)
+                                <button class="btn btn-lg btn-success btn-block" type="submit">Log In</button>
+
+
+                                @*<div class="modal-footer">
+                                        <hr>
+                                        Don't have an account yet? <a style="cursor: pointer;" href="@Url.Action("Registration","Account")">&nbsp;Register!</a>
+                                    </div>*@
+
+
+
+                            </fieldset>
+                            @*</div>
+                                <div id="errorFrm" style="display:none">
+
+                                    <div class="row">
+
+                                        <label>Wrong url</label>
+                                    </div>
+
+                                </div>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div id="errFrm">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                    <div class="login-panel panel panel-default">
+                        <div class="panel-body">
+                            <span class=" btn-lg btn-warning btn-block">URL Not found!</span>
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+
+        
+        var tenant_id;
+        $(document).ready(function () {
+              document.getElementById("lgnFrm").style.visibility = "hidden";
+            document.getElementById("errFrm").style.visibility = "hidden";
+            var hostname = window.location.hostname;
+            var siteurl = "http://nimbolewebapinew.cloudapp.net/api/GetUrl/GetUrlTenantId?SubDomain=" + hostname;
+            //http://localhost:13869/api/GetUrl/GetUrlTenantId?SubDomain=" + hostname;
+            console.log('siteurl: ' + siteurl);
+            $.ajax({
+                type: "GET",
+                url: siteurl,
+                cache: false,
+                success: function (data, statusText, xhr) {
+                  
+                    if (xhr.status == 200) {
+                        document.getElementById("lgnFrm").style.visibility = "visible";
+                        document.getElementById("errFrm").style.visibility = "hidden";
+                        var tid=data.split(":");
+                        tenant_id = tid[1];
+                        document.getElementById('objLoginModel_TenantId').value = tenant_id;
+
+                    }
+                   
+                }, error: function (error) {
+                 
+                    if (error.status == 404)
+                    {
+                        document.getElementById("lgnFrm").style.visibility = "hidden";
+                        document.getElementById("errFrm").style.visibility = "visible";
+                    }
+               
+                }
+            });
+
+            $('input').focusin(function () {
+                $("#verification").hide();
+            });
+        });
+
+    </script>
+}

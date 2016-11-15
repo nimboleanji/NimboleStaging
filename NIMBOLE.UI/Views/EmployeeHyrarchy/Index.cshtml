@@ -1,0 +1,626 @@
+﻿@using Kendo.Mvc.UI.Fluent
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.common.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.common-bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.mobile.all.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.dataviz.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.dataviz.bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/kendo/2014.3.1411/jszip.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2014.3.1411/kendo.core.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2014.3.1411/kendo.web.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2014.3.1411/kendo.aspnetmvc.min.js")"></script>
+}
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">@NIMBOLE.GlobalResources.Resources.EmployeeHierarchy</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                @*Employee Hierarchy.*@
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-6 form-group">
+
+
+                        @(Html.Kendo().TreeView()
+                            .Name("treeview")
+                            .Events(events => events.Drop("onDropEmpTreeView"))
+                            .DragAndDrop(true)
+                            //.DataSource( e => e.Read())
+                            .ExpandAll(true)
+                            .HtmlAttributes(new { @class = "demo-section" })
+                            .BindTo((IEnumerable<NIMBOLE.Models.Models.EmpHierarchyModel>)ViewBag.inlineDefault,
+                            (Kendo.Mvc.UI.Fluent.NavigationBindingFactory<TreeViewItem> mappings) =>
+                            {
+                                mappings.For<NIMBOLE.Models.Models.EmpHierarchyModel>(binding => binding.ItemDataBound((item, category) =>
+                                    {
+                                        item.Id = category.Id.ToString();
+                                        item.Text = category.EDescription;                                        
+                                    })
+                                .Children(category => category.lstEHierarchyModel));
+                                mappings.For<NIMBOLE.Models.Models.EmpHierarchyModel>(binding => binding.ItemDataBound((item, subCategory) =>
+                                {
+                                    item.Text = subCategory.EDescription;
+                                }));
+                            })
+                        )
+                    </div>
+
+                    <div class="col-lg-6 form-group">
+
+
+
+                        @*@(Html.Kendo().ListView((IEnumerable<NIMBOLE.Models.Models.EmpHierarchyModel>)ViewData["EmpHierarchy"])
+                                    .Name("listView")
+                                    .TagName("div")
+                                    .ClientTemplateId("template")
+
+                                         //   .Events(e => { e.Remove("deleteRecord"); e.Edit("EditRecord"); e.DataBound("onContactsDataBound"); })
+                                    .DataSource(dataSource => dataSource
+                                                //.Model(model => model.Id("Id"))
+                                                //.Sort(e => e.Add("Id").Descending())
+                                    .PageSize(12)
+                                                //.ServerOperation(false)
+                                    .Read(read => read.Action("Index", "EmployeeHyrarchy")
+                                                // .Data("GetAccountIdGridRead")
+                                                )
+                                            )
+                                    .Pageable()
+                                    .Selectable(selectable => selectable.Mode(ListViewSelectionMode.Multiple))
+                            )*@
+
+
+                        @*@(Html.Kendo().TreeView()
+                             .Name("treeviewNormal")
+                            // .Events(events => events.Drop("onDropEmpTreeView"))
+                             .DragAndDrop(true)
+                                 //.DataSource( e => e.Read())
+                             .ExpandAll(true)
+                             .HtmlAttributes(new { @class = "demo-section" })
+                             .BindTo((IEnumerable<NIMBOLE.Models.Models.EmpHierarchyModel>)ViewBag.inlineDefault,
+                             (Kendo.Mvc.UI.Fluent.NavigationBindingFactory<TreeViewItem> mappings) =>
+                             {
+                                 mappings.For<NIMBOLE.Models.Models.EmpHierarchyModel>(binding => binding.ItemDataBound((item, category) =>
+                                     {
+                                         item.Id = category.Id.ToString();
+                                         item.Text = category.EDescription;
+                                     })
+                                 .Children(category => category.lstEHierarchyModel));
+                                 mappings.For<NIMBOLE.Models.Models.EmpHierarchyModel>(binding => binding.ItemDataBound((item, subCategory) =>
+                                 {
+                                     item.Text = subCategory.EDescription;
+                                 }));
+                             })*@
+
+                        @*//    .DataSource(dataSource => dataSource
+                                             //.Model(model => model.Id("Id"))
+                                             //.Sort(e => e.Add("Id").Descending())
+
+                                             //.ServerOperation(false)
+                                           //              .Read(read => read.Action("Index", "EmployeeHyrarchy")
+                                             // .Data("GetAccountIdGridRead")
+                                                        )
+                                                    @*)
+
+                                               //      .Selectable(selectable => selectable.Mode(ListViewSelectionMode.Multiple))
+                            )*@
+
+
+                        @*(IEnumerable<nimbole.models.models.emphierarchymodel>
+                            )ViewData["EmpHierarchy"]*@
+                        @*@(Html.Kendo().TreeList<NIMBOLE.Models.Models.EmpHierarchyModel>()
+                                .Name("treelist")
+                                .Columns(columns =>
+                                {
+                                   // columns.Add().Field(e => e.FirstName).Width(220).TemplateId("photo-template");
+                                    columns.Add().Field(e => e.Id);
+                                    columns.Add().Field(e => e.ParentId);
+                                    columns.Add().Field(e => e.EDescription);
+
+                                })
+                                //.Editable(editable => editable.Move(true))
+                               // .Filterable()
+                              //  .Sortable()
+                                .DataSource(dataSource => dataSource
+                                            .Read(read => read.Action("ReadList", "EmployeeHyrarchy"))
+                                    .ServerOperation(false)
+                                    .Model(m =>
+                                    {
+                                        m.Id(f => f.Id);
+                                        m.ParentId(f => f.ParentId);
+                                        m.Field(f => f.EDescription);
+
+                                    })
+                                )
+                                .Height(540)
+                            )*@
+
+
+                        @*<div class="treeview-back">
+
+                                @(Html.Kendo().TreeView()
+                                    .Name("treeview-left")
+                                    .DragAndDrop(true)
+                                    .Items(treeview =>
+                                    {
+                                        treeview.Add().Text("Furniture")
+                                            .Expanded(true)
+                                            .Items(furniture =>
+                                            {
+                                                furniture.Add().Text("Tables & Chairs");
+                                                furniture.Add().Text("Sofas");
+                                                furniture.Add().Text("Occasional Furniture");
+                                            });
+
+                                        treeview.Add().Text("Decor")
+                                            .Expanded(true)
+                                            .Items(furniture =>
+                                            {
+                                                furniture.Add().Text("Bed Linen");
+                                                furniture.Add().Text("Curtains & Blinds");
+                                                furniture.Add().Text("Carpets");
+                                            });
+                                    })
+                                )
+
+                            </div>
+
+                            <div class="treeview-back">
+
+                                @(Html.Kendo().TreeView()
+                                    .Name("treeview-right")
+                                    .DragAndDrop(true)
+                                    .Items(treeview =>
+                                    {
+                                        treeview.Add().Text("Storage")
+                                            .Expanded(true)
+                                            .Items(furniture =>
+                                            {
+                                                furniture.Add().Text("Wall Shelving");
+                                                furniture.Add().Text("Floor Shelving");
+                                                furniture.Add().Text("Kids Storage");
+                                            });
+
+                                        treeview.Add().Text("Lights")
+                                            .Expanded(true)
+                                            .Items(furniture =>
+                                            {
+                                                furniture.Add().Text("Ceiling");
+                                                furniture.Add().Text("Table");
+                                                furniture.Add().Text("Floor");
+                                            });
+                                    })
+                                )
+
+                            </div>
+
+                            <style>
+                                .treeview-back {
+                                    float: left;
+                                    width: 220px;
+                                    margin: 30px;
+                                    padding: 20px;
+                                    -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.45), inset 0 0 30px rgba(0,0,0,0.07);
+                                    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.45), inset 0 0 30px rgba(0,0,0,0.07);
+                                    box-shadow: 0 1px 2px rgba(0,0,0,0.45), inner 0 0 30px rgba(0,0,0,0.07);
+                                    -webkit-border-radius: 8px;
+                                    -moz-border-radius: 8px;
+                                    border-radius: 8px;
+                                }
+                            </style>*@
+
+
+                        @(Html.Kendo().TreeView()
+                            .Name("treeviewNew")
+                            .Events(events => events.Drop("onDropEmpTreeView"))
+                            .DragAndDrop(true)
+                            //.DataSource( e => e.Read())
+                            .ExpandAll(true)
+                            .HtmlAttributes(new { @class = "demo-section" })
+                            .BindTo((IEnumerable<NIMBOLE.Models.Models.EmpHierarchyModel>)ViewBag.inlineDefaultVal,
+                            (Kendo.Mvc.UI.Fluent.NavigationBindingFactory<TreeViewItem> mappings) =>
+                            {
+                                mappings.For<NIMBOLE.Models.Models.EmpHierarchyModel>(binding => binding.ItemDataBound((item, category) =>
+                                    {
+                                        item.Id = category.Id.ToString();
+                                        item.Text = category.EDescription;
+                                    })
+
+                                );
+                            })
+                        )
+                    </div>
+
+
+                </div>
+
+
+                <script type="text/x-kendo-tmpl" id="template">
+                    <div class="product">
+                        <div class="small">#:EDescription#</div>
+
+                    </div>
+                </script>
+
+            </div>
+            <div class="row">
+                @*<div>
+                        @(Html.Kendo().ContextMenu()
+                            .Name("Menu")
+                            .Target("#treeview .k-group .k-item .k-in")
+                            .AlignToAnchor(true)
+                            .Items(items =>
+                            {
+                                items.Add().Text(@NIMBOLE.GlobalResources.Resources.New);
+                                items.Add().Text(@NIMBOLE.GlobalResources.Resources.Edit);
+                                items.Add().Text(@NIMBOLE.GlobalResources.Resources.Delete);
+                            })
+                            .Events(e => e.Select("SelectedContextMenu"))
+                        )
+                    </div>*@
+
+                <div>
+                    @(Html.Kendo().Window()
+                            .Name("NewCustomWindow")
+                            .Title(@NIMBOLE.GlobalResources.Resources.NewEmployee)
+                            .Width(400)
+                            .Height(250)
+                            .Modal(true)
+                            .Scrollable(false)
+                            .Actions(actions => actions
+                                .Close()
+                            )
+                            .Content(@<text>
+                            <div class="row">
+                                <div class="col-md-8 col-xs-4 form-group">                                   
+                                    <input type="text" class="form-control" style="width: 80%;" id="txtNewNode" placeholder=@NIMBOLE.GlobalResources.Resources.EmployeeName>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-8 col-xs-4 form-group" style="text-align: right;">
+                                    <input type="submit" class="btn btn-success" onclick="AddNode();" value=@NIMBOLE.GlobalResources.Resources.Save />
+                                    <input id="btnCancelAdd" type="button" value=@NIMBOLE.GlobalResources.Resources.Cancel class="btn btn-danger" />
+                                </div>
+                            </div>
+                            </text>)
+                            .Draggable()
+                            .Visible(false)
+                    )
+                </div>
+
+                <div>
+                    @(Html.Kendo().Window()
+                            .Name("EditCustomWindow")
+                            .Title(@NIMBOLE.GlobalResources.Resources.EditEmployee)
+                            .Width(400)
+                            .Height(250)
+                            .Modal(true)
+                            .Scrollable(false)
+                            .Actions(actions => actions
+                                .Close()
+                            )
+                            .Content(@<text>
+                            <div class="row">
+                                <div class="col-md-8 col-xs-4 form-group">                                  
+                                    <input type="text" class="form-control" style="width: 80%;" id="txtEditNode" placeholder=@NIMBOLE.GlobalResources.Resources.EmployeeName>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-8 col-xs-4 form-group" style="text-align: right;">
+                                    <input type="submit" class="btn btn-success" onclick="UpdateNode();" value=@NIMBOLE.GlobalResources.Resources.Update />
+                                    <input id="btnCancelEdit" type="button" value=@NIMBOLE.GlobalResources.Resources.Cancel class="btn btn-danger" />
+                                </div>
+                            </div>
+                            </text>)
+                            .Draggable()
+                            .Visible(false)
+                    )
+                </div>
+
+                <div>
+                    @(Html.Kendo().Window()
+                            .Name("DeleteCustomWindow")
+                            .Title(@NIMBOLE.GlobalResources.Resources.DeleteEmployee)
+                            .Width(400)
+                            .Height(250)
+                            .Modal(true)
+                            .Scrollable(false)
+                            .Actions(actions => actions
+                                .Close()
+                            )
+                            .Content(@<text>
+                            <div class="row">
+                                <div class="col-md-8 col-xs-4 form-group">                                   
+                                    <input type="text" class="form-control" style="width: 80%;" id="txtDelNode" placeholder=@NIMBOLE.GlobalResources.Resources.EmployeeName>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-8 col-xs-4 form-group" style="text-align: right;">
+                                    <input type="submit" class="btn btn-success" onclick="DeleteNode();" value="@NIMBOLE.GlobalResources.Resources.Delete" />
+                                    <input id="btnCancelDelete" type="button" value=@NIMBOLE.GlobalResources.Resources.Cancel class="btn btn-danger" />
+                                </div>
+                            </div>
+                            </text>)
+                            .Draggable()
+                            .Visible(false)
+                    )
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    #menu h2 {
+        font-size: 1em;
+        text-transform: uppercase;
+        padding: 5px 10px;
+    }
+
+    #template img {
+        margin: 5px 20px 0 0;
+        float: left;
+    }
+
+    #template {
+        width: 380px;
+    }
+
+        #template ol {
+            float: left;
+            margin: 0;
+            padding: 10px 10px 0 10px;
+        }
+
+        #template:after {
+            content: ".";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+
+        #template .k-button {
+            float: left;
+            clear: left;
+            margin: 5px 0 5px 12px;
+        }
+
+    .treeview-back {
+        float: left;
+        width: 220px;
+        margin: 30px;
+        padding: 20px;
+        -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.45), inset 0 0 30px rgba(0,0,0,0.07);
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.45), inset 0 0 30px rgba(0,0,0,0.07);
+        box-shadow: 0 1px 2px rgba(0,0,0,0.45), inner 0 0 30px rgba(0,0,0,0.07);
+        -webkit-border-radius: 8px;
+        -moz-border-radius: 8px;
+        border-radius: 8px;
+    }
+
+    .demo-section {
+        width: 300px;
+        min-height:25px;
+        min-width:300px;
+    }
+
+    #treeview {
+        padding-bottom: 100px;
+    }
+
+    #listview-context-menu {
+        padding: 0;
+        margin-bottom: -1px;
+        min-height: 300px;
+    }
+
+    .product {
+        position: relative;
+        height: 62px;
+        margin: 0;
+        padding: 0;
+        border-bottom: 1px solid rgba(128,128,128,.3);
+    }
+
+        .product img {
+            width: 40px;
+            height: 40px;
+            border-radius: 40px;
+            margin: 10px;
+            border: 1px solid #000;
+            float: left;
+        }
+
+        .product h3 {
+            margin: 0;
+            padding: 15px 5px 1px 0;
+            overflow: hidden;
+            line-height: 1em;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+
+        .product p {
+            font-size: .9em;
+        }
+
+        .product .date {
+            float: right;
+            margin: -8px 15px 0 0;
+        }
+
+    .k-listview:after {
+        content: ".";
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden;
+    }
+
+    .k-window div.k-window-content {
+        overflow: hidden;
+    }
+
+</style>
+
+<script>
+    var menu = $("#menu").data("kendoMenu");
+    var treeview;   
+    var selectedItem = "";
+    var newDialog, editDialog, deleteDialog;
+    $(document).ready(function () {
+        newDialog = $("#NewCustomWindow");
+        newDialog.data("kendoWindow").close();
+        editDialog = $("#EditCustomWindow");
+        editDialog.data("kendoWindow").close();
+        deleteDialog = $("#DeleteCustomWindow");
+        deleteDialog.data("kendoWindow").close();
+        $('#btnCancelAdd').click(function () { newDialog.data("kendoWindow").close(); });
+        $('#btnCancelEdit').click(function () { editDialog.data("kendoWindow").close(); });
+        $('#btnCancelDelete').click(function () { deleteDialog.data("kendoWindow").close(); });
+    });
+    function onDragEmpTreeView(e) {
+        console.log("Dragging " + this.text(e.sourceNode.id));
+    }
+    function onDropEmpTreeView(e) {
+        if (e.valid) {
+            if (!confirm("Do you want to Move this?")) {
+                e.preventDefault();
+            }
+            else {
+                var url = "/EmployeeHyrarchy/ChangeParentNode";
+                var $post = $.post(url, { nodeId: e.sourceNode.dataset.id, targetNodeId: e.destinationNode.dataset.id }, function (data) {
+                });
+
+                $post.success(function () {
+                    editDialog.data("kendoWindow").close();
+                    var tree = $("#treeview").data("kendoTreeView");
+                    tree.dataSource.read();
+                    tree.expand(".k-item");
+                    window.location = "/EmployeeHyrarchy/Index";
+                    return;
+                });
+                $post.error(function () {
+                    alert("Unable to perform action...");
+                    editDialog.data("kendoWindow").close();
+                    return;
+                });
+            }
+        }
+    }
+    $("#btnUpdate").on("click", function () {
+        var ObjectData = $("#treeview").data("kendoTreeView").options.dataSource.data;
+        var id = JSON.stringify(ObjectData);
+        console.log('jsonString is ' + id);
+    });
+    $("#treeview").on('mousedown', '.k-in', function (event) {
+        if (event.which === 3) {
+            $("#Menu").hide();
+            event.stopPropagation(); // to avoid propagation of this event to the root of the treeview
+            $("#treeview").data("kendoTreeView").select(this);
+            selectedItem = $(".k-state-selected").text();
+        }
+    })
+    function AddNode() {
+        var url = "/EmployeeHyrarchy/AddNode";
+        var $post = $.post(url, { txtNode: $("#txtNewNode").val(), parentId: $('.k-state-selected').parent().parent()[0].attributes[0].nodeValue }, function (data) {
+        });
+        $post.success(function () {
+            newDialog.data("kendoWindow").close();
+            var tree = $("#treeview").data("kendoTreeView");
+            tree.dataSource.read();
+            tree.expand(".k-item");
+            window.location = "/EmployeeHyrarchy/Index";
+        });
+        $post.error(function () {
+            alert("Unable to perform action...");
+            newDialog.data("kendoWindow").close();
+            return;
+        });
+    }
+
+    function UpdateNode() {
+        if (!confirm("Do you want to Update this?")) {
+            e.preventDefault();
+        } else {
+            var url = "/EmployeeHyrarchy/UpdateNode";
+            var $post = $.post(url, { txtOldName: $('.k-state-selected').text(), txtNewName: $('#txtEditNode').val() }, function (data) {
+            });
+
+            $post.success(function () {
+                editDialog.data("kendoWindow").close();
+                var tree = $("#treeview").data("kendoTreeView");
+                tree.dataSource.read();
+                tree.expand(".k-item");
+                window.location = "/EmployeeHyrarchy/Index";
+                return;
+            });
+            $post.error(function () {
+                alert("Unable to perform action...");
+                editDialog.data("kendoWindow").close();
+                return;
+            });
+        }
+    }
+
+    function DeleteNode() {
+        if (!confirm("Do you want to delete this?")) {
+            e.preventDefault();
+        } else {
+            var url = "/EmployeeHyrarchy/DeleteNode";
+            var $post = $.post(url, { txtNode: $('.k-state-selected').text() }, function (data) {
+            });
+
+            $post.success(function () {
+                deleteDialog.data("kendoWindow").close();
+                var tree = $("#treeview").data("kendoTreeView");
+                tree.dataSource.read();
+                tree.expand(".k-item");
+                window.location = "/EmployeeHyrarchy/Index";
+                return;
+            });
+            $post.error(function () {
+                alert("Unable to perform action...");
+                deleteDialog.data("kendoWindow").close();
+                return;
+            });
+        }
+    }
+
+    function SelectedContextMenu(e) {
+
+        var selectedOption = $(e.item).children(".k-link").text();
+        switch (selectedOption) {
+            case "New":
+                newDialog.data("kendoWindow").center();
+                newDialog.data("kendoWindow").open();
+                newDialog.scroll(false);
+                //$("#hdnParentId").val(selectedItem);
+                break;
+            case "Edit":
+                editDialog.data("kendoWindow").center();
+                editDialog.data("kendoWindow").open();
+                $('#txtEditNode').val($('.k-state-selected').text());
+                break;
+            case "Delete":
+                deleteDialog.data("kendoWindow").center();
+                deleteDialog.data("kendoWindow").open();
+                $('#txtDelNode').val($('.k-state-selected').text());
+                break;
+        }
+    }
+</script>

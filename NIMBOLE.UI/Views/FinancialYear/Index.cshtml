@@ -1,0 +1,138 @@
+﻿@model IEnumerable<NIMBOLE.Models.Models.FinancialYearModel>
+@{
+    ViewBag.Title = "NIMBOLE | List Contact Roles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{  
+    <script src="~/assets/js/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/assets/js/pages/base_tables_datatables.js"></script>
+}
+@using (Html.BeginForm())
+{
+    <main id="main-container">
+        <div class="block">
+            <div class="block-header">
+                <div class="form-group">
+                    <div class="col-xs-6">
+                        <h1 class="block">@NIMBOLE.GlobalResources.Resources.FinancialYear</h1>
+                    </div>
+                    <div class="col-xs-6" style="text-align:right;">
+                        <a href="~/FinancialYear/Create" class="btn btn-sw btn-primary" tabindex="1" role="button">
+                            <i class="fa fa-plus"></i>
+                            @NIMBOLE.GlobalResources.Resources.New
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="block-content">
+                <table class="table table-bordered table-striped js-dataTable-full-pagination" id="example" width="100%">
+                    @*this class wiill show fitering and searching*@
+                    @*"table table-bordered table-striped js-dataTable-full-pagination"*@
+                    <thead>
+                        <tr>
+                            <th class="text-center">@NIMBOLE.GlobalResources.Resources.FinancialYear</th>
+                            <th class="text-center">@NIMBOLE.GlobalResources.Resources.Description</th>
+                            <th class="text-center">@NIMBOLE.GlobalResources.Resources.Status</th>
+                            <th class="text-center"></th>
+                            <th class="text-center"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null)
+                        {
+                            foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.FinancialYear</td>
+                                    <td>@item.Description</td>
+                                    @{
+                                if (item.Status == true)
+                                {
+                                    item.Active = "Active";
+                                    item.Change_status = "Deactivate";
+                                }
+                                else
+                                {
+                                    item.Active = "Inactive";
+                                    item.Change_status = "Activate";
+                                }
+                                    }
+                                    <td>@item.Active</td>
+                                    <td> <a href="javascript:void()" onclick="Editfunction(@item.Id);">@NIMBOLE.GlobalResources.Resources.Edit</a></td>
+                                    <td> <a href="javascript:void()" onclick="ActivateorDeactivate(@item.Id,'@item.Active');">@item.Change_status</a></td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function Editfunction(id) {
+            window.location.href = window.location.origin + "/FinancialYear/Edit?q=" + SubmitsEncry(id);
+        }
+        function ActivateorDeactivate(id, status) {
+            //if (status == "Active") {
+            //    var deleteconfirm = confirm("Do you want to deactivate?");
+            //    if (deleteconfirm == true) {
+            //        updateRecord(id, false);
+            //    }
+            //}
+            //else {
+            //    var deleteconfirm = confirm("Do you want to activate?");
+            //    if (deleteconfirm == true) {
+            //        updateRecord(id, true);//activate record
+            //    }
+            //}
+            var message;
+            if (status == "Active") {
+                message = "Do you want to deactivate ?";
+            } else {
+                message = "Do you want to activate ?";
+            }
+            swal(
+                {
+                    title: message,
+                    //text: message,sss
+                    type: "",
+                    showCancelButton: true,
+                    confirmButtonColor: "#337ab7",
+                    confirmButtonText: "Ok",
+                    cancelButtonText: "Cancel",
+                    cancelButtonColor: "#d26a5c",
+                    showLoaderOnConfirm	:true,
+                    closeOnConfirm: false,
+                },
+                function () {
+                    if (status == "Active") {
+                        updateRecord(id, false);//deactivate record
+                    }
+                    else {
+                        updateRecord(id, true);//activate record
+                    }
+                    //swal("Deleted!", "Your imaginary file has been deleted.", "success");
+                });
+        }
+        function updateRecord(id, status) {
+            $.ajax({
+                url: '/FinancialYear/Delete',
+                dataType: "json",
+                type: "DELETE",
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify({ id: id, status: status }),
+                async: true,
+                processData: false,
+                cache: false,
+                success: function (data) {
+                 
+                    location.href = '/FinancialYear/Index';
+                },
+                error: function (xhr) {
+                }
+            });
+        }
+    </script>
+
+}

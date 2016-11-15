@@ -1,0 +1,473 @@
+﻿@model IEnumerable<NIMBOLE.Models.Models.LeadModel>
+@{
+    ViewBag.Title = "NIMBOLE | List Leads";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string currency = System.Web.HttpContext.Current.Session["Currency"].ToString() != null ? Session["Currency"].ToString() : "";
+    string resHome = ViewData["resHome"] != null ? ViewData["resHome"].ToString() : "";
+    <script src="~/assets/js/plugins/datatables/jquery.dataTables.min.js"></script>
+        <!-- Page JS Code -->
+    <script src="~/assets/js/pages/base_tables_datatables.js"></script>
+}
+@{
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.common.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.common-bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.mobile.all.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.dataviz.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.dataviz.bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/kendo/2014.3.1411/jszip.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2014.3.1411/kendo.core.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2014.3.1411/kendo.web.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2014.3.1411/kendo.aspnetmvc.min.js")"></script>
+}
+@using (Html.BeginForm())
+{
+    <main id="main-container">
+        <!-- Page Content -->
+        <div class="content">
+            <!-- Dynamic Table Full -->
+            <div class="block">
+                <div class="block-header">
+                    <div class="form-group">
+                        <div class="col-xs-6">
+                            <h1 class="block">@NIMBOLE.GlobalResources.Resources.Leads</h1>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-6" style="text-align:right;">
+                            <a href="~/Leads/Create" class="btn btn-sw btn-primary" tabindex="1" role="button">
+                                <i class="fa fa-plus"></i>
+                                @NIMBOLE.GlobalResources.Resources.New
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="block-content">
+                    <table class="table table-bordered table-striped js-dataTable-full-pagination" id="example" width="100%">
+                        <thead>
+                            <tr>
+                                <th colspan="7">
+                                    <div class="toolbar" style="float:right">
+                                        <button id="Activate" onclick="javascript: Dialog('act');" class="btn btn-success" type="button">Activate</button>
+                                        <button id="Deactivate" onclick="javascript: Dialog('dea');" class="btn btn-success" type="button">Deactivate</button>
+                                        <button id="Delete" onclick="javascript: Dialog('del');" class="btn btn-success" type="button">Delete</button>
+                                    </div>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th class="text-center" style="display:none">@NIMBOLE.GlobalResources.Resources.Id</th>
+                                <th class="text-center">@NIMBOLE.GlobalResources.Resources.Title</th>
+                                <th class="text-center">@NIMBOLE.GlobalResources.Resources.Stage</th>
+                                <th class="text-center">@NIMBOLE.GlobalResources.Resources.Name</th>
+                                <th class="text-center">@NIMBOLE.GlobalResources.Resources.Value</th>
+                                <th></th>
+                                <th></th>
+                                <th><input id="ChSelectAll" name="select_all" value="0" type="checkbox" class="selectAll" data-orderable="false"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null)
+                            {
+                                foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td style="display:none">
+                                            @item.Id
+                                        </td>
+                                        <td>
+                                            @item.LeadTitle
+                                        </td>
+                                        <td>@item.MasterMilestoneStage</td>
+                                        <td>@item.LeadOwnerName</td>
+                                        <td>@item.Size</td>
+
+                                        @{
+                                    if (item.Status == true)
+                                    {
+                                        item.Active = "Active";
+                                        item.Change_status = "Deactivate";
+                                    }
+                                    else
+                                    {
+                                        item.Active = "Inactive";
+                                        item.Change_status = "Activate";
+                                    }
+                                        }
+                                        <td>@item.Active</td>
+
+                                        <td> <a href="javascript:void();" onclick="Editfunction(@item.Id);">@NIMBOLE.GlobalResources.Resources.Edit</a></td>
+                                        <td>
+                                            @if (item.MasterMilestoneStage != "Deal")
+                                            {<input type="checkbox" @(item.IsSelected ? Html.Raw("checked=\"checked\"").ToHtmlString() : "") class='chkbx' value=@item.Id />}
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function Editfunction(id) {
+            window.location.href = window.location.origin + "/Leads/Edit?q=" + SubmitsEncry(id);
+        }
+    </script>
+
+    <script>
+        $('#ChSelectAll').click(function (e) {
+            if ($(this).hasClass('checkedAll')) {
+                $('input').prop('checked', false);
+                $(this).removeClass('checkedAll');
+                $('#Activate').prop('disabled', true);
+                $('#Deactivate').prop('disabled', true);
+                $('#Delete').prop('disabled', true);
+            } else {
+                $('input').prop('checked', true);
+                $(this).addClass('checkedAll');
+                $('#Activate').prop('disabled', false);
+                $('#Deactivate').prop('disabled', false);
+                $('#Delete').prop('disabled', false);
+            }
+        });
+
+        function deleteRecord(selval) {
+            var grid = $('#example');
+            $.ajax({
+                url: '/Leads/DeleteRec',
+                dataType: "json",
+                type: "DELETE",
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify({ selectedId: selval }),
+                async: true,
+                processData: false,
+                cache: false,
+                success: function (data, status) {
+                    $('input').prop('checked', false);
+                    $(this).removeClass('checkedAll');
+                    if (status == 'success' && data == 'Account(s) Successfully deleted!') {
+                        location.href = '/Leads/Index';
+                    }
+                    if (typeof data === "string") {
+                        if (data.lastIndexOf("associated") > -1)
+                            Dialog("Associatedel");
+                    }
+                    else {
+                        location.href = '/Leads/Index';
+                    }
+                    DisableButton();
+                },
+                error: function (xhr) {
+                    $('input').prop('checked', false);
+                    $(this).removeClass('checkedAll');
+                    location.href = '/Leads/Index';
+                    DisableButton();
+                }
+            });
+        }
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            DisableButton();
+        });
+
+        function DisableButton() {
+            $('#Activate').prop('disabled', true);
+            $('#Deactivate').prop('disabled', true);
+            $('#Delete').prop('disabled', true);
+        }
+
+        $('#example').on('click', '.chkbx', function () {
+            var checked = $(this).is(':checked');
+            var models = [];
+            var favorite = [];
+            var checkedvalue;
+            var grid = $('#example tbody input[type="checkbox"]');
+            var currenpagelength = grid.length;
+            var pagelength = grid.data.length; // for total records
+            grid.find(":checked").closest("tr").each(function () {
+                models.append(grid(this));
+            });
+            $.each($("input[type='checkbox']:checked"), function () {
+                favorite.push($(this).val());
+            });
+            checkedvalue = favorite.length;
+            if (checked == false & checkedvalue == 0) {
+                $('#ChSelectAll').attr('checked', false);
+                if (models.length == 0) {
+                    $('#Activate').prop('disabled', true);
+                    $('#Deactivate').prop('disabled', true);
+                    $('#Delete').prop('disabled', true);
+                }
+            }
+            else {
+                $('#Activate').prop('disabled', false);
+                $('#Deactivate').prop('disabled', false);
+                $('#Delete').prop('disabled', false);
+                var selectedcheckboxlength = models.length;
+                if (currenpagelength == selectedcheckboxlength) {
+                    $('#ChSelectAll').prop('checked', true);
+                }
+            }
+        });
+
+        function GetSelectedCheckBoxs() {
+            var favorite = [];
+            $.each($("input[type='checkbox']:checked"), function () {
+                favorite.push($(this).val());
+            });
+            return favorite;
+        }
+        function updateRecord(id, status) {
+            $.ajax({
+                url: '/Leads/Delete',
+                dataType: "json",
+                type: "DELETE",
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify({ selectedId: id, status: status }),
+                async: true,
+                processData: false,
+                cache: false,
+                success: function (data) {
+                    if (typeof data === "string") {
+                        if (data.lastIndexOf("associated") > -1)
+                            Dialog("Associateact");
+                        //alert('Record(s) is associated');
+                    }
+                    else {
+                        location.href = '/Leads/Index';
+                    }
+                },
+                error: function (xhr) {
+                }
+            });
+        }
+
+    </script>
+
+    <script>
+        function Dialog(type) {
+
+            var message;
+            var checked;
+            var selectedval;
+            switch (type) {
+                case "del":
+                    message = "Do you want to delete ?";
+                    break;
+                case "act":
+                    message = "Do you want to activate ?";
+                    break;
+                case "dea":
+                    message = "Do you want to deactivate ?";
+                    break;
+                case "Associateact":
+                    message = "Associated record(s), you can't activate / deactivate.";
+                    break;
+                case "AssociateDel":
+                    message = "Associated record(s), you can't delete";
+                    break;
+            }
+            swal({
+                title: message,
+                type: "",
+                showCancelButton: true,
+                confirmButtonColor: "#337ab7",
+                confirmButtonText: "Ok",
+                cancelButtonText: "Cancel",
+                cancelButtonColor: "#d26a5c",
+                showLoaderOnConfirm: true,
+                closeOnConfirm: false,
+            },
+            function (isConfirm) {
+                if (isConfirm) {
+                    switch (type) {
+                        case "del":
+                            checked = GetSelectedCheckBoxs();
+                            selectedval = checked;
+                            deleteRecord(selectedval);
+                            break;
+                        case "act":
+                            checked = GetSelectedCheckBoxs();
+                            selectedval = checked;
+                            updateRecord(selectedval, true);
+                            break;
+                        case "dea":
+
+                            checked = GetSelectedCheckBoxs();
+                            selectedval = checked;
+                            updateRecord(selectedval, false);
+                            break;
+                        case "Associateact":
+                            location.href = '/Leads/Index';
+                            break;
+                        case "AssociateDel":
+                            location.href = '/Leads/Index';
+                            break;
+                    }
+                }
+                else {
+                    switch (type) {
+                        case "del":
+                            location.href = '/Leads/Index';
+                            break;
+                        case "act":
+                            location.href = '/Leads/Index';
+                            break;
+                        case "dea":
+                            location.href = '/Leads/Index';
+                            break;
+                        case "Associateact":
+                            location.href = '/Leads/Index';
+                            break;
+                        case "AssociateDel":
+                            location.href = '/Leads/Index';
+                            break;
+                    }
+                }
+            });
+        }
+    </script>
+    <script>
+        function statusChange() {
+            FilterGrid();
+        }
+
+        //function onGridLeadDataBinding(e) {
+        //    for (var item in e.items) {
+        //        var tempItem = e.items[item];
+        //        var tempBudget = parseInt(tempItem.Budget);
+        //        if (tempBudget > 0)
+        //            tempItem.Budget = numberWithCommas(tempItem.Budget);
+        //    }
+        //}
+
+        //function onGridLeadDataBound(e) {
+        //    if (this.dataSource.view().length == 0) {
+        //        var currentPage = this.dataSource.page();
+        //        if (currentPage > 1) {
+        //            e.preventDefault();
+        //            this.dataSource.page(currentPage - 1);
+        //        }
+        //    }
+        //    var grid = $("#GridLead").data("kendoGrid");
+        //    $("#GridLead tr.k-alt").removeClass("k-alt");
+        //    grid.tbody.find("tr[role='row']").each(function () {
+        //        var id = $(this)[0].cells[0].innerHTML;
+        //        var encodedId = SubmitsEncry(id);
+        //        var qString = "";
+        //        var editPath = "";
+        //        var deletePath = "";
+
+
+        //        if ($(this)[0].cells[$(this)[0].cells.length - 2].childNodes[0].attributes[0].nodeValue != undefined) {
+        //            editPath = $(this)[0].cells[$(this)[0].cells.length - 2].childNodes[0].attributes[0].nodeValue;
+        //            editPath = editPath.substr(0, editPath.lastIndexOf("/"));
+        //            qString = editPath.split("/");
+        //            var queryString = "Id=" + id;
+        //            var encodedQueryString = SubmitsEncry(queryString);
+        //            editPath = editPath + "?q=" + encodedQueryString;
+        //            $(this)[0].cells[$(this)[0].cells.length - 2].childNodes[0].attributes[0].nodeValue = editPath;
+        //        }
+        //    });
+        //}
+
+        //$('#str').keyup(function () {
+        //    FilterGrid();
+        //});
+
+        function FilterGrid() {
+
+            var gridListFilter = { filters: [] };
+            //var gridDataSource = $("#GridLead").data("kendoGrid").dataSource;
+            var grid = $('#example');
+            var selectedMilestone = $("#LeadStatus").data("kendoDropDownList").text();
+            var selectedDatePeriod = $("#FilterLeads").val();
+            var filterString = $("#str").val();
+            var filterStatus = $('#status').data("kendoDropDownList").text();
+
+            var today1 = new Date(new Date().setHours(0, 0, 0, 0));
+            var today = new Date();
+            var quarter = Math.floor((today.getMonth() / 3));
+            gridListFilter.logic = "and";   // a different logic 'or' can be selected
+            grid.filter({});
+            if (selectedMilestone === "All" && selectedDatePeriod === "1" && filterString === "" && filterStatus === "All") {
+                grid.read();
+            }
+            else {
+                if (selectedMilestone != "All") {
+                    gridListFilter.filters.push({ field: "MilestoneName", operator: "eq", value: selectedMilestone });
+                }
+                if (filterString !== "") {
+                    gridListFilter.filters.push({ field: "LeadTitle", operator: "startswith", value: filterString });
+                }
+                if (filterStatus !== "All") {
+                    filterStatus = filterStatus === "Active" ? true : false;
+
+                    gridListFilter.filters.push({ field: "Status", operator: "equal", value: filterStatus });
+                }
+                switch (selectedDatePeriod) {
+                    case "1": {
+                        break;
+                    }
+                    case "2": {
+                        var lastday = today1;
+                        gridListFilter.filters.push({ field: "CreatedDate", operator: "lte", value: today });
+                        gridListFilter.filters.push({ field: "CreatedDate", operator: "gte", value: lastday });
+                        break;
+                    }
+                    case "3": {
+                        var lastday = new Date(new Date().setMonth(today.getMonth() + -1));
+                        var firstDate = new Date(new Date().setDate(today.getDate() - today.getDay()));
+
+                        gridListFilter.filters.push({ field: "CreatedDate", operator: "lte", value: today });
+                        gridListFilter.filters.push({ field: "CreatedDate", operator: "gt", value: firstDate });
+                        break;
+                    }
+                    case "4": {
+                        var lastday = new Date(new Date().setMonth(today.getMonth() + -1));
+                        var firstDate = new Date(today.getFullYear(), today.getMonth(), 1);
+
+                        gridListFilter.filters.push({ field: "CreatedDate", operator: "lte", value: today });
+                        gridListFilter.filters.push({ field: "CreatedDate", operator: "gt", value: firstDate });
+                        break;
+                    }
+                    case "5": {
+                        var lastday = new Date(new Date().setYear(today.getFullYear() + -3));
+                        var firstDate = new Date(today.getFullYear(), quarter * 3, 1);
+
+                        gridListFilter.filters.push({ field: "CreatedDate", operator: "lte", value: today });
+                        gridListFilter.filters.push({ field: "CreatedDate", operator: "gt", value: firstDate });
+                        break;
+                    }
+                    case "6": {
+                        var lastday = new Date(new Date().setYear(today.getFullYear() + -1));
+                        var firstDate = new Date(today.getFullYear(), 0, 1);
+                        gridListFilter.filters.push({ field: "CreatedDate", operator: "lte", value: today });
+                        gridListFilter.filters.push({ field: "CreatedDate", operator: "gte", value: firstDate });
+                        break;
+                    }
+                }
+                grid.filter(gridListFilter);
+            }
+        }
+        function MileStoneChange() {
+            FilterGrid();
+        }
+    </script>
+
+    <script>
+
+    $(document).ready(function () {
+        var table = $('#example').DataTable();
+        table.destroy();
+        $('#example').DataTable({
+            "order": [[0, "desc"]]
+        });
+    });
+
+    </script>
+}

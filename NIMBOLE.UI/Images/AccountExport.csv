@@ -1,0 +1,222 @@
+Account Code,Account Name,Account Owner,Account Classification,Parent Account,No of Employees,Ownership,Industry,Account Type,Is Parent Account,Distributor Name,Subsidiary,Region,Phone,Fax,Email,Rating,SIC Code,Annual Revenue,Website
+Null,Cognizant Technology Solutions Ltd,Johnson,2,Null,15,4,5,5,False,1,Null,Chennai,080-4512451,22222,Sivasankar@nimbole.com,5,05,1500000,www.Accounts.com
+Null,Accenture Technology Solutions Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,HCL Solutions Ltd,James Rathan Kadari,2,Null,15,4,5,4,False,4,Null,Chennai,080-4512451,22222,vsiva9552@gmail.com,5,05,1500000,www.Accounts.com
+Null,Infosys Solutions Ltd,Johnson,2,Null,15,4,6,6,False,4,Null,Chennai,080-4512451,22222,Sivasankar@nimbole.com,5,05,1500000,www.Accounts.com
+Null,ARM Solutions Ltd,john Smith,2,Null,9,4,4,4,False,0,Null,kadapa1,9901824456,S4,arjun@gmail.com,8,aaaa11111,800000000,www.Action.com
+Null,Aricent Technology Ltd,Ramana Reddy,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,ABM Technology Ltd,RAVIKUPPALA,2,Null,45,3,3,3,False,0,Null,T.Sundupalli,9908955657,sd1,arun@gmail.com,8,Ds12,1000000,www.account.com
+Null,ZOHO Technology Ltd,Sankar,2,Null,15,4,6,6,False,4,Null,Chennai,080-125487,222222,vsiva9552@gmail.com,05,01,2,www.accounts.com
+Null,XPIO Technology Solutions Pvt Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,SFA Singapore Ltd,Ronnie,1,Null,10,6,7,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Kolar Biotech Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,KPIT Cummins Infosystems Limited,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Indian Software Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Indian Infotech & Software Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Innovision E-Commerce Ltd,Larry Ellison,2,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Innovation Technology Ltd.,Gordon E. Moore,2,Null,100,7,7,7,False,4,Null,Chennai,080-1235478,222222,Sivasankar.vadde@nimbole.com,5,02,500000,www.nimbole.com
+Null,Innovation Software Ltd.,TATA,2,Null,10,6,7,7,False,17,Null,Chennai,080-1235478,222222,Sivasankar.vadde@nimbole.com,5,02,500000,www.nimbole.com
+Null,Innovation Software Exports Ltd.,John,2,Null,15,2,2,2,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Infronics Systems Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Informed Solutions India Ltd,Arjun,2,2,5,15,9,6,False,4,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Informed Technologies India Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Indovation Technologies Ltd.,Anji,2,2,54,10,3,24,False,52,Null,Banglore,9901383631,fax,Anji1@gmail.com,8,SicCode12,8000000,Website
+Null,International Data Management Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Integrated Hitech Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Igate Software Solutions Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Igate Global Solutions Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,ICES Software Ltd,John paul,2,173,45,40,24,30,False,54,Null,chennai,8884366363,22222,sivasankar.vadde@nimbole.com,05,02,2500000,www.Accounts.com
+Null,I Power Solutions India Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,HCL Infosystems Ltd.,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,HOV Services Ltd,Clifford,2,175,60,42,26,32,False,175,Null,chennai,8884366363,22222,sivasankar.vadde@nimbole.com,05,02,2500000,www.Accounts.com
+Null,HCL Technologies Ltd,Altavista,1,MSN,200,46,30,Altavista,False,54,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Harbor Network Systems Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Frontier Information Technologies Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Fax Technologies Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Goldstone Technologies Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,G-Tech Info Training Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Frontline Business Solutions Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Financial Technologies (India) Ltd,Altavista,2,223,500,22,32,33,False,151,Null,chennai,8884366363,22222,sivasankar.vadde@nimbole.com,05,02,5000000,www.Accounts.com
+Null,Amithi Software Solutions Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,FAX Software Solutions Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,FCS Software Solutions Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Google Solutions Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Hinduja Global Solutions Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Nokia Solutions Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Phillips Solutions Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Dynamics Solutions Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,eDynamics Solutions Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Excel Infoways Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Enterprise Intelligent Systems Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,E.Star Infotech Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,ERP Soft Systems Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Dynacons Systems & Solutions Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Datamatics Global Services Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Datasoft Application Software Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Datasoft Application Software (India) Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,DSQ Software Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,DSJ Communications Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Crystal Technology Software Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Crystal Software Ltd,John Calvin,2,2,0,79,118,79,False,285,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Crystal Software Solutions Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Cambridge Solutions Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Cybertech Software Ltd,Jhon Paul,2,504,650,22,67,4,False,382,Null,Ganga nagar,080-45874455,2222,siva9552@nimbole.com,05,03,2500000,www.hdfc.com
+Null,ACME Resources Ltd.,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,AGS Transact Technologies Ltd.,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Cybertech Systems & Software Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Cyberscape Multimedia Ltd.,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Color Chips (India) Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Color Chips New Media Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,CG VAK Software Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,CAT Technologies Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,California Software Company Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Cambridge Technology Enterprises Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Baron Infotech Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Birla Precision Technologies Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Bharatiya Global Infomedia Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Birla Shloka Edutech Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,B2B Software Technologies Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Asian Electronics Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Alps BPO Services Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,AMI Computers (I) Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Aztecsoft Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Axon Infotech Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Avance Technologies Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Aashee Infotech Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,ACE Software Exports Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Accentia Technologies Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Orchid Chemicals & Pharmaceuticals Limited,Null,Null,465,0,22,30,5,False,479,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Olympia Industries Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Oil India Limited,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,PS IT Infrastructure & Services Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,PBA Infrastructure Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Quasar India Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Qpro Infotech Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Quest Softech (India) Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Quality Synthetic Industries Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,RTS Power Corpn. Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,RISA International Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,SEL Manufacturing Company Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,S&T Corporation Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,SB&T International Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Sterling Holiday Resorts (India) Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Sun Fund Management Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Symphony Comfort Systems Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Syschem (India) Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Systematix Corporate Services Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,TCI Developers Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Trigyn Technologies Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,United Breweries Limited,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Worldwide Leather Exports Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,XL Telecom & Energy Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Zuari Forex Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Zee Entertainment Enterprises Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Zuari Agro Chemicals Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Zetatic Intercorp Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Zensar Technologies Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Zodiac Ventures Ltd,Null,Null,878,0,0,0,0,False,210,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Zicom Electronic Security Systems Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Zen Technologies Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,XL Telecom & Energy Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Wallfort Financial Services Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Washington Softwares Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Techno Electric & Engineering Company Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Trans Techno Foods Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Twinstar Software Exports Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,UB Engineering Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Unisys Softwares & Holding Inds. Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,V&K Softech Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,IBM Technology Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Tata Consultancy Servieces,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,TataCommunications Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,The Scientific Instrument Company Ltd.,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Tainwala Chemicals & Plastics (India) Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Tanfac Industries Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,TVS Electronics Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Taneja Aerospace & Aviation Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,TD Power Systems Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Tamil Nadu Industrial Explosives Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,TRC Financial Services Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,TECH MAHINDRA,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Amforge Industries Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Ambuja Cements Limited,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Advent Computer Services Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,AVT Natural Products Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Abee Info-Consumables Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Aastha Broadcasting Network Ltd.,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,AXIS-IT&T Ltd.,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,AVT Natural Products Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,ABL Biotechnologies Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Cyber Technology Solutions Pvt Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Aurionpro Solutions Ltd.,Edward William,2,173,8500,174,162,1,False,52,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Aurionpro Solutions Pvt Ltd.,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Aurionpro Solutions India Pvt Ltd.,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Crest Animation Studios Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,GSS America Infotech Ltd,John Willson,1,504,6500,181,161,4,False,151,Null,Chennai,0804512541,2222222222,sivasankar4849@gmail.com,05,02,250000,www.Nimbole.com
+Null,Hexaware Technologies Ltd,JohnSon,2,Null,5200,175,111,145,False,151,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Oracle Financial Services Software,John Willson,2,504,5200,221,202,200,False,1059,Null,Chennai,0804512541,2222222222,sivasankar4849@gmail.com,05,02,250000,www.Nimbole.com
+Null,Integrated Hitech Pvt Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,CAC Software Consultancy (P) Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Cactus Imaging India Pvt Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,CADD CENTRE INDIA PRIVATE LIMITED,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Calfornia Software Co.Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Cybermate Infotek Ltd.,William Edward,2,Null,6500,168,181,158,False,151,Null,Chennai,0804512541,2222222222,Sivasankar.vadde@example.com,05,02,250000,www.Nimbole.com
+Null,Cybermate Infotek Pvt Ltd.,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Cybermate Infotech Pvt Ltd.,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Cybermate Infotek India Pvt Ltd.,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Kernex Microsystems (India) Ltd.,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Kernex Microsystems (India) Pvt Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Capricorn Systems Global Solutions Ltd.,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Cranes Software International Ltd.,John Willson,2,175,6500,224,205,203,False,1073,Null,Chennai,0804512541,2222222222,Sivasankar.vadde@example.com,05,02,250000,www.Nimbole.com
+Null,Cybermate Infotek Ltd,JohnSon,2,4,0,221,205,198,False,52,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Integrated Hitech Ltd.,Null,Null,2,0,100,162,135,False,175,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,CSS Technergy Ltd,Null,Null,Null,0,225,206,204,False,1076,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Computer Point Ltd.,John Willson,1,504,5200,22,160,88,False,52,Null,Chennai,0804512541,2222222222,Sivasankar.vadde@example.com,05,02,250000,www.Nimbole.com
+Null,Micro Technologies (India) Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Powersoft Global Solutions Ltd.,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Cybermate Infotek Pvt Ltd,Null,2,Null,0,22,162,1,False,52,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Acropetal Technologies Ltd.,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Washington Softwares Pvt Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Datasoft Application Software Ltd.,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Fintech Communication Ltd.,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,New Markets Advisory Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Axon Infotech Ltd.,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,8K Miles Software Services Ltd.,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Mahindra Satyam Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Fintech Communication Pvt Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Fintech Communication India Pvt Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Astro Bio Systems Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Aurionpro Technology Solutions India Pvt Ltd.,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,CG VAK Software Pvt Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Datamatics Global Services Pvt Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Innovation Software Exports Pvt Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,8K Miles Software Pvt Ltd.,JohnSon,2,1078,6500,22,205,28,False,1076,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,8K Miles Software Services Pvt Ltd.,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Webel Communication Industries Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,ids,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Tata Construction & Projects Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Texmaco Rail & Engineering Ltd.,John Willson,2,1101,6500,227,207,205,False,1102,Null,Chennai,0804512541,2222222222,Sivasankar.vadde@example.com,05,02,250000,www.Nimbole.com
+Null,Cybermate Infotek Pvt Ltd1,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Kolar Biotech Pvt Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Cranes Software International Pvt Ltd.,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Fourth Generation Information Systems Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Onesource Techmedia Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Zigma Software Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Zigma Software Pvt Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Aashee Infotech Pvt Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,3I Infotech Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Unisys Softwares & Holding Inds. Pvt  Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Telesys Software Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Telesys Software pvt Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,ObjectOne Information Systems Ltd.,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Gracious Software Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,I Power Solutions India Pvt Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Innovision E-Commerce Pvt Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Kernex Microsystems (India) Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Ancent Software International Ltd.,JohnSon,2,1101,6500,221,158,61,False,1076,Null,Chennai,0804512541,2222222222,Sivasankar.vadde@example.com,05,02,250000,Null
+Null,8K Miles Software Services Pvt Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,VMF Soft Tech Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Test Account,Null,Null,Null,0,227,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Infosys Technologies Ltd.,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Innovation Software Exports India Pvt Ltd,Null,Null,Null,0,0,0,0,False,Null,Null,Null,Null,Null,Null,Null,Null,0,Null
+Null,Megasoft Ltd.,SivaSankar,2,Megasoft Pvt Ltd,4500,Megasoft Ltd.,Megasoft Ltd.,Megasoft Ltd.,False,Null,Null,Null,8884366363,2222222222,sivasankar@example.com,2,3,52000,www.net.com

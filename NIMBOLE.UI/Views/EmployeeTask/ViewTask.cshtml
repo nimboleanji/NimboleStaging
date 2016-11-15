@@ -1,0 +1,112 @@
+﻿@model NIMBOLE.Models.Models.EmployeeTaskModel
+@using Kendo.Mvc.UI;
+@using NIMBOLE.UI.Helpers;
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string DateFormat = Session["DateFormat"].ToString();
+}
+
+@using (Html.BeginForm("Edit", "EmployeeTask", FormMethod.Get))
+{
+    <main id="main-container" style="padding-left:10px;padding-right:10px;padding-top:45px">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="block block-themed">
+                    <div class="block-header bg-info">
+                        <ul class="block-options">
+                            <li>
+                                <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-refresh"></i></button>
+                            </li>
+                            <li>
+                                <button type="button" data-toggle="block-option" data-action="content_toggle"></button>
+                            </li>
+                        </ul>
+                        <h3 class="block-title">@NIMBOLE.GlobalResources.Resources.View @NIMBOLE.GlobalResources.Resources.Task</h3>
+                    </div>
+
+                    <div class="block-content">
+                        <div class="form-group">
+                            @*Left Column*@
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="InputTitle">
+                                        @NIMBOLE.GlobalResources.Resources.Title
+                                    </label>
+                                    @Model.Title
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Email">
+                                        @NIMBOLE.GlobalResources.Resources.TaskDate
+                                    </label>
+                                    @Model.TaskDate.ToString(DateFormat)
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Email">
+                                        @NIMBOLE.GlobalResources.Resources.EndDate
+                                    </label>
+                                    @Model.EndDate.ToString(DateFormat)
+                                </div>
+
+                            </div>
+
+                            @*Right Column*@
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="InputTitle">
+                                        @NIMBOLE.GlobalResources.Resources.Type
+                                    </label>
+                                    @Model.Type_Task
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Email">
+                                        @NIMBOLE.GlobalResources.Resources.StartDate
+                                    </label>
+                                    @Model.StartDate.ToString(DateFormat)
+                                </div>
+
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-lg-12 form-group">
+                                    <label for="Comments">
+                                        @NIMBOLE.GlobalResources.Resources.Comments
+                                    </label>
+                                    @Model.Comments
+                                </div>
+                            </div>
+                            @Html.HiddenFor(m => m.Id)
+                            @Html.HiddenFor(m => m.TaskOwnerId)
+                            <div class="row">
+                                <div class="col-lg-12" style="text-align: right;">
+                                    <input id="btnEdit" type="button" class="btn btn-success" value=@NIMBOLE.GlobalResources.Resources.Edit tabindex="20">
+                                    <input type="button" value=@NIMBOLE.GlobalResources.Resources.Cancel class="btn btn-danger" onclick="location.href = '/EmployeeTask/Index'" tabindex="20" />
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+}
+
+<script>
+    $('#btnEdit').click(function () {
+        var taskOwnerId = parseFloat($('#TaskOwnerId').val());
+        var empId = '@Session["EmployeeId"]' != null ? parseFloat('@Session["EmployeeId"]') : 0;
+        var modelId = SubmitsEncry(@Model.Id);
+        var url = '/EmployeeTask/Edit' + "?q=" + modelId;
+        if (taskOwnerId === empId) {
+            $(location).attr('href', url);
+        }
+        else {
+            alert("You are not authorized to edit.")
+        }
+    });
+</script>

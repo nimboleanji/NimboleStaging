@@ -1,0 +1,654 @@
+﻿<!DOCTYPE html>
+<!--[if IE 9]>         <html class="ie9 no-focus"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html class="no-focus">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <title>NIMBOLE</title>
+    <meta name="description" content="OneUI - Admin Dashboard Template &amp; UI Framework created by pixelcave and published on Themeforest">
+    <meta name="author" content="pixelcave">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0">
+
+    <!-- Icons -->
+    <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
+    <link rel="shortcut icon" href="@Url.Content("~/assets/img/favicons/favicon.png")">
+
+    <link rel="icon" type="image/png" href="@Url.Content("~/assets/img/favicons/favicon-16x16.png")" sizes="16x16">
+    <link rel="icon" type="image/png" href="@Url.Content("~/assets/img/favicons/favicon-32x32.png")" sizes="32x32">
+    <link rel="icon" type="image/png" href="@Url.Content("~/assets/img/favicons/favicon-96x96.png")" sizes="96x96">
+    <link rel="icon" type="image/png" href="@Url.Content("~/assets/img/favicons/favicon-160x160.png")" sizes="160x160">
+    <link rel="icon" type="image/png" href="@Url.Content("~/assets/img/favicons/favicon-192x192.png")" sizes="192x192">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="@Url.Content("~/assets/img/favicons/apple-touch-icon-57x57.png")">
+    <link rel="apple-touch-icon" sizes="60x60" href="@Url.Content("~/assets/img/favicons/apple-touch-icon-60x60.png")">
+    <link rel="apple-touch-icon" sizes="72x72" href="@Url.Content("~/assets/img/favicons/apple-touch-icon-72x72.png")">
+    <link rel="apple-touch-icon" sizes="76x76" href="@Url.Content("~/assets/img/favicons/apple-touch-icon-76x76.png")">
+    <link rel="apple-touch-icon" sizes="114x114" href="@Url.Content("~/assets/img/favicons/apple-touch-icon-114x114.png")">
+    <link rel="apple-touch-icon" sizes="120x120" href="@Url.Content("~/assets/img/favicons/apple-touch-icon-120x120.png")">
+    <link rel="apple-touch-icon" sizes="144x144" href="@Url.Content("~/assets/img/favicons/apple-touch-icon-144x144.png")">
+    <link rel="apple-touch-icon" sizes="152x152" href="@Url.Content("~/assets/img/favicons/apple-touch-icon-152x152.png")">
+    <link rel="apple-touch-icon" sizes="180x180" href="@Url.Content("~/assets/img/favicons/apple-touch-icon-180x180.png")">
+    <!-- END Icons -->
+    <!-- Stylesheets -->
+    <!-- Web fonts -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400italic,600,700%7COpen+Sans:300,400,400italic,600,700">
+
+    <!-- Bootstrap and OneUI CSS framework -->
+    <link rel="stylesheet" href="@Url.Content("~/assets/css/bootstrap.min.css")">
+
+    <link rel="stylesheet" id="css-main" href="@Url.Content("~/assets/css/oneui.css")">
+
+    <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
+    <!-- <link rel="stylesheet" id="css-theme" href="assets/css/themes/flat.min.css"> -->
+    <!-- END Stylesheets -->
+
+
+    <script src="@Url.Content("~/assets/js/core/jquery.min.js")"></script>
+    @*<script type="text/javascript" charset="utf8" src="//code.jquery.com/jquery-1.10.2.min.js"></script>*@
+    <script src="@Url.Content("~/assets/js/core/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/assets/js/core/jquery.slimscroll.min.js")"></script>
+    <script src="@Url.Content("~/assets/js/core/jquery.scrollLock.min.js")"></script>
+    <script src="@Url.Content("~/assets/js/core/jquery.appear.min.js")"></script>
+    <script src="@Url.Content("~/assets/js/core/jquery.countTo.min.js")"></script>
+    <script src="@Url.Content("~/assets/js/core/jquery.placeholder.min.js")"></script>
+    <script src="@Url.Content("~/assets/js/core/js.cookie.min.js")"></script>
+    <script src="@Url.Content("~/assets/js/app.js")"></script>
+    <script src="@Url.Content("~/Scripts/aes.js")"></script>
+    <!-- FormValidation JavaScript -->
+    <script src="@Url.Content("~/Scripts/Validation.js")"></script>
+    <!-- Sweet Alerts-->
+    <script src="http://tristanedwards.me/u/SweetAlert/lib/sweet-alert.js"></script>
+    <link rel="stylesheet" href="http://tristanedwards.me/u/SweetAlert/lib/sweet-alert.css">
+
+    <script type="text/javascript">
+        var key = CryptoJS.enc.Utf8.parse('8080808080808080');
+        var iv = CryptoJS.enc.Utf8.parse('8080808080808080');
+        function SubmitsEncry(id) {
+            var encryptedData = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse(id), key,
+            {
+                keySize: 128 / 8,
+                iv: iv,
+                mode: CryptoJS.mode.CBC,
+                padding: CryptoJS.pad.Pkcs7
+            });
+            return encryptedData;
+        }
+        function SubmitDecry(id) {
+            var decryptedData = CryptoJS.AES.decrypt(id, key,
+                {
+                    keySize: 128 / 8,
+                    iv: iv,
+                    mode: CryptoJS.mode.CBC,
+                    padding: CryptoJS.pad.Pkcs7
+                }).toString(CryptoJS.enc.Utf8);
+            return decryptedData;
+        }
+    </script>
+
+    @RenderSection("scripts", required: false)
+</head>
+<body>
+
+    @using Kendo.Mvc.UI;
+    @using NIMBOLE.UI.Helpers;
+    @{
+        var EmployeeRole = Session["EmployeeRole"] != null ? Session["EmployeeRole"].ToString() : "";
+        var LoggedUser = Session["EmployeeName"] != null ? Session["EmployeeName"].ToString() : "";
+        List<string> EmpModules = Session["Modules"] != null ? (List<string>)Session["Modules"] : null;
+    }
+    <!-- Page Container -->
+    <!--f
+        Available Classes:
+
+        'enable-cookies'             Remembers active color theme between pages (when set through color theme list)
+
+        'sidebar-l'                  Left Sidebar and right Side Overlay
+        'sidebar-r'                  Right Sidebar and left Side Overlay
+        'sidebar-mini'               Mini hoverable Sidebar (> 991px)
+        'sidebar-o'                  Visible Sidebar by default (> 991px)
+        'sidebar-o-xs'               Visible Sidebar by default (< 992px)
+
+        'side-overlay-hover'         Hoverable Side Overlay (> 991px)
+        'side-overlay-o'             Visible Side Overlay by default (> 991px)
+
+        'side-scroll'                Enables custom scrolling on Sidebar and Side Overlay instead of native scrolling (> 991px)
+
+        'header-navbar-fixed'        Enables fixed header
+    -->
+    <div id="page-container" class="sidebar-l sidebar-o side-scroll header-navbar-fixed">
+
+        <!-- Sidebar -->
+        <nav id="sidebar">
+            <!-- Sidebar Scroll Container -->
+            <div id="sidebar-scroll" style="background:#3a72b9;">
+                <!-- Sidebar Content -->
+                <!-- Adding .sidebar-mini-hide to an element will hide it when the sidebar is in mini mode -->
+                <div class="sidebar-content">
+                    <!-- Side Header -->
+                    <div class="side-header side-contentH bg-white-op">
+                        <!-- Layout API, functionality initialized in App() -> uiLayoutApi() -->
+                        <button class="btn btn-link text-gray pull-right hidden-md hidden-lg" type="button" data-toggle="layout" data-action="sidebar_close">
+                            <i class="fa fa-times"></i>
+                        </button>
+
+                        <a class="h5 text-white" href="@Url.Action("Index", "Home")">
+                            <img src="~/Content/images/newlogo1.png" />
+                        </a>
+                        <!-- <i class="fa fa-circle-o-notch text-primary"></i> <span class="h4 font-w600 sidebar-mini-hide">ne</span> -->
+
+                    </div>
+                    <!-- END Side Header -->
+                    <!-- Side Content -->
+                    <div class="side-content">
+                        <ul class="nav-main">
+                            @*<li>
+                                    <a href="index.html"><i class="si si-speedometer"></i><span class="sidebar-mini-hide">Dashboard</span></a>
+                                </li>*@
+                            @*<li class="nav-main-heading"><span class="sidebar-mini-hide">User Interface</span></li>*@
+
+                            @{
+                                //Module Based Menu Starts
+                                foreach (string module in EmpModules)
+                                {
+                                    switch (module)
+                                    {
+                                        case "01"://Masters
+
+                                            <li>
+                                                <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-badge"></i><span class="sidebar-mini-hide">@NIMBOLE.GlobalResources.Resources.Masters</span></a>
+                                                <ul>
+                                                    <li>
+                                                        <a href="@Url.Action("Index", "Employees")">@NIMBOLE.GlobalResources.Resources.Employees</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="@Url.Action("Index", "Milestone")"> @NIMBOLE.GlobalResources.Resources.Milestones</a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a href="@Url.Action("Index","Department")">@NIMBOLE.GlobalResources.Resources.Departments</a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a href="@Url.Action("Index","LeadSource")">@NIMBOLE.GlobalResources.Resources.LeadSource</a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a href="@Url.Action("Index","ContactRoles")">@NIMBOLE.GlobalResources.Resources.ContactRole</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="@Url.Action("Index", "EmployeeRoles")">@NIMBOLE.GlobalResources.Resources.EmployeeRole</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="@Url.Action("Index", "FinancialYear")">@NIMBOLE.GlobalResources.Resources.FinancialYear</a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a href="@Url.Action("Index", "EmployeeTarget")">@NIMBOLE.GlobalResources.Resources.EmployeeTarget</a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a href="@Url.Action("Index","Products")">@NIMBOLE.GlobalResources.Resources.Product</a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a href="@Url.Action("Index", "EmployeeHyrarchy")">@NIMBOLE.GlobalResources.Resources.EmployeeHierarchy</a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a href="@Url.Action("Index", "OrganisationHierarchy")">@NIMBOLE.GlobalResources.Resources.OrganizationHierarchy</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="@Url.Action("Index", "Incentive")">@NIMBOLE.GlobalResources.Resources.Incentive</a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a href="@Url.Action("Index", "Location")">@NIMBOLE.GlobalResources.Resources.Location</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="@Url.Action("Index", "MasterTask")">MasterTask</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="@Url.Action("Index", "EmployeeMasterTask")">EmployeeMasterTask</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+
+                                            break;
+                                        case "02"://Accounts
+                                        <li>
+                                            <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-grid"></i><span class="sidebar-mini-hide"> @NIMBOLE.GlobalResources.Resources.Accounts </span></a>
+                                            <ul>
+                                                <li>
+                                                    <a href="@Url.Action("Index", "NimboleAccounts")">@NIMBOLE.GlobalResources.Resources.List</a>
+                                                </li>
+                                                <li>
+                                                    <a href="@Url.Action("Create", "NimboleAccounts")">@NIMBOLE.GlobalResources.Resources.New</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                            break;
+                                        case "03"://Contacts
+                                        <li>
+                                            <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-grid"></i><span class="sidebar-mini-hide"> @NIMBOLE.GlobalResources.Resources.Contacts</span></a>
+                                            <ul>
+                                                <li>
+                                                    <a href="@Url.Action("ListviewIndex", "Contacts")">@NIMBOLE.GlobalResources.Resources.List</a>
+                                                </li>
+                                                <li>
+                                                    <a href="@Url.Action("Create","Contacts")">@NIMBOLE.GlobalResources.Resources.New</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                            break;
+                                        case "04"://Leads
+                                        <li>
+                                            <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-grid"></i><span class="sidebar-mini-hide">@NIMBOLE.GlobalResources.Resources.Leads</span></a>
+                                            <ul>
+                                                <li>
+                                                    <a href="@Url.Action("Index","Leads")">@NIMBOLE.GlobalResources.Resources.List</a>
+                                                </li>
+                                                <li>
+                                                    <a href="@Url.Action("Create","Leads")">@NIMBOLE.GlobalResources.Resources.New</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                            break;
+                                        case "05"://Settings
+                                        <li>
+                                            <a href="@Url.Action("MySettings", "Settings")">@NIMBOLE.GlobalResources.Resources.Settings</a>
+                                        </li>
+                                            break;
+                                        case "07"://Reports
+                                        <li>
+                                            <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-grid"></i><span class="sidebar-mini-hide">@NIMBOLE.GlobalResources.Resources.Reporting </span></a>
+                                            <ul>
+                                                <li>
+                                                    <a href="@Url.EncodeActionUrl("ShowReport", "Reports", new { rptName = "ActualVsExpected" }, null)"> @NIMBOLE.GlobalResources.Resources.ActualVsExpected</a>
+
+                                                </li>
+                                                <li>
+                                                    <a href="@Url.EncodeActionUrl("ShowReport", "Reports", new { rptName = "SalesFunnel" }, null)"> @NIMBOLE.GlobalResources.Resources.SalesFunnel</a>
+
+                                                </li>
+                                            </ul>
+                                        </li>
+                                            break;
+                                    }
+                                }
+                                if (EmployeeRole == "Admin")
+                                {
+                                    <li>
+                                        <a href="@Url.Action("Index", "Help")"> API</a>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                    </div>
+                    <!-- END Side Content -->
+                </div>
+                <!-- Sidebar Content -->
+            </div>
+            <!-- END Sidebar Scroll Container -->
+        </nav>
+        <!-- END Sidebar -->
+        <!-- Header -->
+        <header id="header-navbar" class="content-mini content-mini-full">
+            <!-- Header Navigation Right -->
+            <ul class="nav-header pull-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-messages">
+                        <div id="messagesListView"></div>
+                        <li>
+                            <a class="text-center" href="@Url.Action("Index", "Notifications") ">
+                                <strong>@NIMBOLE.GlobalResources.Resources.ViewAll @NIMBOLE.GlobalResources.Resources.Activities</strong>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-messages -->
+                </li>
+
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-tasks fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-tasks">
+                        <div id="TasksListView"></div>
+                        <li>
+                            <a class="text-center" href="@Url.Action("Index", "EmployeeTask") ">
+                                <strong>@NIMBOLE.GlobalResources.Resources.ViewAllTasks</strong>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-tasks -->
+                </li>
+                <li>
+                    <div class="btn-group">
+                        <button class="btn btn-default btn-image dropdown-toggle" data-toggle="dropdown" type="button">
+                            <img src="@Url.Content("~/assets/img/avatars/avatar10.jpg")" alt="Avatar">
+                            @NIMBOLE.GlobalResources.Resources.Welcome @Html.Partial("_LogInPartial")<b>@LoggedUser</b>
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-right">
+
+                            <li>
+                                <a tabindex="-1" href="@Url.Action("LogoutMethod","Account")">
+                                    <i class="si si-logout pull-right"></i>Log out
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                @*<li>
+
+                        <button class="btn btn-default" data-toggle="layout" data-action="side_overlay_toggle" type="button">
+                            <i class="fa fa-tasks"></i>
+                        </button>
+                    </li>*@
+            </ul>
+            <!-- END Header Navigation Right -->
+            <!-- Header Navigation Left -->
+            <ul class="nav-header pull-left">
+                <li class="hidden-md hidden-lg">
+                    <!-- Layout API, functionality initialized in App() -> uiLayoutApi() -->
+                    <button class="btn btn-default" data-toggle="layout" data-action="sidebar_toggle" type="button">
+                        <i class="fa fa-navicon"></i>
+                    </button>
+                </li>
+                <li class="hidden-xs hidden-sm">
+                    <!-- Layout API, functionality initialized in App() -> uiLayoutApi() -->
+                    <button class="btn btn-default" data-toggle="layout" data-action="sidebar_mini_toggle" type="button">
+                        <i class="fa fa-ellipsis-v"></i>
+                    </button>
+                </li>
+
+            </ul>
+            <!-- END Header Navigation Left -->
+        </header>
+        <br />
+        <!-- END Header -->
+        <!-- Main Container -->
+        @*@RenderBody()*@
+
+        <div id="page-wrapper">
+            @{
+                if (Request.Url.Segments[1].Contains("EmployeeRoles") && Request.Url.Segments[2].Contains("Index"))
+                {
+                    if (TempData["Alert"] == null && Session["Alert"] != null)
+                    {
+                        Html.RenderPartial("AlertMessage", (NIMBOLE.UI.Models.AlertMessageViewModel)Session["Alert"]);
+                        Session["Alert"] = null;
+                    }
+                    else
+                    {
+                        if (TempData["Alert"] != null)
+                        {
+                            Session["Alert"] = TempData["Alert"];
+                            Html.RenderPartial("AlertMessage", (NIMBOLE.UI.Models.AlertMessageViewModel)TempData["Alert"]);
+                        }
+                    }
+                }
+                else
+                {
+                    if (TempData["Alert"] != null)
+                    {
+                        Html.RenderPartial("AlertMessage", (NIMBOLE.UI.Models.AlertMessageViewModel)TempData["Alert"]);
+                    }
+                }
+            }
+            @RenderBody()
+        </div>
+
+
+
+
+        <!-- END Main Container -->
+        <!-- Footer -->
+        <!--   <footer id="page-footer" class="content-mini content-mini-full font-s12 bg-gray-lighter clearfix">
+              <div class="pull-right">
+                  crafted with <i class="fa fa-heart text-city"></i> by <a class="font-w600" href="http://goo.gl/vns3i" target="_blank">pixelcave</a>
+              </div>
+              <div class="pull-left">
+                  <a class="font-w600" href="http://goo.gl/6lf10w" target="_blank">oneui 2.1</a> &copy; <span class="js-year-copy"></span>
+              </div>
+          </footer> -->
+        <!-- END Footer -->
+    </div>
+    <!-- END Page Container -->
+    <!-- Apps Modal -->
+    <!-- Opens from the button in the header -->
+    <div class="modal fade" id="apps-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-sm modal-dialog modal-dialog-top">
+            <div class="modal-content">
+                <!-- Apps Block -->
+                <div class="block block-themed block-transparent">
+                    <div class="block-header bg-primary-dark">
+                        <ul class="block-options">
+                            <li>
+                                <button data-dismiss="modal" type="button"><i class="si si-close"></i></button>
+                            </li>
+                        </ul>
+                        <h3 class="block-title">Apps</h3>
+                    </div>
+                    <div class="block-content">
+                        <div class="row text-center">
+                            <div class="col-xs-6">
+                                <a class="block block-rounded" href="index.html">
+                                    <div class="block-content text-white bg-default">
+                                        <i class="si si-speedometer fa-2x"></i>
+                                        <div class="font-w600 push-15-t push-15">Backend</div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-xs-6">
+                                <a class="block block-rounded" href="frontend_home.html">
+                                    <div class="block-content text-white bg-modern">
+                                        <i class="si si-rocket fa-2x"></i>
+                                        <div class="font-w600 push-15-t push-15">Frontend</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END Apps Block -->
+            </div>
+        </div>
+    </div>
+    <!-- END Apps Modal -->
+    <!-- OneUI Core JS: jQuery, Bootstrap, slimScroll, scrollLock, Appear, CountTo, Placeholder, Cookie and App.js -->
+
+</body>
+
+</html>
+<script>
+
+
+    //$(document).ready(function () {
+
+    //    //Tasks
+    //    $.ajax({
+    //        url: "/Notifications/GetTasks",
+    //        type: 'GET',
+    //        async: false,
+    //        data: {},
+    //        success: function (data) {
+    //            "<table>"
+    //            for(i=0;i<3 ;i++)
+    //            {
+    //                var rows = "<a><tr list list-activity>"
+    //                            + "<td><tr><td>" + data[i].Title + "</td><td>" + data[i].TaskDate + "</td></tr></td>"
+    //                             + "<td>" + data[i].Comments + "</td>"
+    //                            + "</tr></a>";
+    //                $("#TasksListView").append(rows);
+    //            }
+    //            "</table>"
+    //        }
+    //    });
+
+    //    // activities
+
+    //    $.ajax({
+    //        url: "/Notifications/GetNotifications",
+    //        type: 'GET',
+    //        async: false,
+    //        data: {},
+    //        sort: {
+    //            field: "Id",
+    //            dir: "desc"
+    //        },
+    //        success: function (data)
+
+    //        {
+    //            "<table>"
+    //            for (i = 0; i < 3 ; i++) {
+    //                var rows = "<a><tr>"
+    //                            + "<td><tr><td>" + data[i].ActivityTitle + "</td><td>" + data[i].ActivityDate + "</td></tr></td>"
+    //                             + "<td>" + data[i].ActivityComments + "</td>"
+    //                            + "</tr></a>";
+    //                $("#messagesListView").append(rows);
+    //            }
+    //            "</table>"
+    //            }
+
+    //    });
+
+    //    $("#messagesListView").removeAttr("Class");
+    //    $("#TasksListView").removeAttr("Class");
+
+    //});
+    $(document).ready(function () {
+        //Tasks
+        $.ajax({
+            url: "/Notifications/GetTasks",
+            type: 'GET',
+            async: false,
+            data: {},
+            success: function (data) {
+                for (i = 0; i < 3 ; i++) {
+                    var date = new Date(parseInt(data[i].TaskDate.substr(6)));
+                    var dat = date.getMonth() +
+                         1 +
+                       "/" +
+           date.getDate() +
+                       "/" +
+       date.getFullYear();
+                    var rows = "<li><a><div><strong>"
+                                + data[i].Title + "</strong><span class='pull-right text-muted'><em>" + dat +
+                                 "</em></span></div></li><li class='divider'> </li>";
+                    //var rows = "<a><tr list list-activity>"
+                    //            + "<td><tr><td>" + data[i].Title + "</td><td>" + data[i].TaskDate + "</td></tr></td>"
+                    //             + "<td>" + data[i].Comments + "</td>"
+                    //            + "</tr></a>";
+                    $("#TasksListView").append(rows);
+                }
+            }
+        });
+        // activities
+        $.ajax({
+            url: "/Notifications/GetNotifications",
+            type: 'GET',
+            async: false,
+            data: {},
+            success: function (data) {
+                // .ToString("dd MMMM yyyy")
+                for (i = 0; i < 3 ; i++) {
+                    var date = new Date(parseInt(data[i].ActivityDate.substr(6)));
+                    var dat = date.getMonth() +
+                         1 +
+                       "/" +
+           date.getDate() +
+                       "/" +
+       date.getFullYear();
+                    var rows = "<li><a><div><strong>"
+                                + data[i].ActivityTitle + "</strong><span class='pull-right text-muted'><em>" + dat +
+                                 "</em></span></div></a></li><li class='divider'> </li>";
+                    $("#messagesListView").append(rows);
+                }
+            }
+        });
+        $("#messagesListView").removeAttr("Class");
+        $("#TasksListView").removeAttr("Class");
+
+    });
+</script>
+
+<script>
+    function ValidateNumber(e) {
+        var shifted = false;
+        shifted = e.shiftKey;
+        if (shifted) {
+            return false;
+        }
+        var evt = (e) ? e : window.event;
+        var charCode = (evt.keyCode) ? evt.keyCode : evt.which;
+        if ((charCode >= 48 && charCode <= 57) || (charCode >= 96 && charCode <= 105) || (charCode >= 35 && charCode <= 40) || charCode === 127 || charCode === 8 || charCode === 9 || charCode === 46) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    };
+
+    function ValidateDecimal(e) {
+        var shifted = false;
+        shifted = e.shiftKey;
+        if (shifted) {
+            return false;
+        }
+        var evt = (e) ? e : window.event;
+        var charCode = (evt.keyCode) ? evt.keyCode : evt.which;
+        if ((charCode >= 48 && charCode <= 57) || (charCode >= 96 && charCode <= 105) || (charCode >= 35 && charCode <= 40) || charCode === 127 || charCode === 8 || charCode === 9 || charCode === 46 || charCode === 190) {
+
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    function ValidateNumberwithHypen(e) {
+        var shifted = false;
+        shifted = e.shiftKey;
+        if (shifted) {
+            return false;
+        }
+
+        var evt = (e) ? e : window.event;
+
+        var charCode = (evt.keyCode) ? evt.keyCode : evt.which;
+        if ((charCode >= 48 && charCode <= 57) || (charCode >= 96 && charCode <= 105) || (charCode >= 35 && charCode <= 40) || charCode === 127 || charCode === 8 || charCode === 9 || charCode === 46 || charCode === 190 || charCode === 189) {
+
+            return true;
+        }
+        else {
+            return false;
+        }
+    };
+</script>
+
+<script type="text/javascript">
+    $(".firstAlphabetOnly").bind('keyup', function (e) {
+        var txt = this.value;
+        if (txt !== "" && txt !== undefined) {
+
+            var fst = txt.substring(0, 1);
+            if (fst >= 'a' && fst <= 'z' || fst >= 'A' && fst <= 'Z') {
+                return;
+            }
+            else {
+
+                var str = txt;
+                this.value = str.substring(1);
+
+            }
+        }
+    });
+</script>

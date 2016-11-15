@@ -1,0 +1,103 @@
+﻿@model NIMBOLE.Models.Models.NotificationModel
+@using Kendo.Mvc.UI;
+@using NIMBOLE.UI.Helpers;
+
+@{
+    ViewBag.Title = "ViewDisplay";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string DateFormat = Session["DateFormat"].ToString();
+}
+
+@using (Html.BeginForm("ViewDisplay", "Notifications", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+<main id="main-container" style="padding-left:10px;padding-right:10px;padding-top:45px">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="block block-themed">
+                <div class="block-header bg-info">
+                    <ul class="block-options">
+                        <li>
+                            <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-refresh"></i></button>
+                        </li>
+                        <li>
+                            <button type="button" data-toggle="block-option" data-action="content_toggle"></button>
+                        </li>
+                    </ul>
+                    <h3 class="block-title">@NIMBOLE.GlobalResources.Resources.Notify</h3>
+
+                </div>
+
+
+                <div class="block-content">
+
+                    <div class="form-group">
+                        <div class="col-lg-6">
+
+                            <div class="form-material">
+                                <label for="InputRoleCode">
+                                    @NIMBOLE.GlobalResources.Resources.LeadName
+                                </label>
+                                @Html.EncodedActionLink(Model.LeadTitle, "Edit", "Leads", new { Id = Model.LeadId }, null)
+                            </div>
+
+
+                            <div class="form-material">
+                                <label for="InputDescription">
+                                    @NIMBOLE.GlobalResources.Resources.LeadDescription
+                                </label>
+                                @Html.DisplayFor(model => model.LeadDescription)
+                            </div>
+
+
+                            <div class="form-material">
+                                <label for="InputRoleCode">
+                                    @NIMBOLE.GlobalResources.Resources.Title
+                                </label>
+                                @Html.DisplayFor(model => model.ActivityTitle)
+                            </div>
+
+                        </div>
+
+                        <div class="col-lg-6">
+
+                            <div class="form-material">
+                                <label for="InputDescription">
+                                    @NIMBOLE.GlobalResources.Resources.Milestone
+                                </label>
+                                @Html.DisplayFor(model => model.Descriptions)
+                            </div>
+
+                            <div class="form-material">
+                                <label for="InputRoleCode">
+                                    @NIMBOLE.GlobalResources.Resources.ActivityDate
+                                </label>
+                                @*@Html.DisplayFor(model=>model.ActivityDate.ToString(DateFormat ))*@
+                                @Model.ActivityDate.ToString(DateFormat)
+                            </div>
+
+                            <div class="form-material">
+                                <label for="InputDescription">
+                                    @NIMBOLE.GlobalResources.Resources.Comments
+                                </label>
+                                @Html.DisplayFor(model => model.ActivityComments)
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12" style="text-align: right;">
+                            <input type="button" value=@NIMBOLE.GlobalResources.Resources.Cancel class="btn btn-danger" onclick="location.href = '/Notifications/Index'" tabindex="20" />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+}

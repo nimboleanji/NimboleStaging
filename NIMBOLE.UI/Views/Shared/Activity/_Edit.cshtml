@@ -1,0 +1,124 @@
+﻿@model NIMBOLE.Models.Models.ActivityModel
+@using Kendo.Mvc.UI;
+
+@{
+    var val = Json.Encode(Model);
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-11">
+            <header class="row head-tag">
+                <h2 class="col-md-6">@NIMBOLE.GlobalResources.Resources.NewActivity</h2>
+            </header>
+
+            <div class="row">
+
+                <div class="col-md-4 col-xs-4 form-group">
+                    <label for="InputActivityType">
+                        @NIMBOLE.GlobalResources.Resources.Title
+                    </label>
+                    @Html.TextBoxFor(model => model.Title, new { @placeholder = @NIMBOLE.GlobalResources.Resources.ActivityTitle, @class = "form-control" })
+                </div>
+
+                <div class="col-md-4 col-xs-4 form-group">
+                    <label for="InputActivityType">
+                        @NIMBOLE.GlobalResources.Resources.Type_A_E_M
+                    </label>
+                    @(Html.Kendo().DropDownListFor(model => model.Type_A_E_M)
+                            .HtmlAttributes(new { @style = "width:100%;" })
+                            .DataTextField("Text")
+                            .DataValueField("Value")
+                            .BindTo(new List<SelectListItem>() {
+                                 new SelectListItem() {
+                                  Text = "Select",
+                                  Value = "T0"
+                              },
+                              new SelectListItem() {
+                                  Text = "Activity",
+                                  Value = "Activity"
+                              },
+                              new SelectListItem() {
+                                  Text = "Event",
+                                  Value = "Event"
+                              },
+                              new SelectListItem() {
+                                  Text = "Module",
+                                  Value = "Module"
+                              }
+                          })
+                    )
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-xs-4 form-group">
+                    <label for="InputActivityDate">
+                        @NIMBOLE.GlobalResources.Resources.ActivityDate
+                    </label>
+                    @(Html.Kendo().DateTimePickerFor(model => model.ActivityDate)
+                            .HtmlAttributes(new { @style = "width: 100%;" })
+                                    .Name("ActivityDate")
+                            .Value(DateTime.Now)
+                    )
+
+                </div>
+
+                <div class="col-md-4 col-xs-4 form-group">
+                    <label for="Inputcomments">
+                        @NIMBOLE.GlobalResources.Resources.Comments
+                    </label>
+                    @Html.TextAreaFor(model => model.ActivityComments, new { @placeholder = @NIMBOLE.GlobalResources.Resources.Comments, @class = "form-control" })
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 col-xs-4 form-group">
+                    <label for="InputFirstName">
+                        @NIMBOLE.GlobalResources.Resources.Notify
+                    </label>
+                    <div class="row" style="margin:0px,-50px,0px,-15px">
+                        @Html.CheckBoxFor(m => m.RequireNotify)
+                        <span>Yes</span>
+                    </div>
+                </div>
+                <div class="col-md-4 col-xs-4 form-group">
+                    <label for="InputActivityType">
+                        @NIMBOLE.GlobalResources.Resources.Milestone
+                    </label>
+                    @(Html.Kendo().DropDownListFor(model => model.MileStoneId)
+                            .HtmlAttributes(new { @style = "width: 100%;" })
+                            .DataTextField("Description")
+                            .DataValueField("Id")
+                            .OptionLabel(@NIMBOLE.GlobalResources.Resources.Select)
+                            .AutoBind(true)
+                            .DataSource(source =>
+                            {
+                                source.Read(read => { 
+                                    read.Action("GetAllMileStone", "MileStone").Type(HttpVerbs.Get); 
+                                });
+                                source.ServerFiltering(true);
+                            })
+                    )
+                </div>
+            </div>
+            <div class="row">
+                <br />
+                <div class="col-md-8 col-xs-4 form-group" style="text-align: right;">
+                    <input id="btnNewActivitySave" type="submit" data-url="@Url.Action("Edit", "Activity")" class="btn btn-success" value=@NIMBOLE.GlobalResources.Resources.Save>
+                    <input id="btnNewActivityCancel" type="button" value=@NIMBOLE.GlobalResources.Resources.Cancel class="btn btn-danger" />
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+    $('#btnNewActivitySave').click(function () {
+        var url = $(this).data('url');
+        var form = $(this).closest('form');
+        form.prop('action', url);
+        form.submit();
+    });
+</script>
+

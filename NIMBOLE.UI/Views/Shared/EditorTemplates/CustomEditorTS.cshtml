@@ -1,0 +1,40 @@
+﻿@model NIMBOLE.UI.Models.SchedulerModel
+
+<div class="row">
+    <div class="col-lg-10" style="padding-left:40px;">
+        <div class="form-group">
+            <label for="Title">
+                @NIMBOLE.GlobalResources.Resources.Title
+            </label>
+            @Html.TextBoxFor(m => m.Title, new { @placeholder = @NIMBOLE.GlobalResources.Resources.Title, @class = "form-control", @style = "width:94%", @tabindex = "1" })
+        </div>
+
+        <div class="form-group">
+            <label for="StartDate">
+                @NIMBOLE.GlobalResources.Resources.StartDate
+            </label>
+            @(Html.Kendo().DatePickerFor(m => m.Start)
+                .HtmlAttributes(new { @style = "width: 100%;", @tabindex = "2" })
+                .Value(new DateTime())
+            )
+        </div>
+
+        <div class="form-group">
+            <label for="EndDate">
+                @NIMBOLE.GlobalResources.Resources.EndDate
+            </label>
+            @(Html.Kendo().DatePickerFor(m => m.End)
+                .HtmlAttributes(new { @style = "width: 100%;", @tabindex = "3" })
+                .Value(new DateTime())
+            )
+        </div>
+
+        <div class="form-group">
+            <label for="Description">
+                @NIMBOLE.GlobalResources.Resources.Description
+            </label>
+            @Html.TextBoxFor(m => m.Description, new { @placeholder = @NIMBOLE.GlobalResources.Resources.Description, @class = "form-control", @style = "width:94%", @tabindex = "4" })
+        </div>
+    </div>
+</div>
+           

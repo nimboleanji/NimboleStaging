@@ -1,0 +1,11 @@
+﻿@model NIMBOLE.Models.Models.LeadPriceDiscountModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Create", "LeadPriceDiscounts", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.Partial("~/Views/Shared/LeadPriceDiscounts/_Create.cshtml")
+}

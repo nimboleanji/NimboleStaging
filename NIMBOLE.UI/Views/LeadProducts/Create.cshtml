@@ -1,0 +1,12 @@
+﻿@model NIMBOLE.Models.Models.LeadProductModel
+@using Kendo.Mvc.UI;
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Create", "LeadProducts", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.Partial("~/Views/Shared/LeadProducts/_Create.cshtml", Model)
+}

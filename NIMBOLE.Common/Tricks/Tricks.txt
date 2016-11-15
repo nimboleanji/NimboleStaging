@@ -1,0 +1,8 @@
+SELECT 'INSERT INTO dbo.DestinationTable(col1, col2, col3) 
+    SELECT ' + CONVERT(VARCHAR(12), col1) + ',' 
+        + '''' + REPLACE(col2, '''', '''''') + ''','
+        + '''' + REPLACE(col3, '''', '''''') + ''';'
+    FROM dbo.SourceTable;
+
+INSERT INTO OtherDatabase.dbo.DestinationTable(col1, col2, col3)
+    SELECT col1, col2, col3 FROM dbo.SourceTable;

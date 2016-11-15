@@ -1,0 +1,439 @@
+﻿@model IEnumerable<NIMBOLE.Models.Models.AccountViewModel>
+@{
+    ViewBag.Title = "NIMBOLE | List Account";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+     <!-- Page JS Plugins -->
+    <script src="~/assets/js/plugins/datatables/jquery.dataTables.min.js"></script>
+        <!-- Page JS Code -->
+    <script src="~/assets/js/pages/base_tables_datatables.js"></script>
+}
+@using (Html.BeginForm())
+{
+    <main id="main-container">
+        <!-- Page Content -->
+        <div class="content">
+            <!-- Dynamic Table Full -->
+            <div class="block">
+                <div class="block-header">
+                    <div class="form-group">
+                        <div class="col-xs-6">
+                            <h1 class="block">@NIMBOLE.GlobalResources.Resources.Accounts</h1>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-6" style="text-align:right;">
+                            <a href="~/NimboleAccounts/Create" class="btn btn-sw btn-primary" tabindex="1" role="button">
+                                <i class="fa fa-plus"></i>
+                                @NIMBOLE.GlobalResources.Resources.New
+                            </a>
+                            <a href="~/NimboleAccounts/ExcelImport" class="btn btn-success" tabindex="2">
+                                <img src="~/Content/images/xls.png" height="20" /> @NIMBOLE.GlobalResources.Resources.Import
+                            </a>
+                            <a href="~/NimboleAccounts/Excel_Export" tabindex="3" class="btn btn-success export value=" export">
+                                <img src="~/Content/images/xls.png" height="20" /> @NIMBOLE.GlobalResources.Resources.Export
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="block-content">
+                    <!-- DataTables init on table by adding .js-dataTable-full class, functionality initialized in js/pages/base_tables_datatables.js -->
+
+                    <table class="table table-bordered table-striped js-dataTable-full-pagination" id="example" width="100%">
+                        <thead>
+                            <tr>
+                                <th colspan="7">
+                                    <div class="toolbar" style="float:right">
+                                        <button id="Activate" onclick="javascript: Dialog('act');" class="btn btn-success" type="button">Activate</button>
+                                        <button id="Deactivate" onclick="javascript: Dialog('dea');" class="btn btn-success" type="button">Deactivate</button>
+                                        <button id="Delete" onclick="javascript: Dialog('del');" class="btn btn-success" type="button">Delete</button>
+                                    </div>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th class="text-center" style="display:none">@NIMBOLE.GlobalResources.Resources.Id</th>
+                                <th class="text-center">@NIMBOLE.GlobalResources.Resources.AccountName</th>
+                                <th class="text-center">@NIMBOLE.GlobalResources.Resources.AccountOwner</th>
+                                <th class="text-center">@NIMBOLE.GlobalResources.Resources.Status</th>
+                                <th class="text-center">@NIMBOLE.GlobalResources.Resources.NoofContacts</th>
+                                <th class="text-center"></th>
+                                <th><input id="ChSelectAll" name="select_all" value="0" type="checkbox" class="selectAll" data-orderable="false"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null)
+                            {
+                                foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td style="display:none">
+                                            @item.Id
+                                        </td>
+                                        <td>
+                                            @item.AccountName
+                                        </td>
+                                        <td>@item.AccountOwner</td>
+                                        @{
+                                    if (item.Status == true)
+                                    {
+                                        item.Active = "Active";
+                                        item.Change_status = "Deactivate";
+                                    }
+                                    else
+                                    {
+                                        item.Active = "Inactive";
+                                        item.Change_status = "Activate";
+                                    }
+                                        }
+                                        <td>@item.Active</td>
+                                        <td class="text-center">
+                                            @item.NoofContacts
+                                        </td>
+
+                                        <td> <a href="javascript:void();" onclick="Editfunction(@item.Id);">@NIMBOLE.GlobalResources.Resources.Edit</a></td>
+                                        <td>
+                                            @if (item.NoofContacts == 0)
+                                            {<input type="checkbox" @(item.IsSelected ? Html.Raw("checked=\"checked\"").ToHtmlString() : "") class='chkbx' value=@item.Id />}
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        $(document).ready(function () {
+            DisableButton();
+        });
+        function DisableButton() {
+            $('#Activate').prop('disabled', true);
+            $('#Deactivate').prop('disabled', true);
+            $('#Delete').prop('disabled', true);
+        }
+        function Editfunction(id) {
+            window.location.href = window.location.origin + "/NimboleAccounts/Edit?q=" + SubmitsEncry(id);
+        }
+        function updateRecord(id, status) {
+            $.ajax({
+                url: '/NimboleAccounts/Delete',
+                dataType: "json",
+                type: "DELETE",
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify({ selectedId: id, status: status }),
+                async: true,
+                processData: false,
+                cache: false,
+                success: function (data) {
+                    if (typeof data === "string") {
+                        if (data.lastIndexOf("associated") > -1)
+                            Dialog("Associateact");
+                    }
+                    else {
+                        location.href = '/NimboleAccounts/Index';
+                    }
+                },
+                error: function (xhr) {
+                }
+            });
+        }
+        function deleteRecord(selval) {
+            var grid = $('#example');
+            $.ajax({
+                url: '/NimboleAccounts/AccountDelete',
+                dataType: "json",
+                type: "DELETE",
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify({ selectedId: selval }),
+                async: true,
+                processData: false,
+                cache: false,
+                success: function (data, status) {
+                    $('input').prop('checked', false);
+                    $(this).removeClass('checkedAll');
+                    if (status == 'success' && data == 'Account(s) Successfully deleted!') {
+                        location.href = '/NimboleAccounts/Index';
+                    }
+                    if (typeof data === "string") {
+                        if (data.lastIndexOf("associated") > -1)
+                            Dialog("AssociateDel");
+                    }
+                    else {
+                        location.href = '/NimboleAccounts/Index';
+                    }
+                },
+                error: function (xhr) {
+                    $('input').prop('checked', false);
+                    $(this).removeClass('checkedAll');
+                    location.href = '/NimboleAccounts/Index';
+                    DisableButton();
+                }
+            });
+        }
+        function Dialog(type) {
+            var message;
+            var checked;
+            var selectedval;
+            switch (type) {
+                case "del":
+                    message = "Do you want to delete ?";
+                    break;
+                case "act":
+                    message = "Do you want to activate?";
+                    break;
+                case "dea":
+                    message = "Do you want to deactivate?";
+                    break;
+                case "Associateact":
+                    message = "Associated record(s), you can't activate / deactivate.";
+                    break;
+                case "AssociateDel":
+                    message = "Associated record(s), you can't delete";
+                    break;
+            }
+            swal({
+                title: message,
+                type: "",
+                showCancelButton: true,
+                confirmButtonColor: "#337ab7",
+                confirmButtonText: "Ok",
+                cancelButtonText: "Cancel",
+                cancelButtonColor: "#d26a5c",
+                showLoaderOnConfirm: true,
+                closeOnConfirm: false,
+            },
+            function (isConfirm) {
+                if (isConfirm) {
+                    switch (type) {
+                        case "act":
+                            checked = GetSelectedCheckBoxs();
+                            selectedval = checked;
+                            updateRecord(selectedval, true);
+                            break;
+                        case "dea":
+                            checked = GetSelectedCheckBoxs();
+                            selectedval = checked;
+                            updateRecord(selectedval, false);
+                            break;
+                        case "del":
+                            checked = GetSelectedCheckBoxs();
+                            selectedval = checked;
+                            deleteRecord(selectedval);
+                            break;
+                        case "Associateact":
+                            location.href = '/NimboleAccounts/Index';
+                            break;
+                        case "AssociateDel":
+                            location.href = '/NimboleAccounts/Index';
+                            break;
+                    }
+                }
+                else {
+                    switch (type) {
+                        case "del":
+                            location.href = '/NimboleAccounts/Index';
+                            break;
+                        case "act":
+                            location.href = '/NimboleAccounts/Index';
+                            break;
+                        case "dea":
+                            location.href = '/NimboleAccounts/Index';
+                            break;
+                        case "Associateact":
+                            location.href = '/NimboleAccounts/Index';
+                            break;
+                        case "AssociateDel":
+                            location.href = '/NimboleAccounts/Index';
+                            break;
+                    }
+                }
+            });
+        }
+
+        //function DialogActivate() {
+        //    var deleteconfirm = confirm("Do you want to activate?");
+        //    if (deleteconfirm == true) {
+        //        var grid = $('#example tbody input[type="checkbox"]');
+        //        var checked = GetSelectedCheckBoxs();
+        //        var selval = checked;
+        //        updateRecord(selval, true);
+        //    }
+        //}
+
+        //function DialogDeactivate() {
+        //    var deleteconfirm = confirm("Do you want to deactivate?");
+        //    if (deleteconfirm == true) {
+        //        var grid = $('#example tbody input[type="checkbox"]');
+        //        var checked = GetSelectedCheckBoxs();
+        //        var selval = checked;
+        //        updateRecord(selval, false);
+        //    }
+        //}
+
+        //function DialogDelete() {
+        //    var deleteconfirm = confirm("Do you want to delete?");
+        //    if (deleteconfirm == true) {
+        //        var grid = $('#example tbody input[type="checkbox"]');
+        //        var checked = GetSelectedCheckBoxs();
+        //        var selval = checked;
+        //        deleteRecord(selval);
+        //    }
+        //}
+
+
+        function GetSelectedCheckBoxs() {
+            var favorite = [];
+            $.each($("input[type='checkbox']:checked"), function () {
+                favorite.push($(this).val());
+            });
+            return favorite;
+        }
+        $('#example').on('click', '.chkbx', function () {
+            debugger;
+            var checked = $(this).is(':checked');
+            var models = [];
+            var favorite = [];
+            var checkedvalue;
+            var grid = $('#example tbody input[type="checkbox"]');
+            var currenpagelength = grid.length;
+            // var pagelength = grid.data.length; // for total records
+            grid.find(":checked").closest("tr").each(function () {
+                models.append(grid(this));
+            });
+            $.each($("input[type='checkbox']:checked"), function () {
+                favorite.push($(this).val());
+            });
+            checkedvalue = favorite.length;
+            if (checked == false & checkedvalue == 0) {
+                $('#ChSelectAll').attr('checked', false);
+                //if (models.length == 0) {
+                $('#Activate').prop('disabled', true);
+                $('#Deactivate').prop('disabled', true);
+                $('#Delete').prop('disabled', true);
+                //}
+            }
+            else {
+                $('#Activate').prop('disabled', false);
+                $('#Deactivate').prop('disabled', false);
+                $('#Delete').prop('disabled', false);
+                var selectedcheckboxlength = models.length;
+                if (currenpagelength == selectedcheckboxlength) {
+                    $('#ChSelectAll').prop('checked', true);
+                }
+            }
+        });
+        //$("#ChSelectAll").click(function (e) {
+        //    debugger;
+        //    if ($(this).hasClass('checkedAll')) {
+        //        $('input').prop('checked', false);
+        //        $(this).removeClass('checkedAll');
+        //        $('#Activate').prop('disabled', true);
+        //        $('#Deactivate').prop('disabled', true);
+        //        $('#Delete').prop('disabled', true);
+        //    } else {
+        //        $('input').prop('checked', true);
+        //        $(this).addClass('checkedAll');
+        //        $('#Activate').prop('disabled', false);
+        //        $('#Deactivate').prop('disabled', false);
+        //        $('#Delete').prop('disabled', false);
+        //    }
+        //});
+
+        $("#ChSelectAll").click(function (e) {
+            if ($(this).hasClass('checkedAll')) {
+                $('input').prop('checked', false);
+                $(this).removeClass('checkedAll');
+                $('#Activate').prop('disabled', true);
+                $('#Deactivate').prop('disabled', true);
+                $('#Delete').prop('disabled', true);
+            }
+            else {
+                $('input').prop('checked', true);
+                $(this).addClass('checkedAll');
+                $('#Activate').prop('disabled', false);
+                $('#Deactivate').prop('disabled', false);
+                $('#Delete').prop('disabled', false);
+            }
+        });
+    </script>
+    <script>
+        //    function Dialog(type) {
+
+        //        var grid = $('#example tbody input[type="checkbox"]');
+        //    var checked = GetSelectedCheckBoxs();
+        //    var selval = C
+
+        //    $("#dialog-confirm").dialog({
+        //        resizable: false,
+        //        height: 140,
+        //        modal: true,
+        //        buttons: {
+        //            "OK": function () {
+        //                switch (type) {
+        //                    case "del":
+        //                        deleteRecord(selval);
+        //                        break;
+        //                    case "act":
+        //                        updateRecord(selval, true);
+        //                        break;
+        //                    case "dea":
+
+        //                        updateRecord(selval, false);
+        //                        break;
+        //                    default:
+        //                        break;
+        //                }
+        //                $(this).dialog("close");
+        //            },
+        //            Cancel: function () {
+        //                kendo.ui.progress(grid.wrapper, false);
+        //                $(this).dialog("close");
+        //            }
+        //        },
+        //        open: function (event, ui) {
+        //            $('#dialog-confirm').attr("style", "height: auto; max-height: 62px; min-height: 62px; width: auto;")
+        //            $(".ui-dialog-titlebar").hide();
+        //            $('#dialogContent').text('');
+        //            switch (type) {
+        //                case "del":
+        //                    $('#dialogContent').text("Do you want to delete?");
+        //                    break;
+        //                case "act":
+        //                    $('#dialogContent').text("Do you want to activate?");
+        //                    break;
+        //                case "dea":
+        //                    $('#dialogContent').text("Do you want to deactivate?");
+        //                    break;
+        //                default:
+        //                    $('.ui-dialog-buttonset')[0].children[1].hidden = true;
+        //                    $('#dialogContent').text("This record is associated, you can't deactivate/delete.");
+        //                    break;
+        //            }
+        //        }
+
+        //    });
+        //}
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            var table = $('#example').DataTable();
+            table.destroy();
+            $('#example').DataTable({
+                "order": [[0, "desc"]]
+            });
+        });
+
+    </script>
+
+    <style>
+        .aright {
+            float: right;
+        }
+    </style>
+
+}

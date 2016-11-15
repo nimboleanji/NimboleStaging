@@ -1,0 +1,161 @@
+﻿@model NIMBOLE.Models.Models.EmployeeTaskModel
+@using Kendo.Mvc.UI;
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string DateFormat = System.Web.HttpContext.Current.Session["DateFormat"].ToString();
+}
+@{
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.common.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.common-bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.mobile.all.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.dataviz.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.dataviz.bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/kendo/2014.3.1411/jszip.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2014.3.1411/kendo.core.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2014.3.1411/kendo.web.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2014.3.1411/kendo.aspnetmvc.min.js")"></script>
+}
+
+@using (Html.BeginForm("Edit", "EmployeeTask", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <main id="main-container" style="padding-left:10px;padding-right:10px;padding-top:45px">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="block block-themed">
+                    <div class="block-header bg-info">
+                        <ul class="block-options">
+                            <li>
+                                <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-refresh"></i></button>
+                            </li>
+                            <li>
+                                <button type="button" data-toggle="block-option" data-action="content_toggle"></button>
+                            </li>
+                        </ul>
+                        <h3 class="block-title">@NIMBOLE.GlobalResources.Resources.Edit</h3>
+                    </div>
+
+                    <div class="block-content">
+                        <div class="form-group">
+                            @*Left Column*@
+                            <div class="col-lg-6">
+                                @Html.HiddenFor(m => m.Id)
+
+                                <div class="form-group">
+                                    <label for="InputTitle">
+                                        @NIMBOLE.GlobalResources.Resources.Title <span class="field-validation-error">*</span>
+                                    </label>
+                                    @Html.TextBoxFor(model => model.Title, new { @placeholder = @NIMBOLE.GlobalResources.Resources.Title, @class = "form-control", @tabindex = "1" })
+
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="taskdate">
+                                        @NIMBOLE.GlobalResources.Resources.TaskDate
+                                    </label>
+                                    @(Html.Kendo().DatePickerFor(model => model.TaskDate)
+        .HtmlAttributes(new { @style = "width: 100%;", @tabindex = "3" })
+                                    )
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="startdate">
+                                        @NIMBOLE.GlobalResources.Resources.StartDate
+                                    </label>
+                                    @(Html.Kendo().DateTimePickerFor(model => model.StartDate)
+        .HtmlAttributes(new { @style = "width: 100%;", @tabindex = "5" })
+                                    )
+                                </div>
+
+                              
+                            </div>
+
+                            @*Right Column*@
+                            <div class="col-lg-6">
+
+                                <div class="form-group">
+                                    <label for="InputTitle">
+                                        @NIMBOLE.GlobalResources.Resources.Type
+                                    </label>
+                                    @Html.TextBoxFor(model => model.Type_Task, new { @placeholder = @NIMBOLE.GlobalResources.Resources.Type, @class = "form-control", @tabindex = "2" })
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="InputEmp">@NIMBOLE.GlobalResources.Resources.AssignResources</label>
+                                    @(Html.Kendo().MultiSelectFor(model => model.ReferenceIds)
+                                    .Placeholder("Select - (MultiSelect)")
+                                    .DataTextField("Text")
+                                    .DataValueField("Value")
+                                    .BindTo(ViewData["Employees"] as SelectList)
+                                    .Value(Model.ReferenceIds.Select(e => e.Id.ToString()))
+                                    )
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="enddate">
+                                        @NIMBOLE.GlobalResources.Resources.EndDate
+                                    </label>
+                                    @(Html.Kendo().DateTimePickerFor(model => model.EndDate)
+        .HtmlAttributes(new { @style = "width: 100%;", @tabindex = "6" })
+                                    )
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-12 form-group">
+                                    <label for="Comments">
+                                        @NIMBOLE.GlobalResources.Resources.Comments
+                                    </label>
+                                    @Html.TextAreaFor(model => model.Comments, new { @class = "form-control", @style = "width:100%;height:100px;resize:none;", maxlength = 6500, @tabindex = "7" })
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-12" style="text-align: right;">
+                                    <input type="button" id="btnSubmit" class="btn btn-success" value=@NIMBOLE.GlobalResources.Resources.Update tabindex="8">
+                                    <input type="button" value=@NIMBOLE.GlobalResources.Resources.Cancel class="btn btn-danger" onclick="location.href = '/EmployeeTask/Index'" tabindex="9" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+}
+<script>
+    //Script for Validation
+    var listcontrols = {
+        "Title": "true,allcharacters,1,100"
+        //, "ReferenceIds": "true,select"
+    };
+    $(document).ready(function () {
+        $('#btnSubmit').click(function (e) {
+            if (listcontrols) {
+                var flag = 0;
+                var texttype = "";
+                $.each(listcontrols, function (key, value) {
+                    texttype = value.split(',')[1];
+                    var element = $('#' + key);
+                    if (texttype == "select") {
+                        if (typeof element.prev().attr('style') !== typeof undefined) {
+                            element.prev().removeAttr("style");
+                        }
+                    }
+                    if (validateControl(key, value.split(',')[0], value.split(',')[1], value.split(',')[2], value.split(',')[3]) == false) {
+                        flag = flag + 1;
+                    }
+                });
+                //$('#ReferenceIds').attr("style", "width:100%;display:none;");
+                if (flag != 0) {
+                    return false;
+                }
+                else {
+                    $('form')[0].submit();
+                }
+            }
+        });
+    });
+</script>

@@ -1,0 +1,516 @@
+@model IEnumerable<NIMBOLE.Models.Models.ContactViewModel>
+@using NIMBOLE.Models.Models
+@using NIMBOLE.UI.Helpers
+@using Kendo.Mvc.UI
+@{
+    ViewBag.Title = "Contacts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var ViewType = ViewData["ViewType"] != null ? ViewData["ViewType"].ToString() : "0";
+    var accid = ViewData["AccountId"] != null ? Convert.ToInt32(ViewData["AccountId"]) : 0;
+    //ViewType = "1";
+}
+@{
+     <!-- Page JS Plugins -->
+    <script src="~/assets/js/plugins/datatables/jquery.dataTables.min.js"></script>
+        <!-- Page JS Code -->
+    <script src="~/assets/js/pages/base_tables_datatables.js"></script>
+}
+@using (Html.BeginForm())
+{
+    <main id="main-container">
+        <!-- Page Content -->
+        <div class="content">
+            <!-- Dynamic Table Full -->
+            <div class="block">
+                <div class="block-header">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <h1 class="block-title">@NIMBOLE.GlobalResources.Resources.Contacts</h1>
+                        </div>
+                        <div class="col-xs-6" style="text-align:right;">
+                            <a href="~/Contacts/Create" class="btn btn-sw btn-primary" tabindex="1" role="button">
+                                <i class="fa fa-plus"></i>
+                                @NIMBOLE.GlobalResources.Resources.New
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-heading">
+                    @*List of Available Contacts.*@
+                    <div style="text-align: right;">
+                        @*<a href="@Url.EncodeActionUrl("ListviewIndex", "Contacts", new { Id = 0, ViewType = "0" }, null)" onclick="DisplayViews(vtype = 0)"><span class="fa fa-tasks fa-fw" style="width:50px;" tabindex=1 /> @NIMBOLE.GlobalResources.Resources.List</a>*@
+                        @*<a href="@Url.EncodeActionUrl("ListviewIndex", "Contacts", new { Id = 0, ViewType = "1" }, null)" onclick="DisplayViews(vtype=1)"><span class="fa fa-table fa-fw" style="width:50px;" tabindex=2 /> Grid</a>*@
+                    </div>
+                </div>
+
+                <div class="block-content" id="Grid">
+                    <!-- DataTables init on table by adding .js-dataTable-full class, functionality initialized in js/pages/base_tables_datatables.js -->
+
+                    <table class="table table-bordered table-striped js-dataTable-full-pagination" id="example" width="100%">
+                        <thead>
+                            <tr>
+                                <th colspan="7">
+                                    <div class="toolbar" style="float:right">
+                                        <button id="Activate" onclick="javascript: Dialog('act');" class="btn btn-success" type="button">Activate</button>
+                                        <button id="Deactivate" onclick="javascript: Dialog('dea');" class="btn btn-success" type="button">Deactivate</button>
+                                        <button id="Delete" onclick="javascript: Dialog('del');" class="btn btn-success" type="button">Delete</button>
+                                    </div>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th class="text-center" style="display:none">@NIMBOLE.GlobalResources.Resources.Id </th>
+                                <th class="text-center">@NIMBOLE.GlobalResources.Resources.FirstName </th>
+                                <th class="text-center">@NIMBOLE.GlobalResources.Resources.Email</th>
+                                <th class="text-center">@NIMBOLE.GlobalResources.Resources.AccountName </th>
+                                <th class="text-center">@NIMBOLE.GlobalResources.Resources.Status </th>
+                                <th class="text-center"></th>
+                                <th><input id="ChSelectAll" name="select_all" type="checkbox" value="1" class="selectAll" data-orderable="false"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null)
+                            {
+                                foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td style="display:none">
+                                            @item.Id
+                                        </td>
+                                        <td>
+                                            @item.FirstName
+                                        </td>
+                                        <td>@item.WorkEmail</td>
+                                        <td>@item.AccountName</td>
+                                        @{
+                                    if (item.Status == true)
+                                    {
+                                        item.Active = "Active";
+                                        item.Change_status = "Deactivate";
+                                    }
+                                    else
+                                    {
+                                        item.Active = "Inactive";
+                                        item.Change_status = "Activate";
+                                    }
+                                        }
+                                        <td>@item.Active</td>
+                                        <td> <a href="javascript:void();" onclick="Editfunction(@item.Id);">@NIMBOLE.GlobalResources.Resources.Edit</a></td>
+                                        <td>
+                                            <input type="checkbox" @(item.IsSelected ? Html.Raw("checked=\"checked\"").ToHtmlString() : "") class='chkbx' value=@item.Id />
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                @*<div class="block-content" id="List">
+                                        <!-- DataTables init on table by adding .js-dataTable-full class, functionality initialized in js/pages/base_tables_datatables.js -->
+
+
+
+                                            <!-- User Card Widgets -->
+                                        <div class="row" style="background-color:#f5f5f5;">
+                        @if (Model != null)
+                                                    {
+                                                        foreach (var item in Model)
+                                                        {
+
+
+
+                                                                    <div class="col-sm-6 col-lg-3">
+                                                                        <div class="block block-themed">
+                                                                            <div class="block-header bg-info">
+                                                                                                                            <table><tr><td><h3 class="block-title">@item.FirstName </h3></td><td align="right"><button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo" onclick="Editfunction(@item.Id);"><i class="fa fa-edit"></i></button><button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="fa fa-unlock"></i></button><button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="fa fa-remove"></i></button></td></tr></table>
+
+                    </div>
+                                                                            <div class="block-content block-content-full text-center">
+                                                                                <div>
+                                                                                    @if(item.ContactImageURL!= null)
+                                                                                    {              <img class="img-avatar img-avatar96" src= @item.ContactImageURL  alt="">
+                                                                                    }
+                                                                                    else
+                                                                                    {
+                                                                                        <img class="img-avatar img-avatar96" src="~/assets/img/avatars/avatar5.jpg" alt="">
+                                                                                    }
+                                                                                </div>
+                                                                                <div class="text-muted push-15-t">@item.ContactEmail</div>
+                                                                                <div class="text-muted push-15-t">@item.AccountName</div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                        }
+                                                    }
+
+                                        </div>
+
+                                </div>*@
+            </div>
+        </div>
+    </main>
+}
+
+<script>
+
+    //$(document).ready(function () {
+    //    $('#Grid').hide();
+    //    //$('#List').hide();
+    //});
+
+    function Editfunction(id) {
+        window.location.href = window.location.origin + "/Contacts/Edit?q=" + SubmitsEncry(id);
+    }
+    function DisplayViews(typ)
+    {   
+        var viewType = @ViewType;
+        var viewType = typ;
+        if(viewType === 0)
+        {
+            $('#Grid').hide();
+            $('#List').show();
+        }
+        else
+        {
+            $('#List').hide();
+            $('#Grid').show();
+        }
+    }
+
+</script>
+
+
+<script>
+    function Dialog(type)
+    {
+        var message;
+        var Selectedvalue;
+        switch(type)
+        {
+            case "act":
+                message= "Do you want to activate?";
+                break;
+            case "dea":
+                message = "Do you want to deactivate?";
+                break;
+            case "del":
+                message = "Do you want to delete?";
+                break;
+            case  "Associateact":
+                message = "Associated record(s), you can't activate / deactivate.";
+                break;
+            case "AssociateDel":
+                message = "Associated record(s), you can't delete";
+                break;
+        }
+        swal({
+            type : "",
+            title : message,
+            confirmButtonText : "Ok",
+            cancelButtonText : "Cancel",
+            confirmButtonColor : "#337ab7",
+            cancelButtonColor : "#d26a5c",
+            showCancelButton : true,
+            showLoaderOnConfirm : true,
+            closeOnConfirm :false,
+        },
+        function(isConfirm){
+            if(isConfirm){
+                
+                switch(type)
+                {   
+                    case "act":
+                        Selectedvalue = GetSelectedCheckBoxs();
+                        updateRecord(Selectedvalue, true);
+                        break;
+                    case "dea":
+                        Selectedvalue = GetSelectedCheckBoxs();
+                        updateRecord(Selectedvalue,false);
+                        break;
+                    case "del":
+                        Selectedvalue = GetSelectedCheckBoxs();
+                        deleteRecord(Selectedvalue);
+                        break;
+                    case "Associateact":
+                        location.href = '/Contacts/ListViewIndex';
+                        break;
+                    case "AssociateDel":
+                        location.href= '/Contacts/ListviewIndex';
+                        break;
+                        $( this ).dialog( "close" );
+                }
+            }
+            else
+            {
+                switch(type)
+                {
+                    case "act":
+                        location.href = '/Contacts/ListViewIndex';
+                        break;
+                    case "dea":
+                        location.href= '/Contacts/ListviewIndex';
+                        break;
+                    case "del":
+                        location.href= '/Contacts/ListviewIndex';
+                        break;
+                    case "Associateact":
+                        location.href= '/Contacts/ListviewIndex';
+                        break;
+                    case "AssociateDel":
+                        location.href= '/Contacts/ListviewIndex';
+                        break;
+                }
+            }
+        }
+        );
+    }
+    //    var grid = $("#GridContact").data("kendoGrid");
+    //    if(grid === null)
+    //        grid = $("#listView").data("kendoListView");
+    //    kendo.ui.progress(grid.wrapper, true);
+    //    $( "#dialog-confirm" ).dialog({
+    //        resizable: false,
+    //        height:140,
+    //        modal: true,
+    //        buttons: {
+    //            "OK": function() {
+    //                switch(type)
+    //                {
+    //                    case "del":
+    //                        deleteContact(id);
+    //                        break;
+    //                    case "act":
+    //                        var rowId = id;
+    //                        if(isNaN(id))
+    //                            rowId = SubmitDecry(id);
+    //                        updateRecord(rowId, true);
+    //                        break;
+    //                    case "dea":
+    //                        var rowId = id;
+    //                        if(isNaN(id))
+    //                            rowId = SubmitDecry(id);
+    //                        updateRecord(rowId, false);
+    //                        break;
+    //                    default:
+    //                        break;
+    //                }
+    //                $( this ).dialog( "close" );
+    //            },
+    //            Cancel: function() {
+    //                if($("#GridContact").data("kendoGrid") === null)
+    //                    grid.dataSource.read();
+    //                kendo.ui.progress(grid.wrapper, false);
+    //                $( this ).dialog( "close" );
+    //            }
+    //        },
+    //        open: function (event, ui) {
+    //            $('#dialog-confirm').attr("style","height: auto; max-height: 62px; min-height: 62px; width: auto;")
+    //            $(".ui-dialog-titlebar").hide();
+    //            $('#dialogContent').text('');
+    //            switch(type)
+    //            {
+    //                case "del":
+    //                    $('#dialogContent').text("Do you want to delete?");
+    //                    break;
+    //                case "act":
+    //                    $('#dialogContent').text("Do you want to activate?");
+    //                    break;
+    //                case "dea":
+    //                    $('#dialogContent').text("Do you want to deactivate?");
+    //                    break;
+    //                default:
+    //                    $('.ui-dialog-buttonset')[0].children[1].hidden = true;
+    //                    $('#dialogContent').text("This record is associated, you can't deactivate/delete.");
+    //                    break;
+    //            }
+    //        }
+    //    });
+    //}
+
+
+    function updateRecord(id, status) {
+        $.ajax({
+            url: '/Contacts/Delete',
+            dataType: "json",
+            type: "DELETE",
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify({ selectedId: id, status: status }),
+            async: true,
+            processData: false,
+            cache: false,
+            success: function (data) {
+                if (typeof data === "string") {
+                    if (data.lastIndexOf("associated") > -1)
+                        Dialog("Associateact");
+                    //alert('Record(s) is associated');
+                }
+                else{
+                    location.href = '/Contacts/ListViewIndex';
+                }
+            },
+            error: function (xhr) {
+            }
+        });
+    }
+
+    function deleteRecord(selval) {
+        var grid = $('#example');
+        $.ajax({
+            url :'/Contacts/ContactDelete',
+            dataType: "json",
+            type: "DELETE",
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify({ selectedId: selval }),
+            async: true,
+            processData: false,
+            cache: false,
+            success: function (data, status) {
+                $('input').prop('checked', false);
+                $(this).removeClass('checkedAll');
+
+                if (status == 'success' && data == 'Account(s) Successfully deleted!') {
+                    location.href = '/Contacts/ListViewIndex';
+                }
+                if (typeof data === "string") {
+                    if (data.lastIndexOf("associated") > -1)
+                        //alert("This record is associated, you can't delete.");
+                        Dialog("AssociateDel");
+                }
+                else
+                {
+                    location.href = '/Contacts/ListViewIndex';
+                }
+
+                DisableButton();
+            },
+            error: function (xhr) {
+                $('input').prop('checked', false);
+                $(this).removeClass('checkedAll');
+                location.href = '/Contacts/ListViewIndex';
+                DisableButton();
+            }
+        });
+    }
+
+    $(document).ready(function () {
+        DisableButton();
+    });
+
+    function DisableButton() {
+        $('#Activate').prop('disabled', true);
+        $('#Deactivate').prop('disabled', true);
+        $('#Delete').prop('disabled', true);
+    }
+    $('#ChSelectAll').click(function (e) {
+        if ($(this).hasClass('checkedAll')) {
+            $('input').prop('checked', false);
+            $(this).removeClass('checkedAll');
+
+            $('#Activate').prop('disabled', true);
+            $('#Deactivate').prop('disabled', true);
+            $('#Delete').prop('disabled', true);
+
+        } else {
+            $('input').prop('checked', true);
+            $(this).addClass('checkedAll');
+
+            $('#Activate').prop('disabled', false);
+            $('#Deactivate').prop('disabled', false);
+            $('#Delete').prop('disabled', false);
+        }
+    });
+
+    $('#example').on('click', '.chkbx', function () {
+        var checked = $(this).is(':checked');
+        var models = [];
+        var favorite=[];
+        var checkedvalue;
+        var grid = $('#example tbody input[type="checkbox"]');
+        var currenpagelength = grid.length;
+        //var pagelength = grid.data.length; // for total records
+        grid.find(":checked").closest("tr").each(function () {
+            models.append(grid(this));
+        });
+
+        $.each($("input[type='checkbox']:checked"), function () {
+            favorite.push($(this).val());
+        });
+        checkedvalue = favorite.length;
+        if (checked == false & checkedvalue == 0) {
+            $('#ChSelectAll').attr('checked', false);
+            if (models.length == 0) {
+                $('#Activate').prop('disabled', true);
+                $('#Deactivate').prop('disabled', true);
+                $('#Delete').prop('disabled', true);
+            }
+        }
+        else {
+            $('#Activate').prop('disabled', false);
+            $('#Deactivate').prop('disabled', false);
+            $('#Delete').prop('disabled', false);
+            var selectedcheckboxlength = models.length;
+            if (currenpagelength == selectedcheckboxlength) {
+                $('#ChSelectAll').prop('checked', true);
+            }
+        }
+    });
+
+    function GetSelectedCheckBoxs() {
+        var favorite=[];
+        $.each($("input[type='checkbox']:checked"), function () {
+            favorite.push($(this).val());
+        });
+        return favorite;
+
+    }
+
+
+    //function DialogActivate() {
+    //    var deleteconfirm = confirm("Do you want to activate?");
+    //    if (deleteconfirm == true) {
+
+    //        var grid = $('#example tbody input[type="checkbox"]');
+    //        var checked = GetSelectedCheckBoxs();
+    //        var selval = checked.join(",");
+    //        updateRecord(selval, true);
+    //    }
+    //}
+
+    //function DialogDeactivate() {
+    //    var deleteconfirm = confirm("Do you want to deactivate?");
+    //    if (deleteconfirm == true) {
+
+    //        var grid = $('#example tbody input[type="checkbox"]');
+    //        var checked = GetSelectedCheckBoxs();
+    //        var selval = checked;
+
+    //        updateRecord(selval, false);
+    //    }
+    //}
+
+    //function DialogDelete() {
+
+    //    var deleteconfirm = confirm("Do you want to delete?");
+    //    if (deleteconfirm == true) {
+
+    //        var grid = $('#example tbody input[type="checkbox"]');
+    //        var checked = GetSelectedCheckBoxs();
+    //        var selval = checked;
+
+    //        deleteRecord(selval);
+    //    }
+    //}
+
+</script>
+
+<script>
+
+    $(document).ready(function () {
+        var table = $('#example').DataTable();
+        table.destroy();
+        $('#example').DataTable({
+            "order": [[0, "desc"]]
+        });
+    });
+
+</script>

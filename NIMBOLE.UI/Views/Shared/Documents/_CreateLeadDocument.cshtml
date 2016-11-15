@@ -1,0 +1,56 @@
+﻿@model NIMBOLE.Models.Models.DocumentModel
+@using Kendo.Mvc.UI
+
+
+<script id="fileTemplate" type="text/x-kendo-template">
+    <span class='k-progress'></span>
+    <div class='file-wrapper'>
+        @*<span class='file-icon #=addExtensionClass(files[0].extension)#'></span>*@
+        <h4 class='file-heading file-name-heading'>Name: #=name#</h4>
+        <h4 class='file-heading file-size-heading'>Size: #=size# bytes</h4>
+        <button type='button' class='k-upload-action'></button>
+    </div>
+</script>
+
+<header class="row head-tag">
+    <h2 class="col-md-6">New Lead Document/s</h2>
+</header>
+
+<div class="row">
+    <div class="col-md-10 col-xs-5 form-group">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="row">
+                    <div class="col-md-5 col-xs-5 form-group">
+                        <label for="InputLeadBudget">
+                            Document Name
+                        </label>
+                        @Html.TextBoxFor(model => model.DocumentName, new { @placeholder = "Enter Document Name", @class = "form-control" })
+                    </div>
+
+                    <div class="col-md-5 col-xs-5 form-group">
+                        <label for="InputTimeFrame">
+                            @NIMBOLE.GlobalResources.Resources.Documents
+                        </label>
+                        @(Html.Kendo().Upload()
+                            .Name("files")
+                            .TemplateId("fileTemplate")
+                            .Async(a => a
+                                .Save("Save", "Upload")
+                                .Remove("Remove", "Upload")
+                                .AutoUpload(false)
+                            )
+                        )
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-8 col-xs-4 form-group" style="text-align: right;">
+                        <input id="btnNewLeadDocumentCancel" type="button" value="Cancel" class="btn btn-danger" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+

@@ -1,0 +1,22 @@
+﻿@model NIMBOLE.Models.Models.EmployeeRoleModel
+
+@(Html.Kendo().DropDownList()
+    .Name("EmployeeRole")
+        .DataTextField("Name")
+    .DataValueField("Id")
+    //.Filter(FilterType.StartsWith)
+    .OptionLabel(@NIMBOLE.GlobalResources.Resources.Select)
+    
+    .DataSource(source =>
+    {
+        source.Read(read =>
+        {
+            read.Action("GetAllEmployeeRoles", "EmployeeRoles");
+        })
+
+        .ServerFiltering(true);
+    })
+    .AutoBind(true)
+       
+)
+

@@ -1,0 +1,58 @@
+﻿@model NIMBOLE.Models.Models.LeadProductModel
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-11" style="margin-left:100px;">
+            <header class="row head-tag">
+                <h2 class="col-md-6">@NIMBOLE.GlobalResources.Resources.LeadProducts</h2>
+            </header>
+            <div class="row">
+                <div class="col-md-5 col-xs-5 form-group">
+                    <label for="InputProductName">
+                        @NIMBOLE.GlobalResources.Resources.ProductName
+                    </label>
+
+                    @(Html.Kendo().DropDownListFor(model => model.ProductId)
+                            .HtmlAttributes(new { @style = "width: 100%;" })
+                            .DataTextField("ProductName")
+                            .DataValueField("Id")
+                            .OptionLabel(@NIMBOLE.GlobalResources.Resources.Select)
+                            .AutoBind(true)
+                            .DataSource(source =>
+                                    {
+                                        source.Read(read => read.Action("GetProductNames", "Products"));
+                                        source.ServerFiltering(true);
+                                    })
+                    )
+                    @Html.ValidationMessageFor(m => m.ProductId)
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-5 col-xs-5 form-group">
+                    <label for="InputQuantity">
+                        @NIMBOLE.GlobalResources.Resources.Quantity
+                    </label>
+                    @Html.TextBoxFor(model => model.Quntity, new { @placeholder = @NIMBOLE.GlobalResources.Resources.Quantity, @class = "form-control", @onkeydown="return ValidateNumber(event);" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5 col-xs-5 form-group">
+                    <label for="InputPrice">
+                        @NIMBOLE.GlobalResources.Resources.Price
+                    </label>
+                    @Html.TextBoxFor(model => model.Price, new { @placeholder = @NIMBOLE.GlobalResources.Resources.Price, @class = "form-control" })
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-5 col-xs-5" style="text-align: right;">
+                    <input type="submit" class="btn btn-success" value="Save">
+                    <input type="button" value="Cancel" class="btn btn-danger" onclick="location.href = '/LeadProducts/Index'" />
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

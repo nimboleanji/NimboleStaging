@@ -1,0 +1,21 @@
+﻿@model int?
+@Html.TextBox("ExtContactRole", new { @placeholder = @NIMBOLE.GlobalResources.Resources.Value, @class = "form-control", @readonly = "readonly" })
+@*@(Html.Kendo().ComboBox()
+    .Name("ExtContactRole")
+    .DataTextField("Description")
+    .DataValueField("Id")
+    .Filter(FilterType.StartsWith)
+    .AutoBind(true)
+    .ValuePrimitive(true)
+    .Placeholder(@NIMBOLE.GlobalResources.Resources.SelectOrAdd)
+    .DataSource(source =>
+    {
+        source.Read(read =>
+        {
+            read.Action("GetAll", "ContactRoles");
+        }) 
+        .ServerFiltering(true);
+    })
+    .Events(e => e.Change("onExtContactRoleChange").DataBound("onDataBound"))
+    .Suggest(true)
+)*@

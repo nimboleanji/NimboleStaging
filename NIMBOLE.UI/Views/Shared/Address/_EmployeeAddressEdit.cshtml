@@ -1,0 +1,229 @@
+﻿@model NIMBOLE.Models.Models.EmployeeModel
+@using Kendo.Mvc.UI;
+@{
+    var val = Json.Encode(Model);
+}
+<div class="col-lg-6">
+    <div class="form-group">
+        <label for="InputHouseNo">
+            @NIMBOLE.GlobalResources.Resources.Address1
+        </label>
+        @Html.TextBoxFor(model => model.objAddressModel.HouseNo, new { @placeholder = @NIMBOLE.GlobalResources.Resources.Address1, @class = "form-control", @tabindex = "8" })
+        @Html.HiddenFor(model => model.objAddressModel.Id)
+    </div>
+    <div class="form-group">
+        <label for="InputCountry">
+            @NIMBOLE.GlobalResources.Resources.Country
+        </label>
+        @Html.HiddenFor(model => model.objAddressModel.CountryId)
+        @(Html.TextBox("Country", "", new { @placeholder = @NIMBOLE.GlobalResources.Resources.Select, @style = "width: 100%;", @class = "form-control", @tabindex = "10" }))
+    </div>
+    <script>
+        function onCountriesDataBound(e) {
+            if (this._selectedValue === "") {
+                var dropdownlist = $("#Country").data("kendoDropDownList");
+                dropdownlist.value('@Model.objAddressModel.CountryId' != 0 ? '@Model.objAddressModel.CountryId' : "");
+                dropdownlist.trigger("change");
+            }
+        }
+        function onCountryChange(e) {
+            var value = this._selectedValue;
+            if (value != -1 || value != '') {
+                BindStates(value);
+                $('#objAddressModel_CountryId').val(value);
+            }
+        }
+        function BindCountries() {
+            $("#Country").kendoDropDownList({
+                dataTextField: "CountryName",
+                dataValueField: "CountryId",
+                optionLabel: '@NIMBOLE.GlobalResources.Resources.Select',
+                dataSource: {
+                    type: "json",
+                    transport: {
+                        read: {
+                            url: "/AddressAutoComplete/GetCountryNames",
+                            dataType: "json"
+                        }
+                    }
+                },
+                //filter: "startswith",
+                dataBound: onCountriesDataBound,
+                change: onCountryChange,
+                suggest: true
+            });
+        }
+        $(document).ready(function () {
+            BindCountries();
+        });
+    </script>
+
+    <div class="form-group">
+        <label for="InputCity">
+            @NIMBOLE.GlobalResources.Resources.City
+        </label>
+        @(Html.TextBox("City", "", new { @placeholder = @NIMBOLE.GlobalResources.Resources.Select, @style = "width: 100%;", @class = "form-control", @tabindex = "12" }))
+        @Html.HiddenFor(model => model.objAddressModel.CityId)
+    </div>
+    <script>
+        function onCitiesDataBound(e) {
+            debugger;
+            if (this._selectedValue === "") {
+                var dropdownlist = $("#City").data("kendoDropDownList");
+                dropdownlist.value('@Model.objAddressModel.CityId' != 0 ? '@Model.objAddressModel.CityId' : "");
+                dropdownlist.trigger("change");
+            }
+        }
+        function onCityChange(e) {
+            debugger;
+            var value = this._selectedValue;
+            if (value != -1 || value != '') {
+                //BindCities(value);
+                $('#objAddressModel_CityId').val(value);
+            }
+        }
+        function BindCities(stateId) {
+            debugger;
+            if (stateId != "") {
+                $("#City").kendoDropDownList({
+                    dataTextField: "Name",
+                    dataValueField: "Id",
+                    optionLabel: '@NIMBOLE.GlobalResources.Resources.Select',
+                    dataSource: {
+                        type: "json",
+                        transport: {
+                            read: {
+                                url: "/AddressAutoComplete/GetCityNamesCreate?states=" + stateId,
+                                dataType: "json"
+                            }
+                        }
+                    },
+                    //filter: "startswith",
+                    dataBound: onCitiesDataBound,
+                    change: onCityChange,
+                    suggest: true
+                });
+                var dropdownlist = $("#City").data("kendoDropDownList");
+                dropdownlist.enable();
+            }
+            else {
+                var dropdownlist = $("#City").data("kendoDropDownList");
+                dropdownlist.value("");
+                dropdownlist.dataSource = null;
+                dropdownlist.enable(false);
+            }
+        }
+    </script>
+
+    <div class="form-group">
+        <label for="InputPhone">
+            @NIMBOLE.GlobalResources.Resources.OfficePhone
+        </label>
+        @Html.TextBoxFor(model => model.objAddressModel.Phone, new { @placeholder = @NIMBOLE.GlobalResources.Resources.OfficePhone, @class = "form-control nimbolenumbers", @tabindex = "14", @minlength = "10", @maxlength = "10" })
+    </div>
+    <div class="span10">
+        @Html.ValidationMessageFor(m => m.objAddressModel.Phone, "", new { @class = "errmsg" })
+    </div>
+    <div class="form-group">
+        <label for="InputHomePhone">
+            @NIMBOLE.GlobalResources.Resources.HomePhone
+        </label>
+        @Html.TextBoxFor(model => model.objAddressModel.HomePhone, new { @placeholder = @NIMBOLE.GlobalResources.Resources.HomePhone, @class = "form-control nimbolenumbers", @tabindex = "16", @minlength = "10", @maxlength = "10" })
+    </div>
+    <div class="span10">
+        @Html.ValidationMessageFor(m => m.objAddressModel.HomePhone, "", new { @class = "errmsg" })
+    </div>
+    <div class="form-group">
+        <label for="InputSkypeName">
+            @NIMBOLE.GlobalResources.Resources.SkypeName
+        </label>
+        @Html.TextBoxFor(model => model.objAddressModel.SkypeName, new { @placeholder = @NIMBOLE.GlobalResources.Resources.SkypeName, @class = "form-control", @tabindex = "18" })
+    </div>
+</div>
+<div class="col-lg-6">
+    <div class="form-group">
+        <label for="InputStreet">
+            @NIMBOLE.GlobalResources.Resources.Address2
+        </label>
+        @Html.TextBoxFor(model => model.objAddressModel.StreetName, new { @placeholder = @NIMBOLE.GlobalResources.Resources.Address2, @class = "form-control", @tabindex = "9" })
+    </div>
+    <div class="form-group">
+        <label for="InputState">
+            @NIMBOLE.GlobalResources.Resources.State
+        </label>
+        @Html.HiddenFor(model => model.objAddressModel.StateId)
+        @(Html.TextBox("State", "", new { @placeholder = @NIMBOLE.GlobalResources.Resources.Select, @style = "width: 100%;", @class = "form-control", @tabindex = "11" }))
+    </div>
+    <script>
+        function onStatesDataBound(e) {
+            if (this._selectedValue === "") {
+                var dropdownlist = $("#State").data("kendoDropDownList");
+                dropdownlist.value('@Model.objAddressModel.StateId' != 0 ? '@Model.objAddressModel.StateId' : "");
+                dropdownlist.trigger("change");
+            }
+        }
+        function onStateChange(e) {
+            var value = this._old;
+            if (value != -1 || value != '' || value != "") {
+                BindCities(value);
+                $('#objAddressModel_StateId').val(value);
+            }
+        }
+        function BindStates(countryId) {
+            if (countryId != "") {
+                $("#State").kendoDropDownList({
+                    dataTextField: "Name",
+                    dataValueField: "Id",
+                    optionLabel: '@NIMBOLE.GlobalResources.Resources.Select',
+                    dataSource: {
+                        type: "json",
+                        transport: {
+                            read: {
+                                url: "/AddressAutoComplete/GetStateNamesCreate?countries=" + countryId,
+                                dataType: "json"
+                            }
+                        }
+                    },
+                    //filter: "startswith",
+                    dataBound: onStatesDataBound,
+                    change: onStateChange,
+                    suggest: true
+                });
+                var dropdownlist = $("#State").data("kendoDropDownList");
+                dropdownlist.enable();
+            }
+            else {
+                var dropdownlist = $("#State").data("kendoDropDownList");
+                dropdownlist.value("");
+                dropdownlist.dataSource = null;
+                dropdownlist.enable(false);
+                dropdownlist.trigger("change");
+            }
+        }
+    </script>
+
+    <div class="form-group">
+        <label for="InputZip">
+            @NIMBOLE.GlobalResources.Resources.ZipCode
+        </label>
+        @Html.TextBoxFor(model => model.objAddressModel.ZipCode, new { @placeholder = @NIMBOLE.GlobalResources.Resources.ZipCode, @class = "form-control", @tabindex = "13" })
+    </div>
+    <div class="form-group">
+        <label for="InputMobile">
+            @NIMBOLE.GlobalResources.Resources.Mobile
+        </label>
+        @Html.TextBoxFor(model => model.objAddressModel.Mobile, new { @placeholder = @NIMBOLE.GlobalResources.Resources.Mobile, @class = "form-control nimbolenumbers", @tabindex = "15", @minlength = "10", @maxlength = "10" })
+    </div>
+    <div class="span10">
+        @Html.ValidationMessageFor(m => m.objAddressModel.Mobile, "", new { @class = "errmsg" })
+    </div>
+    <div class="form-group">
+        <label for="InputSecondaryFax">
+            @NIMBOLE.GlobalResources.Resources.Fax
+        </label>
+        @Html.TextBoxFor(model => model.objAddressModel.Fax, new { @placeholder = @NIMBOLE.GlobalResources.Resources.Fax, @class = "form-control nimbolenumbers", @tabindex = "17", @minlength = "10", @maxlength = "10" })
+    </div>
+    <div class="span10">
+        @Html.ValidationMessageFor(m => m.objAddressModel.Fax, "", new { @class = "errmsg" })
+    </div>
+</div>

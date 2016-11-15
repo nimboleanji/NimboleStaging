@@ -1,0 +1,490 @@
+﻿@model NIMBOLE.Models.Models.MapLatLogModel
+
+@{
+    ViewBag.Title = "MapReport";
+    string FullName = Session["EmployeeId"] != null ? Session["EmployeeId"].ToString() : "0";
+    string finYear = Session["FinYear"] != null ? Session["FinYear"].ToString() : "2015-2016";
+    //string rptName = ViewData["ReportName"].ToString();
+    string rptName = "MapReport";
+}
+@{
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.common.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.common-bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.mobile.all.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.dataviz.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.dataviz.bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/kendo/2014.3.1411/jszip.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2014.3.1411/kendo.core.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2014.3.1411/kendo.web.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2014.3.1411/kendo.aspnetmvc.min.js")"></script>
+}
+@*@using (Html.BeginForm("ShowMapReport", "Reports", new { rptName = UrlExtensions.EncodeString("MapReport") }, FormMethod.Post, new { enctype = "multipart/form-data", onsubmit = "return employee();" }))*@
+@using (Html.BeginForm())
+{
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    @if (rptName == "MapReport")
+                    {
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label>Employee Name </label> <span class="field-validation-error">*</span>
+                                    @(Html.Kendo().DropDownList()
+                                        .Name("ddlEmployees")
+                                        .HtmlAttributes(new { @style = "width: 100%;", @tabindex = "1" })
+                                        .OptionLabel(new { Role = @NIMBOLE.GlobalResources.Resources.Select, Name = @NIMBOLE.GlobalResources.Resources.Select })
+
+                                        .DataTextField("Name")
+                                        .DataValueField("Id")
+                                        .Events(e => e.DataBound("onEmployeesDataBound"))
+                                        .DataSource(source =>
+                                        {
+                                            source.Read(read =>
+                                            {
+                                                read.Action("GetEmployeesForReports", "Leads");
+                                            });
+                                        })
+                                    )
+                                    <script>
+                                        function onEmployeesDataBound(e) {
+                                            if (this._selectedValue === undefined || this._selectedValue === "" || this._selectedValue === "Select") {
+                                                var empddl = $("#ddlEmployees").data("kendoDropDownList");
+                                                var selectedName = "0";
+                                                selectedName = '@FullName'
+                                                empddl.value(selectedName);
+                                            }
+                                        }
+                                    </script>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label>For </label> <span class="field-validation-error">*</span>
+                                    @*@(Html.Kendo().DatePicker()
+                                          .Name("ddlFor")
+                                          //.Min(DateTime.Now)
+                                          .Value(DateTime.Now)
+                                          .HtmlAttributes(new { @style = "width: 100%;", @tabindex = "2", @onkeydown = "javascript:return false;" })
+                                        )*@
+
+                                    @(Html.Kendo().DatePicker()
+                                        .Name("ddlFor")
+                                        .Value(DateTime.Now)
+                                        .HtmlAttributes(new { style = "width:100%;", @tabindex = "2", @onkeydown = "javascript:return false;" })
+                                        .Events(e =>
+                                          {
+                                              e.Change("onDateChange");
+                                          })
+
+                                    )
+
+                                    @*@(Html.Kendo().DropDownList()
+                                                .Name("ddlFor")
+                                                .HtmlAttributes(new { @style = "width: 100%;", @tabindex = "2" })
+                                                .DataTextField("Text")
+                                                .DataValueField("Value")
+                                                .Events(e => e.DataBound("onForDataBound"))
+                                                .OptionLabel(@NIMBOLE.GlobalResources.Resources.Select)
+                                                .AutoBind(true)
+                                        // .BindTo(ViewData["FinYears"] as SelectList)
+                                                .BindTo(new List<SelectListItem>() {
+                                                      new SelectListItem() {
+                                                          Text = "Today",
+                                                          Value = "1"
+                                                      },
+                                                      new SelectListItem() {
+                                                          Text = "This week",
+                                                          Value = "2"
+                                                      },
+                                                      new SelectListItem() {
+                                                          Text = "This month",
+                                                          Value = "3"
+                                                      }
+                                                })
+                                                )*@
+                                    <script>
+
+                                        function onDateChange() {
+                                            var ddlfor = $("#ddlFor").data("kendoDatePicker");
+
+                                            ddlfor.value;
+                                        }
+
+
+                                        @*function onForDataBound(e) {
+                                            if (this._selectedValue === undefined || this._selectedValue === "" || this._selectedValue === "Select") {
+                                                var combo = $("#ddlFor").data("kendoDatePicker");
+                                                combo.value('@finYear' != "" ? '@finYear' : "");
+                                            }
+                                        }*@
+
+
+                                    </script>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div class=" form-group" >
+                                    <br />
+                                    <input type="button" id="btnSubmit" name="btnFilter" class="btn btn-success" tabindex="3" value="Show Report" />
+                                </div>
+                            </div>
+                        </div>
+                        @*<div class="row">
+                                <div class="col-lg-12 form-group" style="text-align: right;">
+                                    <input type="button" id="btnSubmit" name="btnFilter" class="btn btn-success" tabindex="3" value="Show Report" />
+                                </div>
+                            </div>*@
+                        @Html.Hidden("hdnEmployee")
+                        @Html.Hidden("hdnFor")
+                        <script>
+                            //function employee() {
+                            //    debugger;
+                            //    $('#hdnFor').val($("#ddlFor").value);
+                            //    $('#hdnEmployee').val($("#ddlEmployees").val() == "0" ? "" : $("#ddlEmployees").val());
+                            //    return $("#ddlFor").value;
+                            //}
+                        </script>
+                    }
+
+                    <div class="row">
+                        <div class="col-lg-12">
+
+
+                            <div id="map"></div>
+
+                            <script>
+
+                                var listcontrols = {
+                                    "ddlEmployees": "true,select",
+                                    "ddlFor": "true,select"
+                                };
+
+                                $(document).ready(function () {
+
+                                    $('#btnSubmit').click(function (e) {
+
+                                        if (listcontrols) {
+                                            var flag = 0;
+                                            var texttype = "";
+                                            $.each(listcontrols, function (key, value) {
+                                                texttype = value.split(',')[1];
+                                                var element = $('#' + key);
+                                                if (texttype == "select") {
+                                                    if (typeof element.prev().attr('style') !== typeof undefined) {
+                                                        element.prev().removeAttr("style");
+                                                    }
+                                                }
+                                                if (validateControl(key, value.split(',')[0], value.split(',')[1], value.split(',')[2], value.split(',')[3]) == false) {
+                                                    flag = flag + 1;
+                                                }
+                                            });
+
+                                            if (flag != 0) {
+                                                return false;
+                                            }
+                                            //else {
+                                            //    $('form')[0].submit();
+                                            //}
+                                        }
+
+
+                                        $('#ddlEmployees').hide();
+
+                                        var empId = $('#ddlEmployees').val();
+                                        var forDt = ddlFor.value;
+
+                                        var myTrip = new Array();
+
+                                        @*$.ajax({
+                                            url: '@Url.Action("ShowMapLatLogReport", "Reports")',
+                                            type: 'GET',
+                                            async: false,
+                                            data: { 'empId': empId, 'forDt': forDt },
+                                            success: function (data) {
+
+                                                if (data.length != 0) {
+
+                                                    $("#map").show();
+                                                    var infowindow = new google.maps.InfoWindow;
+                                                    var marker, i;
+                                                    var flightPath;
+
+                                                    var map = new google.maps.Map(document.getElementById('map'), {
+                                                        zoom: 13,
+                                                        center: new google.maps.LatLng(data[0].Latitude, data[0].Longitude),
+                                                        mapTypeId: google.maps.MapTypeId.ROADMAP
+                                                    });
+
+                                                    for (i = 0; i < data.length; i++) {
+
+                                                            marker = new google.maps.Marker({
+                                                                position: new google.maps.LatLng(data[i].Latitude, data[i].Longitude),
+                                                                map: map
+                                                                , icon: data[i].LeadId > 0 ? '/Images/deal.png' : '/Images/man.png'
+
+                                                            });
+
+
+                                                        google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                                                            return function () {
+                                                                if (data[i].LeadId > 0) {
+                                                                    infowindow.setContent('<a href="javascript:void();" onclick="Editfunction(' + data[i].LeadId + ');">' + data[i].LeadTitle + '</a>');
+                                                                    infowindow.open(map, marker);
+                                                                }
+                                                            }
+                                                        })(marker, i));
+
+                                                        var lat = data[i].Latitude;
+                                                        var lon = data[i].Longitude;
+                                                        myTrip.push(new google.maps.LatLng(lat, lon));
+                                                    }
+
+                                                    var flightPath = new google.maps.Polyline({
+                                                        path: myTrip,
+                                                        strokeColor: "#0000FF",
+                                                        strokeOpacity: 0.8,
+                                                        strokeWeight: 2
+                                                    });
+                                                    flightPath.setMap(map);
+                                                }
+
+                                                else {
+                                                    $("#map").hide();
+                                                }
+                                            },
+                                            error: function () {
+
+                                                Dialog('Error occured', "", e);
+                                            }
+                                        });*@
+
+
+                                        var stops = new Array();
+
+                                        $.ajax({
+                                            url: '@Url.Action("ShowMapLatLogReport", "Reports")',
+                                            type: 'GET',
+                                            async: false,
+                                            data: { 'empId': empId, 'forDt': forDt },
+                                            success: function (data) {
+
+                                                if (data.length != 0) {
+
+                                                    $("#map").show();
+                                                    var infowindow = new google.maps.InfoWindow;
+                                                    var marker, i;
+
+                                                    for (i = 0; i < data.length; i++) {
+
+                                                        var lat = data[i].Latitude;
+                                                        var lon = data[i].Longitude;
+                                                        var lid = data[i].LeadId;
+                                                        var ltit = data[i].LeadTitle;
+
+                                                        stops.push({ "Geometry": { "Latitude": lat, "Longitude": lon, "LeadId": lid, "LeadTitle": ltit } });
+
+                                                    }
+
+
+                                                    var map = new window.google.maps.Map(document.getElementById("map"));
+
+                                                    // new up complex objects before passing them around
+                                                    var directionsDisplay = new window.google.maps.DirectionsRenderer();
+                                                    var directionsService = new window.google.maps.DirectionsService();
+
+                                                    Tour_startUp(stops);
+
+                                                    window.tour.loadMap(map, directionsDisplay);
+                                                    window.tour.fitBounds(map);
+
+                                                    if (stops.length > 1)
+                                                        window.tour.calcRoute(directionsService, directionsDisplay);
+
+                                                }
+
+                                                else {
+                                                    $("#map").hide();
+                                                }
+                                            },
+                                            error: function () {
+
+                                                Dialog('Error occured', "", e);
+                                            }
+                                        });
+
+                                        function Tour_startUp(stops) {
+                                            if (!window.tour) window.tour = {
+                                                updateStops: function (newStops) {
+                                                    stops = newStops;
+                                                },
+                                                // map: google map object
+                                                // directionsDisplay: google directionsDisplay object (comes in empty)
+                                                loadMap: function (map, directionsDisplay) {
+                                                    var myOptions = {
+                                                        zoom: 13,
+                                                        center: new window.google.maps.LatLng(13.024103, 77.585015), // default to London
+                                                        mapTypeId: window.google.maps.MapTypeId.ROADMAP
+                                                    };
+                                                    map.setOptions(myOptions);
+                                                    directionsDisplay.setMap(map);
+                                                },
+                                                fitBounds: function (map) {
+                                                    var bounds = new window.google.maps.LatLngBounds();
+
+                                                    // extend bounds for each record
+                                                    jQuery.each(stops, function (key, val) {
+
+                                                        var myLatlng = new window.google.maps.LatLng(val.Geometry.Latitude, val.Geometry.Longitude);
+                                                        bounds.extend(myLatlng);
+                                                        // mark
+
+                                                        var infowindow = new google.maps.InfoWindow;
+
+                                                        marker = new google.maps.Marker({
+                                                            position: new google.maps.LatLng(val.Geometry.Latitude, val.Geometry.Longitude),
+                                                            map: map
+                                                                , icon: val.Geometry.LeadId > 0 ? '/Images/deal.png' : ''
+
+                                                        });
+
+                                                        google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                                                            return function () {
+                                                                if (val.Geometry.LeadId > 0) {
+                                                                    infowindow.setContent('<a href="javascript:void();" onclick="Editfunction(' + val.Geometry.LeadId + ');">' + val.Geometry.LeadTitle + '</a>');
+                                                                    infowindow.open(map, marker);
+                                                                }
+                                                            }
+                                                        })(marker, i));
+
+                                                        //end mark
+
+                                                    });
+                                                    map.fitBounds(bounds);
+                                                },
+                                                calcRoute: function (directionsService, directionsDisplay) {
+                                                    var batches = [];
+                                                    var itemsPerBatch = 10; // google API max = 10 - 1 start, 1 stop, and 8 waypoints
+                                                    var itemsCounter = 0;
+                                                    var wayptsExist = stops.length > 0;
+
+                                                    while (wayptsExist) {
+                                                        var subBatch = [];
+                                                        var subitemsCounter = 0;
+
+                                                        for (var j = itemsCounter; j < stops.length; j++) {
+                                                            subitemsCounter++;
+                                                            subBatch.push({
+                                                                location: new window.google.maps.LatLng(stops[j].Geometry.Latitude, stops[j].Geometry.Longitude),
+                                                                stopover: true
+                                                            });
+                                                            if (subitemsCounter == itemsPerBatch)
+                                                                break;
+                                                        }
+
+                                                        itemsCounter += subitemsCounter;
+                                                        batches.push(subBatch);
+                                                        wayptsExist = itemsCounter < stops.length;
+                                                        // If it runs again there are still points. Minus 1 before continuing to
+                                                        // start up with end of previous tour leg
+                                                        itemsCounter--;
+                                                    }
+
+                                                    // now we should have a 2 dimensional array with a list of a list of waypoints
+                                                    var combinedResults;
+                                                    var unsortedResults = [{}]; // to hold the counter and the results themselves as they come back, to later sort
+                                                    var directionsResultsReturned = 0;
+
+                                                    for (var k = 0; k < batches.length; k++) {
+                                                        var lastIndex = batches[k].length - 1;
+                                                        var start = batches[k][0].location;
+                                                        var end = batches[k][lastIndex].location;
+
+                                                        // trim first and last entry from array
+                                                        var waypts = [];
+                                                        waypts = batches[k];
+                                                        waypts.splice(0, 1);
+                                                        //waypts.splice(waypts.length - 1, 1);
+
+                                                        var request = {
+                                                            origin: start,
+                                                            destination: end,
+                                                            waypoints: waypts,
+                                                            travelMode: window.google.maps.TravelMode.DRIVING
+                                                        };
+                                                        (function (kk) {
+                                                            directionsService.route(request, function (result, status) {
+                                                                if (status == window.google.maps.DirectionsStatus.OK) {
+
+                                                                    var unsortedResult = { order: kk, result: result };
+                                                                    unsortedResults.push(unsortedResult);
+
+                                                                    directionsResultsReturned++;
+
+                                                                    if (directionsResultsReturned == batches.length) // we've received all the results. put to map
+                                                                    {
+                                                                        // sort the returned values into their correct order
+                                                                        unsortedResults.sort(function (a, b) { return parseFloat(a.order) - parseFloat(b.order); });
+                                                                        var count = 0;
+                                                                        for (var key in unsortedResults) {
+                                                                            if (unsortedResults[key].result != null) {
+                                                                                if (unsortedResults.hasOwnProperty(key)) {
+                                                                                    if (count == 0) // first results. new up the combinedResults object
+                                                                                        combinedResults = unsortedResults[key].result;
+                                                                                    else {
+                                                                                        // only building up legs, overview_path, and bounds in my consolidated object. This is not a complete
+                                                                                        // directionResults object, but enough to draw a path on the map, which is all I need
+                                                                                        combinedResults.routes[0].legs = combinedResults.routes[0].legs.concat(unsortedResults[key].result.routes[0].legs);
+                                                                                        combinedResults.routes[0].overview_path = combinedResults.routes[0].overview_path.concat(unsortedResults[key].result.routes[0].overview_path);
+
+                                                                                        combinedResults.routes[0].bounds = combinedResults.routes[0].bounds.extend(unsortedResults[key].result.routes[0].bounds.getNorthEast());
+                                                                                        combinedResults.routes[0].bounds = combinedResults.routes[0].bounds.extend(unsortedResults[key].result.routes[0].bounds.getSouthWest());
+                                                                                    }
+                                                                                    count++;
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                        directionsDisplay.setDirections(combinedResults);
+                                                                    }
+                                                                }
+                                                            });
+                                                        })(k);
+                                                    }
+                                                }
+                                            };
+                                        }
+
+                                    });
+
+                                });
+
+
+                            </script>
+                            <script async defer
+                                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBalmkUzRgb_l1V-j6vpVN_MoiyVmqwLhM&callback=initMap">
+                            </script>
+
+                            <script>
+                                function Editfunction(id) {
+                                    window.location.href = window.location.origin + "/Leads/Edit?q=" + SubmitsEncry(id);
+                                }
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<style>
+    #map {
+        height: 400px;
+        width: 100%;
+    }
+</style>
+
+

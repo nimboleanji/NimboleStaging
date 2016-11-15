@@ -1,0 +1,40 @@
+﻿@using System.Web.Optimization;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @RenderSection("scripts", required: false)
+    @*<link type="text/css" href="~/Content/css.css" rel="stylesheet" />*@
+    @Styles.Render("~/Content/css.css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    @Styles.Render("~/Content/kendo/2014.3.1119/css")
+</head>
+<body>
+    <header>
+        <div class="content-wrapper">
+            <div class="float-left">
+                <p class="site-title">
+                    <a href="/Home/Index">Nimbole Web API</a>
+                </p>
+            </div>
+            <div class="float-right">
+                <nav>
+                    <ul id="menu">
+                        <li><a href="/Home/Index">Home</a></li>
+                        @*<li><a href="/Help">API</a></li>*@
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

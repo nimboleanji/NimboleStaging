@@ -1,0 +1,101 @@
+﻿@model NIMBOLE.Models.Models.ContactRoleModel
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Edit", "ContactRoles", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-group">
+        <div class="col-md-12">
+            <div class="block-header bg-info">
+                <h1 class="block-title">@NIMBOLE.GlobalResources.Resources.EditRole</h1>
+            </div>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="form-group">
+        <div class="col-sm-6">
+            <label for="InputContactRoleCode">@NIMBOLE.GlobalResources.Resources.RoleCode</label>
+            @Html.TextBoxFor(model => model.RoleCode, new { @placeholder = @NIMBOLE.GlobalResources.Resources.RoleCode, @class = "form-control", @tabindex = "1", @minlength = 1, @maxlength = 25 })
+            @Html.ValidationMessageFor(m => m.RoleCode)
+        </div>
+        <div class="col-sm-6">
+            <label for="InputDescription">@NIMBOLE.GlobalResources.Resources.Description</label><span class="text-danger">*</span>
+            @Html.TextBoxFor(model => model.Description, new { @placeholder = @NIMBOLE.GlobalResources.Resources.Description, @class = "form-control firstAlphabetOnly", @tabindex = "1", @minlength = 1, @maxlength = 500 })
+        </div>
+    </div>
+    <div class=" form-group">
+        @Html.HiddenFor(m => m.Id)
+        <div class="col-xs-1">
+            <div class="form-material">
+                <label>
+                    @NIMBOLE.GlobalResources.Resources.Status
+                    @Html.CheckBoxFor(m => m.Status, new { @checked = "checked", @tabindex = "3" })
+                </label>
+            </div>
+        </div>
+        <div class="col-xs-11">
+            <div class="form-material">
+                <label>
+                    @NIMBOLE.GlobalResources.Resources.ActiveInactive
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-xs-12" style="text-align: right;">
+            <input type="button" id="btnSubmit" class="btn btn-success" value=@NIMBOLE.GlobalResources.Resources.Update tabindex="4">
+            <input type="button" value=@NIMBOLE.GlobalResources.Resources.Cancel class="btn btn-danger" onclick="location.href = '/ContactRoles/Index'" tabindex="5" />
+        </div>
+    </div>
+    @*<script>
+        $('#btnSubmit').click(function (e) {
+            if ($("#Description").val() === "") {
+                alert("Please Enter description");
+                this.disabled = false;
+            }
+            else {
+                this.disabled = true;
+                $('form')[0].submit();
+            }
+        });
+    </script>*@
+
+  <script>
+    var listcontrols = {
+        "Description": "true,allcharacters,1,100"
+    };
+
+    $(document).ready(function () {
+        $('#btnSubmit').click(function (e) {
+            if (listcontrols) {
+                var flag = 0;
+                var texttype = "";
+                $.each(listcontrols, function (key, value) {
+
+                    texttype = value.split(',')[1];
+                    var element = $('#' + key);
+                    if (texttype == "select") {
+                        if (typeof element.prev().attr('style') !== typeof undefined) {
+                            element.prev().removeAttr("style");
+                        }
+                    }
+                    if (validateControl(key, value.split(',')[0], value.split(',')[1], value.split(',')[2], value.split(',')[3]) == false) {
+                        flag = flag + 1;
+                    }
+                });
+
+                if (flag != 0) {
+                    this.disabled = false;
+                    return false;
+                }
+                else {
+                    this.disabled = true;
+                    $('form')[0].submit();
+                }
+            }
+        });
+    });
+    </script>
+}

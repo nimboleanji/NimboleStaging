@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2391653A-CF1F-4539-BC3F-4BE44624F0FE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NIMBOLE.Models</RootNamespace>
+    <AssemblyName>NIMBOLE.Models</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NIMBOLE.Entities">
+      <HintPath>..\NIMBOLE.Entities\bin\Release\NIMBOLE.Entities.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Microsoft ASP.NET\ASP.NET Web Pages\v2.0\Assemblies\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IncentiveModel.cs" />
+    <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\EmployeeModel.cs" />
+    <Compile Include="Models\LeadNewModel.cs" />
+    <Compile Include="Models\LeadTransactionInfoModel.cs" />
+    <Compile Include="Models\LocationModel.cs" />
+    <Compile Include="Models\ModuleConfigModel.cs" />
+    <Compile Include="Models\RegistrationModel.cs" />
+    <Compile Include="Models\SalesFunelModel.cs" />
+    <Compile Include="Models\CountryModel.cs" />
+    <Compile Include="Models\DashboardModel.cs" />
+    <Compile Include="Models\MilestoneStageModel.cs" />
+    <Compile Include="Models\ActualVxExpectedModel.cs" />
+    <Compile Include="Models\ResultEHierarchyNew.cs" />
+    <Compile Include="Models\SchedulerServiceModel.cs" />
+    <Compile Include="Models\Transactions\TransUser\TransLeadModel.cs" />
+    <Compile Include="Models\TransEmployeetargetModel.cs" />
+    <Compile Include="Wrapper\EmpTaskWrapper.cs" />
+    <Compile Include="Mappers\DTO.cs" />
+    <Compile Include="Models\AccountModel.cs" />
+    <Compile Include="Models\AccountTypeModel.cs" />
+    <Compile Include="Models\AccountViewModel.cs" />
+    <Compile Include="Models\ActivityByMilestone.cs" />
+    <Compile Include="Models\ActivityModel.cs" />
+    <Compile Include="Models\AddressContactModel.cs" />
+    <Compile Include="Models\AddressModel.cs" />
+    <Compile Include="Models\CompetitorModel.cs" />
+    <Compile Include="Models\ContactAddressModel.cs" />
+    <Compile Include="Models\ContactModel.cs" />
+    <Compile Include="Models\ContactRoleModel.cs" />
+    <Compile Include="Models\ContactViewModel.cs" />
+    <Compile Include="Models\CustomMapper.cs" />
+    <Compile Include="Models\DepartmentModel.cs" />
+    <Compile Include="Models\DesignationModel.cs" />
+    <Compile Include="Models\DistributorModel.cs" />
+    <Compile Include="Models\DocumentModel.cs" />
+    <Compile Include="Models\EmpHierarchyModel.cs" />
+    <Compile Include="Models\EmployeeAddressModel.cs" />
+    <Compile Include="Models\EmployeeRoleModel.cs" />
+    <Compile Include="Models\EmployeeTargetModel.cs" />
+    <Compile Include="Models\EmployeeTaskModel.cs" />
+    <Compile Include="Models\ExtContactModel.cs" />
+    <Compile Include="Models\ExtContactRoleModel.cs" />
+    <Compile Include="Models\FinancialYearModel.cs" />
+    <Compile Include="Models\IndustryModel.cs" />
+    <Compile Include="Models\KeyValueModel.cs" />
+    <Compile Include="Models\LanguageModel.cs" />
+    <Compile Include="Models\LeadModel.cs" />
+    <Compile Include="Models\LeadPriceDiscountModel.cs" />
+    <Compile Include="Models\LeadProductModel.cs" />
+    <Compile Include="Models\LeadSourceModel.cs" />
+    <Compile Include="Models\LoginHistoryModel.cs" />
+    <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\MenuItemModel.cs" />
+    <Compile Include="Models\MenuModel.cs" />
+    <Compile Include="Models\MileStoneModel.cs" />
+    <Compile Include="Models\MstMileStoneModel.cs" />
+    <Compile Include="Models\MySettingModel.cs" />
+    <Compile Include="Models\NewLoginModel.cs" />
+    <Compile Include="Models\NimboleAccountModel.cs" />
+    <Compile Include="Models\NotificationModel.cs" />
+    <Compile Include="Models\OrgHierarchyModel.cs" />
+    <Compile Include="Models\OwnershipModel.cs" />
+    <Compile Include="Models\ParentAccountModel.cs" />
+    <Compile Include="Models\ParentAccountNewModel.cs" />
+    <Compile Include="Models\ProductModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\ProductTypeModel.cs" />
+    <Compile Include="Models\ResultEHierarchy.cs" />
+    <Compile Include="Models\SettingModel.cs" />
+    <Compile Include="Models\TranLeadContactModel.cs" />
+    <Compile Include="Models\TransActivityMSModel.cs" />
+    <Compile Include="Models\TransContactModel.cs" />
+    <Compile Include="Models\Transactions\DocumentViewModel.cs" />
+    <Compile Include="Models\Transactions\TranLeadProdCompModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Transactions\TransActivityMSModel.cs" />
+    <Compile Include="Models\Transactions\TransDocumentModel.cs" />
+    <Compile Include="Models\Transactions\TransLeadCompetitorModel.cs" />
+    <Compile Include="Models\Transactions\TransLeadProductCompModel.cs" />
+    <Compile Include="Models\Transactions\TransUser\TansUserModel.cs" />
+    <Compile Include="Models\Transactions\TransUser\TransAccConModel.cs" />
+    <Compile Include="Models\Transactions\TransUser\TransAddressContactModel.cs" />
+    <Compile Include="Models\Transactions\TransUser\TransLoginModel.cs" />
+    <Compile Include="Models\TreeObject.cs" />
+    <Compile Include="Models\UserAddressModel.cs" />
+    <Compile Include="Models\UserModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NIMBOLE.Common\NIMBOLE.Common.csproj">
+      <Project>{bb1820e9-b80d-435b-a6c6-d40faafeca72}</Project>
+      <Name>NIMBOLE.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NIMBOLE.GlobalResources\NIMBOLE.GlobalResources.csproj">
+      <Project>{07c4e139-e3c9-42a4-bb18-6b9f522634b4}</Project>
+      <Name>NIMBOLE.GlobalResources</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,322 @@
+﻿@model IEnumerable<NIMBOLE.Models.Models.EmployeeTaskModel>
+@using Kendo.Mvc.UI;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    <!-- Page JS Plugins -->
+    <script src="~/assets/js/plugins/datatables/jquery.dataTables.min.js"></script>
+            <!-- Page JS Code -->
+    <script src="~/assets/js/pages/base_tables_datatables.js"></script>
+}
+@{
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.common.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.common-bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.mobile.all.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.dataviz.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.dataviz.bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/kendo/2014.3.1411/jszip.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2014.3.1411/kendo.core.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2014.3.1411/kendo.web.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2014.3.1411/kendo.aspnetmvc.min.js")"></script>
+}
+<script>
+    var values;
+</script>
+
+@using (Html.BeginForm())
+{
+    <main id="main-container">
+        <!-- Page Content -->
+        <div class="content">
+            <!-- Dynamic Table Full -->
+            <div class="block">
+                <div class="block-header">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="col-xs-4">
+                                    <div class="form-group">
+                                        <label for="InputEmp">@NIMBOLE.GlobalResources.Resources.AssignResources</label>
+                                        <select id="multiselect" multiple="multiple"></select>
+
+                                        <script type="text/javascript">
+                                            var dataSource = new kendo.data.DataSource({
+                                                transport: {
+                                                    read: {
+                                                        url: "/Activity/GetReferenceIds"
+                                                    }
+                                                }
+                                            });
+                                            var multi = $("#multiselect").kendoMultiSelect({
+                                                dataSource: dataSource,
+                                                dataTextField: "Name",
+                                                dataValueField: "Id",
+                                                change: function (e) {
+                                                    debugger;
+                                                    // Get selected options
+                                                   values = this.value();
+                                                    if ($.inArray("Select All", values) != -1) {
+                                                        // If "Select All" is in the list
+                                                        // Remove other possibly selected options
+                                                        multi.value("Select All");
+                                                        // Remove any option from the datasource
+                                                        multi.dataSource.filter({ field: "Name", operator: "eq", value: "Select All" });
+                                                    } else {
+                                                        // Clean filter
+                                                        multi.dataSource.filter({});
+                                                    }
+                                                }
+                                            }).data("kendoMultiSelect");
+
+                                        </script>
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
+                                    <div class="form-group">
+                                        <label for="Inputstartdate">@NIMBOLE.GlobalResources.Resources.StartDate</label>
+                                        @(Html.Kendo().DatePicker()
+                                         .Name("StartDate")
+                                            //.Value(DateTime.Now)
+                                        .HtmlAttributes(new { style = "width:100%;", @tabindex = "2", @onkeydown = "javascript:return false;" })
+                                        .Events(e =>
+                                          {
+                                              e.Change("onDateChange");
+                                          })
+                                        )
+                                        <script>
+                                            function onDateChange() {
+                                                var ddlfor = $("#StartDate").data("kendoDatePicker");
+                                                ddlfor.value;
+                                            }
+                                        </script>
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
+                                    <div class="form-group">
+                                        <label for="Inputstartdate">@NIMBOLE.GlobalResources.Resources.EndDate</label>
+                                        @(Html.Kendo().DatePicker()
+                                        .Name("EndDate")
+                                        .HtmlAttributes(new { style = "width:100%;", @tabindex = "3", @onkeydown = "javascript:return false;" })
+                                        .Events(e =>
+                                          {
+                                              e.Change("onDateChange");
+                                          })
+                                        )
+                                        <script>
+                                            function onDateChange() {
+                                                var ddlfor = $("#EndDate").data("kendoDatePicker");
+                                                ddlfor.value;
+                                            }
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                @*<div class="block-content">*@
+                <div class="row">
+                    <div class="col-lg-12">
+                        <!-- DataTables init on table by adding .js-dataTable-full class, functionality initialized in js/pages/base_tables_datatables.js -->
+                        <table class="table table-bordered table-striped" id="example" width="100%">
+                            <thead>
+                                <tr>
+                                    <th colspan="5">
+                                        <div class="toolbar" style="float:right">
+                                            <button id="Create" onclick="javascript: Dialog('upd');" class="btn btn-success" type="button">Create</button>
+                                        </div>
+                                    </th>
+                                </tr>
+
+                                <tr>
+                                    <th class="text-center" style="display:none">@NIMBOLE.GlobalResources.Resources.Id</th>
+                                    <th><input id="ChSelectAll" name="select_all" type="checkbox" class="selectAll" data-orderable="false"></th>
+                                    <th class="text-center">@NIMBOLE.GlobalResources.Resources.Title</th>
+                                    <th class="text-center">@NIMBOLE.GlobalResources.Resources.Type</th>
+                                    <th class="text-center">@NIMBOLE.GlobalResources.Resources.Comments</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model != null)
+                                {
+                                    foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td style="display:none">
+                                                @item.Id
+                                            </td>
+                                            <td>
+                                                <input type="checkbox" @(item.IsSelected ? Html.Raw("checked=\"checked\"").ToHtmlString() : "") class='chkbx' value=@item.Id />
+                                            </td>
+                                            <td>
+                                                @item.Title
+                                            </td>
+                                            <td>
+                                                @item.Type
+                                            </td>
+                                            <td>
+                                                @item.Comments
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+                @*</div>*@
+            </div>
+        </div>
+    </main>
+}
+
+<script type="text/javascript">
+
+    function Dialog(type) {
+        var message;
+        var checked;
+        var selectedval;
+        var refernsIds;
+        switch (type) {
+            case "upd":
+                message = "Do you want to assign this task to employee ?";
+                break;
+        }
+        swal({
+            title: message,
+            type: "",
+            showCancelButton: true,
+            confirmButtonColor: "#337ab7",
+            confirmButtonText: "Ok",
+            cancelButtonText: "Cancel",
+            cancelButtonColor: "#d26a5c",
+            showLoaderOnConfirm: true,
+            closeOnConfirm: false,
+        },
+        function (isConfirm) {
+            debugger;
+            if (isConfirm) {
+                debugger;
+                switch (type) {
+                    case "upd":
+                        checked = GetSelectedCheckBoxs();
+                        selectedval = checked;
+                        refernsIds = values;
+                        var startDate = StartDate.value;
+                        var endDate = EndDate.value;
+                        updateRecord(selectedval, startDate, endDate, refernsIds);
+                        swal.close();
+                        location.href = '/EmployeeMasterTask/Index';
+                        break;
+
+                }
+            }
+            else {
+                debugger;
+                switch (type) {
+                    case "upd":
+                        location.href = '/EmployeeMasterTask/Index';
+                        break;
+
+                }
+            }
+        }
+        );
+    }
+    function updateRecord(selval, startDate, endDate, refernsIds) {
+        debugger;
+        var grid = $('#example');
+        $.ajax({
+            url: '/EmployeeMasterTask/UpdateRecord',
+            dataType: "json",
+            type: "POST",
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify({ selectedId: selval, std: startDate, end: endDate, refernsId: refernsIds }),
+            async: true,
+            processData: false,
+            cache: false,
+            success: function (data, status) {
+                debugger;
+                $('.selectAll').attr('checked', false);
+                if (status == 'success' && data == 'Cost(s) Successfully updated!') {
+                }
+            },
+            error: function (xhr) {
+                $('.selectAll').attr('checked', false);
+                //DisableButton();
+            }
+        });
+    }
+
+    function GetSelectedCheckBoxs() {
+        var favorite = [];
+        $.each($("input[type='checkbox']:checked"), function () {
+            favorite.push($(this).val());
+        });
+        return favorite;
+    }
+
+</script>
+
+<script>
+
+    $('#example').on('click', '.chkbx', function () {
+        debugger;
+        var checked = $(this).is(':checked');
+        var favorite = [];
+        var models = [];
+        var grid = $('#example tbody input[type="checkbox"]');
+        var currenpagelength = grid.length;
+        //var pagelength = grid.data.length; // for total records
+
+        $.each($("input[type='checkbox']:checked"), function () {
+            favorite.push($(this).val());
+        });
+        var checkedval = favorite.length;
+        if (checked == false & checkedval == 0) {
+            $('#ChSelectAll').attr('checked', false);
+
+        }
+        else {
+            var selectedcheckboxlength = models.length;
+            if (currenpagelength == selectedcheckboxlength) {
+                $('#ChSelectAll').prop('checked', true);
+            }
+        }
+    })
+
+    $("#ChSelectAll").click(function (e) {
+        if ($(this).hasClass('checkedAll')) {
+            $('input').prop('checked', false);
+            $(this).removeClass('checkedAll');
+        }
+        else {
+            $('input').prop('checked', true);
+            $(this).addClass('checkedAll');
+        }
+    });
+</script>
+
+<script>
+
+    $(document).ready(function () {
+        $('#example').dataTable({
+            "sDom": '<"top"i>rt<"bottom"flp><"clear">'
+        });
+
+        var table = $('#example').DataTable();
+        table.destroy();
+        $('#example').DataTable({
+            "order": [[0, "desc"]]
+        });
+    });
+
+</script>

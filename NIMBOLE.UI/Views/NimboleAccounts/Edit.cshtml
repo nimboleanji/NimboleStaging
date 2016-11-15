@@ -1,0 +1,1292 @@
+﻿@model NIMBOLE.Models.Models.NimboleAccountModel
+@using Kendo.Mvc.UI;
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.common.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.common-bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.mobile.all.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.dataviz.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.dataviz.bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/kendo/2014.3.1411/jszip.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2014.3.1411/kendo.core.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2014.3.1411/kendo.web.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2014.3.1411/kendo.aspnetmvc.min.js")"></script>
+}
+<script>
+    kendo.ui.ComboBox.fn.clear = kendo.ui.AutoComplete.fn.clear = function () {
+        if (!!this.text) {
+            this.text("");
+        }
+        if (!!this.value) {
+            this.value(null);
+        }
+        this._prev = this.oldIndex = this._old = this._last = undefined;
+    };
+</script>
+@using (Html.BeginForm("Edit", "NimboleAccounts", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <main id="main-container" style="padding-left:10px;padding-right:10px;padding-top:45px">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="block block-themed">
+                    <div class="block-header bg-info">
+                        <ul class="block-options">
+                            <li>
+                                <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-refresh"></i></button>
+                            </li>
+                            <li>
+                                <button type="button" data-toggle="block-option" data-action="content_toggle"></button>
+                            </li>
+                        </ul>
+                        <h3 class="block-title">@NIMBOLE.GlobalResources.Resources.EditAccount</h3>
+                    </div>
+                    <div class="block-content">
+                        <div class="form-group">
+                            @Html.HiddenFor(model => model.Id)
+                            @*Left Column*@
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="InputAccountCode">
+                                        @NIMBOLE.GlobalResources.Resources.AccountCode
+                                    </label>
+                                    @Html.TextBoxFor(model => model.AccountCode, new { @placeholder = @NIMBOLE.GlobalResources.Resources.AccountCode, @maxlength = 10, @class = "form-control", @tabindex = "1" })
+                                </div>
+                                <div class="form-group">
+                                    <label for="AccountOwner">
+                                        @NIMBOLE.GlobalResources.Resources.AccountOwner
+                                    </label>
+                                    @Html.TextBoxFor(model => model.AccountOwner, new { @placeholder = @NIMBOLE.GlobalResources.Resources.AccountOwner, @class = "form-control", @tabindex = "3" })
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Ownership">
+                                        @NIMBOLE.GlobalResources.Resources.Ownership
+                                    </label>
+                                    @Html.HiddenFor(model => model.OwnerShip)
+                                    @*<select class="form-control" id="Owner" name=Owner size="1"><option value="0">@NIMBOLE.GlobalResources.Resources.Select</option> </select>*@
+                                    @(Html.TextBox("Owner", "", new { @placeholder = @NIMBOLE.GlobalResources.Resources.SelectOrAdd, @style = "width: 100%;", @class = "form-control", @tabindex = "5" }))
+                                </div>
+                                <script>
+                                    function onOwnershipDataBound(e) {
+                                        if (this._selectedValue === undefined) {
+                                            var combo = $("#Owner").data("kendoComboBox");
+                                            combo.value('@Model.OwnerShipName' != 0 ? '@Model.OwnerShipName' : "");
+                                        }
+                                    }
+                                    function BindOwnership() {
+                                        $("#Owner").kendoComboBox({
+                                            dataTextField: "Name",
+                                            dataValueField: "Id",
+                                            @*dataSource: @Html.Raw(Json.Encode(ViewData["Ownership"])),*@
+                                            dataSource: {
+                                                type: "json",
+                                                transport: {
+                                                    read: {
+                                                        url: "/NimboleAccounts/GetAllOwnershipsForCombo",
+                                                        dataType: "json"
+                                                    }
+                                                }
+                                            },
+                                            sort: { field: "Name", dir: "asc" },
+                                            filter: "startswith",
+                                            dataBound: onOwnershipDataBound,
+                                            change: onOwnershipChange,
+                                            suggest: true
+                                        });
+                                    }
+                                    $(document).ready(function () {
+                                        BindOwnership();
+                                    });
+                                </script>
+                                <div class="form-group">
+                                    <label for="AccountType">
+                                        @NIMBOLE.GlobalResources.Resources.AccountType
+                                    </label>
+                                    @Html.HiddenFor(model => model.AccountType)
+                                    @*<select class="form-control" id="Accounttyp" name="AccountTyp" size="1"><option value="0">@NIMBOLE.GlobalResources.Resources.Select</option> </select>*@
+                                    @(Html.TextBox("Type", "", new { @placeholder = @NIMBOLE.GlobalResources.Resources.SelectOrAdd, @style = "width: 100%;", @class = "form-control", @tabindex = "7" }))
+                                </div>
+                                <script>
+                                    function onAccountTypeDataBound(e) {
+                                        if (this._selectedValue === undefined) {
+                                            var combo = $("#Type").data("kendoComboBox");
+                                            combo.value('@Model.AccountType' != 0 ? '@Model.AccountType' : "");
+                                        }
+                                    }
+                                    function BindAccountType() {
+                                        $("#Type").kendoComboBox({
+                                            dataTextField: "Name",
+                                            dataValueField: "Id",
+                                            @*dataSource: @Html.Raw(Json.Encode(ViewData["AccountType"])),*@
+                                            dataSource: {
+                                                type: "json",
+                                                transport: {
+                                                    read: {
+                                                        url: "/NimboleAccounts/SelectAllAccountTypeForCombo",
+                                                        dataType: "json"
+                                                    }
+                                                }
+                                            },
+                                            sort: { field: "Name", dir: "asc" },
+                                            filter: "startswith",
+                                            dataBound: onAccountTypeDataBound,
+                                            change: onAccountTypeChange,
+                                            suggest: true
+                                        });
+                                    }
+                                    $(document).ready(function () {
+                                        BindAccountType();
+                                    });
+                                </script>
+                                <div class="form-group">
+                                    <label for="InputHouseNo">
+                                        @NIMBOLE.GlobalResources.Resources.Address1
+                                    </label>
+                                    @Html.TextBoxFor(model => model.objAddressModel.HouseNo, new { @placeholder = @NIMBOLE.GlobalResources.Resources.Address1, @class = "form-control", @tabindex = "9" })
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="InputCountry">
+                                        @NIMBOLE.GlobalResources.Resources.Country
+                                    </label>
+                                    @Html.HiddenFor(model => model.objAddressModel.CountryId)
+                                    <select class="form-control" id="Country" name="country" size="1"><option value="0" tabindex="11">@NIMBOLE.GlobalResources.Resources.Select</option></select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="InputCity">
+                                        @NIMBOLE.GlobalResources.Resources.City
+                                    </label>
+                                    @Html.HiddenFor(model => model.objAddressModel.CityId)
+                                    <select class="form-control" id="City" name="City" size="1"><option value="0" tabindex="13">@NIMBOLE.GlobalResources.Resources.Select</option></select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Fax">
+                                        @NIMBOLE.GlobalResources.Resources.Fax
+                                    </label>
+                                    @Html.TextBoxFor(model => model.Fax, new { @placeholder = @NIMBOLE.GlobalResources.Resources.Fax, @class = "form-control", @tabindex = "15", @onkeydown = "return ValidateNumber(event);"})
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Rating">
+                                        @NIMBOLE.GlobalResources.Resources.Rating
+                                    </label>
+                                    @Html.TextBoxFor(model => model.Rating, new { @placeholder = @NIMBOLE.GlobalResources.Resources.Rating, @class = "form-control", @tabindex = "17" })
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="AnnualRevenue">
+                                        @NIMBOLE.GlobalResources.Resources.AnnualRevenue
+                                    </label>
+                                    @Html.TextBoxFor(model => model.AnnualRevenue, new { @placeholder = @NIMBOLE.GlobalResources.Resources.AnnualRevenue, @class = "form-control", @tabindex = "19", @onkeydown = "return ValidateNumber(event);", @min = "0", @maxlength = "8" })
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="InputWebsite">
+                                        @NIMBOLE.GlobalResources.Resources.Region
+                                    </label>
+                                    @Html.TextBoxFor(model => model.Region, new { @placeholder = @NIMBOLE.GlobalResources.Resources.Region, @class = "form-control", @tabindex = "21" })
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-lg-2 form-group">
+                                        <label for="InputNotify">@NIMBOLE.GlobalResources.Resources.IsParent</label>
+                                        @*@(Html.CheckBoxFor(m => m.IsParentAccount, new { @tabindex = "23" }))*@
+                                        @(Html.Kendo().CheckBoxFor(m => m.IsParentAccount).HtmlAttributes(new { @tabindex = "23" }))
+                                    </div>
+                                    <script>
+                                        $(document).ready(function () {
+                                            $(function () {
+                                                if ($('#IsParentAccount').is(':checked')) {
+                                                    $('#divParentAccount').hide();
+                                                } else {
+                                                    $('#divParentAccount').show();
+                                                }
+
+                                                $('#IsParentAccount').click(function () {
+                                                    if ($(this).is(':checked')) {
+                                                        $('#divParentAccount').hide();
+                                                    } else {
+                                                        $('#divParentAccount').show();
+                                                    }
+                                                });
+                                            });
+                                        });
+                                    </script>
+                                    <div id="divParentAccount" class="col-lg-10 form-group">
+                                        <label for="InputEmp">@NIMBOLE.GlobalResources.Resources.ParentAccount</label>
+                                        @Html.HiddenFor(model => model.ParentAccount)
+                                        @*<select class="form-control" id="ParentAc" name="ParentAc" size="1"><option value="0">@NIMBOLE.GlobalResources.Resources.Select</option></select>*@
+                                        @(Html.TextBox("Parent", "", new { @placeholder = @NIMBOLE.GlobalResources.Resources.SelectOrAdd, @style = "width: 100%;", @class = "form-control", @tabindex = "24" }))
+
+                                        <div id="dialog" style="display: none"></div>
+                                    </div>
+                                    <script>
+                                        function onParentAccountDataBound(e) {
+                                            if (this._selectedValue === undefined) {
+                                                var combo = $("#Parent").data("kendoComboBox");
+                                                combo.value('@Model.ParentAccount' != 0 ? '@Model.ParentAccount' : "");
+                                            }
+                                        }
+                                        function BindParentAccount() {
+                                            $("#Parent").kendoComboBox({
+                                                dataTextField: "Name",
+                                                dataValueField: "Id",
+                                                @*dataSource: @Html.Raw(Json.Encode(ViewData["ParentAccount"])),*@
+                                                dataSource: {
+                                                    type: "json",
+                                                    transport: {
+                                                        read: {
+                                                            url: "/NimboleAccounts/GetAllDistributorsForCombo",
+                                                            dataType: "json"
+                                                        }
+                                                    }
+                                                },
+                                                sort: { field: "Name", dir: "asc" },
+                                                filter: "startswith",
+                                                dataBound: onParentAccountDataBound,
+                                                change: onParentAccountChange,
+                                                suggest: true
+                                            });
+                                        }
+
+                                        $(document).ready(function () {
+                                            BindParentAccount();
+                                        });
+                                    </script>
+
+                                </div>
+
+                                <div id="divStatus" class="form-group">
+                                    <label for="InputAccountStatus">
+                                        @*@NIMBOLE.GlobalResources.Resources.Account*@  @NIMBOLE.GlobalResources.Resources.Status
+                                    </label>
+                                    <div class="row">
+                                        <div class="col-lg-2 form-group">
+                                            @*@Html.CheckBoxFor(model => model.Status, new { @tabindex = "26" })*@
+                                            @Html.CheckBoxFor(model => model.Status, new { @tabindex = "26" })
+                                        </div>
+                                        <label>
+                                            @NIMBOLE.GlobalResources.Resources.ActiveInactive
+                                        </label>
+                                    </div>
+                                </div>
+                                <script>
+                                    $(document).ready(function () {
+                                        if (parseInt('@Model.ContactsCount') > 0) {
+                                            $('#Status').attr("onclick", "return false;").attr("onkeydown", "return false;");
+                                        }
+                                        //var sta = $('#Status').val();
+                                        if ($("#Status").is(':checked')) {
+                                            var sta = "true";
+                                        }
+                                        else {
+                                            var sta = "false";
+                                        }
+                                        var id = '@Model.Id';
+                                        if (sta == "true") {
+                                            $.ajax({
+                                                url: '/NimboleAccounts/DeleteRead',
+                                                dataType: "json",
+                                                type: "DELETE",
+                                                contentType: 'application/json; charset=utf-8',
+                                                data: JSON.stringify({ id: id, status: sta }),
+                                                async: true,
+                                                processData: false,
+                                                cache: false,
+                                                success: function (data) {
+                                                    if (typeof data === "string") {
+                                                        if (data.lastIndexOf("associated") > -1) {
+                                                            $('#Status').attr("onclick", "return false;").attr("onkeydown", "return false;");
+                                                        }
+                                                    }
+                                                },
+                                                error: function (xhr) {
+                                                }
+                                            });
+                                        }
+                                    });
+                                </script>
+                            </div>
+                            @*Right Column*@
+                             <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="InputAccountName">
+                                    @NIMBOLE.GlobalResources.Resources.AccountName <span class="text-danger">*</span>
+                                </label>
+                                @Html.TextBoxFor(model => model.AccountName, new { @placeholder = @NIMBOLE.GlobalResources.Resources.AccountName, @class = "form-control", @tabindex = "2", @readonly = "readonly" })
+                                @Html.ValidationMessageFor(m => m.AccountName)
+                            </div>
+
+                            <div class="form-group">
+                                <label for="AccountClassification">
+                                    @NIMBOLE.GlobalResources.Resources.AccountClassification
+                                </label>
+                                @Html.HiddenFor(model => model.AccountClassification)
+                                <select class="form-control" id="AccountClf" name="AccountClf" size="1" tabindex="4">
+                                    <option value="0">@NIMBOLE.GlobalResources.Resources.Select</option>
+                                    <option value="1">Customer</option>
+                                    <option value="2">Prospect</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Employees">
+                                    @NIMBOLE.GlobalResources.Resources.NoOfEmployees
+                                </label>
+                                @Html.TextBoxFor(model => model.Employees, new { @placeholder = @NIMBOLE.GlobalResources.Resources.NoOfEmployees, @class = "form-control", @tabindex = "6", @onkeydown = "return ValidateNumber(event);", @min = "0", @maxlength = "8" })
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Industry">
+                                    @NIMBOLE.GlobalResources.Resources.Industry
+                                </label>
+                                @Html.HiddenFor(model => model.Industry)
+                                @*<select class="form-control" id="Indust" name="Industry" size="1"><option value="0">@NIMBOLE.GlobalResources.Resources.Select</option></select>*@
+                                @(Html.TextBox("Indus", "", new { @placeholder = @NIMBOLE.GlobalResources.Resources.SelectOrAdd, @style = "width: 100%;", @class = "form-control", @tabindex = "8" }))
+                            </div>
+                            <script>
+                                function onIndustryDataBound(e) {
+                                    if (this._selectedValue === undefined) {
+                                        var combo = $("#Indus").data("kendoComboBox");
+                                        combo.value('@Model.Industry' != 0 ? '@Model.Industry' : "");
+                                    }
+                                }
+                                function BindIndustry() {
+                                    $("#Indus").kendoComboBox({
+                                        dataTextField: "Name",
+                                        dataValueField: "Id",
+                                        @*dataSource: @Html.Raw(Json.Encode(ViewData["Industry"])),*@
+                                        dataSource: {
+                                            type: "json",
+                                            transport: {
+                                                read: {
+                                                    url: "/NimboleAccounts/GetAllIndustryForCombo",
+                                                    dataType: "json"
+                                                }
+                                            }
+                                        },
+                                        sort: { field: "Name", dir: "asc" },
+                                        filter: "startswith",
+                                        dataBound: onIndustryDataBound,
+                                        change: onIndustryChange,
+                                        suggest: true
+                                    });
+                                }
+
+                                $(document).ready(function () {
+                                    BindIndustry();
+                                });
+                            </script>
+
+                            <div class="form-group">
+                                <label for="InputStreet">
+                                    @NIMBOLE.GlobalResources.Resources.Address2
+                                </label>
+                                @Html.TextBoxFor(model => model.objAddressModel.StreetName, new { @placeholder = @NIMBOLE.GlobalResources.Resources.Address2, @class = "form-control", @tabindex = "10" })
+                            </div>
+
+                            <div class="form-group">
+                                <label for="InputState">
+                                    @NIMBOLE.GlobalResources.Resources.State
+                                </label>
+                                @Html.HiddenFor(model => model.objAddressModel.StateId)
+                                <select class="form-control" id="State" name="State" size="1"><option value="0" tabindex="12">@NIMBOLE.GlobalResources.Resources.Select</option></select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="InputZip">
+                                    @NIMBOLE.GlobalResources.Resources.ZipCode
+                                </label>
+                                @Html.TextBoxFor(model => model.objAddressModel.ZipCode, new { @placeholder = @NIMBOLE.GlobalResources.Resources.ZipCode, @class = "form-control", @tabindex = "14", @onkeydown = "return ValidateNumber(event);", @maxlength = 6 })
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Phone">
+                                    @NIMBOLE.GlobalResources.Resources.Phone
+                                </label>
+                                @Html.TextBoxFor(model => model.Phone, new { @placeholder = @NIMBOLE.GlobalResources.Resources.Phone, @class = "form-control", @tabindex = "16", @onkeydown = "return ValidateNumber(event);" })
+                            </div>
+
+                            <div class="form-group">
+                                <label for="InputEmail">
+                                    @NIMBOLE.GlobalResources.Resources.Email
+                                </label>
+                                @Html.TextBoxFor(model => model.Email, new { @placeholder = @NIMBOLE.GlobalResources.Resources.Email, @class = "form-control", @tabindex = "18" })
+                            </div>
+
+                            <div class="form-group">
+                                <label for="SICCode">
+                                    @NIMBOLE.GlobalResources.Resources.SICCode
+                                </label>
+                                @Html.TextBoxFor(model => model.SICCode, new { @placeholder = @NIMBOLE.GlobalResources.Resources.SICCode, @class = "form-control", @tabindex = "20" })
+                            </div>
+
+                            <div class="form-group">
+                                <label for="InputWebsite">
+                                    @NIMBOLE.GlobalResources.Resources.Website
+                                </label>
+                                @Html.TextBoxFor(model => model.Website, new { @placeholder = @NIMBOLE.GlobalResources.Resources.Website, @class = "form-control", @tabindex = "22" })
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Distributor">
+                                    @NIMBOLE.GlobalResources.Resources.Distributor
+                                </label>
+                                @Html.HiddenFor(model => model.DistributerName)
+                                @*<select class="form-control" id="Distrib" name="Distributor" size="1"><option value="0">@NIMBOLE.GlobalResources.Resources.Select</option></select>*@
+                                @(Html.TextBox("Distributer", "", new { @placeholder = @NIMBOLE.GlobalResources.Resources.SelectOrAdd, @style = "width: 100%;", @class = "form-control", @tabindex = "25" }))
+                            </div>
+                            <script>
+                                function onDistributorDataBound(e) {
+                                    if (this._selectedValue === undefined) {
+                                        var combo = $("#Distributer").data("kendoComboBox");
+                                        combo.value('@Model.DistributerName' != 0 ? '@Model.DistributerName' : "");
+                                    }
+                                }
+                                function BindDistributor() {
+                                    $("#Distributer").kendoComboBox({
+                                        dataTextField: "Name",
+                                        dataValueField: "Id",
+                                        @*dataSource: @Html.Raw(Json.Encode(ViewData["Distributor"])),*@
+                                        dataSource: {
+                                            type: "json",
+                                            transport: {
+                                                read: {
+                                                    url: "/NimboleAccounts/GetAllDistributorsForCombo",
+                                                    dataType: "json"
+                                                }
+                                            }
+                                        },
+                                        filter: "startswith",
+                                        sort: { field: "Name", dir: "asc" },
+                                        dataBound: onDistributorDataBound,
+                                        change: onDistributorChange,
+                                        suggest: true
+                                    });
+                                }
+                                $(document).ready(function () {
+                                    BindDistributor();
+                                });
+                            </script>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12" style="text-align: right;">
+                            <input type="button" id="btnSubmit" class="btn btn-success" value=@NIMBOLE.GlobalResources.Resources.Update tabindex="26">
+                            <input type="button" value=@NIMBOLE.GlobalResources.Resources.Cancel class="btn btn-danger" onclick="location.href = '/NimboleAccounts/Index'" tabindex="27" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            </div>
+        @Html.Hidden("hdnOwnership")
+        @Html.Hidden("hdnAccountType")
+        @Html.Hidden("hdnIndustry")
+        @Html.Hidden("hdnDistributor")
+        @Html.Hidden("hdnParentAccount")
+    @*Ownership*@
+    <script>
+        function OwnershipChange() {
+            var combobox = $("#Owner").data("kendoComboBox");
+            var cb = $('#Owner').kendoComboBox();
+            $.ajax({
+                url: '@Url.Action("Create", "Ownership")',
+                type: 'POST',
+                async: false,
+                data: { 'item': cb[0].value.trim() },
+                success: function (data) {
+                    if (data.Total === 1 && data.Data[0].Id === 0) {
+                        Dialog("Record already exist/inactive.", "");
+                        combobox.clear();
+                        swal.close();
+                        combobox.focus();
+                    }
+                    else {
+                        $('#OwnerShip').val(data.Data[data.Data.length - 1].Id);
+                        $("hdnOwnership").val(data.Data[data.Data.length - 1].Id);
+                        swal.close();
+                    }
+                    BindOwnership();
+                    kendo.ui.progress(combobox.wrapper, false);
+                },
+                error: function () {
+                    BindOwnership();
+                    kendo.ui.progress(combobox.wrapper, false);
+                    Dialog('Error occured', "");
+                }
+            });
+        }
+        function onOwnershipChange(e) {
+            if (this.value() && this.selectedIndex == -1) {
+                var combobox = $("#Owner").data("kendoComboBox");
+                var cb = $('#Owner').kendoComboBox();
+                kendo.ui.progress(combobox.wrapper, true);
+                if (Dialog("Do you want to add '" + cb[0].value + "' to ownership?", "own")) {
+                }
+            }
+            else {
+                $('#OwnerShip').val($("#Owner").val());
+                //$("hdnOwnership").val($("#Owner").val());
+                $('#hdnOwnership').val($("#Owner").val());
+            }
+        }
+    </script>
+    @*Distributor*@
+    <script>
+        function DistributorChange() {
+            var combobox = $("#Distributer").data("kendoComboBox");
+            var cb = $('#Distributer').kendoComboBox();
+            $.ajax({
+                url: '@Url.Action("CreateAccount", "NimboleAccounts")',
+                type: 'POST',
+                async: false,
+                data: { 'item': cb[0].value.trim() },
+                success: function (data) {
+                    if (data.Total === 1 && data.Data[0].Id === 0) {
+                        Dialog("Record already exist/inactive.", "");
+                        combobox.clear();
+                        swal.close();
+                        combobox.focus();
+                    }
+                    else {
+                        $('#DistributerName').val(data.Data[data.Data.length - 1].Id);
+                        swal.close();
+                    }
+                    BindDistributor();
+                    kendo.ui.progress(combobox.wrapper, false);
+                },
+                error: function () {
+                    BindDistributor();
+                    kendo.ui.progress(combobox.wrapper, false);
+                    Dialog('Error occured', "");
+                }
+            });
+        }
+        function onDistributorChange(e) {
+            if (this.value() && this.selectedIndex == -1) {
+                var combobox = $("#Distributer").data("kendoComboBox");
+                var cb = $('#Distributer').kendoComboBox();
+                kendo.ui.progress(combobox.wrapper, true);
+                if (Dialog("Do you want to add '" + cb[0].value + "' to distributor?", "dis")) {
+                }
+            }
+            else {
+                $('#DistributerName').val($("#Distributer").val());
+            }
+        }
+    </script>
+    @*AccountType*@
+    <script>
+        function AccountTypeChange() {
+            var combobox = $("#Type").data("kendoComboBox");
+            var cb = $('#Type').kendoComboBox();
+            $.ajax({
+                url: '@Url.Action("Create", "AccountType")',
+                type: 'POST',
+                async: false,
+                data: { 'item': cb[0].value.trim() },
+                success: function (data) {
+                    if (data.Total === 1 && data.Data[0].Id === 0) {
+                        customAlert("Record already exist/inactive.", "");
+                        combobox.clear();
+                        swal.close();
+                        combobox.focus();
+                    }
+                    else {
+                        $('#AccountType').val(data.Data[data.Data.length - 1].Id);
+                        swal.close();
+                    }
+                    BindAccountType();
+                    kendo.ui.progress(combobox.wrapper, false);
+                },
+                error: function () {
+                    BindAccountType();
+                    kendo.ui.progress(combobox.wrapper, false);
+                    Dialog('Error occured', "");
+                }
+            });
+        }
+        function onAccountTypeChange(e) {
+            if (this.value() && this.selectedIndex == -1) {
+                var combobox = $("#Type").data("kendoComboBox");
+                var cb = $('#Type').kendoComboBox();
+                kendo.ui.progress(combobox.wrapper, true);
+                if (Dialog("Do you want to add '" + cb[0].value + "' to account type?", "act")) {
+                }
+            }
+            else {
+                $('#AccountType').val($("#Type").val());
+            }
+        }
+    </script>
+    <script>
+        function IndustryChange() {
+            var combobox = $("#Indus").data("kendoComboBox");
+            var cb = $('#Indus').kendoComboBox();
+            $.ajax({
+                url: '@Url.Action("Create", "Industry")',
+                type: 'POST',
+                async: false,
+                data: { 'item': cb[0].value.trim() },
+                success: function (data) {
+                    if (data.Total === 1 && data.Data[0].Id === 0) {
+                        customAlert("Record already exist/inactive.", "");
+                        combobox.clear();
+                        swal.close();
+                        combobox.focus();
+                    }
+                    else {
+                        $('#Industry').val(data.Data[data.Data.length - 1].Id);
+                        swal.close();
+                    }
+                    BindIndustry();
+                    kendo.ui.progress(combobox.wrapper, false);
+                },
+                error: function () {
+                    BindIndustry();
+                    kendo.ui.progress(combobox.wrapper, false);
+                    Dialog('Error occured', "");
+                }
+            });
+        }
+        function onIndustryChange(e) {
+            if (this.value() && this.selectedIndex == -1) {
+                var combobox = $("#Indus").data("kendoComboBox");
+                var cb = $('#Indus').kendoComboBox();
+                kendo.ui.progress(combobox.wrapper, true);
+                if (Dialog("Do you want to add '" + cb[0].value + "' to industry?", "ind")) {
+                }
+            }
+            else {
+                $('#Industry').val($("#Indus").val());
+            }
+        }
+    </script>
+    @*ParntAccount*@
+    <script>
+        function ParentAccountChange() {
+            var combobox = $("#Parent").data("kendoComboBox");
+            var cb = $('#Parent').kendoComboBox();
+            $.ajax({
+                url: '@Url.Action("ParentCreate", "NimboleAccounts")',
+                type: 'POST',
+                async: false,
+                data: { 'item': cb[0].value.trim() },
+                success: function (data) {
+                    if (data.Total === 1 && data.Data[0].Id === 0) {
+                       Dialog("Record already exist/inactive.", "");
+                       combobox.clear();
+                       swal.close();
+                        combobox.focus();
+                    }
+                    else {
+                        $('#ParentAccount').val(data.Data[data.Data.length - 1].Id);
+                        swal.close();
+                    }
+                    BindParentAccount();
+                    kendo.ui.progress(combobox.wrapper, false);
+                },
+                error: function () {
+                    BindParentAccount();
+                    kendo.ui.progress(combobox.wrapper, false);
+                    Dialog('Error occured', "");
+                }
+            });
+
+        }
+        function onParentAccountChange(e) {
+            if (this.value() && this.selectedIndex == -1) {
+                var combobox = $("#Parent").data("kendoComboBox");
+                var cb = $('#Parent').kendoComboBox();
+                kendo.ui.progress(combobox.wrapper, true);
+                if (Dialog("Do you want to add '" + cb[0].value + "' to parent account?", "pact")) {
+                }
+            }
+            else {
+                if ($('#IsParentAccount').is(':checked')) {
+                    $('#ParentAccount').val($("#Parent").val());
+                }
+                else {
+                    $('#ParentAccount').val($("#Parent").val());
+                }
+            }
+        }
+
+    </script>
+    <script>
+        $(document).ready(function () {
+            //BindOwnership();
+            //BindAccountType();
+            //BindIndustry()
+            //BindDistributor()
+            //BindParentAccount()
+            BindCountries();
+            BindStates('@Model.objAddressModel.CountryId');
+            BindCities('@Model.objAddressModel.StateId');
+
+        });
+
+        @*function BindOwnership() {
+                $.ajax({
+                    type: "POST",
+                    async: false,
+                    contentType: "application/json; charset=utf-8",
+                    url: "/NimboleAccounts/GetAllOwnershipsForCombo",
+                    data: "{}",
+                    dataType: "json",
+                    success: function (Result) {
+
+                        for (var i = 0; i < Result.length; i++) {
+
+                            $("#Owner").append('<option value="'
+                                        + Result[i].Id + '">' +
+                                        Result[i].Name + '</option>');
+                        }
+                        $("#Owner").find('option').each(function (i, opt) {
+
+                            if (opt.value === '@Model.OwnerShipName' != 0 ? '@Model.OwnerShipName' : "")
+                                $(opt).attr('selected', 'selected');
+                        });
+
+                    },
+
+                    error: function (Result) {
+                    }
+                });
+            }
+    $("#Owner").change(function () {
+        var value = this.value;
+        if (value != -1 || value != '') {
+            $('#OwnerShipName').val(parseInt(value));
+        }
+    });
+    function BindAccountType() {
+        $.ajax({
+            type: "GET",
+            async: false,
+            contentType: "application/json; charset=utf-8",
+            url: "/NimboleAccounts/SelectAllAccountTypeForCombo",
+            data: "{}",
+            dataType: "json",
+            success: function (AccTyp) {
+
+                for (var i = 0; i < AccTyp.length; i++) {
+                    $("#Accounttyp").append('<option value="'
+                                + AccTyp[i].Id + '">' +
+                                AccTyp[i].Name + '</option>');
+                }
+                $("#Accounttyp").find('option').each(function (i, opt) {
+
+                    if (opt.value === '@Model.AccountType' != 0 ? '@Model.AccountType' : "")
+                        $(opt).attr('selected', 'selected');
+                });
+
+            },
+            error: function (AccTyp) {
+            }
+        });
+    }
+    $("#Accounttyp").change(function () {
+        debugger;
+        var value = this.value;
+        if (value != -1 || value != '') {
+            $('#AccountType').val(parseInt(value));
+        }
+    });
+    function BindIndustry() {
+        $.ajax({
+            type: "POST",
+            async: false,
+            contentType: "application/json; charset=utf-8",
+            url: "/NimboleAccounts/GetAllIndustryForCombo",
+            data: "{}",
+            dataType: "json",
+            success: function (Indus) {
+                for (var i = 0; i < Indus.length; i++) {
+                    $("#Indust").append('<option value="'
+                                + Indus[i].Id + '">' +
+                                Indus[i].Name + '</option>');
+                }
+                $("#Indust").find('option').each(function (i, opt) {
+
+                    if (opt.value === '@Model.Industry' != 0 ? '@Model.Industry' : "")
+                        $(opt).attr('selected', 'selected');
+                });
+            },
+            error: function (Indus) {
+            }
+        });
+    }
+    $("#Indust").change(function () {
+        var value = this.value;
+        if (value != -1 || value != '') {
+            $('#Industry').val(parseInt(value));
+        }
+    });
+    function BindDistributor() {
+        $.ajax({
+            type: "POST",
+            async: false,
+            contentType: "application/json; charset=utf-8",
+            url: "/NimboleAccounts/GetAllDistributorsForCombo",
+            data: "{}",
+            dataType: "json",
+            success: function (Distrib) {
+                for (var i = 0; i < Distrib.length; i++) {
+                    $("#Distrib").append('<option value="'
+                                + Distrib[i].Id + '">' +
+                                Distrib[i].Name + '</option>');
+                }
+                $("#Distrib").find('option').each(function (i, opt) {
+
+                    if (opt.value === '@Model.DistributerName' != 0 ? '@Model.DistributerName' : "")
+                        $(opt).attr('selected', 'selected');
+                });
+            },
+            error: function (Distrib) {
+            }
+        });
+    }
+    $("#Distrib").change(function () {
+        var value = this.value;
+        if (value != -1 || value != '') {
+            $('#DistributerName').val(parseInt(value));
+        }
+    });
+    function BindParentAccount() {
+        $.ajax({
+            type: "POST",
+            async: false,
+            contentType: "application/json; charset=utf-8",
+            url: "/NimboleAccounts/GetAllDistributorsForCombo",
+            data: "{}",
+            dataType: "json",
+            success: function (AccountP) {
+                for (var i = 0; i < AccountP.length; i++) {
+                    $("#ParentAc").append('<option value="'
+                                + AccountP[i].Id + '">' +
+                                AccountP[i].Name + '</option>');
+                }
+
+                $("#ParentAc").find('option').each(function (i, opt) {
+
+                    if (opt.value === '@Model.ParentAccount' != 0 ? '@Model.ParentAccount' : "")
+                        $(opt).attr('selected', 'selected');
+                });
+            },
+            error: function (AccountP) {
+            }
+        });
+    }
+    $("#ParentAc").change(function () {
+        var value = this.value;
+        if (value != -1 || value != '') {
+            $('#ParentAccount').val(parseInt(value));
+        }
+    });*@
+
+        $("#AccountClf").change(function () {
+            var value = this.value;
+            if (value != -1 || value != '') {
+                $('#AccountClassification').val(parseInt(value));
+            }
+        });
+
+        $("#AccountClf").find('option').each(function (i, opt) {
+
+            if (opt.value === '@Model.AccountClassification' != 0 ? '@Model.AccountClassification' : "")
+                $(opt).attr('selected', 'selected');
+        });
+        function BindCountries() {
+            $.ajax({
+                type: "GET",
+                async: false,
+                contentType: "application/json; charset=utf-8",
+                url: "/AddressAutoComplete/GetCountryNames",
+                data: "{}",
+                dataType: "json",
+                success: function (Result) {
+                    for (var i = 0; i < Result.length; i++) {
+                        $("#Country").append('<option value="'
+                                    + Result[i].CountryId + '">' +
+                                    Result[i].CountryName + '</option>');
+                    }
+                    $("#Country").find('option').each(function (i, opt) {
+
+                        if (opt.value === '@Model.objAddressModel.CountryId' != 0 ? '@Model.objAddressModel.CountryId' : "")
+                            $(opt).attr('selected', 'selected');
+                    });
+                },
+                error: function (Result) {
+                }
+            });
+        }
+        $("#Country").change(function () {
+            var value = this.value;
+            if (value != -1 || value != '') {
+                BindStates(value);
+                $('#objAddressModel_CountryId').val(parseInt(value));
+            }
+        });
+        function BindStates(countryId) {
+            $('#State')
+                .find('option')
+                .remove()
+                .end()
+                .append('<option value="0">@NIMBOLE.GlobalResources.Resources.Select</option>')
+            ;
+            $.ajax({
+                type: "GET",
+                async: false,
+                contentType: "application/json; charset=utf-8",
+                url: "/AddressAutoComplete/GetStateNamesCreate?Countries=" + countryId,
+                data: "{}",
+                dataType: "json",
+                success: function (Result) {
+                    for (var i = 0; i < Result.length; i++) {
+                        $("#State").append('<option value="'
+                                    + Result[i].Id + '">' +
+                                    Result[i].Name + '</option>');
+                    }
+
+                    $("#State").find("option").each(function () {
+                        if ($(this).val() == '@Model.objAddressModel.StateId') {
+                            $(this).prop("selected", "selected");
+                        }
+                    });
+
+                },
+                error: function (Result) {
+                }
+            });
+        }
+        $("#State").change(function () {
+
+            var value = this.value;
+            if (value != -1 || value != '' || value != "") {
+                BindCities(value);
+                $('#objAddressModel_StateId').val(parseInt(value));
+            }
+        });
+        function BindCities(stateId) {
+            $('#City')
+              .find('option')
+              .remove()
+              .end()
+            .append('<option value="0">@NIMBOLE.GlobalResources.Resources.Select</option>');
+            $.ajax({
+                type: "GET",
+                async: false,
+                contentType: "application/json; charset=utf-8",
+                url: "/AddressAutoComplete/GetCityNamesCreate?states=" + stateId,
+                data: "{}",
+                dataType: "json",
+                success: function (Result) {
+                    for (var i = 0; i < Result.length; i++) {
+                        $("#City").append('<option value="'
+                                    + Result[i].Id + '">' +
+                                    Result[i].Name + '</option>');
+                    }
+
+                    $("#City").find("option").each(function () {
+                        if ($(this).val() == '@Model.objAddressModel.CityId') {
+                            $(this).prop("selected", "selected");
+                        }
+                    });
+
+                },
+                error: function (Result) {
+                }
+            });
+        }
+
+        $("#City").change(function () {
+
+            var value = this.value;
+            if (value != -1 || value != '' || value != "") {
+                $('#objAddressModel_CityId').val(parseInt(value));
+            }
+        });
+    </script>
+
+    <script>
+        var listcontrols = {
+            "AccountName": "true,allcharacters,1,100"
+            , "Employees": "false,numeric"
+           , "objAddressModel_ZipCode": "false,zipcode,6,6"
+           //, "Fax": "false,mobile,10,10"
+           //, "Phone": "false,mobile,10,10"
+           , "Email": "false,email"
+           , "AnnualRevenue": "false,money"
+            , "AccountCode": "false,alphanumeric"
+            , "AccountOwner": "false,characters"
+            , "objAddressModel_HouseNo": "false,allcharacters,1,100"
+            , "objAddressModel_StreetName": "false,allcharacters,1,100"
+            , "Rating": "false,alphanumeric"
+            , "SICCode": "false,alphanumeric"
+        , "Region": "false,allcharacters"
+            , "Website": "false,url"
+        };
+
+        $(document).ready(function () {
+            //$(function validate(e) {
+            $('#btnSubmit').click(function (e) {
+                if (listcontrols) {
+                    var flag = 0;
+                    $.each(listcontrols, function (key, value) {
+                        if (validateControl(key, value.split(',')[0], value.split(',')[1], value.split(',')[2], value.split(',')[3]) == false) {
+                            flag = flag + 1;
+                        }
+                    });
+                    if (flag != 0) {
+                        this.disabled = false;
+                        return false;
+                    }
+                    else {
+                        this.disabled = true;
+                        $('form')[0].submit();
+                    }
+                }
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $(function () {
+                if ($('#IsParentAccount').is(':checked')) {
+                    $('#divParentAccount').hide();
+                } else {
+                    $('#divParentAccount').show();
+                }
+                $('#IsParentAccount').click(function () {
+                    if ($(this).is(':checked')) {
+                        $('#divParentAccount').hide();
+                    } else {
+                        $('#divParentAccount').show();
+                    }
+                });
+            });
+        });
+    </script>
+
+    <script>
+
+        //$("#tv").change(function () {
+
+        //    alert(this.value);
+        //});
+
+        //function onOwnershipChange(e) {
+
+        //$("#tv").change(function () {
+        //    debugger;
+        //    var cb = this.value;
+        //    var ind = $("#Ownership option:selected").index();
+
+        //    if (this.value != "" && ind === -1) {
+        //        alert(cb);
+        //        var cb = this.value;
+
+        //        if (customAlert("Do you want to add '" + cb + "' to ownership?", "own")) {
+        //        }
+        //    }
+        //    else {
+        //        $('#hdnOwnership').val($("#OwnerShip").val());
+        //        $('#OwnerShip').val($("#OwnerShip").val()); // added on 20th Nov 2015
+        //    }
+        //});
+    </script>
+
+    <script>
+        function Dialog(message, type) {
+            var message;
+            swal({
+                title: message,
+                type: "",
+                showCancelButton: true,
+                confirmButtonColor: "#337ab7",
+                confirmButtonText: "Ok",
+                cancelButtonText: "Cancel",
+                cancelButtonColor: "#d26a5c",
+                showLoaderOnConfirm: false,
+                closeOnConfirm: false,
+            },
+            function (isConfirm) {
+                if (isConfirm) {
+                    switch (type) {
+                        case "own": OwnershipChange();
+                            break;
+                        case "dis": DistributorChange();
+                            break;
+                        case "act": AccountTypeChange();
+                            break;
+                        case "ind": IndustryChange();
+                            break;
+                        case "pact": ParentAccountChange();
+                            break;
+                        case ""://Default
+                            swal.close();
+                            break;
+                    }
+                }
+                else {
+                    switch (type) {
+                        case "own":
+                            var combobox = $("#Owner").data("kendoComboBox");
+                            combobox.clear();
+                            swal.close();
+                            combobox.focus();
+                            BindOwnership();
+                            kendo.ui.progress(combobox.wrapper, false);
+                            break;
+                        case "dis":
+                            var combobox = $("#Distributer").data("kendoComboBox");
+                            combobox.clear();
+                            swal.close();
+                            combobox.focus();
+                            BindDistributor();
+                            kendo.ui.progress(combobox.wrapper, false);
+                            break;
+                        case "act":
+                            var combobox = $("#Type").data("kendoComboBox");
+                            combobox.clear();
+                            swal.close();
+                            combobox.focus();
+                            BindAccountType();
+                            kendo.ui.progress(combobox.wrapper, false);
+                            break;
+                        case "ind":
+                            var combobox = $("#Indus").data("kendoComboBox");
+                            combobox.clear();
+                            swal.close();
+                            combobox.focus();
+                            BindIndustry();
+                            kendo.ui.progress(combobox.wrapper, false);
+                            break;
+                        case "pact":
+                            var combobox = $("#Parent").data("kendoComboBox");
+                            combobox.clear();
+                            swal.close();
+                            combobox.focus();
+                            BindParentAccount();
+                            setTimeout(function () { combobox.focus(); }, 2000);
+                            kendo.ui.progress(combobox.wrapper, false);
+                            break;
+                    }
+                }
+            });
+        }
+        //function customAlert(message, type) {
+
+        //    $("#dialog-confirm").dialog({
+        //        resizable: false,
+        //        height: 140,
+        //        width: "auto",
+        //        modal: true,
+        //        buttons: {
+        //            "OK": function () {
+        //                debugger;
+        //                $(this).dialog("close");
+        //                switch (type) {
+
+        //                    case "own": ownershipChange();
+        //                        break;
+        //                    case "dis": DistributorChange();
+        //                        break;
+        //                    case "act": AccountTypeChange();
+        //                        break;
+        //                    case "ind": IndustryChange();
+        //                        break;
+        //                    case "pact": ParentAccountChange();
+        //                        break;
+        //                }
+        //            },
+        //            Cancel: function () {
+        //                switch (type) {
+        //                    case "own":
+        //                        var combobox = $("#OwnerShip").data("kendoComboBox");
+        //                        combobox.clear();
+        //                        //combobox.focus();
+        //                        BindOwnership();
+        //                        setTimeout(function () { combobox.focus(); }, 2000);
+        //                        kendo.ui.progress(combobox.wrapper, false);
+        //                        break;
+        //                    case "dis":
+        //                        var combobox = $("#DistributerName").data("kendoComboBox");
+        //                        combobox.clear();
+        //                        //combobox.focus();
+        //                        BindDistributor();
+        //                        setTimeout(function () { combobox.focus(); }, 2000);
+        //                        kendo.ui.progress(combobox.wrapper, false);
+        //                        break;
+        //                    case "act":
+        //                        var combobox = $("#AccountType").data("kendoComboBox");
+        //                        combobox.clear();
+        //                        // combobox.focus();
+        //                        BindAccountType();
+        //                        setTimeout(function () { combobox.focus(); }, 2000);
+        //                        kendo.ui.progress(combobox.wrapper, false);
+        //                        break;
+        //                    case "ind":
+        //                        var combobox = $("#Industry").data("kendoComboBox");
+        //                        combobox.clear();
+        //                        //combobox.focus();
+        //                        BindIndustry();
+        //                        setTimeout(function () { combobox.focus(); }, 2000);
+        //                        kendo.ui.progress(combobox.wrapper, false);
+        //                        break;
+        //                    case "pact":
+        //                        var combobox = $("#ParentAccount").data("kendoComboBox");
+        //                        combobox.clear();
+        //                        //combobox.focus();
+        //                        BindParentAccount();
+        //                        setTimeout(function () { combobox.focus(); }, 2000);
+        //                        kendo.ui.progress(combobox.wrapper, false);
+        //                        break;
+        //                }
+        //                $(this).dialog("close");
+        //            }
+        //        },
+
+        //        open: function (event, ui) {
+        //            $('#dialog-confirm').attr("style", "height: auto; max-height: 62px; min-height: 62px; width: auto;");
+        //            $(".ui-dialog-titlebar").hide();
+        //            $('#dialogContent').text(message);
+        //            if (type === "")
+        //                $('.ui-dialog-buttonset')[0].children[1].hidden = true;
+        //        }
+        //    });
+        //}
+    </script>
+
+    <script>
+        function OnError(xhr, errorType, exception) {
+            var responseText;
+            $("#dialog").html("");
+            try {
+                responseText = jQuery.parseJSON(xhr.responseText);
+                $("#dialog").append("<div><b>" + errorType + " " + exception + "</b></div>");
+                $("#dialog").append("<div><u>Exception</u>:<br /><br />" + responseText.ExceptionType + "</div>");
+                $("#dialog").append("<div><u>StackTrace</u>:<br /><br />" + responseText.StackTrace + "</div>");
+                $("#dialog").append("<div><u>Message</u>:<br /><br />" + responseText.Message + "</div>");
+            } catch (e) {
+                responseText = xhr.responseText;
+                customAlert(responseText, "");
+                $("#dialog").html(responseText);
+            }
+        }
+    </script>
+
+</main>
+}
+
+

@@ -1,0 +1,337 @@
+﻿@model IEnumerable<NIMBOLE.Models.Models.EmployeeModel>
+@{
+    ViewBag.Title = "NIMBOLE | List Employees";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+     <!-- Page JS Plugins -->
+    <script src="~/assets/js/plugins/datatables/jquery.dataTables.min.js"></script>
+        <!-- Page JS Code -->
+    <script src="~/assets/js/pages/base_tables_datatables.js"></script>
+}
+@using (Html.BeginForm())
+{
+    <main id="main-container">
+        <!-- Page Content -->
+        <div class="content">
+            <!-- Dynamic Table Full -->
+            <div class="block">
+                <div class="block-header">
+                    <div class="form-group">
+                        <div class="col-xs-6">
+                            <h1 class="block">@NIMBOLE.GlobalResources.Resources.Employee</h1>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-6" style="text-align:right;">
+                            <a href="~/Employees/Create" class="btn btn-sw btn-primary" tabindex="1" role="button">
+                                <i class="fa fa-plus"></i>
+                                @NIMBOLE.GlobalResources.Resources.New
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="block-content">
+                    <!--DataTables init on table by adding .js-dataTable-full class, functionality initialized in js/pages/base_tables_datatables.js -->
+                    <table class="table table-bordered table-striped js-dataTable-full-pagination" id="example" width="100%">
+                        @*class="display select"*@
+                        <thead>
+                            <tr>
+                                <th colspan="7">
+                                    <div class="toolbar" style="float:right">
+                                        <button id="Activate" onclick="javascript: Dialog('act');" class="btn btn-success" type="button">Activate</button>
+                                        <button id="Deactivate" onclick="javascript: Dialog('dea');" class="btn btn-success" type="button">Deactivate</button>
+                                        <button id="Delete" onclick="javascript: Dialog('del');" class="btn btn-success" type="button">Delete</button>
+                                    </div>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th class="text-center" style="display:none">@NIMBOLE.GlobalResources.Resources.Id</th>
+                                <th class="text-center">@NIMBOLE.GlobalResources.Resources.FirstName</th>
+                                <th class="text-center">@NIMBOLE.GlobalResources.Resources.LastName</th>
+                                <th class="text-center">@NIMBOLE.GlobalResources.Resources.Email</th>
+                                <th class="text-center">@NIMBOLE.GlobalResources.Resources.Status</th>
+                                <th class="text-center"></th>
+                                <th><input id="ChSelectAll" name="select_all" type="checkbox" class="selectAll" data-orderable="false"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null)
+                            {
+                                foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td style="display:none">
+                                            @item.Id
+                                        </td>
+                                        <td>
+                                            @item.FirstName
+                                        </td>
+                                        <td>@item.LastName</td>
+                                        <td>@item.EmployeeEmail</td>
+                                        @{
+                                    if (item.Status == true)
+                                    {
+                                        item.Active = "Active";
+                                        item.Change_status = "Deactivate";
+                                    }
+                                    else
+                                    {
+                                        item.Active = "Inactive";
+                                        item.Change_status = "Activate";
+                                    }
+                                        }
+                                        <td>@item.Active</td>
+                                        <td> <a href="javascript:void();" onclick="Editfunction(@item.Id);">@NIMBOLE.GlobalResources.Resources.Edit</a></td>
+                                        <td>
+                                            <input type="checkbox" @(item.IsSelected ? Html.Raw("checked=\"checked\"").ToHtmlString() : "") class='chkbx' value=@item.Id />
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+      
+    </script>
+    <script>
+        $(document).ready(function () {
+            DisableButton();
+        });
+        function DisableButton() {
+            $('#Activate').prop('disabled', true);
+            $('#Deactivate').prop('disabled', true);
+            $('#Delete').prop('disabled', true);
+        }
+        function Dialog(type) {
+            var message;
+            var checked;
+            var selectedval;
+            switch (type) {
+                case "del":
+                    message = "Do you want to delete ?";
+                    break;
+                case "act":
+                    message = "Do you want to activate ?";
+                    break;
+                case "dea":
+                    message = "Do you want to deactivate ?";
+                    break;
+                case "Associateact":
+                    message = "Associated record(s), you can't activate / deactivate.";
+                    break;
+                case "AssociateDel":
+                    message = "Associated record(s), you can't delete";
+                    break;
+            }
+            swal({
+                title: message,
+                type: "",
+                showCancelButton: true,
+                confirmButtonColor: "#337ab7",
+                confirmButtonText: "Ok",
+                cancelButtonText: "Cancel",
+                cancelButtonColor: "#d26a5c",
+                showLoaderOnConfirm: true,
+                closeOnConfirm: false,
+            },
+            function (isConfirm) {
+                if (isConfirm) {
+                    debugger;
+                    switch (type) {
+                        case "del":
+                            checked = GetSelectedCheckBoxs();
+                            selectedval = checked;
+                            deleteRecord(selectedval);
+                            swal.close();
+                            location.href = '/Employees/Index';
+                            break;
+                        case "act":
+                            checked = GetSelectedCheckBoxs();
+                            selectedval = checked;
+                            updateRecord(selectedval, true);
+                            break;
+                        case "dea":
+                            checked = GetSelectedCheckBoxs();
+                            selectedval = checked.join(",");
+                            updateRecord(selectedval, false);
+                            break;
+                        case "Associateact":
+                            location.href = '/Employees/Index';
+                            break;
+                        case "AssociateDel":
+                            location.href = '/Employees/Index'; 
+                            break;
+                    }
+                }
+                else {
+                    debugger;
+                    switch (type) {
+                        case "del":
+                            location.href = '/Employees/Index';
+                            break;
+                        case "act":
+                            location.href = '/Employees/Index';
+                            break;
+                        case "dea":
+                            location.href = '/Employees/Index';
+                            break;
+                        case "Associateact":
+                            location.href = '/Employees/Index';
+                            break;
+                        case "AssociateDel":
+                            location.href = '/Employees/Index';
+                            break;
+                    }
+                }
+            }
+            );
+        }
+        function deleteRecord(selval) {
+            debugger;
+            var grid = $('#example');
+            $.ajax({
+                url: '/Employees/DeleteRec',
+                dataType: "json",
+                type: "DELETE",
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify({ selectedId: selval }),
+                async: true,
+                processData: false,
+                cache: false,
+                success: function (data, status) {
+                    $('.selectAll').attr('checked', false);
+                    if (status == 'success' && data == 'Account(s) Successfully deleted!') {
+                    }
+                    if (typeof data === "string") {
+                        if (data.lastIndexOf("associated") > -1)
+                            Dialog("AssociateDel");
+                    }
+                    else {
+                        location.href = '/Employees/Index';
+                    }
+                },
+                error: function (xhr) {
+                    $('.selectAll').attr('checked', false);
+                    DisableButton();
+                }
+            });
+        }
+        function Editfunction(id)
+        {
+            window.location.href = window.location.origin + "/Employees/Edit?q=" + SubmitsEncry(id);
+        }
+        function updateRecord(rowId, status)
+        {
+            var grid = $("#example tbody");
+            $.ajax({
+                url: '@Url.Action("Delete", "Employees")',
+                dataType: "json",
+                type: "DELETE",
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify({ selectedId: rowId, status: status }),
+                async: true,
+                processData: false,
+                cache: false,
+                success: function (data) {
+                    $('.selectAll').attr('checked', false);
+                    if (typeof data === "string") {
+                        if (data.lastIndexOf("associated") > -1)
+                            Dialog("Associateact");
+                    }
+                    else {
+                        location.href = '/Employees/Index';
+                    }
+                },
+                error: function (xhr) {
+                }
+            });
+        }
+        function GetSelectedCheckBoxs() {
+         
+            var favorite = [];
+            $.each($("input[type='checkbox']:checked"), function () {
+                favorite.push($(this).val());
+            });
+            return favorite;
+        }
+    </script>
+
+    <script>
+        
+        
+        $('#example').on('click', '.chkbx', function () {
+         
+            var checked = $(this).is(':checked');
+            var favorite = [];
+            var models = [];
+            var grid = $('#example tbody input[type="checkbox"]');
+            var currenpagelength = grid.length;
+            //var pagelength = grid.data.length; // for total records
+
+            $.each($("input[type='checkbox']:checked"), function () {
+                favorite.push($(this).val());
+            });
+            var checkedval = favorite.length;
+            if (checked == false & checkedval == 0) {
+                $('#ChSelectAll').attr('checked', false);
+             
+                //if (models.length == 0) {
+                    $('#Activate').prop('disabled', true);
+                    $('#Deactivate').prop('disabled', true);
+                    $('#Delete').prop('disabled', true);
+                //}
+            }
+            else {
+                $('#Activate').prop('disabled', false);
+                $('#Deactivate').prop('disabled', false);
+                $('#Delete').prop('disabled', false);
+                var selectedcheckboxlength = models.length;
+                if (currenpagelength == selectedcheckboxlength) {
+                    $('#ChSelectAll').prop('checked', true);
+                }
+            }
+        })
+
+        $("#ChSelectAll").click(function (e) {
+         
+            if ($(this).hasClass('checkedAll')) {
+                $('input').prop('checked', false);
+                $(this).removeClass('checkedAll');
+                $('#Activate').prop('disabled', true);
+                $('#Deactivate').prop('disabled', true);
+                $('#Delete').prop('disabled', true);
+            }
+            else {
+                $('input').prop('checked', true);
+                $(this).addClass('checkedAll');
+                $('#Activate').prop('disabled', false);
+                $('#Deactivate').prop('disabled', false);
+                $('#Delete').prop('disabled', false);
+            }
+        });
+      
+    </script>
+
+    <script>
+
+    $(document).ready(function () {
+        var table = $('#example').DataTable();
+        table.destroy();
+        $('#example').DataTable({
+            "order": [[0, "desc"]]
+        });
+    });
+
+    </script>
+
+    <style>
+        .aright {
+            float: right;
+        }
+    </style>
+}

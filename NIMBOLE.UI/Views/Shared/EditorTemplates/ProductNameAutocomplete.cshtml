@@ -1,0 +1,24 @@
+﻿@model int?
+@Html.TextBox("ProductName", new { @placeholder = @NIMBOLE.GlobalResources.Resources.Value, @class = "form-control", @readonly = "readonly" })
+@*@(Html.Kendo().ComboBox()
+    .Name("ProductName")
+    .DataTextField("ProductName")
+    .DataValueField("ProductNamesId")
+    .ValuePrimitive(true)
+    .Filter(FilterType.StartsWith)
+    .AutoBind(true)
+    .ValuePrimitive(true)
+    .Placeholder(@NIMBOLE.GlobalResources.Resources.SelectOrAdd)
+    .DataSource(source =>
+    {
+        source.Read(read =>
+        {
+            read.Action("GetProductNames", "Products");
+        })
+        .Events(e=>e.RequestEnd("onProductRequestEnd"))
+        .ServerFiltering(true);
+    })
+    .Events(e => e.Change("onChangeProduct"))
+    .Suggest(true)
+)*@
+

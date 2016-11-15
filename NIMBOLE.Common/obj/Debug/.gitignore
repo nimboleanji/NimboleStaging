@@ -1,0 +1,7 @@
+/MonAgentListener.dll
+/WindowsAzureTelemetryEvents.dll
+/WindowsAzureEventSource.dll
+/NIMBOLE.Common.pdb
+/NIMBOLE.Common.dll
+/NIMBOLE.Common.csprojResolveAssemblyReference.cache
+*.Common.csproj.FileListAbsolute.txt

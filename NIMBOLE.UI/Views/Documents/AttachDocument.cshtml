@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "NIMBOLE";
+}
+
+@using (Html.BeginForm("AttachDocument", "Documents", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.Partial("~/Views/Shared/Documents/_Create.cshtml")
+    <!--<div class="row-fluid">
+        <div class="span12">
+            <p align="right"><a href="~/Documents/Index/0" data-role="backbutton">← Back</a></p>
+
+            <div class="span12 form-horizontal well">
+
+                <fieldset>
+                    <p class="f_legend">Documents</p>
+
+                    <div class="row">
+                        <div class="col-md-4 col-xs-6 form-group">
+                            <label for="Document">Attachment1</label>
+                            <input type="file" name="LeadDocument" data-value="LeadDocument" style="margin-bottom:5px;width: 100%" accept=".doc,.docx,.pdf,.xlsx,.csv,.xls/*" onchange="readURL(this);" />
+                            <button name="btnSubmit" class="btn btn-success import" value="Upload" tabindex="8">@NIMBOLE.GlobalResources.Resources.Upload</button>                           
+                        </div>
+                    </div>
+                                     
+
+                </fieldset>
+
+            </div>
+
+        </div>
+    </div>-->
+
+}
+@*<script type="text/javascript">
+
+    var img = @Html.Raw(Json.Encode(ViewBag.agtBImgurl))
+
+    function readURL(input) {
+
+        var dataValue = input.getAttribute("data-value");
+
+        var reader = new FileReader();
+
+        if (input.files) {
+            switch (dataValue) {
+
+                case 'Document':
+                    if (input.files[0]) {                      
+                        reader.readAsDataURL(input.files[0]);
+                    }                   
+                    
+                    break;
+               
+            }
+        }
+    }
+
+</script>*@
+

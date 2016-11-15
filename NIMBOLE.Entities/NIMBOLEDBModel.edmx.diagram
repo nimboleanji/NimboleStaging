@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0002f67f5ce545629254b0d4c593370a" Name="Diagram1">
+        <EntityTypeShape EntityType="NimboleDBModel.TblAccount" Width="1.5" PointX="0.75" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblAccountHierarchy" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblAccountType" Width="1.5" PointX="0.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblActivity" Width="1.5" PointX="6" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblActivityNotify" Width="1.5" PointX="15.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblAddress" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblAddressContact" Width="1.5" PointX="8.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblAddressEmployee" Width="1.5" PointX="15.25" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblCity" Width="1.5" PointX="20.25" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblCityNew" Width="1.5" PointX="17.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblContact" Width="1.5" PointX="6" PointY="24.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblContactRole" Width="1.5" PointX="6" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblCountry" Width="1.5" PointX="15.75" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblCountryNew" Width="1.5" PointX="18.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblDepartment" Width="1.5" PointX="3.75" PointY="25.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblDocument" Width="1.5" PointX="3" PointY="29.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblEmpHierarchy" Width="1.5" PointX="17.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblEmpHierarchyNew" Width="1.5" PointX="19.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblEmployee" Width="1.5" PointX="13" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblEmployeeRole" Width="1.5" PointX="10.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblEmployeeTarget" Width="1.5" PointX="13" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblEmpTask" Width="1.5" PointX="16" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblFinancialYear" Width="1.5" PointX="10.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblIncentive" Width="1.5" PointX="0.75" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblIndustry" Width="1.5" PointX="19.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblLanguage" Width="1.5" PointX="20.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblLanguageNew" Width="1.5" PointX="20.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblLead" Width="1.5" PointX="3" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblLeadContact" Width="1.5" PointX="5.25" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblLeadSource" Width="1.5" PointX="0.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblLocation" Width="1.5" PointX="15.75" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblLogin" Width="1.5" PointX="10.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblLoginHistory" Width="1.5" PointX="13" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblMileStone" Width="1.5" PointX="3.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblMileStoneStage" Width="1.5" PointX="17.75" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblMileStoneStageNew" Width="1.5" PointX="19.75" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblModule" Width="1.5" PointX="21.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblModuleConfig" Width="1.5" PointX="21.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblOrgHierarchy" Width="1.5" PointX="10.75" PointY="23.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblOrgHierarchyNew" Width="1.5" PointX="12.75" PointY="23.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblOwnership" Width="1.5" PointX="21.75" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblParentAccount" Width="1.5" PointX="22.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblProduct" Width="1.5" PointX="6" PointY="37.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblProductType" Width="1.5" PointX="18.75" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblProductTypeNew" Width="1.5" PointX="22.75" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblSetting" Width="1.5" PointX="22.75" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblState" Width="1.5" PointX="18" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblStateNew" Width="1.5" PointX="23.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblTranAccAdd" Width="1.5" PointX="6" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblTranLeadContact" Width="1.5" PointX="8.25" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblTransactionInfo" Width="1.5" PointX="17.75" PointY="25.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblTransContact" Width="1.5" PointX="8.25" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblTransDocument" Width="1.5" PointX="5.25" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblTransEmployeeTarget" Width="1.5" PointX="23.75" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblTransEmployeeTargetNew" Width="1.5" PointX="24.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblTransETask" Width="1.5" PointX="18.25" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblTransInfoDocumet" Width="1.5" PointX="0.75" PointY="25.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblTransLead" Width="1.5" PointX="8.25" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblTransLeadCompetitor" Width="1.5" PointX="8.25" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblTransLeadPriceDiscount" Width="1.5" PointX="5.25" PointY="32.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblUser" Width="1.5" PointX="13" PointY="18.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.TblUserAddress" Width="1.5" PointX="15.25" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.VWAccountExport" Width="1.5" PointX="8.75" PointY="26.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.VWAccountIndex" Width="1.5" PointX="24.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.VWActivityMileStone" Width="1.5" PointX="10.75" PointY="26.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.VWContactExport" Width="1.5" PointX="12.75" PointY="26.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.VWEmpActivityNotify" Width="1.5" PointX="24.75" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.VWEmployeeTarget" Width="1.5" PointX="14.75" PointY="26.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.VWLeadLsEmp" Width="1.5" PointX="19.75" PointY="26.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.VWLgnEmployee" Width="1.5" PointX="21.75" PointY="26.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.VWLoginEmployee" Width="1.5" PointX="23.75" PointY="26.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.VWProductExport" Width="1.5" PointX="25.75" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.VWTranDocument" Width="1.5" PointX="25.75" PointY="24.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.VWTrnContactAccount" Width="1.5" PointX="26.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NimboleDBModel.database_firewall_rules" Width="1.5" PointX="26.75" PointY="7.875" IsExpanded="true" />
+        <AssociationConnector Association="NimboleDBModel.FK_TblLead_TblAccount" ManuallyRouted="false" />
+        <AssociationConnector Association="NimboleDBModel.FK_TblTranAccAdd_TblAccount" ManuallyRouted="false" />
+        <AssociationConnector Association="NimboleDBModel.FK_TblActivity_TblMstMileStone" ManuallyRouted="false" />
+        <AssociationConnector Association="NimboleDBModel.FK_TblActivityNotify_TblActivity" ManuallyRouted="false" />
+        <AssociationConnector Association="NimboleDBModel.FK_TblTransLead_TblActivity" ManuallyRouted="false" />
+        <AssociationConnector Association="NimboleDBModel.FK_TblActivityNotify_TblEmployee" ManuallyRouted="false" />
+        <AssociationConnector Association="NimboleDBModel.FK_TblAddressContact_TblAddress" ManuallyRouted="false" />
+        <AssociationConnector Association="NimboleDBModel.FK_TblAddressEmployee_TblAddress" ManuallyRouted="false" />
+        <AssociationConnector Association="NimboleDBModel.FK_TblTranAccAdd_TblAddress" ManuallyRouted="false" />
+        <AssociationConnector Association="NimboleDBModel.FK_TblUserAddress_TblAddress" ManuallyRouted="false" />
+        <AssociationConnector Association="NimboleDBModel.FK_TblAddressContact_TblContact" ManuallyRouted="false" />
+        <AssociationConnector Association="NimboleDBModel.FK_TblAddressEmployee_TblEmployee" ManuallyRouted="false" />
+        <AssociationConnector Association="NimboleDBModel.FK_TblCity_TblState" ManuallyRouted="false" />
+        <AssociationConnector Association="NimboleDBModel.FK_TblContact_TblDepartment" ManuallyRouted="false" />
+        <AssociationConnector Association="NimboleDBModel.FK_TblTranLeadContact_TblContact" ManuallyRouted="false" />
+        <AssociationConnector Association="NimboleDBModel.FK_TblTransContact_TblContact" ManuallyRouted="false" />
+        <AssociationConnector Association="NimboleDBModel.FK_TblTranLeadContact_TblContactRole" ManuallyRouted="false" />
+        <AssociationConnector Association="NimboleDBModel.FK_TblTransContact_TblContactRole" ManuallyRouted="false" />
+        <AssociationConnector Association="NimboleDBModel.FK_TblState_TblCountry" ManuallyRouted="false" />
+        <AssociationConnector Association="NimboleDBModel.FK_TblTransDocument_TblDocument" ManuallyRouted="false" />
+        <AssociationConnector Association="NimboleDBModel.FK_TblEmployee_TblEmployeeRole" ManuallyRouted="false" />
+        <AssociationConnector Association="NimboleDBModel.FK_TblEmployee_TblLogins" ManuallyRouted="false" />
+        <AssociationConnector Association="NimboleDBModel.FK_TblTransETask_TblEmployee" ManuallyRouted="false" />
+        <AssociationConnector Association="NimboleDBModel.FK_TblEmployeeTarget_TblEmployeeRole" ManuallyRouted="false" />
+        <AssociationConnector Association="NimboleDBModel.FK_TblEmployeeTarget_TblFinancialYear" ManuallyRouted="false" />
+        <AssociationConnector Association="NimboleDBModel.FK_TblTransETask_TblEmpTask" ManuallyRouted="false" />
+        <AssociationConnector Association="NimboleDBModel.FK_TblLead_TblLeadSource" ManuallyRouted="false" />
+        <AssociationConnector Association="NimboleDBModel.FK_TblLeadContact_TblLead" ManuallyRouted="false" />
+        <AssociationConnector Association="NimboleDBModel.FK_TblTranLeadContact_TblLead" ManuallyRouted="false" />
+        <AssociationConnector Association="NimboleDBModel.FK_TblTransDocument_TblLead" ManuallyRouted="false" />
+        <AssociationConnector Association="NimboleDBModel.FK_TblTransLead_TblLead" ManuallyRouted="false" />
+        <AssociationConnector Association="NimboleDBModel.FK_TblTransLeadCompetitor_TblLead" ManuallyRouted="false" />
+        <AssociationConnector Association="NimboleDBModel.FK_TblTransLeadPriceDiscount_TblLead" ManuallyRouted="false" />
+        <AssociationConnector Association="NimboleDBModel.FK_TblLoginHistory_TblLogins" ManuallyRouted="false" />
+        <AssociationConnector Association="NimboleDBModel.FK_TblUser_TblLogins" ManuallyRouted="false" />
+        <AssociationConnector Association="NimboleDBModel.FK_TblTransLeadCompetitor_TblProduct" ManuallyRouted="false" />
+        <AssociationConnector Association="NimboleDBModel.FK_TblUserAddress_TblUser" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

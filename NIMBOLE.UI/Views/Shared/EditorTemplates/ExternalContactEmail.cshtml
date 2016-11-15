@@ -1,0 +1,21 @@
+﻿@model int?
+@Html.TextBox("ContactEmail", new { @placeholder = @NIMBOLE.GlobalResources.Resources.Value, @class = "form-control", @readonly = "readonly" })
+@*@(Html.Kendo().ComboBox()
+    .Name("ContactEmail")
+    .DataTextField("ContactEmail")
+    .DataValueField("Id")
+    .Filter(FilterType.StartsWith)
+    .AutoBind(true)
+    .ValuePrimitive(true)
+    .Placeholder(@NIMBOLE.GlobalResources.Resources.SelectOrAdd)
+    .DataSource(source =>
+    {
+        source.Read(read =>
+        {
+            read.Action("GetAllContact", "Contacts");
+        })
+        .ServerFiltering(true);
+    })
+        .Events(e => e.Change("onExtContactEmailChange"))
+    .Suggest(true)
+)*@   

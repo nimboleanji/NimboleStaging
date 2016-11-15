@@ -1,0 +1,114 @@
+﻿@model NIMBOLE.Models.Models.EmployeeRoleModel
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Create", "EmployeeRoles", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-group">
+        <div class="col-md-12">
+            <div class="block-header bg-info">
+                <h1 class="block-title">@NIMBOLE.GlobalResources.Resources.NewRole</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-6">
+            <label for="InputRoleCode">
+                @NIMBOLE.GlobalResources.Resources.RoleCode
+            </label>
+            @Html.TextBoxFor(model => model.ERoleCode, new { @placeholder = @NIMBOLE.GlobalResources.Resources.RoleCode, @class = "form-control", @tabindex = "1", @minlength = 1, @maxlength = 25 })
+        </div>
+
+        @*Right Column*@
+        <div class="col-sm-6">
+            <label for="InputDescription">
+                @NIMBOLE.GlobalResources.Resources.Description <span class="text-danger">*</span>
+            </label>
+            @Html.TextBoxFor(model => model.Description, new { @placeholder = @NIMBOLE.GlobalResources.Resources.Description, @class = "form-control firstAlphabetOnly", @tabindex = "2", @minlength = 1, @maxlength = 500 })
+        </div>
+    </div>
+    <div id="divModules"> </div>
+    <div class="form-group">
+        <div class="col-xs-12" style="text-align: right;">
+            <br />
+            <input id="btnSubmit" type="button" class="btn btn-success" value=@NIMBOLE.GlobalResources.Resources.Save tabindex="3">
+            <input type="button" value=@NIMBOLE.GlobalResources.Resources.Cancel class="btn btn-danger" onclick="location.href = '/EmployeeRoles/Index'" tabindex="4" />
+        </div>
+    </div>
+
+    @Html.HiddenFor(model => model.SelectedModules)
+
+    <script>
+        var listcontrols = {
+            "Description": "true,allcharacters,1,100"
+        };
+
+        $(document).ready(function () {
+            var url = '/EmployeeRoles/GetModulesList';
+            $.getJSON(url, function (data) {
+                $.each(data, function (key, val) {
+                    var ERoleCode = val.ERoleCode;
+                    var Description = val.Description;
+                    var user = '<div class="col-lg-6"><div class="form-group">' +
+                        "<label><input type='checkbox' name='SelectedModule" + val.ERoleCode + "' value='" + val.ERoleCode + "'> " + val.Description + " </input></label>"
+                        + '</div></div>';
+                    $('#divModules').append(user);
+                });
+            });
+        });
+    </script>
+
+    <script>
+        $(function () {
+            var favorite = [];
+            $('#btnSubmit').click(function (e) {
+                if (listcontrols) {
+                    var flag = 0;
+                    var texttype = "";
+                    $.each(listcontrols, function (key, value) {
+                        texttype = value.split(',')[1];
+                        var element = $('#' + key);
+                        if (texttype == "select") {
+                            if (typeof element.prev().attr('style') !== typeof undefined) {
+                                element.prev().removeAttr("style");
+                            }
+                        }
+                        if (validateControl(key, value.split(',')[0], value.split(',')[1], value.split(',')[2], value.split(',')[3]) == false) {
+                            flag = flag + 1;
+                        }
+                    });
+                    if (flag != 0) {
+                        this.disabled = false;
+                    }
+                    else {
+                        this.disabled = true;
+                        console.log(new Date())
+                        $.each($("input[name^='SelectedModule']:checked"), function () {
+                            favorite.push($(this).val());
+                        });
+                        console.log(new Date())
+                        var rCode = "";
+                        var rDescription = "";
+                        rCode = $("#ERoleCode").val();
+                        rDescription = $("#Description").val();
+                        var modules = favorite.join(",");
+                        $.ajax({
+                            url: "/EmployeeRoles/Create?SelectedModules=" + modules + "&rCode=" + rCode + "&rDescription=" + rDescription,
+                            type: "POST",
+                            success: function (data) {
+                                window.location.href = '/EmployeeRoles/Index';
+                            },
+                            error: function (error) {
+                                alert("There was an error posting the data to the server: " + error.responseText);
+                                window.location.href = '/EmployeeRoles/Index';
+                            }
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+}

@@ -1,0 +1,245 @@
+﻿@model NIMBOLE.Models.Models.ProductExcelImport
+@using Kendo.Mvc.UI
+@{
+    ViewBag.Title = "NIMBOLE";
+    <script src="~/assets/js/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/assets/js/pages/base_tables_datatables.js"></script>
+}
+
+@using (Html.BeginForm("PExcelImport", "Products", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <main id="main-container" style="padding-left:10px;padding-right:10px;padding-top:45px">
+
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="block block-themed">
+                    <div class="block-header bg-info">
+                        <ul class="block-options">
+                            <li>
+                                <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-refresh"></i></button>
+                            </li>
+                            <li>
+                                <button type="button" data-toggle="block-option" data-action="content_toggle"></button>
+                            </li>
+                        </ul>
+                        <h3 class="block-title">@NIMBOLE.GlobalResources.Resources.ExcelImport</h3>
+                    </div>
+
+                    <div class="block-content">
+                        <p align="right"><a href="~/Products/Index" data-role="backbutton">← Back</a></p>
+
+                        <div class="form-group">
+
+                            <div class="col-lg-6">
+                                @Html.TextBoxFor(m => m.ImportFile, new { type = "file", accept = ".xlsx", @class = "import" })
+                                @Html.ValidationMessageFor(m => m.ImportFile)
+                            </div>
+                            <div class="col-lg-6">
+                                <button name="btnSubmit" class="btn btn-success import" value="Upload">&nbsp;Upload</button>
+                                <input type="button" class="btn btn-success cancel import" value="@NIMBOLE.GlobalResources.Resources.DownloadExcelTemplate" tabindex="8" onclick="window.open('https://excelimports.blob.core.windows.net/nimboleexcelimports/ProductImport.xlsx')" />
+
+                            </div>
+
+
+                            <div class="row" style="padding-top:28px;">
+                                <p id="excel_key" style="text-align: center; color: red; font-size: 13px;padding-right: 265px;">@ViewData["InvalidHeaders"]</p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="dataTable_wrapper">
+
+                                    @if (Model.PExcelImport.Count > 0)
+                                    {
+                                        <div class="block-content block-content-mini">
+
+                                            <table class="table table-bordered table-striped js-dataTable-full" id="example">
+                                                <thead>
+                                                    <tr>
+                                                        <th><input type="checkbox" name="chkAll" value="All" /></th>
+
+                                                        <th class="text-center">@NIMBOLE.GlobalResources.Resources.ProductName </th>
+                                                        <th class="text-center">@NIMBOLE.GlobalResources.Resources.ProductCode</th>
+                                                        <th class="text-center">@NIMBOLE.GlobalResources.Resources.Price </th>
+                                                        <th class="text-center">@NIMBOLE.GlobalResources.Resources.ProductType </th>
+
+                                                        <th class="text-center">@NIMBOLE.GlobalResources.Resources.ManufacturerName </th>
+                                                        <th class="text-center">@NIMBOLE.GlobalResources.Resources.ExpiryDate</th>
+                                                        <th class="text-center">@NIMBOLE.GlobalResources.Resources.Comments </th>
+
+                                                        <th style="display:none">Id</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @if (Model != null)
+                                                    {
+                                                        foreach (var item in Model.PExcelImport)
+                                                        {
+
+                                                            <tr>
+                                                                <td><input type="checkbox" name="excelImportId" id="excelImportId" />                             </td>
+                                                                <td>
+                                                                    @item.ProductName
+                                                                </td>
+                                                                <td>
+                                                                    @item.ProductCode
+                                                                </td>
+                                                                <td>
+                                                                    @item.Price
+                                                                </td>
+                                                                <td>
+                                                                    @item.ProductType
+                                                                </td>
+                                                                <td>
+                                                                    @item.ManufacturerName
+                                                                </td>
+                                                                <td>
+                                                                    @item.ExpireDate
+                                                                </td>
+                                                                <td>
+                                                                    @item.Comments
+                                                                </td>
+
+                                                                <td style="display:none">@item.Id</td>
+                                                            </tr>
+                                                        }
+                                                    }
+                                                </tbody>
+                                            </table>
+
+
+                                        </div>
+                                        <div class="control-group">
+                                            <button type="button" id="import" class="btn btn-success cancel">@NIMBOLE.GlobalResources.Resources.Import</button>
+                                        </div>
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+}
+
+<script type="text/javaScript">
+
+    $(document).ready(function () {
+
+        initialize();
+        var models = [];
+        var grid = $('#example').data();
+
+        $('input[name="excelImportId"]').click(function () {
+
+            if ($('input[name="excelImportId"]').length == $('input[name="excelImportId"]:checked').length) {
+                $('input:checkbox[name="chkAll"]').prop("checked", "checked");
+            }
+            else {
+                $('input:checkbox[name="chkAll"]').removeAttr("checked");
+            }
+            if ($('input[name="excelImportId"]:checked').length == 0) {
+                $('#import').prop('disabled', true);
+            }
+            else {
+                $('#import').prop('disabled', false);
+
+            }
+        });
+        $('input:checkbox[name="chkAll"]').click(function () {
+
+            var slvals = []
+            if ($(this).is(':checked')) {
+                $('input[name="excelImportId"]:not(:disabled)').prop("checked", true);
+                $('#import').prop('disabled', false);
+            }
+            else {
+                $('input[name="excelImportId"]').prop("checked", false);
+                $('#import').prop('disabled', true);
+                slvals = null;
+            }
+        });
+
+    });
+
+    function initialize() {
+        var grid = $('#example').dataTable();
+        var checked = "checked";
+        $('input:checkbox[name="chkAll"]').prop("checked", "checked");
+        $('#excelImportId:not(:disabled)', grid.tbody).prop('checked', checked);
+        if (checked == "checked") {
+            $('#import').prop('disabled', false);
+        }
+        else {
+            $('#import').prop('disabled', true);
+        }
+    }
+
+    $('#import').click(function (e) {
+
+        var confirm_box = confirm("Do you want to save this product(s)?");
+
+        if (confirm_box == true) {
+
+            var oTable = $("#example").dataTable();
+            $('input[name="excelImportId"]:checked').length
+            var datas = $('input[name="excelImportId"]:checked').length;
+            var itemIds = [];
+            for (var i = 0; i < datas.length; i++) {
+                itemIds.push($(datas[i]));
+            }
+            var checked = []; var models = []; var modelss = [];
+            var cccc = [];
+            var ch = $('input[name="excelImportId"]:checked').length;
+            var table = new $.fn.dataTable.Api('#example');
+
+            $('input[name="excelImportId"]:checked').each(function () {
+                models.push($(this).closest('tr'));
+            });
+
+            for (var i = 0, length = models.length; i < length; i++) {
+                checked.push($(models[i]).find('td:last').text());
+            }
+            jQuery.ajax({
+                url: '/Products/PExcelImport',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ selectedId: checked, btnSubmit: "Import" }),
+                success: function (data, status) {
+                    if (status == 'success' && data == 'Product(s) Successfully imported!') {
+
+                        $("#loader").hide();
+                        $("#backgroundPopup").fadeOut('slow', function () {
+                            $(this).remove();
+
+                        });
+                        location.href = '/Products/Index';
+                    }
+                    else {
+                        location.href = '/Products/PExcelImport';
+                    }
+                }
+            });
+
+        }
+    });
+    // Adding import class for controls with that hiding message
+    $('#import').click(function () {
+        $("#excel_key").hide();
+    });
+</script>
+
+<style>
+    div.dataTables_wrapper {
+        overflow-x: scroll;
+    }
+</style>
+
+

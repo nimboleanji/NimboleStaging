@@ -1,0 +1,33 @@
+﻿
+@model NIMBOLE.Models.Models.ActivityModel
+@using Kendo.Mvc.UI;
+
+@{
+    Layout = null;
+}
+
+@(Html.Kendo().ListView<NIMBOLE.Models.Models.ActivityModel>()
+    .Name("NotificationsList")
+    .TagName("li")
+    .ClientTemplateId("NotificationsTemplate")
+    .DataSource(dataSource => dataSource
+        .Model(model => model.Id("Id"))
+        .PageSize(5)
+        .Read(read => read.Action("GetNotifications", "Activity"))
+    )
+)
+
+<script type="text/x-kendo-tmpl" id="NotificationsTemplate">
+    <li>
+        <a href="#">
+            <div>
+                <strong>#:Title#</strong>
+                <span class="pull-right text-muted">
+                    <em>#:CreatedDate#</em>
+                </span>
+            </div>
+            <div>#:Comments#</div>
+        </a>
+    </li>
+    <li class="divider"></li>
+</script>

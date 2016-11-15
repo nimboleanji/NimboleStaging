@@ -1,0 +1,10 @@
+﻿@model NIMBOLE.Models.Models.ActivityModel
+@using Kendo.Mvc.UI;
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm("Create", "Activity", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.Partial("~/Views/Shared/Activity/_Create.cshtml", Model)
+}

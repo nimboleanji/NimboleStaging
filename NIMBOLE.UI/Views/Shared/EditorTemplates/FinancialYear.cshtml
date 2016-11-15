@@ -1,0 +1,18 @@
+﻿@model NIMBOLE.Models.Models.FinancialYearModel
+
+@(Html.Kendo().DropDownList()
+    .Name("FinancialYear")
+    .DataTextField("FinancialYear")
+    .DataValueField("Id")
+    //.Filter(FilterType.StartsWith) 
+    .DataSource(source =>
+    {
+        source.Read(read =>
+        {
+            read.Action("GetAllFinancialYears", "FinancialYear");
+        })
+        .ServerFiltering(true);
+    })
+    .AutoBind(true)
+    .Events(e => e.Change("onFinancialYearChange"))
+)    

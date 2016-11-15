@@ -1,0 +1,563 @@
+﻿@model NIMBOLE.Models.Models.SettingModel
+@using Kendo.Mvc.UI;
+
+@{
+    ViewBag.Title = "Create/Update";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm("MySettings", "Settings", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <main id="main-container" style="padding-left:10px;padding-right:10px;padding-top:45px">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="block block-themed">
+                    <div class="block-header bg-info">
+                        <ul class="block-options">
+                            <li>
+                                <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-refresh"></i></button>
+                            </li>
+                            <li>
+                                <button type="button" data-toggle="block-option" data-action="content_toggle"></button>
+                            </li>
+                        </ul>
+                        <h3 class="page-header">@NIMBOLE.GlobalResources.Resources.Settings</h3>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                    <div class="block-content">
+                        <form class="form-horizontal push-10-t push-10" action="base_forms_premade.html" method="post" onsubmit="return false;">
+                            <div class="form-group">
+                                @*Left column*@
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="InputclientName">
+                                            @NIMBOLE.GlobalResources.Resources.ClientName
+                                        </label>
+                                        @Html.TextBoxFor(model => model.FullName, new { @placeholder = @NIMBOLE.GlobalResources.Resources.FullName, @class = "form-control", @tabindex = "1" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="PhoneNo">
+                                            @NIMBOLE.GlobalResources.Resources.PhoneNo
+                                        </label>
+                                        @Html.TextBoxFor(m => m.PhoneNo, new { placeholder = @NIMBOLE.GlobalResources.Resources.PhoneNo, @class = "form-control", @tabindex = "2", @onkeydown = "return ValidateNumber(event);" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="NoOfLicenses">
+                                            @NIMBOLE.GlobalResources.Resources.NoOfLicenses
+                                        </label>
+                                        @Html.TextBoxFor(m => m.NoOfLicenses, new { @placeholder = @NIMBOLE.GlobalResources.Resources.NoOfLicenses, @class = "form-control", @tabindex = "3", @readonly = "readonly", @onkeydown = "return ValidateNumber(event);" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="InputTimeZone">
+                                            @NIMBOLE.GlobalResources.Resources.TimeZone
+                                        </label>
+                                        @Html.HiddenFor(model => model.TimeFormat)
+                                        <select class="form-control" id="TimeZone" name="TimeZoneName" size="1"><option value="0">@NIMBOLE.GlobalResources.Resources.Select</option> </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="InputLocalCurrency">
+                                            @NIMBOLE.GlobalResources.Resources.LocalCurrency
+                                        </label>
+                                        @Html.HiddenFor(model => model.CurrencyCode)
+                                        <select class="form-control" id="Currency" name="CurrencyName" size="1"><option value="0">@NIMBOLE.GlobalResources.Resources.Select</option> </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="InputReportingCurrency">
+                                            @NIMBOLE.GlobalResources.Resources.ReportingCurrency
+                                        </label>
+                                        @Html.HiddenFor(model => model.ReportingCurrency)
+                                        <select class="form-control" id="ReportCurrency" name="ReportingCurrencyName" size="1"><option value="0">@NIMBOLE.GlobalResources.Resources.Select</option> </select>
+                                    </div>
+                                </div>
+                                @*Right Column*@
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="InputLogo">
+                                            @NIMBOLE.GlobalResources.Resources.Logo
+                                        </label>
+                                        <div style="width: 108px; height: 108px;">
+                                            <img src="~/Images/default_profile.png" alt="@Session["EmployeeName"].ToString()" style="height:100px; width:100px;" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="InputLanguage">
+                                            @NIMBOLE.GlobalResources.Resources.Language
+                                        </label>
+                                        @Html.HiddenFor(model => model.LanguageCode)
+                                        <select class="form-control" id="Language" name="LanguageName" size="1"><option value="0">@NIMBOLE.GlobalResources.Resources.Select</option> </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="InputDateFormat">
+                                            @NIMBOLE.GlobalResources.Resources.DateFormat
+                                        </label>
+                                        @Html.HiddenFor(model => model.DateFormat)
+                                        <select class="form-control" id="Date" name="DateName" size="1"><option value="0">@NIMBOLE.GlobalResources.Resources.Select</option> </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="InputEmail">
+                                            @NIMBOLE.GlobalResources.Resources.Email
+                                        </label>
+                                        @Html.TextBoxFor(model => model.Email, new { @placeholder = @NIMBOLE.GlobalResources.Resources.Email, @class = "form-control", @tabindex = "8" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="InputMilestone">
+                                            @NIMBOLE.GlobalResources.Resources.Milestone
+                                        </label>
+                                        @Html.HiddenFor(model => model.DefaultMilestone)
+                                        <select class="form-control" id="Milestone" name="MilestoneName" size="1"><option value="0">@NIMBOLE.GlobalResources.Resources.Select</option> </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-12 form-group" style="text-align: right;">
+                                    <input class="btn btn-success" id="btnSubmit" type="button" value=@NIMBOLE.GlobalResources.Resources.Update tabindex="9" />
+                                    <input type="button" value=@NIMBOLE.GlobalResources.Resources.Cancel class="btn btn-danger" onclick="location.href = '/Home/Index'" tabindex="10" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @Html.Hidden("hdnDateName")
+        @Html.Hidden("hdnTimeZoneName")
+        @Html.Hidden("hdnCurrencyName")
+        @Html.Hidden("hdnReportingCurrencyName")
+        @Html.Hidden("hdnMilestoneName")
+        @Html.Hidden("hdnLanguageName")
+
+    </main>
+
+    <script>
+
+        $(document).ready(function () {
+            onBindTimeFormatChange();
+            onBindDateFormatChange();
+            onBindCurrencyFormatChange();
+            onBindReportingCurrencyFormatChange();
+            onBindMilestone();
+            onBindLanguage();
+        });
+    </script>
+    <script>
+        function onBindTimeFormatChange() {
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                url: "/Settings/SelectTimeFormat",
+                data: {},
+                dataType: "json",
+                success: function (Result) {
+                    $.each(Result, function (key, value) {
+                        $("#TimeZone").append($("<option></option>").html(value.Name).html(value.Id));
+                    });
+                    $("#TimeZone").find("option").each(function () {
+                        if ($(this).val() == '@Model.TimeFormat') {
+                            $(this).prop("selected", "selected");
+                        }
+                    });
+                },
+                error: function (Result) {
+                }
+            });
+        }
+        $("#TimeZone").change(function () {
+            var value = this.value;
+            if (value != -1 || value != '') {
+                $('#TimeZoneName').val(value);
+                $('#hdnTimeZoneName').val(value);
+            }
+        });
+        function onBindDateFormatChange() {
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                url: "/Settings/SelectDateFormat",
+                data: {},
+                dataType: "json",
+                success: function (Result) {
+                    $.each(Result, function (key, value) {
+                        $("#Date").append($("<option></option>").html(value.Name).html(value.Id));
+                    });
+                    $("#Date").find("option").each(function () {
+                        if ($(this).val() == '@Model.DateFormat') {
+                            $(this).prop("selected", "selected");
+                        }
+                    });
+                },
+                error: function (Result) {
+
+                }
+            });
+        }
+        $("#Date").change(function () {
+            var value = this.value;
+            if (value != -1 || value != '') {
+                $('#DateName').val(value);
+                $('#hdnDateName').val(value);
+            }
+        });
+
+        function onBindCurrencyFormatChange() {
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                url: "/Settings/SelectCurrencyFormat",
+                data: {},
+                dataType: "json",
+                success: function (Result) {
+                    //for (var i = 0 ; i < Result.length ; i++) {
+                    //    $("#Currency").append('<option value ="' + Result[i].Id
+                    //        + '">' + Result[i].Name + '</option>');
+                    //}
+                    $.each(Result, function (key, value) {
+                        $("#Currency").append($("<option></option>").html(value.Name).html(value.Id));
+                    });
+                    $("#Currency").find("option").each(function () {
+                        if ($(this).val() == '@Model.CurrencyCode') {
+                            $(this).prop("selected", "selected");
+                        }
+                    });
+
+                },
+                error: function (Result) {
+
+                }
+            });
+        }
+        $("#Currency").change(function () {
+            var value = this.value;
+            if (value != -1 || value != '') {
+                $('#CurrencyName').val(value);
+                $('#hdnCurrencyName').val(value);
+            }
+        });
+        function onBindReportingCurrencyFormatChange() {
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                url: "/Settings/SelectCurrencyFormat",
+                data: {},
+                dataType: "json",
+                success: function (Result) {
+                    //for (var i = 0 ; i < Result.length ; i++) {
+                    //    $("#ReportCurrency").append('<option value ="' + Result[i].Id
+                    //        + '">' + Result[i].Name + '</option>');
+                    //}
+                    $.each(Result, function (key, value) {
+                        $("#ReportCurrency").append($("<option></option>").html(value.Name).html(value.Id));
+                    });
+                    $("#ReportCurrency").find("option").each(function () {
+                        if ($(this).val() == '@Model.ReportingCurrency') {
+                            $(this).prop("selected", "selected");
+                        }
+                    });
+                },
+                error: function (Result) {
+
+                }
+            });
+        }
+        $("#ReportCurrency").change(function () {
+            var value = this.value;
+            if (value != -1 || value != '') {
+                $('#ReportingCurrencyName').val(value);
+                $('#hdnReportingCurrencyName').val(value);
+            }
+        });
+        function onBindMilestone() {
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                url: "/Settings/SelectAllMileStone",
+                data: {},
+                dataType: "json",
+                success: function (Result) {
+                    for (var i = 0 ; i < Result.length ; i++) {
+                        $("#Milestone").append('<option value ="' + Result[i].Id
+                            + '">' + Result[i].Description + '</option>');
+                    }
+                    //$.each(Result, function (key, value) {
+                    //    $("#Milestone").append($("<option></option>").html(value.Id).html(value.Description));
+                    //});
+                    $("#Milestone").find("option").each(function () {
+                        if ($(this).val() == '@Model.DefaultMilestone') {
+                            $(this).prop("selected", "selected");
+                        }
+                    });
+                },
+                error: function (Result) {
+
+                }
+            });
+        }
+        $("#Milestone").change(function () {
+            var value= $("#Milestone").val();
+            if (value != -1 || value != '') {
+                $('#MilestoneName').val(value);
+                $('#hdnMilestoneName').val(value);
+            }
+        });
+
+        function onBindLanguage() {
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                url: "/Language/Index",
+                data: {},
+                dataType: "json",
+                success: function (Result) {
+                    //       for (var i = 0 ; i < Result.length; i++) {
+                    //           $("#Language").append('<option value="'
+                    //+ Result[i].Id
+                    //              + '" >' + Result[i].Name + '</option>');
+                    //       }
+                    $.each(Result, function (key, value) {
+                        $("#Language").append($("<option></option>").html(value.Id).html(value.Name));
+                    });
+                    $("#Language").find("option").each(function () {
+                        if ($(this).val() == '@Model.LanguageCode') {
+                            $(this).prop("selected", "selected");
+                        }
+                    });
+
+                },
+                error: function (Result) {
+                }
+            });
+        }
+        $("#Language").change(function () {
+            var value = this.value;
+            if (value != -1 || value != '') {
+                $('#LanguageName').val(value);
+                $('#hdnLanguageName').val(value);
+            }
+        });
+
+        //Script for Validation
+        var listcontrols = {
+            "PhoneNo": "false,mobile,10,10"
+            , "Email": "false,email"
+            , "FullName": "false,characters,1,100"
+        };
+        $(document).ready(function () {
+            $('#btnSubmit').click(function (e) {
+                if (listcontrols) {
+                    var flag = 0;
+                    var texttype = "";
+                    $.each(listcontrols, function (key, value) {
+                        texttype = value.split(',')[1];
+                        var element = $('#' + key);
+                        if (texttype == "select") {
+                            if (typeof element.prev().attr('style') !== typeof undefined) {
+                                element.prev().removeAttr("style");
+                            }
+                        }
+                        if (validateControl(key, value.split(',')[0], value.split(',')[1], value.split(',')[2], value.split(',')[3]) == false) {
+                            flag = flag + 1;
+                        }
+                    });
+                    if (flag != 0) {
+                        return false;
+                    }
+                    else {
+                        $('form')[0].submit();
+                    }
+                }
+            });
+        });
+    </script>
+
+}
+@*<div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="ClientName">
+                                    @NIMBOLE.GlobalResources.Resources.ClientName
+                                </label>
+                                @Html.TextBoxFor(model => model.FullName, new { @placeholder = @NIMBOLE.GlobalResources.Resources.FullName, @class = "form-control", @tabindex = "1" })
+                            </div>
+
+                            <div class="form-group">
+                                <label for="ClientName">
+                                    @NIMBOLE.GlobalResources.Resources.PhoneNo
+                                </label>
+                                @Html.TextBoxFor(m => m.PhoneNo, new { placeholder = @NIMBOLE.GlobalResources.Resources.PhoneNo, @class = "form-control", @tabindex = "2", @onkeydown = "return ValidateNumber(event);" })
+                            </div>
+
+                            <div class="form-group">
+                                <label for="ClientName">
+                                    @NIMBOLE.GlobalResources.Resources.NoOfLicenses
+                                </label>
+                                @Html.TextBoxFor(m => m.NoOfLicenses, new { @placeholder = @NIMBOLE.GlobalResources.Resources.NoOfLicenses, @class = "form-control", @tabindex = "3", @readonly = "readonly", @onkeydown = "return ValidateNumber(event);" })
+                            </div>
+
+                            <div class="form-group">
+                                <label for="InputLastName">
+                                    @NIMBOLE.GlobalResources.Resources.TimeZone
+                                </label>
+
+                                @(Html.Kendo().DropDownListFor(model => model.TimeFormat)
+                                 .HtmlAttributes(new { @style = "width: 100%;", @tabindex = "5" })
+                                 .DataValueField("Value")
+                                 .DataTextField("Text")
+                                 .AutoBind(true)
+                                 .BindTo(ViewData["SettingsTimeFormat"] as SelectList)
+                                 .Events(e => e.Change("onBindTimeFormatChange"))
+                                )
+                            </div>
+
+                            <div class="form-group">
+                                <label for="InputLocalCurrency">
+                                    @NIMBOLE.GlobalResources.Resources.LocalCurrency
+                                </label>
+                                @(Html.Kendo().DropDownListFor(model => model.CurrencyCode)
+                                 .HtmlAttributes(new { @style = "width: 100%;", @tabindex = "7" })
+                                 .DataValueField("Value")
+                                 .DataTextField("Text")
+              //.OptionLabel(@NIMBOLE.GlobalResources.Resources.Select)
+                                 .AutoBind(true)
+                                 .BindTo(ViewData["SettingsCurrency"] as SelectList)
+                                 .Events(e => e.Change("onBindCurrencyFormatChange"))
+                                )
+                            </div>
+
+                            <div class="form-group">
+                                <label for="InputReportingCurrency">
+                                    @NIMBOLE.GlobalResources.Resources.ReportingCurrency
+                                </label>
+                                @(Html.Kendo().DropDownListFor(model => model.ReportingCurrency)
+                                 .HtmlAttributes(new { @style = "width: 100%;", @tabindex = "9" })
+                                 .DataValueField("Value")
+                                 .DataTextField("Text")
+        //.OptionLabel(@NIMBOLE.GlobalResources.Resources.Select)
+                                 .AutoBind(true)
+                                 .BindTo(ViewData["SettingsCurrency"] as SelectList)
+                                 .Events(e => e.Change("onBindCurrencyFormatChange"))
+                                )
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="InputLogo">
+                                    @NIMBOLE.GlobalResources.Resources.Logo
+                                </label>
+                                <div style="width: 108px; height: 108px;">
+                                    <img src="~/Images/default_profile.png" alt="@Session["EmployeeName"].ToString()" style="height:100px; width:100px;" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="InputLanguage">
+                                    @NIMBOLE.GlobalResources.Resources.Language
+                                </label>
+                                @(Html.Kendo().DropDownListFor(model => model.LanguageCode)
+                                        .HtmlAttributes(new { @style = "width: 100%;", @tabindex = "4" })
+                                        .DataValueField("LanguageCode")
+                                        .DataTextField("LanguageName")
+        //.OptionLabel(@NIMBOLE.GlobalResources.Resources.Select)
+                                        .AutoBind(true)
+                                        .DataSource(source =>
+                                        {
+                                            source.Read(read => { read.Action("Index", "Language").Type(HttpVerbs.Get); });
+                                            source.ServerFiltering(true);
+                                        })
+                                )
+                                @Html.HiddenFor(m => m.URL)
+                            </div>
+
+                            <div class="form-group">
+                                <label for="InputDateFormat">
+                                    @NIMBOLE.GlobalResources.Resources.DateFormat
+                                </label>
+
+                                @(Html.Kendo().DropDownListFor(model => model.DateFormat)
+                                 .HtmlAttributes(new { @style = "width: 100%;", @tabindex = "8" })
+                                 .DataValueField("Value")
+                                 .DataTextField("Text")
+        //.OptionLabel(@NIMBOLE.GlobalResources.Resources.Select)
+                                 .AutoBind(true)
+                                 .BindTo(ViewData["SettingsDateFormat"] as SelectList)
+                                 .Events(e => e.Change("onBindDateFormatChange"))
+                                )
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <label for="InputEmail">
+                                    @NIMBOLE.GlobalResources.Resources.Email
+                                </label>
+                                @Html.TextBoxFor(model => model.Email, new { @placeholder = @NIMBOLE.GlobalResources.Resources.Email, @class = "form-control", @tabindex = "8" })
+                            </div>
+
+                            <div class="form-group">
+                                <label for="InputEmail">
+                                    @NIMBOLE.GlobalResources.Resources.Milestone
+                                </label>
+                                @(Html.Kendo().DropDownListFor(model => model.DefaultMilestone)
+                                    .HtmlAttributes(new { @style = "width: 100%;", @tabindex = "7" })
+                                    .DataTextField("Text")
+                                    .DataValueField("Value")
+                                    .OptionLabel(@NIMBOLE.GlobalResources.Resources.Select)
+                                    .AutoBind(true)
+                                    .BindTo(ViewData["SelectMilestones"] as SelectList)
+                                )
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 form-group" style="text-align: right;">
+                            <input class="btn btn-success" id="btnSubmit" type="button" value=@NIMBOLE.GlobalResources.Resources.Update tabindex="9" />
+                            <input type="button" value=@NIMBOLE.GlobalResources.Resources.Cancel class="btn btn-danger" onclick="location.href = '/Home/Index'" tabindex="10" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>*@
+
+
+@*<script>
+        function onBindTimeFormatChange(e) {
+
+            $('#TimeFormat').val($("#TimeFormat").val());
+        }
+
+        function onBindDateFormatChange(e) {
+
+            $('#DateFormat').val($("#DateFormat").val());
+        }
+
+        function onBindCurrencyFormatChange(e) {
+
+            $('#CurrencyCode').val($("#CurrencyCode").val());
+        }
+
+        function onBindReportingCurrencyFormatChange(e) {
+
+            $('#ReportingCurrency').val($("#ReportingCurrency").val());
+        }
+
+    </script>*@
+
+
+
+
+

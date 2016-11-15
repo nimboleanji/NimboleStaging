@@ -1,0 +1,118 @@
+﻿@using ReportViewerForMvc;
+@using NIMBOLE.UI.Helpers;
+
+@{
+    ViewBag.Title = "Report";
+    string FullName = Session["EmployeeId"] != null ? Session["EmployeeId"].ToString() : "0";
+    string finYear = Session["FinYear"] != null ? Session["FinYear"].ToString() : "2015-2016";
+    string rptName = ViewData["ReportName"].ToString();
+}
+@{
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.common.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.common-bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.mobile.all.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.dataviz.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.dataviz.bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/kendo/2014.3.1411/jszip.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2014.3.1411/kendo.core.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2014.3.1411/kendo.web.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2014.3.1411/kendo.aspnetmvc.min.js")"></script>
+}
+@using (Html.BeginForm("ShowReport", "Reports", new { rptName = UrlExtensions.EncodeString(rptName) }, FormMethod.Post, new { enctype = "multipart/form-data", onsubmit = "return employee();" }))
+{
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    @if (rptName == "ActualVsExpected")
+                    {
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Employee Name :</label> <span class="field-validation-error">*</span>
+                                    @(Html.Kendo().DropDownList()
+                                        .Name("ddlEmployees")
+                                        .HtmlAttributes(new { @style = "width: 100%;", @tabindex = "1" })
+                                        .OptionLabel(new { Role = @NIMBOLE.GlobalResources.Resources.Select, Name = @NIMBOLE.GlobalResources.Resources.Select })
+                                        .DataTextField("Name")
+                                        .DataValueField("Id")
+                                        .Events(e => e.DataBound("onEmployeesDataBound"))
+                                        //.BindTo(ViewData["Employees"] as SelectList)
+                                        .DataSource(source =>
+                                        {
+                                            source.Read(read =>
+                                            {
+                                                read.Action("GetEmployeesForReports", "Leads");
+                                            });
+                                        })
+                                    )
+                                    <script>
+                                        function onEmployeesDataBound(e) {
+                                            if (this._selectedValue === undefined || this._selectedValue === "" || this._selectedValue === "Select") {
+                                                var empddl = $("#ddlEmployees").data("kendoDropDownList");
+                                                var selectedName = "0";
+                                                @*if (checkAvailability(this.dataSource._data, '@FullName')) {*@
+                                                    selectedName = '@FullName'
+                                                //}
+                                                empddl.value(selectedName);
+                                            }
+                                        }
+                                    </script>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Financial Year :</label> <span class="field-validation-error">*</span>
+                                    @*<input id="ddlFinYear" style="width: 50%" class="form-control" />*@
+                                    @(Html.Kendo().DropDownList()
+                                    .Name("ddlFinYear")
+                                    .HtmlAttributes(new { @style = "width: 100%;", @tabindex = "2" })
+                                    .DataTextField("Text")
+                                    .DataValueField("Value")
+                                    .Events(e => e.DataBound("onFinYearDataBound"))
+                                    .OptionLabel(@NIMBOLE.GlobalResources.Resources.Select)
+                                    .AutoBind(true)
+                                    .BindTo(ViewData["FinYears"] as SelectList)
+                                    )
+                                    <script>
+                                        function onFinYearDataBound(e) {
+                                            if (this._selectedValue === undefined || this._selectedValue === "" || this._selectedValue === "Select") {
+                                                var combo = $("#ddlFinYear").data("kendoDropDownList");
+                                                combo.value('@finYear' != "" ? '@finYear' : "");
+                                            }
+                                        }
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 form-group" style="text-align: right;">
+                                <input type="submit" id="btnSubmit" name="btnFilter" class="btn btn-success" tabindex="3" value="Show Report" />
+                            </div>
+                        </div>
+                        @Html.Hidden("hdnEmployee")
+                        @Html.Hidden("hdnFinYear")
+                        <script>
+                            function employee() {
+                                $('#hdnFinYear').val($("#ddlFinYear").val());
+                                $('#hdnEmployee').val($("#ddlEmployees").val()=="0"?"":$("#ddlEmployees").val());
+                                return $("#ddlFinYear").val();
+                            }
+                        </script>
+                    }
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div id="rptResult" class="form-group">
+                                @Html.ReportViewer(ViewBag.ReportViewer as Microsoft.Reporting.WebForms.ReportViewer, new { @style="height:100%;width:100%;min-height:400px;min-width:600px;"})
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+

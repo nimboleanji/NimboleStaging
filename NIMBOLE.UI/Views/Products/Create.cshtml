@@ -1,0 +1,306 @@
+﻿@model NIMBOLE.Models.Models.ProductModel
+@using Kendo.Mvc.UI;
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string DateFormat = System.Web.HttpContext.Current.Session["DateFormat"].ToString() != null ? Session["DateFormat"].ToString() : "";
+}
+@{
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.common.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.common-bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.mobile.all.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.dataviz.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.dataviz.bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/kendo/2014.3.1411/jszip.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2014.3.1411/kendo.core.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2014.3.1411/kendo.web.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2014.3.1411/kendo.aspnetmvc.min.js")"></script>
+}
+@using (Html.BeginForm("Create", "Products", FormMethod.Post, new { encrypt = "multipart/form-data" }))
+{
+   <div class="form-group">
+        <div class="col-md-12">
+            <div class="block-header bg-info">
+                <h1 class="block-title">@NIMBOLE.GlobalResources.Resources.NewProduct</h1>
+            </div>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <main id="main-container" style="padding-left:10px;padding-right:10px;padding-top:45px">
+        @*<div class="row">
+            <div class="col-md-12">*@
+               
+                    @*Left Column*@
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="InputProductName">
+                    @NIMBOLE.GlobalResources.Resources.ProductName <span class="text-danger">*</span>
+                </label>
+                @Html.TextBoxFor(model => model.ProductName, new { @placeholder = @NIMBOLE.GlobalResources.Resources.ProductName, @class = "form-control firstAlphabetOnly", @tabindex = "1", @minlength = 1, @maxlength = 100 })
+                @Html.ValidationMessageFor(m => m.ProductName)
+            </div>
+            <div class="form-group">
+                <label for="InputPrice">
+                    @NIMBOLE.GlobalResources.Resources.Price <span class="text-danger">*</span>
+                </label>
+                @Html.TextBoxFor(model => model.Price, new { @placeholder = @NIMBOLE.GlobalResources.Resources.Price, @class = "form-control", @onkeydown = "return ValidateDecimal(event);", @tabindex = "3", @maxlength = 10, @min = 1 })
+                @Html.ValidationMessageFor(m => m.Price)
+            </div>
+            <div class="span10">
+                @Html.ValidationMessageFor(model => model.Price, "", new { @class = "errmsg" })
+            </div>
+            <div class="form-group">
+                <label for="InputManifectureName">
+                    @NIMBOLE.GlobalResources.Resources.ManufacturerName
+                </label>
+                @Html.TextBoxFor(model => model.ManufacturerName, new { @placeholder = @NIMBOLE.GlobalResources.Resources.ManufacturerName, @class = "form-control", @tabindex = "5" })
+            </div>
+            @*</div>*@
+        </div>
+                    @*Right Column*@
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="InputProductType">
+                                @NIMBOLE.GlobalResources.Resources.ProductType <span class="text-danger">*</span>
+                            </label>
+                            @(Html.TextBoxFor(model => model.ProductType, new { @style = "width: 100%;", @class = "form-control", @tabindex = "2", @minlength = 1, @maxlength = 200 }))
+                        </div>
+
+                        <script>
+                            function BindProduct()
+                            {
+                                $("#ProductType").kendoComboBox({
+                                    dataTextField: "ProductType",
+                                    dataValueField: "ProductTypeId",
+                                    dataSource: @Html.Raw(Json.Encode(ViewData["ProductType"])),
+                                    filter: "startswith",
+                                    change: onProductTypeChange,
+                                    value: @(Model == null ? "null" : Model.ProductTypeId.ToString()),
+                                    suggest: true
+                                });
+                            }
+                            $(document).ready(function () {
+                                BindProduct();
+                            });
+                        </script>
+
+                        <div class="form-group">
+                            <label for="InputProductCode">
+                                @NIMBOLE.GlobalResources.Resources.ProductCode
+                            </label>
+                            @Html.TextBoxFor(model => model.ProductCode, new { @placeholder = @NIMBOLE.GlobalResources.Resources.ProductCode, @class = "form-control", @tabindex = "4", @minlength = 1, @maxlength = 25 })
+
+                        </div>
+                        <div class="form-group">
+                            <label for="InputExpireDate">
+                                @NIMBOLE.GlobalResources.Resources.ExpiryDate
+                            </label>
+                            @(Html.Kendo().DatePickerFor(model => model.ExpiryDate)
+                                        //.Format(DateFormat)
+                                        .Min(DateTime.Now)
+                                        .Value(DateTime.Now.AddYears(1))
+                                        .HtmlAttributes(new { @style = "width: 100%;", @tabindex = "6", @onkeydown = "javascript:return false;" })
+                            )
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Comments">
+                            @NIMBOLE.GlobalResources.Resources.Comments
+                        </label>
+                        @Html.TextAreaFor(model => model.Comments, new { @class = "form-control", @style = "width:100%;height:100px;resize:none;", @minlength = 1, @maxlength = 500, @tabindex = "7" })
+                    </div>
+                
+                <div class="row">
+                    <div class="col-lg-12 form-group" style="text-align: right;">
+                        <input id="btnSubmit" type="button" class="btn btn-success" value=@NIMBOLE.GlobalResources.Resources.Save tabindex="8">
+                        <input type="button" value=@NIMBOLE.GlobalResources.Resources.Cancel class="btn btn-danger" onclick="location.href = '/Products/Index'" tabindex="9" />
+                    </div>
+                </div>
+         
+
+        <!-- /.col-lg-12 -->
+        @Html.Hidden("hdnProduct")
+
+    </main>
+
+    //customAlert
+    @*<script>
+            function customAlert(message)
+            {
+                debugger;
+                $( "#dialog-confirm" ).dialog({
+                    resizable: false,
+                    height:140,
+                    width:"auto",
+                    modal: true,
+                    buttons: {
+                        "OK": function() {
+                            ProductTypeChange();
+                            $( this ).dialog( "close");
+                        },
+                        Cancel: function() {
+                            var combobox = $("#ProductType").data("kendoComboBox");
+                            BindProduct();
+                            setTimeout(function(){
+                                combobox.clear();
+                                combobox.focus();
+                            },2000);
+                            $( this ).dialog( "close" );
+                        }
+                    },
+                    open:function (event,ui){
+                        $('#dialog-confirm').attr("style","height: auto; max-height: 62px; min-height: 62px; width: auto;");
+                        $(".ui-dialog-titlebar").hide();
+                        $('#dialogContent').text(message);
+                    }
+                });
+            }
+        </script>*@
+
+
+    <script>
+        function Dialog(message ,type) {
+            debugger;
+            var message;
+            switch(type)
+            {
+                case "type":
+                    message = message;
+                    break;
+                case "dupic":
+                    message = message;
+                    break;
+            }
+            message = message;
+            swal({
+                title: message,
+                type: "",
+                showCancelButton: true,
+                confirmButtonColor: "#337ab7",
+                confirmButtonText: "Ok",
+                cancelButtonText: "Cancel",
+                cancelButtonColor: "#d26a5c",
+                showLoaderOnConfirm: true,
+                closeOnConfirm: false,
+            },
+            function (isConfirm) {
+                debugger;
+                if (isConfirm)
+                {
+                    switch(type)
+                    {
+                        case "type":
+                            ProductTypeChange();
+                            break;
+                        case "dupic":
+                            break;
+                    }
+                }
+                else
+                {
+                    var combobox = $("#ProductType").data("kendoComboBox");
+                    BindProduct();
+                    setTimeout(function ()
+                    {
+                        var combo = $("#ProductType").data("kendoComboBox");
+                        combobox.focus();
+                    }, 2000);
+                }
+            }
+            );}
+
+    </script>
+
+    //producttype
+    <script>
+        $(document).ready(function () {
+            $("#ProductType").data("kendoComboBox").input.attr("placeholder", '@NIMBOLE.GlobalResources.Resources.SelectOrAdd');
+        });
+        function ProductTypeChange(){
+
+            var combobox = $("#ProductType").data("kendoComboBox");
+            var cb = $('#ProductType').kendoComboBox();
+            $.ajax({
+                url: '@Url.Action("CreatePoductType", "Products")',
+                type: 'POST',
+                async: false,
+                data: { 'item': cb[0].value },
+                success: function (data) {
+                    if (data.Total === 1 && data.Data[0].Id === 0) {
+                        Dialog("Record already exist/inactive.","dupic");
+                        combobox.clear();
+                        combobox.focus();
+                    }
+                    else {
+                        //$('#hdnProduct').val(data.Data[data.Data.length - 1].ProductTypeId);
+                        $('#ProductType').val(data.Data[data.Data.length - 1].ProductType);
+                        $('#hdnProduct').val(data.Data[data.Data.length - 1].ProductType);
+                        swal.close();
+                    }
+                    BindProduct();
+                },
+                error: function () {
+                    Dialog('Error occured');
+                }
+            });
+        }
+        function onProductTypeChange(e) {
+            debugger;
+            if (this.value() && this.selectedIndex == -1) {
+                var combobox = $("#ProductType").data("kendoComboBox");
+                var cb = $('#ProductType').kendoComboBox();
+                if (Dialog("Do you want to add '" + cb[0].value + "' to product type?" ,"type")) {
+                }
+            }
+            else
+            {
+                var ptype = $("#ProductType").data("kendoComboBox");
+                var productType  =  ptype._prev;
+                $('#ProductType').val(productType);
+            }
+        }
+    </script>
+    //Script for Validation
+    <script>
+        var listcontrols = {
+            "ProductName": "true,allcharacters,1,100",
+            "Price": "true,money,1,15",
+            "ProductType": "true,select",
+            "ProductCode":"false,allcharacters,1,25",
+            "ManufacturerName":"false,allcharacters,1,100"
+        };
+
+
+        $(document).ready(function () {
+            $('#btnSubmit').click(function (e) {
+                if (listcontrols) {
+                    var flag = 0;
+                    var texttype = "";
+                    $.each(listcontrols, function (key, value) {
+                        texttype = value.split(',')[1];
+                        var element = $('#' + key);
+                        if (texttype == "select") {
+                            if (typeof element.prev().attr('style') !== typeof undefined) {
+                                element.prev().removeAttr("style");
+                            }
+                        }
+                        if (validateControl(key, value.split(',')[0], value.split(',')[1], value.split(',')[2], value.split(',')[3]) == false) {
+                            flag = flag + 1;
+                        }
+                    });
+                    $('#ProductType').attr("style", "width:100%;display:none;");
+                    if (flag != 0) {
+                        this.disabled = false;
+                        return false;
+                    }
+                    else {
+                        this.disabled = true;
+                        $('form')[0].submit();
+                    }
+                }
+            });
+        });
+    </script>
+}

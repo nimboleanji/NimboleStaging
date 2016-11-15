@@ -1,0 +1,100 @@
+﻿@model IEnumerable<NIMBOLE.Models.Models.NotificationModel>
+@using NIMBOLE.UI.Helpers;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string DateFormat = System.Web.HttpContext.Current.Session["DateFormat"].ToString();
+
+    <script src="~/assets/js/plugins/datatables/jquery.dataTables.min.js"></script>
+        <!-- Page JS Code -->
+    <script src="~/assets/js/pages/base_tables_datatables.js"></script>
+}
+@using (Html.BeginForm())
+{
+    <main id="main-container">
+        <!-- Page Content -->
+        <div class="content">
+            <!-- Dynamic Table Full -->
+            <div class="block">
+                <div class="block-header">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <h1 class="block-title">@NIMBOLE.GlobalResources.Resources.Notify</h1>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="block-content">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-lg-9">
+                            </div>                          
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <table class="table table-bordered table-striped js-dataTable-full-pagination" id="example" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center" style="display:none">@NIMBOLE.GlobalResources.Resources.Id</th>
+                                        <th class="text-center">@NIMBOLE.GlobalResources.Resources.Name</th>
+                                        <th class="text-center">@NIMBOLE.GlobalResources.Resources.ActivityTitle</th>
+                                        <th class="text-center">@NIMBOLE.GlobalResources.Resources.Milestone</th>
+                                        <th class="text-center">@NIMBOLE.GlobalResources.Resources.ActivityDate</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model != null)
+                                    {
+
+                                        foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td style="display:none">
+                                                    @item.Id
+                                                </td>
+                                                <td>
+                                                    @Html.EncodedActionLink(item.LeadTitle, "Edit", "Leads", new { Id = item.LeadId }, null)
+                                                </td>
+                                                <td>
+                                                    @item.ActivityTitle
+                                                </td>
+                                                <td>
+                                                    @item.Descriptions
+                                                </td>
+                                                <td>
+                                                    @item.ActivityDate.ToString(DateFormat)
+                                                </td>
+                                                <td>
+                                                    @Html.EncodedActionLink(@NIMBOLE.GlobalResources.Resources.View, "Display", "Notifications", new { Id = item.Id }, null)
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+
+    <script>
+
+    $(document).ready(function () {
+        var table = $('#example').DataTable();
+        table.destroy();
+        $('#example').DataTable({
+            "order": [[0, "desc"]]
+        });
+    });
+
+    </script>
+}

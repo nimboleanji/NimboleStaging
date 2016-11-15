@@ -1,0 +1,62 @@
+﻿@model IEnumerable<NIMBOLE.Models.Models.ActivityModel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm("Index", "Activity", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">@NIMBOLE.GlobalResources.Resources.Activity</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        @*Left Column*@
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                @*<a href="~/Activity/Create">
+                                   <button class="btn btn-success" type="button">@NIMBOLE.GlobalResources.Resources.New</button>
+                                </a>*@
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="dataTable_wrapper">
+                                @(Html.Kendo().Grid<NIMBOLE.Models.Models.ActivityModel>()
+                            .Name("GridActivity")
+                            .Columns(columns =>
+                            {
+                                columns.Bound(m => m.Id).Width(20).Title(@NIMBOLE.GlobalResources.Resources.Id).Hidden();
+                                columns.Bound(m => m.Title).Width(70).Title(@NIMBOLE.GlobalResources.Resources.Title);
+                                columns.Bound(m => m.ActivityDate).Width(70).Title(@NIMBOLE.GlobalResources.Resources.ActivityDate).Format("{0:dd/MM/yyyy}");
+                                columns.Bound(m => m.Descriptions).Width(70).Title(@NIMBOLE.GlobalResources.Resources.Milestone);
+                                columns.Bound(m => m.ActivityComments).Width(70).Title(@NIMBOLE.GlobalResources.Resources.Comments);
+                                columns.Template(@<text></text>).ClientTemplate("<a href='" + Url.Action("Edit", "Activity") + "/#=Id#'>" + @NIMBOLE.GlobalResources.Resources.View + "</a>").HtmlAttributes(new { style = "text-align: center;" }).Width(50);
+                                @*columns.Template(@<text></text>).ClientTemplate("<a href='javascript:deleteRecord(#=Id#)'>" + @NIMBOLE.GlobalResources.Resources.Delete + "</a>").HtmlAttributes(new { style = "text-align:center;" }).Width(70);*@
+                            })
+    .Pageable()
+    .Sortable()
+    .Filterable()
+    .DataSource(datasource => datasource
+        .Ajax()
+        .PageSize(20)
+        .Sort(e => e.Add("Id").Descending())
+        .Model(model => model.Id(m => m.Id))
+        .Read(read => read.Action("Activity_Read", "Activity"))
+       )
+                                )
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

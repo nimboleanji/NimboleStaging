@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+@*<h2>Leads By Account Id:</h2>
+<input id="AccountName" style="width: 100%" class="form-control" />
+<div id="dvReportViewer"></div>
+<script>
+    accid = -1;
+    $(document).ready(function () {
+        var accountname = $("#AccountName").kendoDropDownList({
+            optionLabel: "@NIMBOLE.GlobalResources.Resources.Select",
+            dataTextField: "AccountName",
+            dataValueField: "Id",
+            value:accid,
+            dataSource: {
+                type: JSON,
+                serverFiltering: true,
+                transport: {
+                    read: '@Url.Action("GetAllAccounts", "NimboleAccounts")'
+                    }
+                },
+                change: AccountChange
+            }).data("kendoDropDownList");
+
+            var dropdownlist = $("#AccountName").data("kendoDropDownList");
+            dropdownlist.trigger("change");
+        });
+    function AccountChange() {
+        debugger;
+        accid = $("#AccountName").val();
+        if (accid != "-1") {
+            $.ajax({
+                type: 'POST',
+                url: 'TestPrint?iAccountId=' + accid,
+                /*data: {
+                    'iAccountId': accid
+                },*/
+                success: function (msg) {
+                    //$("#dvReportViewer").append(msg);
+                    //console.log(msg);
+                }
+            });
+        }
+    }
+</script>*@
+
+@*@{
+    Html.RenderAction("RptIndex");
+    
+}*@
+@Html.Partial("RptIndex") 

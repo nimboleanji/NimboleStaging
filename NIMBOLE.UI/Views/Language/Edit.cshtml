@@ -1,0 +1,54 @@
+﻿@model NIMBOLE.Models.Models.LanguageModel
+@using Kendo.Mvc.UI;
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-12">
+                <header class="row head-tag">
+                    <h2 class="col-md-6">@NIMBOLE.GlobalResources.Resources.EditLanguage</h2>
+                </header>
+
+                <div class="row">
+
+                    <div class="col-md-4 col-xs-6 form-group">
+                        <label for="InputShortCode">
+                              @NIMBOLE.GlobalResources.Resources.ShortCode
+                        </label>
+                        @Html.TextBoxFor(model => model.Code, new { @placeholder = "Enter Language Code", @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Code)
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-4 col-xs-6 form-group">
+                        <label for="InputLanguageName">
+                            @NIMBOLE.GlobalResources.Resources.LanguageName
+                        </label>
+                        @Html.TextBoxFor(model => model.LanguageName, new { @placeholder = "Enter Language Name", @class = "form-control" })
+
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-4 col-md-6" style="text-align: right;">
+                        <input type="submit" class="btn btn-success" value="Save">
+                        <input type="button" value="Cancel" class="btn btn-danger" onclick="location.href = '/Language/Index'" />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+}

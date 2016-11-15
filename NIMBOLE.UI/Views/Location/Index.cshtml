@@ -1,0 +1,163 @@
+﻿@model IEnumerable<NIMBOLE.Models.Models.LocationModel>
+@using NIMBOLE.Models.Models
+@using NIMBOLE.UI.Helpers
+@using Kendo.Mvc.UI
+@{
+    ViewBag.Title = "Location";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+     <!-- Page JS Plugins -->
+
+    <script src="~/assets/js/plugins/datatables/jquery.dataTables.min.js"></script>
+        <!-- Page JS Code -->
+    <script src="~/assets/js/pages/base_tables_datatables.js"></script>
+}
+
+@using (Html.BeginForm())
+{
+    <main id="main-container">
+        <!-- Page Content -->
+        <div class="content">
+            <!-- Dynamic Table Full -->
+            <div class="block">
+                <div class="block-header">
+                    <div class="form-group">
+                        <div class="col-xs-6">
+                            <h1 class="block-title">@NIMBOLE.GlobalResources.Resources.Location</h1>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-6" style="text-align:right;">
+                            <a href="~/Location/Create" class="btn btn-sw btn-primary" tabindex="1" role="button">
+                                <i class="fa fa-plus"></i>
+                                @NIMBOLE.GlobalResources.Resources.New
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+
+                <div class="block-content">
+                    <!-- DataTables init on table by adding .js-dataTable-full class, functionality initialized in js/pages/base_tables_datatables.js -->
+                    <table class="table table-bordered table-striped js-dataTable-full-pagination" id="example" data-orderable="false" width="100%">
+                        <thead>
+                            <tr>
+                                <th class="text-center" style="display:none">@NIMBOLE.GlobalResources.Resources.Id </th>
+                                <th class="text-center">@NIMBOLE.GlobalResources.Resources.Code </th>
+                                <th class="text-center">@NIMBOLE.GlobalResources.Resources.Description</th> 
+                                <th class="text-center">@NIMBOLE.GlobalResources.Resources.Status </th>
+                                <th class="text-center"></th>
+                                <th class="text-center"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null)
+                            {
+                                foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td style="display:none">
+                                            @item.Id
+                                        </td>
+                                        <td>
+                                            @item.Code
+                                        </td>
+                                        <td>@item.Description</td>
+                                      
+                                        @{
+                                    if (item.Status == true)
+                                    {
+                                        item.Active = "Active";
+                                        item.Change_status = "Deactivate";
+                                    }
+                                    else
+                                    {
+                                        item.Active = "Inactive";
+                                        item.Change_status = "Activate";
+                                    }
+                                        }
+                                        <td>@item.Active</td>
+                                        <td> <a href="javascript:void();" onclick="Editfunction(@item.Id);">@NIMBOLE.GlobalResources.Resources.Edit</a></td>
+                                        <td>
+                                            <a href="javascript:ActivateorDeactivate(@item.Id,'@item.Active');"> @item.Change_status </a>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </main>
+}
+
+<script>
+    function Editfunction(id) {
+        window.location.href = window.location.origin + "/Location/Edit?q=" + SubmitsEncry(id);
+    }
+</script>
+
+<script type="text/javascript">
+    function ActivateorDeactivate(id, status) {
+        var message;
+        if (status == "Active") {
+            message = "Do you want to deactivate ?";
+        } else {
+            message = "Do you want to activate ?";
+        }
+        swal(
+            {
+                title: message,
+                type: "",
+                showCancelButton: true,
+                confirmButtonColor: "#337ab7",
+                confirmButtonText: "Ok",
+                cancelButtonText: "Cancel",
+                cancelButtonColor: "#d26a5c",
+                showLoaderOnConfirm: true,
+                closeOnConfirm: false,
+            },
+            function () {
+                if (status == "Active") {
+                    updateRecord(id, false);//deactivate record
+                }
+                else {
+                    updateRecord(id, true);//activate record
+                }
+            });
+    }
+    function updateRecord(id, status) {
+        $.ajax({
+            url: '/Location/Delete',
+            dataType: "json",
+            type: "DELETE",
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify({ id: id, status: status }),
+            async: true,
+            processData: false,
+            cache: false,
+            success: function (data) {
+                debugger;
+                location.href = '/Location/Index';
+            },
+            error: function (xhr) {
+            }
+        });
+    }
+
+</script>
+
+<script>
+
+    $(document).ready(function () {
+        var table = $('#example').DataTable();
+        table.destroy();
+        $('#example').DataTable({
+            "order": [[0, "desc"]]
+        });
+    });
+
+</script>

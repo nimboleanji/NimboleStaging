@@ -1,0 +1,1901 @@
+﻿@model NIMBOLE.Models.Models.LeadModel
+@using Kendo.Mvc.UI;
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    long iLeadId = Convert.ToInt64(Session["CurrentLeadId"] != null ? Convert.ToInt64(Session["CurrentLeadId"]) : 0);
+    string DateFormat = System.Web.HttpContext.Current.Session["DateFormat"] != null ? Session["DateFormat"].ToString() : "";
+    string currency = System.Web.HttpContext.Current.Session["Currency"] != null ? Session["Currency"].ToString() : "";
+    //ViewData["LeadBudget"] = Model.Budget == null ? 0 : Model.Budget;
+    var EmployeeRole = System.Web.HttpContext.Current.Session["EmployeeRole"] != null ? Session["EmployeeRole"].ToString() : "";
+}
+
+<style>
+    .file-icon {
+        display: inline-block;
+        float: left;
+        width: 48px;
+        height: 48px;
+    }
+
+    .img-file {
+        background-image: url(../content/images/jpg.png);
+    }
+
+    .doc-file {
+        background-image: url(../content/images/doc.png);
+    }
+
+    .pdf-file {
+        background-image: url(../content/images/pdf.png);
+    }
+
+    .xls-file {
+        background-image: url(../content/images/xls.png);
+    }
+
+    .zip-file {
+        background-image: url(../content/images/zip.png);
+    }
+
+    .default-file {
+        background-image: url(../content/images/default.png);
+    }
+
+    #example .file-heading {
+        font-family: Arial;
+        font-size: 1.1em;
+        display: inline-block;
+        float: left;
+        width: 450px;
+        margin: 0 0 0 20px;
+        height: 25px;
+        -ms-text-overflow: ellipsis;
+        -o-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    #example .file-name-heading {
+        font-weight: bold;
+    }
+
+    #example .file-size-heading {
+        font-weight: normal;
+        font-style: italic;
+    }
+
+    div.k-dropzone {
+        width: 250px;
+        height: 24px;
+    }
+
+    .k-grid tbody button.k-button-bare {
+        min-width: 20px;
+    }
+
+    li.k-file .file-wrapper .k-upload-action {
+        position: relative;
+        right: 5%;
+        top: -120%;
+        color: red;
+        border: 2px solid red;
+    }
+
+    li.k-file div.file-wrapper {
+        position: relative;
+        height: 50px;
+    }
+
+    .file-wrapper > h6 {
+        padding-left: 20px;
+    }
+
+    .file-wrapper > h4 {
+        padding-left: 15px;
+    }
+
+    .k-file-success .k-progress {
+        background-color: green;
+    }
+
+    .k-dropzone .k-upload-status {
+        color: green;
+    }
+</style>
+
+@{
+    var documentName = string.Empty;
+    var documentUrl = string.Empty;
+}
+
+<script>
+    var _contactId = 0;
+    var _roleId = 0;
+    var contactEmail = "";
+    var workEmail = "";
+
+    var _productId = 0;
+    var _comp1productId = 0;
+    var _comp2productId = 0;
+    var _comp3productId = 0;
+
+    kendo.ui.ComboBox.fn.clear = kendo.ui.AutoComplete.fn.clear = function () {
+        if (!!this.text) {
+            this.text("");
+        }
+        if (!!this.value) {
+            this.value(null);
+        }
+        this._prev = this.oldIndex = this._old = this._last = undefined;
+    };
+</script>
+
+@using (Html.BeginForm("Edit", "Leads", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">@NIMBOLE.GlobalResources.Resources.Leads</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    @*Form to Edit Lead.*@
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        @*Left Column*@
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="InputLeadTitle">
+                                    @NIMBOLE.GlobalResources.Resources.Title <span class="field-validation-error">*</span>
+                                </label>
+                                @Html.TextBoxFor(model => model.LeadTitle, new { @placeholder = @NIMBOLE.GlobalResources.Resources.Title, @class = "form-control", @tabindex = "1", @readonly = "readonly" })
+                            </div>
+                            <div class="form-group">
+                                <label for="InputLeadSource">
+                                    @NIMBOLE.GlobalResources.Resources.LeadSource <span class="field-validation-error">*</span>
+                                </label>
+                                @Html.HiddenFor(model => model.LeadSourceId)
+                                @(Html.TextBox("LeadSource", "", new { @placeholder = @NIMBOLE.GlobalResources.Resources.SelectOrAdd, @style = "width: 100%;", @class = "form-control", @tabindex = "3", @readonly = "readonly" }))
+                            </div>
+                            <script>
+                                function onLeadSourceDataBound() {
+                                    if (this._selectedValue === undefined) {
+                                        var combo = $("#LeadSource").data("kendoComboBox");
+                                        combo.value('@Model.LeadSourceId' != 0 || '@Model.LeadSourceId' != null? '@Model.LeadSourceId' : "");
+                                    }
+                                }
+                                //function BindLeadSource() {
+                                //    $("#LeadSource").kendoComboBox({
+                                //        dataTextField: "Description",
+                                //        dataValueField: "Id",
+                                //        dataSource: {
+                                //            type: "json",
+                                //            transport: {
+                                //                read: {
+                                //                    url: "/LeadSource/GetAllLeadSources",
+                                //                    dataType: "json"
+                                //                }
+                                //            }
+                                //        },
+                                //        filter: "startswith",
+                                //        dataBound: onLeadSourceDataBound,
+                                //        change: onLeadSourceChange,
+                                //        suggest: true
+                                //    });
+                                //}
+                                function BindLeadSource() {
+                                    $("#LeadSource").kendoComboBox({
+                                        dataTextField: "Name",
+                                        dataValueField: "Id",
+                                        dataSource: @Html.Raw(Json.Encode(ViewData["LeadSources"])),
+                                        sort:{field:"Name", dir:"asc"},
+                                        filter: "startswith",
+                                        dataBound: onLeadSourceDataBound,
+                                        change: onLeadSourceChange,
+                                        suggest: true
+                                    });
+                                }
+                                $(document).ready(function () {
+                                    BindLeadSource();
+                                });
+                            </script>
+
+                            <div class="form-group">
+                                <label for="InputLeadBudget">
+                                    @NIMBOLE.GlobalResources.Resources.Budget (@currency)
+                                </label>
+                                @Html.TextBoxFor(model => model.Budget, new { @placeholder = @NIMBOLE.GlobalResources.Resources.Budget, @class = "form-control nimbolenumbers", @tabindex = "5", @readonly = "readonly" })
+                            </div>
+                            <div class="span10">
+                                @Html.ValidationMessageFor(model => model.Budget, "", new { @class = "errmsg" })
+                            </div>
+                            <div class="form-group">
+                                <label for="InputLeadMilestone">
+                                    @NIMBOLE.GlobalResources.Resources.LeadMilestone
+                                </label>
+                                @*@(Html.Kendo().DropDownListFor(model => model.LeadStatus)
+                                        .HtmlAttributes(new { @style = "width: 100%;", @tabindex = "7" })
+                                        .DataTextField("Description")
+                                        .DataValueField("Id")
+                                        .OptionLabel(@NIMBOLE.GlobalResources.Resources.Select)
+                                        .AutoBind(true)
+                                        .DataSource(source =>
+                                        {
+                                            source.Read(read => read.Action("GetAllMileStones", "Leads"));
+                                            source.ServerFiltering(true);
+                                        })
+                                    )*@
+
+
+                                @(Html.Kendo().DropDownListFor(model => model.LeadStatus)
+                                    .HtmlAttributes(new { @style = "width: 100%;", @tabindex = "7" })
+                                    .DataTextField("Text")
+                                    .DataValueField("Value")
+                                    .OptionLabel(@NIMBOLE.GlobalResources.Resources.Select)
+                                    .AutoBind(true)
+                                    .BindTo(ViewData["SelectMilestones"] as SelectList)
+                                )
+                            </div>
+                            <script>
+                                $("#LeadStatus").change(function () {
+                                    var ddlMilestone = $("#LeadStatus").data("kendoDropDownList");
+                                    var slectedIndex = ddlMilestone.select();
+                                    var ddldata = ddlMilestone.dataSource.data();
+                                    var msorder = ddldata[slectedIndex - 1].MSOrder;
+
+                                    $.ajax({
+                                        url: '@Url.Action("GetAllMileStones", "Leads")',
+                                        type: 'GET',
+                                        async: false,
+                                        success: function (data) {
+                                            msorder =  (data[slectedIndex - 1].MSOrder);
+
+                                            if (msorder != '0' && msorder != undefined) {
+                                                $('input[type=checkbox][name=SelectedModule').each(function() {
+                                                    $(this).prop("checked", false);
+                                                });
+                                                $('#' + msorder).prop("checked", true);
+                                                $('#LeadStage').val(msorder);
+                                            }
+                                            else
+                                            {
+                                                $('input[type=checkbox][name=SelectedModule').each(function() {
+                                                    $(this).prop("checked", false);
+                                                });
+                                            }
+                                        },
+                                        error: function () {
+                                            alert('Error occured');
+                                        }
+                                    });
+                                });
+                            </script>
+
+                            <div class="form-group">
+                                <label for="InputLeadLocation">
+                                    @NIMBOLE.GlobalResources.Resources.Location
+                                </label>
+                                @Html.TextBoxFor(model => model.Location, new { @placeholder = @NIMBOLE.GlobalResources.Resources.Location, @class = "form-control", @tabindex = "9" })
+                            </div>
+
+                            <div class="form-group">
+                                <label>
+                                    @NIMBOLE.GlobalResources.Resources.Employee
+                                </label>
+                                @(Html.Kendo().MultiSelectFor(model => model.LeadEmployees)
+                                    .DataTextField("Text")
+                                    .DataValueField("Value")
+                                    .Placeholder("Select - (MultiSelect)")
+                                    .HtmlAttributes(new { @style = "width:100%", @tabindex = 11 })
+                                    .AutoBind(true)
+                                    .BindTo(ViewData["SelectEmployees"] as SelectList)
+                                )
+                            </div>
+
+                        </div>
+
+                        @*Right Column*@
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="InputLeadDescription">
+                                    @NIMBOLE.GlobalResources.Resources.LeadDescription
+                                </label>
+                                @Html.TextBoxFor(model => model.LeadDescription, new { @placeholder = @NIMBOLE.GlobalResources.Resources.LeadDescription, @class = "form-control", @tabindex = "2", @readonly = "readonly" })
+                            </div>
+
+                            <div class="form-group">
+                                <label for=" InputType">
+                                    @NIMBOLE.GlobalResources.Resources.LeadType
+                                </label>
+                                @Html.TextBoxFor(model => model.LeadType, new { @placeholder = @NIMBOLE.GlobalResources.Resources.LeadType, @class = "form-control", @tabindex = "4" })
+                            </div>
+
+                            <div class="form-group">
+                                <label for="InputAccount">
+                                    @NIMBOLE.GlobalResources.Resources.Accounts <span class="field-validation-error">*</span>
+                                </label>
+                                @Html.HiddenFor(model => model.AccountId)
+                                @(Html.TextBox("Account", "", new { @placeholder = @NIMBOLE.GlobalResources.Resources.SelectOrAdd, @style = "width: 100%;", @class = "form-control", @tabindex = "6", @readonly = "readonly" }))
+                            </div>
+                            <script>
+                                function onAccountDataBound() {
+                                    if (this._selectedValue === undefined) {
+                                        var combo = $("#Account").data("kendoComboBox");
+                                        combo.value('@Model.AccountId' != 0 ? '@Model.AccountId' : "");
+                                    }
+                                }
+
+                                function BindAccount() {
+                                    $("#Account").kendoComboBox({
+                                        dataTextField: "Name",
+                                        dataValueField: "Id",
+                                        dataSource: @Html.Raw(Json.Encode(ViewData["Accounts"])),
+                                        sort:{field:"Name", dir:"asc"},
+                                        filter: "startswith",
+                                        dataBound: onAccountDataBound,
+                                        change: onAccountChange,
+                                        suggest: true
+                                    });
+                                }
+                                $(document).ready(function () {
+                                    BindAccount();
+                                });
+                            </script>
+
+                            <div class="form-group">
+                                <label for="InputTimeFrame">
+                                    @NIMBOLE.GlobalResources.Resources.TimeFrame
+                                </label>
+                                @(Html.Kendo().DropDownListFor(model => model.TimeFrame)
+                                        .HtmlAttributes(new { @style = "width: 100%;", @tabindex = "8" })
+                                        .DataTextField("Text")
+                                        .DataValueField("Value")
+                                        .OptionLabel(@NIMBOLE.GlobalResources.Resources.Select)
+                                        .AutoBind(true)
+                                        .BindTo(new List<SelectListItem>() {
+                                             new SelectListItem() {
+                                              Text = "<1 Month",
+                                              Value = "0"
+                                          },
+                                          new SelectListItem() {
+                                              Text = "1 Month",
+                                              Value = "1"
+                                          }
+                                          ,
+                                          new SelectListItem() {
+                                              Text = "2 Month",
+                                              Value = "2"
+                                          }
+                                          ,
+                                          new SelectListItem() {
+                                              Text = "3 Month",
+                                              Value = "3"
+                                          }
+                                          ,
+                                          new SelectListItem() {
+                                              Text = "4 Month",
+                                              Value = "4"
+                                          }
+                                          ,
+                                          new SelectListItem() {
+                                              Text = "5 Month",
+                                              Value = "5"
+                                          }
+                                      })
+                                )
+                            </div>
+                            <div class="form-group">
+                                <label for="InputSize">
+                                    @NIMBOLE.GlobalResources.Resources.Value (@currency)
+                                </label>
+                                @Html.TextBoxFor(model => model.Size, new { @placeholder = @NIMBOLE.GlobalResources.Resources.Value, @class = "form-control", @tabindex = "10", @readonly = "readonly" })
+                            </div>
+                            <div class="row">
+                                @Html.HiddenFor(m => m.LeadStage)
+                                <div class="col-lg-12">
+                                    @{
+    if (EmployeeRole == "Admin")
+    {
+        <div id="divStages" class="form-group" tabindex="12">
+        </div>
+    }
+                                    }
+
+                                </div>
+                            </div>
+                            <script>
+                                $(document).ready(function () {
+                                    var url = '/MilestoneStages/GetMilestoneStageList';
+                                    $.getJSON(url, function (data) {
+                                        $.each(data, function (key, val) {
+                                            if($('#LeadStage').val() > 0)
+                                            {
+                                                if(val.Id == $('#LeadStage').val())
+                                                {
+                                                    var user = "<label style='width:30%;'><input type='checkbox' id='" + val.Id + "' onClick='javascript:checkboxClick(this)' name='SelectedModule' value='" + val.Id + "' checked> " + val.MileStoneStage + " </input></label>"
+                                                    $('#divStages').append(user);
+                                                }
+                                                else
+                                                {
+                                                    var user = "<label style='width:30%;'><input type='checkbox' id='" + val.Id + "' onClick='javascript:checkboxClick(this)' name='SelectedModule' value='" + val.Id + "'> " + val.MileStoneStage + " </input></label>"
+                                                    $('#divStages').append(user);
+                                                }
+                                            }
+                                            else
+                                            {
+                                                if (val.Id == '@Model.MileStoneStage') {
+                                                    var user = "<label style='width:30%;'><input type='checkbox' id='" + val.Id + "' onClick='javascript:checkboxClick(this)' name='SelectedModule' value='" + val.Id + "' checked> " + val.MileStoneStage + " </input></label>"
+                                                    $('#divStages').append(user);
+                                                }
+                                                else {
+                                                    var user = "<label style='width:30%;'><input type='checkbox' id='" + val.Id + "' onClick='javascript:checkboxClick(this)' name='SelectedModule' value='" + val.Id + "'> " + val.MileStoneStage + " </input></label>"
+                                                    $('#divStages').append(user);
+                                                }
+                                            }
+                                        });
+                                    });
+                                });
+
+                                function OnDeleteProducts(e) {
+                                    debugger;
+                                    e.preventDefault;
+                                }
+
+                                function checkboxClick(e) {
+                                    var $box = $(e);
+                                    if ($box.is(":checked")) {
+                                        var group = "input:checkbox[name='" + $box.attr("name") + "']";
+                                        $(group).prop("checked", false);
+                                        $box.prop("checked", true);
+                                        $('#LeadStage').val(e.value);
+                                    } else {
+                                        $box.prop("checked", false);
+                                        $('#LeadStage').val(0);
+                                    }
+                                }
+                            </script>
+                        </div>
+                    </div>
+                    <br />
+                    <input type="hidden" id="txtHdnProdId" name="txtHdnProdId" value="" />
+                    @Html.Hidden("MvcHdnProdId")
+                    @Html.Hidden("hdnProdDelete")
+                    <div id="divProductCollapsable">
+                        @(Html.Kendo().PanelBar()
+                                    .Name("PanelbarProducts")
+                                    .ExpandMode(PanelBarExpandMode.Single)
+                                    .Items(panelbar =>
+                                    {
+                                        panelbar.Add().Text(@NIMBOLE.GlobalResources.Resources.Products)
+                                         .Expanded(true)
+                                        .Content(@<text>
+                                            <div class="dataTable_wrapper">
+                                                @(Html.Kendo().Grid<NIMBOLE.Models.Models.TranLeadProdCompModel>()
+                                                        .Name("GridLeadProducts")
+                                                        .Columns(columns =>
+                                                        {
+                                                            columns.Bound(m => m.Id).Title(@NIMBOLE.GlobalResources.Resources.Id).Hidden();
+                                                            columns.Bound(m => m.ProdId).Title(@NIMBOLE.GlobalResources.Resources.Id).Hidden();
+                                                            columns.Bound(m => m.ProductName).Title(@NIMBOLE.GlobalResources.Resources.Name).EditorTemplateName("ProductNameAutocomplete");
+                                                            columns.Bound(m => m.Price).Title(@NIMBOLE.GlobalResources.Resources.Price + " (" + @currency + ")").Format("{0:N}").HtmlAttributes(new { @style = "text-align: right;" });
+                                                            columns.Bound(m => m.Quantity).Title(@NIMBOLE.GlobalResources.Resources.Quantity).HtmlAttributes(new { @style = "text-align: right;" });
+                                                            columns.Bound(m => m.DiscountType).Title(@NIMBOLE.GlobalResources.Resources.DiscountType).EditorTemplateName("DiscountType");
+                                                            columns.Bound(m => m.Discount).Title(@NIMBOLE.GlobalResources.Resources.DiscountPrice);
+
+                                                            columns.Bound(m => m.Amount).Title(@NIMBOLE.GlobalResources.Resources.Amount + " (" + @currency + ")").ClientFooterTemplate("<input type='hidden' id='hdnSize' value='#=sum#'/> <div id='divGrandTotal' class=aright>" + currency + " #= kendo.format('{0:N}', sum)#" + " </div>").Format("{0:N}").HtmlAttributes(new { @style = "text-align: right;" });
+
+                                                            columns.Group(grp => grp.Title(@NIMBOLE.GlobalResources.Resources.Competitor1).HeaderHtmlAttributes(new { style = "text-align:center;" }).Columns(info =>
+                                                                {
+                                                                    info.Bound(m => m.Comp1Name).Title(@NIMBOLE.GlobalResources.Resources.Name).EditorTemplateName("Competitor1AutoComplete");
+                                                                    info.Bound(m => m.Comp1Price).Title(@NIMBOLE.GlobalResources.Resources.Price + " (" + @currency + ")").Format("{0:N}").HtmlAttributes(new { @style = "text-align: right;" });
+                                                                })
+                                                            );
+                                                            columns.Bound(m => m.LeadValue).Hidden();
+                                                            columns.Bound(m => m.TempTransactionType).Hidden();
+                                                            columns.Command(command => { command.Edit().Text(" ").UpdateText(" ").CancelText(" ").HtmlAttributes(new { onclick = "onProductCommandClick(this)" }); command.Destroy().Text(" "); }).Title(@NIMBOLE.GlobalResources.Resources.Actions);
+                                                        })
+                                                        .ToolBar(toolbar => toolbar.Create().Text(@NIMBOLE.GlobalResources.Resources.Add).HtmlAttributes(new { id = "customProdCompCommand" }))
+                                                        .Editable(editable => { editable.Mode(GridEditMode.InLine).ConfirmDelete("Do you want to delete?"); })
+                                                        //.Events(e => { e.DataBound("onLeadProductsDataBound"); e.Save("OnSaveProduct").Remove("OnDeleteLeadProduct"); })
+                                                        .Events(e => { e.DataBound("onLeadProductsDataBound"); e.Remove("OnDeleteLeadProduct"); })
+                                                        .Pageable()
+                                                        .Sortable()
+                                                        .AutoBind(true)
+                                                        .DataSource(
+                                                            dataSource => dataSource
+                                                            .Ajax()
+                                                            .Aggregates(a => a.Add(m => m.Amount).Sum())
+                                                            .PageSize(5)
+                                                            .Events(events =>
+                                                            {
+                                                                events.Error("error_handler");
+                                                                events.RequestEnd("onRequestEnd");
+                                                            })
+                                                            .Model(model =>
+                                                            {
+                                                                model.Id(m => m.Prod.Id);
+                                                                model.Field(m => m.Quantity).DefaultValue(1);
+                                                            })
+                                                            .Create(e => e.Action("Create", "LeadProducts"))
+                                                            .Read(e => e.Action("LeadProducts_Read", "LeadProducts"))
+                                                            .Update(e => e.Action("Edit", "LeadProducts"))
+                                                            .Destroy(e => e.Action("Delete", "LeadProducts"))
+                                                        ))
+                                            </div>
+                                        </text>);
+                                    })
+                        )
+                    </div>
+                    <script>
+                        function onProductCommandClick(e)
+                        {
+                            e.setAttribute("style", "pointer-events:none");
+                            var grid = $("#GridLeadProducts").data("kendoGrid");
+                            kendo.ui.progress(grid.wrapper, true);
+                            if(e.className.toString().split(' ').indexOf("k-grid-edit")>-1)
+                            {
+                                setTimeout(function(){
+                                    BindProducts();
+                                    BindComp1();
+                                    var grid = $("#GridLeadProducts").data("kendoGrid");
+                                    var model = grid.editable.options.model;
+                                    var dropdownlist = $("#DiscountType_DiscountType").data("kendoDropDownList");
+                                    dropdownlist.text(model.DiscountType != 0  ?  model.DiscountType :"Select");
+                                    $("#ProductName_ProductName").data("kendoComboBox").input.attr("placeholder", '@NIMBOLE.GlobalResources.Resources.SelectOrAdd');
+                                    model.Comp1Name = $("#Comp1Name_Comp1Name").val();
+                                    $("#Comp1Name_Comp1Name").data("kendoComboBox").input.attr("placeholder", '@NIMBOLE.GlobalResources.Resources.SelectOrAdd');
+                                    $("#Quantity,#Price,#Discount,#ProductName_ProductName,#DiscountType_DiscountType").attr("onChange","QuantityChange();");
+                                    //$("#Price").attr("onChange","QuantityChange();");
+                                    //$('#Discount').attr("onChange","QuantityChange();");
+                                    //$("#ProductName_ProductName").attr("onChange","QuantityChange();")
+                                    //$("#DiscountType_DiscountType").attr("onChange","QuantityChange();")
+                                    $("#Quantity").attr("min","1");
+                                    kendo.ui.progress(grid.wrapper, false);
+                                },1000);
+                            }
+                            else if(e.className.toString().split(' ').indexOf("k-grid-cancel")>-1)
+                            {
+                                var grid = $("#GridLeadProducts").data("kendoGrid");
+                                grid.dataSource.read();
+                                kendo.ui.progress(grid.wrapper, false);
+                            }
+                            else if(e.className.toString().split(' ').indexOf("k-grid-update")>-1)
+                            {
+                                debugger;
+                                var grid = $("#GridLeadProducts").data("kendoGrid");
+                                var price = $('#Price').val();
+                                var Qty = $('#Quantity').val();
+                                var amt = price*Qty;
+                                var Dis = $('#Discount').val();
+                                var discountType = $('#DiscountType_DiscountType').val();
+                                if(discountType == "1")
+                                {
+                                    amt = (amt-Dis);
+                                }
+                                else if(discountType == "2")
+                                {
+                                    amt = (amt-(amt*Dis/100));
+                                }
+                                var model = grid.editable.options.model;
+                                model.TenantId = model.Prod.TenantId;
+                                model.Amount = amt;
+                                model.DiscountType =$('#DiscountType_DiscountType').data("kendoDropDownList").text()=== '@NIMBOLE.GlobalResources.Resources.Select'? "" :$('#DiscountType_DiscountType').data("kendoDropDownList").text();
+                                model.TempTransactionType = "Edit";
+                                kendo.ui.progress(grid.wrapper, false);
+                            }
+                        }
+
+                        function OnDeleteLeadProduct(e)
+                        {
+                            debugger;
+                            //var grid = $("#GridLeadProducts").data("kendoGrid");
+                            //var model = grid.editable.options.model;
+                            //model.TempTransactionType = "Delete";
+                            e.preventDefault;
+                        }
+                        function onLeadProductsDataBound(e)
+                        {
+                            //$('#hdnProdDelete').val("");
+                            //$('#txtHdnProdId').val("");
+                            var grid = $("#GridLeadProducts").data("kendoGrid");
+                            var gridData = grid.dataSource.view();
+                            $('#Size').val($('#hdnSize').val().trim());
+                        }
+                        function onRequestEnd(e) {
+                            if (e.type == "create" || e.type == "update" || e.type == "destroy") {
+                                $("#GridLeadProducts").data("kendoGrid").dataSource.read();
+                                setTimeout(function () {
+                                    $.ajax({
+                                        url: '@Url.Action("UpdateValue", "Leads")',
+                                        type: 'POST',
+                                        async: false,
+                                        data: { 'leadValue': $('#Size').val() },
+                                        success: function () {
+                                        },
+                                        error: function () {
+                                        }
+                                    });
+                                }, 2000);
+                            }
+                        }
+                    </script>
+                    <br />
+                    <div class="row">
+                        <div class="col-lg-12">
+                            @(Html.Kendo().PanelBar()
+                                    .Name("PanelbarExternalContacts")
+                                    .ExpandMode(PanelBarExpandMode.Single)
+                                    .Items(panelbar =>
+                                    {
+                                        panelbar.Add().Text(@NIMBOLE.GlobalResources.Resources.LeadContacts)
+                                        .Content(@<text>
+                                                <div class="dataTable_wrapper">
+                                                    @(Html.Kendo().Grid<NIMBOLE.Models.Models.ExtContactModel>()
+                                                        .Name("GridExternalContacts")
+                                                        .Columns(columns =>
+                                                        {
+                                                            columns.Bound(m => m.Id).Title(@NIMBOLE.GlobalResources.Resources.Id).Hidden();
+                                                            columns.Bound(m => m.FullName).Title(@NIMBOLE.GlobalResources.Resources.Name).EditorTemplateName("ExternalContact");
+                                                            //columns.Bound(m => m.ContactEmail).Title(@NIMBOLE.GlobalResources.Resources.Email).EditorTemplateName("ExternalContactEmail");
+                                                            columns.Bound(m => m.WorkEmail).Title(@NIMBOLE.GlobalResources.Resources.Email).EditorTemplateName("ExternalWorkEmail");
+                                                            columns.Bound(m => m.ExtContactRole).Title(@NIMBOLE.GlobalResources.Resources.Role).EditorTemplateName("ExternalContactRole");
+                                                            columns.Command(command => { command.Edit().Text(" ").UpdateText(" ").CancelText(" ").HtmlAttributes(new { onclick = "onClick(this)" }); command.Destroy().Text(" "); }).Title(@NIMBOLE.GlobalResources.Resources.Actions);
+                                                        })
+                                                        .ToolBar(toolbar => toolbar.Create().Text(@NIMBOLE.GlobalResources.Resources.Add).HtmlAttributes(new { id = "customExtContactCommand" }))
+                                                        .Editable(editable => { editable.Mode(GridEditMode.InLine).ConfirmDelete("Do you want to delete?"); })
+                                                        .Events(e => { e.Save("onExternalContactSave").Remove("OnDeleteExtContact"); })
+                                                        .Pageable()
+                                                        .Sortable()
+                                                        .Scrollable()
+                                                        .AutoBind(true)
+                                                        .DataSource(
+                                                         dataSource => dataSource
+                                                            .Ajax()
+                                                            .PageSize(5)
+                                                            .Sort(e => e.Add("Id").Descending())
+                                                            .Events(events => events.Error("error_handler").RequestEnd("onExternalContactsGridRequestEnd"))
+                                                            .Model(model => model.Id(m => m.Id))
+                                                            .Create(e => e.Action("Create", "TranExtContact"))
+                                                            .Read(e => e.Action("TranExtContact_Read", "TranExtContact"))
+                                                            .Update(e => e.Action("Edit", "TranExtContact"))
+                                                            .Destroy(e => e.Action("Delete", "TranExtContact"))
+                                                        )
+                                                    )
+                                                </div>
+
+                                        </text>);
+                                    })
+                            )
+                            <script>
+                                function OnDeleteExtContact(e)
+                                {
+                                    e.preventDefault;
+
+                                }
+                                function onClick(e)
+                                {
+                                    e.setAttribute("style", "pointer-events:none");
+                                    var grid = $("#GridExternalContacts").data("kendoGrid");
+                                    kendo.ui.progress(grid.wrapper, true);
+                                    if(e.className.toString().split(' ').indexOf("k-grid-edit")>-1)
+                                    {
+                                        setTimeout(function(){
+                                            BindExtContact();
+                                            BindExtContactRole();
+                                            $("#ExtContactRole_ExtContactRole").data("kendoComboBox").input.attr("placeholder", '@NIMBOLE.GlobalResources.Resources.SelectOrAdd');
+                                            //$("#ContactEmail_ContactEmail").data("kendoComboBox").input.attr("placeholder", '@NIMBOLE.GlobalResources.Resources.Add');
+                                            $("#FullName_FullName").data("kendoComboBox").input.attr("placeholder", '@NIMBOLE.GlobalResources.Resources.SelectOrAdd');
+                                            kendo.ui.progress(grid.wrapper, false);
+                                        },1000);
+                                    }
+                                    else if(e.className.toString().split(' ').indexOf("k-grid-cancel")>-1)
+                                    {
+                                        kendo.ui.progress(grid.wrapper, false);
+                                    }
+                                }
+                                function BindExtContact()
+                                {
+                                    var grid = $("#GridExternalContacts").data("kendoGrid");
+                                    var model = grid.editable.options.model;
+
+                                    $("#FullName_FullName").kendoComboBox({
+                                        dataTextField: "FullName",
+                                        dataValueField: "Id",
+                                        dataSource: {
+                                            type: "json",
+                                            transport: {
+                                                read: {
+                                                    //  url: "/Contacts/GetAllContact",
+                                                    url: "/Contacts/GetAllContactbyAccountId?id="+$('#AccountId').val(),
+                                                    dataType: "json"
+                                                }
+                                            }
+                                        },
+                                        filter: "startswith",
+                                        value: model == null ? "null": model.FullName.toString(),
+                                        suggest: true
+                                    });
+                                    //$("#ContactEmail_ContactEmail").val(model.ContactEmail.toString());
+                                    $("#WorkEmail_WorkEmail").val(model.WorkEmail == null ? "": model.WorkEmail.toString());
+
+                                    var combobox = $("#FullName_FullName").data("kendoComboBox");
+                                    combobox.bind("change", onExtContactChange);
+                                }
+
+                                $("#customExtContactCommand").click(function (e) {
+                                    setTimeout(function(){
+                                        BindExtContact();
+                                        $("#FullName_FullName").data("kendoComboBox").input.attr("placeholder", '@NIMBOLE.GlobalResources.Resources.SelectOrAdd');
+                                    },1000);
+                                });
+
+                                function onExtContactChange(e) {
+                                    var grid = $("#GridExternalContacts").data("kendoGrid");
+                                    var model = grid.editable.options.model;
+                                    var dataSource = $("#GridExternalContacts").data("kendoGrid").dataSource;
+                                    var gridData = dataSource.data();
+                                    if (this.value() && this.selectedIndex == -1) {
+                                        var combobox = $("#FullName_FullName").data("kendoComboBox");
+                                        var accId = $('#AccountId').val();
+                                        if (confirm("Do you want to add '" + e.sender._old + "' to Contacts?")) {
+                                            kendo.ui.progress(combobox.wrapper, true);
+                                            $.ajax({
+                                                url: '@Url.Action("CreateLeadContact", "Contacts")',
+                                                type: 'POST',
+                                                async: false,
+                                                data: { 'item': e.sender._old, 'accid':accId },
+                                                success: function (data) {
+
+                                                    _contactId = data.Data[data.Data.length - 1].Id;
+                                                    gridData[0].FullName = e.sender.input.val();
+                                                    combobox.bind("change", onExtContactChange);
+                                                    kendo.ui.progress(combobox.wrapper, false);
+                                                },
+                                                error: function () {
+                                                    combobox.bind("change", onExtContactChange);
+                                                    kendo.ui.progress(combobox.wrapper, false);
+                                                    //alert('Error occured');
+                                                }
+                                            });
+                                        }
+                                        else
+                                        {
+                                            BindExtContact();
+                                            setTimeout(function(){
+                                                combobox.bind("change", onExtContactChange);
+                                                combobox.focus();
+                                            },5000);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        var comboDataSource = $("#FullName_FullName").data("kendoComboBox").dataSource;
+                                        var comboData = comboDataSource.data();
+                                        model.FullName = e.sender.input.val();
+                                        _contactId = e.sender.value();
+                                        model.ExtContactId = _contactId;
+
+
+                                        //var contactEmail = $('#ContactEmail_ContactEmail');
+                                        //contactEmail.val(comboData[this.selectedIndex].ContactEmail);
+                                        //model.ContactEmail = contactEmail.val();
+                                        //contactEmail.attr('readonly', true);
+
+
+
+                                        var workEmail = $('#WorkEmail_WorkEmail');
+                                        workEmail.val(comboData[this.selectedIndex].WorkEmail);
+                                        model.WorkEmail = workEmail.val();
+                                        workEmail.attr('readonly', true);
+
+                                    }
+                                }
+                            </script>
+
+                            <script>
+                                function BindExtContactRole() {
+                                    var grid = $("#GridExternalContacts").data("kendoGrid");
+                                    var model = grid.editable.options.model;
+
+                                    $("#ExtContactRole_ExtContactRole").kendoComboBox({
+                                        dataTextField: "Description",
+                                        dataValueField: "Id",
+                                        dataSource: {
+                                            type: "json",
+                                            transport: {
+                                                read: {
+                                                    url: "/ContactRoles/GetAll",
+                                                    dataType: "json"
+                                                }
+                                            }
+                                        },
+                                        filter: "startswith",
+                                        value: model == null ? "null" : model.ExtContactRole,
+                                        suggest: true
+                                    });
+                                    var combobox = $("#ExtContactRole_ExtContactRole").data("kendoComboBox");
+                                    combobox.bind("change", onExtContactRoleChange);
+                                }
+
+                                $("#customExtContactCommand").click(function (e) {
+                                    setTimeout(function(){
+                                        BindExtContactRole();
+                                        $("#ExtContactRole_ExtContactRole").data("kendoComboBox").input.attr("placeholder", '@NIMBOLE.GlobalResources.Resources.SelectOrAdd');
+                                    },1000);
+                                });
+
+                                function onExtContactRoleChange(e) {
+                                    var grid = $("#GridExternalContacts").data("kendoGrid");
+                                    var model = grid.editable.options.model;
+                                    $('#hdnExtContactRole').val(e.sender.value());
+                                    if (this.value() && this.selectedIndex == -1) {
+                                        var combobox = $("#ExtContactRole_ExtContactRole").data("kendoComboBox");
+                                        //  var cb = $('#ExtContactRole_ExtContactRole').kendoComboBox();
+                                        if (confirm("Do you want to add '" + e.sender._old + "' to Roels?")) {
+                                            kendo.ui.progress(combobox.wrapper, true);
+
+                                            var dataSource = $("#GridExternalContacts").data("kendoGrid").dataSource;
+                                            var grid = $("#GridExternalContacts").data("kendoGrid");
+                                            var gridData = dataSource.data();
+
+                                            $.ajax({
+                                                url: '@Url.Action("CreateLeadContactRole", "ContactRoles")',
+                                                type: 'POST',
+                                                async: false,
+                                                data: { item: e.sender._old  },
+                                                success: function (data) {
+
+                                                    _roleId = data.Data[data.Data.length - 1].Id;
+                                                    gridData[0].ExtContactRoleId = _roleId;
+                                                    model.ExtContactRoleId = _roleId;
+                                                    combobox.bind("change", onExtContactRoleChange);
+                                                    kendo.ui.progress(combobox.wrapper, false);
+                                                },
+                                                error: function () {
+                                                    combobox.bind("change", onExtContactRoleChange);
+                                                    kendo.ui.progress(combobox.wrapper, false);
+                                                }
+                                            });
+                                        }
+                                        else {
+                                            BindExtContactRole();
+                                            setTimeout(function(){
+                                                combobox.bind("change", onExtContactRoleChange);
+                                                combobox.focus();3
+                                            },5000);
+                                        }
+                                    }
+                                    else {
+                                        model.ExtContactRoleId = e.sender.value();
+                                        model.ExtContactRole = e.sender.input.val();
+                                        _roleId = e.sender.value();
+                                    }
+                                }
+                            </script>
+
+                            <script>
+                                $('.k-grid-update').on("click", function()
+                                {
+                                    $(this).addClass("k-state-disabled")
+                                     .bind("click", disable = function (e) {
+                                         e.preventDefault();
+                                         return false;
+                                     });
+                                });
+                                function onExternalContactSave(e) {
+                                    if (e.model.isNew()) {
+                                        if (_roleId != 0 && _contactId != 0) {
+                                            e.model.ExtContactRoleId = _roleId;
+                                            e.model.FullName = _contactId;
+                                            //e.model.ContactEmail = $("#ContactEmail_ContactEmail").val();
+                                            e.model.WorkEmail = $("#WorkEmail_WorkEmail").val();
+                                            _contactId = e.model.FullName;
+                                            workEmail = e.model.WorkEmail;
+                                            _roleId = e.model.ExtContactRoleId;
+
+                                            _roleId = 0;
+                                            _contactId = 0;
+                                        }
+                                    }
+                                    var grid = $("#GridExternalContacts").data("kendoGrid");
+                                    kendo.ui.progress(grid.wrapper, false);
+                                }
+
+                                function onExternalContactsGridRequestEnd(e) {
+                                    if (e.type == "create" || e.type == "update" || e.type == "destroy") {
+                                        $("#GridExternalContacts").data("kendoGrid").dataSource.read();
+                                    }
+                                }
+
+                                function onContactRequestEnd(e) {
+                                    if (e.type == "create" || e.type == "update") {
+                                        $("#FullName").data("kendoComboBox").dataSource.read();
+                                    }
+                                }
+
+                                function onContactRoleRequestEnd(e) {
+                                    if (e.type == "create" || e.type == "update") {
+                                        $('#ExtContactRole_Id').data('kendoComboBox').dataSource.read();
+                                    }
+                                }
+                                //onDataBound
+                                function onDataBound(e) {
+                                    if (e.type == "create" || e.type == "update") {
+                                        $('#ExtContactRole').data('kendoComboBox').dataSource.read();
+                                    }
+                                }
+
+                                function onExternalContactsDataBound(e) {
+                                    var grid = $("#GridExternalContacts").data("kendoGrid");
+                                }
+                            </script>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-lg-12" style="text-align: right;">
+                            <input id="btnSubmit" type="button" class="btn btn-success" value='@NIMBOLE.GlobalResources.Resources.Update'>
+                            <input id="btnSubmit1" type="button" class="btn btn-success" value='@NIMBOLE.GlobalResources.Resources.UpdateAndClose'>
+                            <input type="button" value='@NIMBOLE.GlobalResources.Resources.Cancel' class="btn btn-danger" onclick="location.href = '/Leads/Index'" />
+                            <br />
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-lg-12">
+                            @(Html.Kendo().PanelBar()
+                                    .Name("PanelbarLeadDocuments")
+                                    .ExpandMode(PanelBarExpandMode.Single)
+                                    .Items(panelbar =>
+                                    {
+                                        panelbar.Add().Text(@NIMBOLE.GlobalResources.Resources.LeadDocuments)
+                                            .Content(@<text>
+                                                <div class="dataTable_wrapper">
+                                                    @(Html.HiddenFor(x => x.Id))
+                                                    @(Html.Kendo().Grid<NIMBOLE.Models.Models.DocumentWithMultipleUrlsModel>()
+                                                        .Name("GridLeadDocuments")
+                                                        .Columns(columns =>
+                                                        {
+                                                            columns.Bound(p => p.DocumentName);
+                                                            columns.Template(e => { }).ClientTemplate("#if(data.lstDocumentUrl != null && data.lstUrlBasedId != null){#" + "#=DisplayUrls(lstDocumentUrl,lstUrlBasedId)#" + "#}else{#<input type='file' value='Lead' name='files' id='files#: Id #' />#}#").Title(@NIMBOLE.GlobalResources.Resources.DocumentUrl);
+                                                            columns.Command(command => { command.Edit().Text(" ").UpdateText(" ").CancelText(" "); command.Destroy().Text(" "); }).Title(@NIMBOLE.GlobalResources.Resources.Actions);
+                                                        })
+                                                        .ToolBar(toolbar => toolbar.Create().Text(@NIMBOLE.GlobalResources.Resources.Add))
+                                                        .Editable(editable => { editable.Mode(GridEditMode.InLine).ConfirmDelete("Do you really want to delete?"); })
+                                                        .Events(e => { e.DataBound("onDataBound").Edit("OnInsert").Save("OnSave").Remove("deleteLeadDocument"); })
+                                                        .Pageable()
+                                                        .Sortable()
+                                                        .Scrollable()
+                                                        .DataSource(dataSource => dataSource
+                                                            .Ajax()
+                                                            .Events(events => events.Error("error_handler").RequestEnd("onDocumentsGridRequestEnd"))
+                                                            .Model(e => { e.Id(m => m.Id); })
+                                                            .ServerOperation(false)
+                                                            .Create(e => e.Action("LeadDocumentCreate", "Documents"))
+                                                            .Read(e => e.Action("ReadDistinctDocuments", "Documents"))
+                                                            .Update(e => e.Action("Edit", "Documents"))
+                                                            .Destroy(e => e.Action("Delete", "Documents", new { Id = "#=lstUrlBasedId#" }))
+                                                        )
+                                                    )
+                                                    <script id="fileTemplate" type="text/x-kendo-template">
+                                                        <span class='k-progress'></span>
+                                                        <div class='file-wrapper'>
+                                                            <h6 class='file-heading file-name-heading'><b>Name:</b> #=name#</h6>
+                                                            <h6 class='file-heading file-size-heading'><b>Size:</b> #=size# bytes</h6>
+                                                            <button type='button' style="margin: 0px 13px 10px;" class='k-upload-action'></button>
+                                                        </div>
+                                                    </script>
+                                                    <script>
+                                                        function onDocumentsGridRequestEnd(e) {
+                                                            var grid = $("#GridLeadDocuments").data("kendoGrid");
+                                                            var data = grid.dataSource;
+                                                            //alert(e.type);
+                                                            if (e.type == "create" || e.type == "update") {
+                                                                $("#GridLeadDocuments").data("kendoGrid").dataSource.read();
+                                                                if (!e.response.Errors) {
+                                                                    //alert("Success");
+                                                                    data.read();
+                                                                }
+                                                                else
+                                                                    console.log("I had some issues");
+                                                            }
+                                                        }
+
+                                                        function OnSave(e) {
+                                                            $("#GridLeadDocuments").data("kendoGrid").dataSource.read();
+                                                        }
+
+                                                        function OnInsert(e) {
+                                                            if (e.model.isNew() == true) {
+                                                                var data = $("#GridLeadDocuments").data("kendoGrid").dataSource.data();
+
+                                                                var upload = $('#files0');
+                                                                upload.kendoUpload({
+                                                                    multiple: false,
+                                                                    async: {
+                                                                        saveUrl: '@Url.Action("CreateDocuments", "Leads", new { DocType = "Lead" })',
+                                                                        removeUrl: "remove",
+                                                                        autoUpload: false//,
+                                                                        //batch: true
+                                                                    },
+                                                                    template: kendo.template($('#fileTemplate').html())
+                                                                });
+                                                            }
+                                                        }
+                                                        function deleteLeadDocument(e) {
+                                                            e.preventDefault;
+                                                            $.ajax({
+                                                                url: '/Documents/Delete',
+                                                                dataType: "json",
+                                                                type: "POST",
+                                                                contentType: 'application/json; charset=utf-8',
+                                                                data: JSON.stringify({ id: e.model.lstUrlBasedId[0] }),
+                                                                async: true,
+                                                                processData: false,
+                                                                cache: false,
+                                                                success: function (data) {
+                                                                },
+                                                                error: function (xhr) {
+                                                                }
+                                                            });
+                                                        }
+                                                        function DisplayUrls(data, id) {
+                                                            var result = "<ol>";
+                                                            var j = data.length;
+
+                                                            for (var i = 0; i < j; i++) {
+                                                                result += "<li><a href='" + data[i] + "' target='_blank'>" + data[i].split("/").slice(-1)[0] + "</a><span style='padding: 0px 20px 0px 0px;'></span><img id=\"delFile_" + id[i] + "\" onclick='deleteDocument(" + id[i] + ")'  src='../../Images/file_delete.png'" +
+                                                                    " width=\"16\" height=\"16\" /></li>";
+                                                            }
+                                                            result += "</ol>";
+                                                            return result;
+                                                        }
+
+                                                        function onDataBound(e) {
+                                                            //To Hide Edit buttons.
+                                                            var grid = $("#GridLeadDocuments").data("kendoGrid");
+                                                            grid.tbody.find("tr[role='row']").each(function () {
+                                                                $(this).find(".k-grid-edit").remove();
+                                                            });
+
+                                                        }
+                                                    </script>
+                                                </div>
+                                            </text>);
+                                    })
+                            )
+                            <br />
+
+                            <div class="row">
+                                <div class="col-lg-12" style="text-align: right;">
+                                    @*   <a id="anchorLeadDiscounts" href="javascript:void(0);">@NIMBOLE.GlobalResources.Resources.PriceRevision</a>*@
+                                    &nbsp;&nbsp;&nbsp;
+                                    <a id="anchorActivities" href="javascript:void(0);">@NIMBOLE.GlobalResources.Resources.Activities</a>
+                                    &nbsp;&nbsp;&nbsp;
+                                    @*     <a id="anchorLeadProducts" href="javascript:void(0);">@NIMBOLE.GlobalResources.Resources.Products</a>*@
+                                </div>
+                            </div>
+
+                            <script>
+                                var panelbar;
+                                $(document).ready(function () {
+                                    $("#anchorLeadDiscounts").click(function () {
+                                        $("#divLeadDiscounts").toggle("slow");
+                                        var newText = $(this).text() == "@NIMBOLE.GlobalResources.Resources.ClosePriceRevision" ? "@NIMBOLE.GlobalResources.Resources.PriceRevision" : "@NIMBOLE.GlobalResources.Resources.ClosePriceRevision";
+                                        $(this).text(newText);
+
+                                        if('@Model.objLeadPriceDiscountModel.ApprovalStatus'.toString() === "True")
+                                        {
+                                            var group = "input:checkbox[name='objLeadPriceDiscountModel.ApprovalStatus']";
+                                            $(group).prop("checked", true);
+                                            $('#divSelectApproveStatus').show();
+                                            $('#divSelectApprovedBy').show();
+                                        } else {
+                                            var group = "input:checkbox[name='objLeadPriceDiscountModel.ApprovalStatus']";
+                                            $(group).prop("checked", false);
+                                            $('#divSelectApproveStatus').hide();
+                                            $('#divSelectApprovedBy').hide()
+                                        }
+                                    });
+
+                                    $("#anchorActivities").click(function () {
+                                        $("#divActivityCollapsable").toggle("slow");
+                                        var newText = $(this).text() == "@NIMBOLE.GlobalResources.Resources.CloseActivities" ? "@NIMBOLE.GlobalResources.Resources.Activities" : "@NIMBOLE.GlobalResources.Resources.CloseActivities";
+                                        $(this).text(newText);
+                                    });
+
+                                    @*$("#anchorLeadProducts").click(function () {
+                                        $("#divProductCollapsable").toggle("slow");
+                                        var newText = $(this).text() == "@NIMBOLE.GlobalResources.Resources.CloseProducts" ? "@NIMBOLE.GlobalResources.Resources.Products" : "@NIMBOLE.GlobalResources.Resources.CloseProducts";
+                                        $(this).text(newText);
+                                    });*@
+
+                                    //$("#btnCancelLeadDiscount").click(function () {
+                                    //    $("#divLeadDiscounts").hide("slow");
+                                    //    $("#anchorLeadDiscounts").text("Price Revision...");
+                                    //});
+                                });
+                            </script>
+
+                            <br />
+
+                            <div id="divLeadDiscounts" style="display:none;">
+                                @*@(Html.Kendo().PanelBar()
+                                    .Name("PanelbarPriceRevision")
+                                    .ExpandMode(PanelBarExpandMode.Single)
+                                    .Items(panelbar =>
+                                    {
+                                        panelbar.Add().Text(@NIMBOLE.GlobalResources.Resources.PriceRevision)
+                                        .Expanded(true)
+                                        .Content(@<text>
+                                            <div id="divParialPriceDiscount" style="padding: 0px 0px 0px 20px;">*@
+                                @*@Html.Partial("LeadPriceDiscounts/_Create", Model)*@
+                                @{Html.RenderPartial("LeadPriceDiscounts/_Create", Model);}
+                                @*</div>
+                                                </text>);
+                                            }
+                                        )
+                                    )*@
+
+                            </div>
+                            <script>
+                                $(function () {
+                                    var panelElement = $("#PanelbarExternalContacts");
+                                    panelElement.kendoPanelBar();
+
+                                    $("#PanelbarExternalContacts li").click(function (e) {
+                                        if (panelElement.hasClass("k-state-active")) {
+                                            panelElement.removeClass("k-state-active");
+                                        } else {
+                                            panelElement.addClass("k-state-active");
+                                        }
+                                    });
+                                });
+
+                                $(function () {
+                                    var panelElement = $("#PanelbarLeadDocuments");
+                                    panelElement.kendoPanelBar();
+
+                                    $("#PanelbarLeadDocuments li").click(function (e) {
+                                        if (panelElement.hasClass("k-state-active")) {
+                                            panelElement.removeClass("k-state-active");
+                                        } else {
+                                            panelElement.addClass("k-state-active");
+                                        }
+                                    });
+                                });
+
+                                $(function () {
+                                    var panelElement = $("#PanelbarPriceRevision");
+                                    panelElement.kendoPanelBar();
+
+                                    $("#PanelbarPriceRevision li").click(function (e) {
+                                        if (panelElement.hasClass("k-state-active")) {
+                                            panelElement.removeClass("k-state-active");
+                                        } else {
+                                            panelElement.addClass("k-state-active");
+                                        }
+                                    });
+                                });
+
+                                $(function () {
+                                    var panelElement = $("#PanelbarActivities");
+                                    panelElement.kendoPanelBar();
+
+                                    $("#PanelbarActivities li").click(function (e) {
+                                        if (panelElement.hasClass("k-state-active")) {
+                                            panelElement.removeClass("k-state-active");
+                                        } else {
+                                            panelElement.addClass("k-state-active");
+                                        }
+                                    });
+                                });
+
+                                $(function () {
+                                    var panelElement = $("#PanelbarProducts");
+                                    panelElement.kendoPanelBar();
+
+                                    $("#PanelbarProducts li").click(function (e) {
+                                        if (panelElement.hasClass("k-state-active")) {
+                                            panelElement.removeClass("k-state-active");
+                                        } else {
+                                            panelElement.addClass("k-state-active");
+                                        }
+                                    });
+                                });
+                            </script>
+                            <br />
+                            <div id="divActivityCollapsable" style="display: none;">
+                                @(Html.Kendo().PanelBar()
+                                        .Name("PanelbarActivities")
+                                        .ExpandMode(PanelBarExpandMode.Single)
+                                        .Items(panelbar =>
+                                        {
+                                            panelbar.Add().Text(@NIMBOLE.GlobalResources.Resources.Activities)
+                                            .Expanded(true)
+                                            .Content(@<text>
+                                                <div id="loading"></div>
+                                                <div id="divParialView" style="padding: 0px 10px 0px 10px;">
+                                                    @*@{Html.RenderPartial("Activity/_Create", Model);}*@
+                                                </div>
+
+                                                <br />
+                                                <div class="dataTable_wrapper">
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <button id="btnAddActivity" class="k-button k-button-icontext k-grid-add" type="button"><span class="k-icon k-add"></span> @NIMBOLE.GlobalResources.Resources.Add</button>
+                                                        </div>
+                                                    </div>
+
+                                                    <script>
+                                                        $(document).ready(function () {
+                                                            function displayLoading(target) {
+                                                                var element = $(target);
+                                                                kendo.ui.progress(element, true);
+                                                            }
+                                                            function removeLoading(target) {
+                                                                var element = $(target);
+                                                                kendo.ui.progress(element, false);
+                                                            }
+                                                            $("#btnAddActivity").click(function () {
+                                                                $("#btnAddActivity").prop('disabled', true);
+                                                                displayLoading("#divParialView");
+                                                                $.get('@Url.Action("Index", "Activity")', function (data) {
+                                                                    $("#divParialView").html(data);
+                                                                    $("#divNewAcitvity").show("slow");
+                                                                    $('#objActivityModel_MileStoneId').data('kendoDropDownList').value(@Model.LeadStatus);
+                                                                    removeLoading("#divParialView");
+                                                                });
+                                                            });
+                                                        });
+                                                    </script>
+
+                                                    @(Html.Kendo().Grid<NIMBOLE.Models.Models.MilestoneModel>()
+                                                        .Name("MileStoneGrid")
+                                                        .Columns(columns =>
+                                                        {
+                                                            columns.Bound(e => e.Id).Title(@NIMBOLE.GlobalResources.Resources.Id).Hidden();
+                                                            //columns.Bound(e => e.Descriptions).Title(@NIMBOLE.GlobalResources.Resources.Title);
+                                                            columns.Bound(e => e.Description).Title("");
+                                                        })
+                                                        .ClientDetailTemplateId("template")
+                                                        .Pageable()
+                                                        .Sortable()
+                                                            //.Events(e => e.DataBound("MileStoneDataBound"))
+                                                        .DataSource(dataSource => dataSource
+                                                            .Ajax()
+                                                            .PageSize(10)
+                                                            .Read(e => e.Action("MileStone_Read", "Leads", new { iLeadId = iLeadId }))
+                                                        )
+                                                        .AutoBind(true)
+                                                    )
+                                                    <script>
+                                                        function MileStoneDataBound(e) {
+                                                        }
+                                                    </script>
+
+                                                    <script id="template" type="text/kendo-tmpl">
+                                                        @(Html.Kendo().Grid<NIMBOLE.Models.Models.ActivityByMilestone>()
+                                                            .Name("GridActivities_#=Id#")
+                                                            .Columns(columns =>
+                                                            {
+                                                                columns.Bound(m => m.Id).Title(@NIMBOLE.GlobalResources.Resources.Id).Hidden();
+                                                                columns.Bound(m => m.ActivityTitle).Title(@NIMBOLE.GlobalResources.Resources.Title);
+                                                                columns.Bound(m => m.ActivityDate).Title(@NIMBOLE.GlobalResources.Resources.ActivityDate).Format("{0:" + DateFormat + "}");
+                                                                columns.Template(m => null).ClientTemplate("<div><ol class='TreeView'></ol></div><input type='hidden' value='' />").Title(@NIMBOLE.GlobalResources.Resources.DocumentUrl);
+                                                            })
+                                                            .Editable(editable => editable.Mode(GridEditMode.InLine))
+                                                            .Events(e => e.DataBound("onActiviesDataBound"))
+                                                            .DataSource(datasource => datasource
+                                                                .Ajax()
+                                                                .PageSize(5)
+                                                                .Events(events => events.Error("error_handler"))
+                                                                .Sort(e => e.Add("Id").Ascending())
+                                                                .Model(e => { e.Id(m => m.Id); })
+                                                                .Read(e => e.Action("ActivityByMilestone_Read", "Activity", new { id = "#=Id#" }))
+                                                                .Create(e => e.Action("Create", "Activity"))
+                                                            )
+                                                            .AutoBind(true)
+                                                            .ToClientTemplate()
+                                                        )
+                                                    </script>
+
+                                                    <script id="fileTemplate" type="text/x-kendo-template">
+                                                        <span class='k-progress'></span>
+                                                        <div class='file-wrapper'>
+                                                            <h6 class='file-heading file-name-heading'><b>Name:</b> #=name#</h6>
+                                                            <h6 class='file-heading file-size-heading'><b>Size:</b> #=size# bytes</h6>
+                                                            <button type='button' style="margin: 0px 13px 10px;" class='k-upload-action'></button>
+                                                        </div>
+                                                    </script>
+
+                                                    <script type="text/x-kendo-tmpl" id="ActivityDocumentstemplate">
+                                                        <li>
+                                                            <a href="#= URL #" target="_blank">#= DocumentName #</a> <input id="delFile_#= Id #" onclick='deleteDocument("#= Id #")' type="image" src="../../Images/file_delete.png" width="16" height="16" />
+                                                        </li>
+                                                    </script>
+
+                                                    <script>
+                                                        function deleteDocument(id) {
+                                                            var result = confirm("Do you want to delete?");
+                                                            if (result) {
+                                                                var $post = $.post("/Documents/Delete", { id: id }, function (data) { });
+                                                                $post.success(function () {
+                                                                    window.location = "/Leads/Create";
+                                                                });
+                                                            }
+                                                        }
+                                                        function onActiviesDataBound(e) {
+                                                            var split = e.sender.element[0].id.split('_');
+                                                            var GrdActivity = "GridActivities_" + split[1];
+                                                            $('div[id=' + GrdActivity + '] tbody tr .TreeView').each(function () {
+                                                                var currentDataItem = $('div[id=' + e.sender.element[0].id + ']').data("kendoGrid").dataItem($(this).closest("tr"));
+                                                                activityId = currentDataItem.Id;
+                                                                var tree = this;
+                                                                $(tree).kendoListView({
+                                                                    dataSource: {
+                                                                        transport: {
+                                                                            read: {
+                                                                                url: "/Documents/SelectDocumentsByActivityId?iActivityId=" + activityId
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    dataBound: function () {
+                                                                        if (this.dataSource.total() == 0)
+                                                                        {
+                                                                            $(tree).html('<li>Nothing Found.</li>');
+                                                                        }
+                                                                    },
+                                                                    template: kendo.template($("#ActivityDocumentstemplate").html())
+                                                                })
+                                                            })
+                                                        }
+                                                    </script>
+
+                                                    <script>
+
+                                                        function grid_uploadBound() {
+                                                            var upload = $('input[name ^= "file"]');
+                                                            upload.kendoUpload({
+                                                                async: {
+                                                                    saveUrl: "save",
+                                                                    removeUrl: "remove",
+                                                                    autoUpload: false,
+                                                                    batch: true
+                                                                },
+                                                                template: kendo.template($('#fileTemplate').html())
+                                                            });
+                                                        }
+
+                                                        function addExtensionClass(extension) {
+                                                            switch (extension) {
+                                                                case '.jpg':
+                                                                case '.img':
+                                                                case '.png':
+                                                                case '.gif':
+                                                                    return "img-file";
+                                                                case '.doc':
+                                                                case '.docx':
+                                                                    return "doc-file";
+                                                                case '.xls':
+                                                                case '.xlsx':
+                                                                    return "xls-file";
+                                                                case '.pdf':
+                                                                    return "pdf-file";
+                                                                case '.zip':
+                                                                case '.rar':
+                                                                    return "zip-file";
+                                                                default:
+                                                                    return "default-file";
+                                                            }
+                                                        }
+                                                    </script>
+                                                </div>
+                                            </text>);
+                                        })
+                                )
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @Html.Hidden("hdnType")
+        @*@Html.Hidden("hdnExtContactRole")*@
+    </div>
+
+    <script>
+        $("#customProdCompCommand").click(function (e) {
+            debugger;
+            setTimeout(function(){
+                BindProducts();
+                BindComp1();
+                $("#ProductName_ProductName").data("kendoComboBox").input.attr("placeholder", '@NIMBOLE.GlobalResources.Resources.SelectOrAdd');
+                $("#Comp1Name_Comp1Name").data("kendoComboBox").input.attr("placeholder", '@NIMBOLE.GlobalResources.Resources.SelectOrAdd');
+
+                @*ddl = $("#DiscountType_DiscountType").data("kendoDropDownList");
+                if(ddl)
+                {
+                    ddl.options.optionLabel = '@NIMBOLE.GlobalResources.Resources.Select';
+                    ddl.refresh();
+                    ddl.value("");
+                }*@
+
+                $("#ProductName_ProductName, #Quantity, #Price, #Discount, #DiscountType_DiscountType").attr("onChange","QuantityChange();")
+                //$("#Quantity").attr("onChange","QuantityChange();");
+                //$("#Price").attr("onChange","QuantityChange();");
+                //$('#Discount').attr("onChange","QuantityChange();");
+                //$("#DiscountType_DiscountType").attr("onChange","QuantityChange();")
+                $("#Quantity").attr("min","1");
+            },1000);
+        });
+
+        function QuantityChange(e)
+        {
+
+            var price = $('#Price').val();
+            var Qty = $('#Quantity').val();
+            var Amt = price*Qty;
+            var Dis = $('#Discount').val();
+            var DiscountType = $('#DiscountType_DiscountType').val();
+            if(DiscountType == "1")
+            {
+                Amt = (Amt-Dis);
+            }
+            else if(DiscountType == "2")
+            {
+                Amt = (Amt-(Amt*Dis/100));
+            }
+            $('#Amount').val(Amt);
+        }
+    </script>
+
+    <script>
+        function onProductDataBound(e) {
+
+            if ((this._selectedValue === undefined || this._selectedValue === "") && this._prev === "") {
+                var grid = $("#GridLeadProducts").data("kendoGrid");
+                var model =grid.editable.options.model;
+                var combo = $("#ProductName_ProductName").data("kendoComboBox");
+                combo.value(model.ProductName != "" ? model.ProductName : "");
+            }
+        }
+
+        function BindProducts()
+        {
+            var grid = $("#GridLeadProducts").data("kendoGrid");
+            var model = grid.editable.options.model;
+
+            $("#ProductName_ProductName").kendoComboBox({
+                dataTextField: "ProductName",
+                dataValueField: "ProductNamesId",
+                dataSource: {
+                    type: "json",
+                    transport: {
+                        read: {
+                            url: "/Products/GetProductNames",
+                            dataType: "json"
+                        }
+                    }
+                },
+                filter: "startswith",
+                dataBound: onProductDataBound,
+                change: onProductChange,
+                suggest: true
+            });
+        }
+
+        function onProductChange(e) {
+            var grid = $("#GridLeadProducts").data("kendoGrid");
+            var model =grid.editable.options.model;
+            var dataSource =$("#GridLeadProducts").data("kendoGrid").dataSource;
+            var gridData = dataSource.data();
+            if(model.Comp1Name == this.text())
+            {
+                alert("Product name and Competitor name should not be same.");
+                var combobox = $("#ProductName_ProductName").data("kendoComboBox");
+                combobox.clear();
+            }
+            else
+            {
+                if (this.value() && this.selectedIndex == -1) {
+                    var combobox = $("#ProductName_ProductName").data("kendoComboBox");
+
+                    if (confirm("Do you want to add '" + e.sender._old + "' to Products?")) {
+                        kendo.ui.progress(combobox.wrapper, true);
+                        var prodId = 0;
+                        var dataSource = $("#GridLeadProducts").data("kendoGrid").dataSource;
+                        var grid = $("#GridLeadProducts").data("kendoGrid");
+                        var gridData = dataSource.data();
+                        $.ajax({
+                            url: '@Url.Action("CreateLeadProduct", "Products")',
+                            type: 'POST',
+                            async: false,
+                            data: { 'item': e.sender._old},
+                            success: function (data) {
+                                _productId = data.Data[data.Data.length - 1].Id;
+                                if(isNaN(_productId)!=false)
+                                    console.log('Product Id is Not Comming');
+                                $("#MvcHdnProdId").val(_productId);
+                                $("input[name='txtHdnProdId']").val(_productId);
+                                gridData[0].prodId=$("input[name='txtHdnProdId']").val();
+                                gridData[0].prodId = _productId;
+                                gridData[0].ProdId=_productId;
+                                combobox.bind("change", onProductChange);
+                                $("#Price").val(price).removeAttr("readonly");
+                                $("#Amount").val(0);
+                                model.ProdId = _productId;
+                                model.ProductName = $("#ProductName_ProductName").val();
+                                model.Price = $("#Price").val();
+                                kendo.ui.progress(combobox.wrapper, false);
+                                $("#Price").bind("change", ProdPrice);
+                            },
+                            error: function () {
+                                combobox.bind("change", onProductChange);
+                                kendo.ui.progress(combobox.wrapper, false);
+                                //alert('Error occured');
+                            }
+                        });
+                    }
+                    else
+                    {
+                        BindProducts();
+                        setTimeout(function(){
+                            combobox.clear();
+                            combobox.bind("change", onProductChange);
+                            combobox.focus();
+                        },2000);
+                    }
+                }
+                else
+                {
+                    var autoCompleteProduct = $("#ProductName_ProductName").data("kendoComboBox").dataSource;
+                    var comoData = autoCompleteProduct.data();
+                    model.ProductName = e.sender.input.val();
+                    var prodId = e.sender.value();
+                    model.ProdId =prodId;
+                    var dataSource = $("#GridLeadProducts").data("kendoGrid").dataSource;
+                    var grid = $("#GridLeadProducts").data("kendoGrid");
+                    var data = dataSource.data();
+                    var price = 0;
+                    var code = "";
+                    data[0].ProductName = e.sender.input.val();
+                    kendo.ui.progress(grid.wrapper, true);
+                    $.ajax({
+                        url: '@Url.Action("GetCompProdPrice", "Products")',
+                        type: 'POST',
+                        async: false,
+                        data: { 'ProdId': prodId, "CompId": prodId },
+                        success: function (price) {
+                            $("#Price").val(price).attr("readonly", "readonly").attr("class", "form-control k-textbox");
+                            var qty = $('#Quantity').val();
+                            var amt = price * qty;
+                            data[0].Price = price;
+                            data[0].Quantity = qty;
+                            data[0].ProdId = prodId;
+                            data[0].Amount = amt;
+                            $('#Amount').val(amt);
+                            kendo.ui.progress(grid.wrapper, false);
+                            model.Price = $("#Price").val();
+                            model.DiscountType = $('#DiscountType_DiscountType').data("kendoDropDownList").text();
+                            model.Qty =qty;
+                            model.prodId = prodId;
+                            model.Amount =amt;
+                        },
+                        error: function () {
+                            kendo.ui.progress(grid.wrapper, false);
+                        }
+                    });
+                }
+            }
+        }
+    </script>
+
+    <script>
+        function onComp1DataBound(e) {
+            if ((this._selectedValue === undefined || this._selectedValue === "") && this._prev === "") {
+                var grid = $("#GridLeadProducts").data("kendoGrid");
+                var model =grid.editable.options.model;
+                var combo = $("#Comp1Name_Comp1Name").data("kendoComboBox");
+                combo.value(model.Comp1ProdId != null || model.Comp1ProdId != "" ? model.Comp1ProdId != 0 ? model.Comp1ProdId:"" : "");
+            }
+        }
+        function BindComp1()
+        {
+            var grid = $("#GridLeadProducts").data("kendoGrid");
+            var model = grid.editable.options.model;
+            $("#Comp1Name_Comp1Name").kendoComboBox({
+                dataTextField: "ProductName",
+                dataValueField: "ProductNamesId",
+                dataSource: {
+                    type: "json",
+                    transport: {
+                        read: {
+                            url: "/Products/GetProductNames",
+                            dataType: "json"
+                        }
+                    }
+                },
+                filter: "startswith",
+                dataBound: onComp1DataBound,
+                change: onChangeComp1,
+                suggest: true
+            });
+        }
+
+        function onChangeComp1(e)
+        {
+            debugger;
+            var grid = $("#GridLeadProducts").data("kendoGrid");
+            var model =grid.editable.options.model;
+            var dataSource =$("#GridLeadProducts").data("kendoGrid").dataSource;
+            var gridData = dataSource.data;
+
+            //Checking whether Product Name and Competitor Name are Same
+            if(model.ProductName == this.text())
+            {
+                alert("Product name and Competitor name should not be same.");
+                var combobox = $("#Comp1Name_Comp1Name").data("kendoComboBox");
+                combobox.clear();
+            }
+            else
+            {
+                if (this.value() && this.selectedIndex == -1) {
+                    var combobox = $("#Comp1Name_Comp1Name").data("kendoComboBox");
+                    if (confirm("Do you want to add '" + e.sender._old + "' to Competitor?")) {
+                        kendo.ui.progress(combobox.wrapper, true);
+                        var prodId = 0;
+                        var dataSource = $("#GridLeadProducts").data("kendoGrid").dataSource;
+                        var grid = $("#GridLeadProducts").data("kendoGrid");
+                        var gridData = dataSource.data();
+                        $.ajax({
+                            url: '@Url.Action("CreateLeadProduct", "Products")',
+                            type: 'POST',
+                            async: false,
+                            data: { 'item': e.sender._old },
+                            success: function (data) {
+                                $("#Comp1Price").bind("change", Comp1ProdPrice);
+                                _comp1productId = data.Data[data.Data.length - 1].Id;
+                                gridData[0].Comp1ProdId = _comp1productId;
+                                var comp1price = $("#Comp1Price").val();
+                                model.Comp1Name = $("#Comp1Name_Comp1Name").val();
+                                model.Comp1ProdId =  gridData[0].Comp1ProdId;
+                                model.Comp1Price;
+                                combobox.bind("change", onChangeComp1);
+                                $("#Comp1Price").val(comp1price).removeAttr("readonly");
+                                $("#Comp1Price").val(" ");
+                                model.comp1price = $("#Comp1Price").val();
+                                kendo.ui.progress(combobox.wrapper, false);
+                            },
+                            error: function () {
+                                combobox.bind("change", onChangeComp1);
+                                kendo.ui.progress(combobox.wrapper, false);
+                            }
+                        });
+                    }
+                    else
+                    {
+                        BindComp1();
+                        setTimeout(function(){
+                            combobox.clear();
+                            combobox.bind("change", onChangeComp1);
+                            combobox.focus();
+                        },2000);
+                    }
+                }
+                else
+                {
+                    var autoCompleteProduct = $("#Comp1Name_Comp1Name").data("kendoComboBox").dataSource;
+                    var comoData = autoCompleteProduct.data();
+                    model.Comp1Name = e.sender.input.val();
+                    var prodId = e.sender.value();
+                    model.Comp1ProdId = prodId;
+                    var compId = e.sender.value();
+                    var dataSource = $("#GridLeadProducts").data("kendoGrid").dataSource;
+                    var grid = $("#GridLeadProducts").data("kendoGrid");
+                    var data = dataSource.data();
+                    var price = 0;
+                    var code = "";
+                    kendo.ui.progress(grid.wrapper, true);
+                    $.ajax({
+                        url: '@Url.Action("GetCompProdPrice", "Products")',
+                        type: 'POST',
+                        async: false,
+                        data: { 'ProdId': prodId, "CompId": prodId },
+                        success: function (price) {
+                            $("#Comp1Price").val(price).attr("readonly", "readonly").attr("class", "form-control k-textbox");
+                            data[0].Comp1Price = price;
+                            data[0].Comp1ProdId = prodId;
+                            kendo.ui.progress(grid.wrapper, false);
+                            model._comp1productId = prodId;
+                            model.Comp1Price = price;
+                        },
+                        error: function () {
+                            kendo.ui.progress(grid.wrapper, false);
+                        }
+                    });
+                }
+            }
+        }
+    </script>
+
+    <script>
+        function onLeadSourceChange(e) {
+            if (this.value() && this.selectedIndex == -1) {
+                var combobox = $("#LeadSource").data("kendoComboBox");
+                var cb = $('#LeadSource').kendoComboBox();
+                if (confirm("Do you want to add '" + cb[0].value + "' to Source?")) {
+                    kendo.ui.progress(combobox.wrapper, true);
+                    $.ajax({
+                        url: '@Url.Action("CreateLeadSource", "LeadSource")',
+                        type: 'POST',
+                        async: false,
+                        data: { 'item': cb[0].value },
+                        success: function (data) {
+                            $('#LeadSourceId').val(data.Data[data.Data.length - 1].Id);
+                            BindLeadSource();
+                            kendo.ui.progress(combobox.wrapper, false);
+                        },
+                        error: function () {
+                            BindLeadSource();
+                            kendo.ui.progress(combobox.wrapper, false);
+                            //alert('Error occured');
+                        }
+                    });
+                }
+                else {
+                    BindLeadSource();
+                    setTimeout(function () {
+                        var combo = $("#LeadSource").data("kendoComboBox");
+                        combo.value('@Model.LeadSourceId' != 0 ? '@Model.LeadSourceId' : "");
+                        combobox.focus();
+                    }, 5000);
+                }
+            }
+            else {
+                $('#LeadSourceId').val($("#LeadSource").val());
+            }
+        }
+
+        function onLeadSourceRequestEnd(e) {
+            if (e.type == "create" || e.type == "update") {
+                $("#LeadSource").data("kendoComboBox").dataSource.read();
+            }
+        }
+    </script>
+
+    <script>
+        function onAccountChange(e) {
+            if (this.value() && this.selectedIndex == -1) {
+                var combobox = $("#Account").data("kendoComboBox");
+                var cb = $('#Account').kendoComboBox();
+                if (confirm("Do you want to add '" + cb[0].value + "' to Account?")) {
+                    kendo.ui.progress(combobox.wrapper, true);
+                    $.ajax({
+                        url: '@Url.Action("CreateAccount", "NimboleAccounts")',
+                        type: 'POST',
+                        async: false,
+                        data: { 'item': cb[0].value },
+                        success: function (data) {
+                            $('#AccountId').val(data.Data[data.Data.length - 1].Id);
+                            BindAccount();
+                            kendo.ui.progress(combobox.wrapper, false);
+                        },
+                        error: function () {
+                            BindAccount();
+                            kendo.ui.progress(combobox.wrapper, false);
+                            alert('Error occured');
+                        }
+                    });
+                }
+                else {
+                    BindAccount();
+                    setTimeout(function () {
+                        var combo = $("#Account").data("kendoComboBox");
+                        combo.value('@Model.AccountId' != 0 ? '@Model.AccountId' : "");
+                        combobox.focus();
+                    }, 5000);
+                }
+            }
+            else {
+                $('#AccountId').val($("#Account").val());
+            }
+        }
+
+        function onAccountsRequestEnd(e) {
+            if (e.type == "create" || e.type == "update") {
+                $("#Account").data("kendoComboBox").dataSource.read();
+            }
+        }
+    </script>
+
+    <script type="text/javascript">
+        function ProdPrice() {
+            var cb = $('#Price');
+            //if (confirm("Do you want to add '" + cb[0].value + "' to Database.")) {
+            var $post = $.post("/Products/EditById", { Id: _productId, iPrice: cb[0].value }, function (data) {
+            });
+            $post.success(function (data) {
+
+            });
+            //}
+        }
+
+        function onComp1ProductRequestEnd(e) {
+            if (e.type == "create" || e.type == "update") {
+                $("#Comp1Name").data("kendoComboBox").dataSource.read();
+            }
+        }
+
+        function Comp1ProdPrice() {
+            var cb = $('#Comp1Price');
+            //if (confirm("Do you want to add '" + cb[0].value + "' to Database.")) {
+            var $post = $.post("/Products/EditById", { Id: _comp1productId, iPrice: cb[0].value }, function (data) {
+            });
+            $post.success(function (data) {
+            });
+            //}
+        }
+
+        function error_handler(e) {
+            if (e.errors) {
+                var message = "Errors:\n";
+                $.each(e.errors, function (key, value) {
+                    if ('errors' in value) {
+                        $.each(value.errors, function () {
+                            message += this + "\n";
+                        });
+                    }
+                });
+                alert(message);
+            }
+        }
+    </script>
+
+    <script>
+        //Script for Validation
+        var listcontrols = {
+            "LeadTitle": "true,allcharacters,1,100",
+            "LeadSource": "true,select",
+            "Account": "true,select"
+        };
+
+        $(document).ready(function () {
+            $('#btnSubmit, #btnSubmit1').click(function (e) {
+                if (listcontrols) {
+                    var flag = 0;
+                    var texttype = "";
+                    $.each(listcontrols, function (key, value) {
+                        texttype = value.split(',')[1];
+                        var element = $('#' + key);
+                        if (texttype == "select") {
+                            if (typeof element.prev().attr('style') !== typeof undefined) {
+                                element.prev().removeAttr("style");
+                            }
+                        }
+                        if (validateControl(key, value.split(',')[0], value.split(',')[1], value.split(',')[2], value.split(',')[3]) == false) {
+                            flag = flag + 1;
+                        }
+                    });
+                    $('#LeadSource').attr("style", "width:100%;display:none;");
+                    $('#Account').attr("style", "width:100%;display:none;");
+                    if (flag != 0) {
+                        return false;
+                    }
+                    else {
+                        $('#hdnType').val(this.id);
+                        $('form')[0].submit();
+                    }
+                }
+            });
+        });
+    </script>
+}

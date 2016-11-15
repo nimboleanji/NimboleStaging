@@ -1,0 +1,92 @@
+﻿@model NIMBOLE.Models.Models.MySettingModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm())
+{
+    <div class="row-fluid">
+        <div class="span12" style="text-align:center;">
+
+            <div class="span12 form-horizontal well">
+
+                <fieldset>
+                    <p class="f_legend"><b><u>Client Settings </u></b></p>
+                    <div class="control-group">
+
+                        <label class="control-label">Client Name</label>
+                        <div class="controls">
+                            @Html.TextBoxFor(m => m.CompanyName, new { placeholder = "Enter Company Name" })
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label">Language</label>
+                        <div class="controls">
+                            @(Html.Kendo().DropDownListFor(model => model.LanguageName)
+
+                                  .BindTo(new List<SelectListItem>() {
+                                        new SelectListItem() {Value = "en",Text = "English"},
+                                        new SelectListItem() {Value = "hi",Text = "Hindi"},
+                                        new SelectListItem() {Value = "te",Text = "Telugu"}
+                                         })
+                            )
+                        </div>
+                    </div>
+
+                    @*<div class="control-group">
+                            <label class="control-label">Client Logo</label>
+                            <div class="controls">
+
+                                <div data-provides="fileupload" class="fileupload fileupload-new">
+                                    <input type="hidden" />
+                                    <div style="width: 80px; height: 80px;" class="fileupload-new thumbnail">
+                                        <img src="" alt="" style="height:100px; width:100px;" /></div>
+                                    <div style="width: 80px; height: 80px; line-height: 80px;" class="fileupload-preview fileupload-exists thumbnail"></div>
+                                    <span class="btn btn-file"><span class="fileupload-new">Select image</span><span class="fileupload-exists">Change</span><input type="file" id="fileinput" name="fileinput" /></span>
+                                    <a data-dismiss="fileupload" class="btn fileupload-exists" href="#">Remove</a>
+                                </div>
+                            </div>
+
+                        </div>*@
+
+                    <div class="control-group">
+                        <label class="control-label">Time Zone</label>
+                        <div class="controls">
+                            @(Html.Kendo().DropDownListFor(model => model.TimeZone)
+        //.HtmlAttributes(new { tabIndex = 26 })
+                                  .BindTo(new List<SelectListItem>() {
+                                        new SelectListItem() {Value = "IST",Text = "India Standard Time"},
+                                        new SelectListItem() {Value = "PST",Text = "Pacific Standard Time"},
+                                        new SelectListItem() {Value = "CST",Text = "Central Standard Time"}
+                                         })
+                            )
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+
+                        <div class="controls">
+                            @(Html.Kendo().CheckBoxFor(model => model.IsActive).Label("Active"))
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                    <br />
+                    <div class="control-group">
+                        <div class="controls">
+
+                            <input class="btn btn-success" type="submit" value="Save" />
+
+                            <a href="~/Home/Index">
+                                <button class="btn" type="button">Cancel</button>
+                            </a>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+
+}

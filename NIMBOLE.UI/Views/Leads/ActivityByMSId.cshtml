@@ -1,0 +1,60 @@
+﻿@model NIMBOLE.Models.Models.ActivityByMilestone
+@*@{
+    Layout = null;
+        
+    }*@
+
+
+@using (Html.BeginForm("ActivityByMSId", "Leads"))
+{
+    <input id="ddlMileStones" style="width: 50%" class="form-control" />
+    <input type="submit" name="btnFind" value="Find" />
+    System.Web.HttpContext.Current.Session["ReportType"] = "ActivityByMSId";
+    //System.Web.HttpContext.Current.Session["MileStoneId"] = "1";
+    <div id="rptResult">
+        @Html.Partial("RptIndex")
+    </div>
+}
+<script>
+    $(document).ready(function () {
+        accid = -1;
+        var mileStone = $("#ddlMileStones").kendoDropDownList({
+            optionLabel: "@NIMBOLE.GlobalResources.Resources.Select",
+            dataTextField: "Descriptions",
+            dataValueField: "Id",
+            value:accid,
+            dataSource: {
+                type: JSON,
+                serverFiltering: true,
+                transport: {
+                    read: '@Url.Action("GetAllMileStone", "Milestone")'
+                }
+            },
+            change: mileStoneChange
+        }).data("kendoDropDownList");
+
+        var dropdownlist = $("#ddlMileStones").data("kendoDropDownList");
+        dropdownlist.trigger("change");
+    });
+    function mileStoneChange() {
+        debugger;
+        accid = $("#ddlMileStones").val();
+        if (accid != "-1") {
+            $.ajax({
+                type: 'POST',
+                url: 'ActivityByMSId?strDdlMileStones=' + accid,
+                /*data: {
+                    'iAccountId': accid
+                },*/
+                success: function (msg) {
+                    debugger;
+                    $("#rptResult").html(msg);
+                    @*window.location = '@Url.Action("ActivityByMSId","Leads")';*@
+                    @*@Html.Partial("RptIndex")*@
+                    //$("#dvReportViewer").append(msg);
+                    //console.log(msg);
+                }
+            });
+        }
+    }
+</script>

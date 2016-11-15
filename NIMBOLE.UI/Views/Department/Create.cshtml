@@ -1,0 +1,79 @@
+﻿@model NIMBOLE.Models.Models.DepartmentModel
+@using Kendo.Mvc.UI;
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Create", "Department", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-group">
+        <div class="col-md-12">
+            <div class="block-header bg-info">
+                <h3 class="block-title">@NIMBOLE.GlobalResources.Resources.NewDepartment </h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-6">
+            @*  <input class="form-control" type="text" id="Code" name="MilestoneCode" placeholder=@NIMBOLE.GlobalResources.Resources.MilestoneCode tabindex="1" minlength=1 maxlength=25>*@
+            <label for="DepartmentCode">
+                @NIMBOLE.GlobalResources.Resources.DepartmentCode
+            </label>
+            @Html.TextBoxFor(m => m.Code, new { @placeholder = @NIMBOLE.GlobalResources.Resources.DepartmentCode, @class = "form-control", @tabindex = "1", @minlength = 1, @maxlength = 25 })
+        </div>
+        <div class="col-sm-6">
+                <label for="InputDepartmentName">
+                    @NIMBOLE.GlobalResources.Resources.DepartmentName <span class="text-danger">*</span>
+                </label>
+                @Html.TextBoxFor(m => m.DepartmentName, new { @placeholder = @NIMBOLE.GlobalResources.Resources.DepartmentName, @class = "form-control firstAlphabetOnly", @tabindex = "2", @minlength = 1, @maxlength = 500 })
+        </div>
+    </div>
+    
+    <div class="form-group" >
+        <div class="col-xs-12" style="text-align: right;">
+            <br />
+            <input type="button" id="btnSubmit" class="btn btn-success" value=@NIMBOLE.GlobalResources.Resources.Save tabindex="3">
+            <input type="button" value=@NIMBOLE.GlobalResources.Resources.Cancel class="btn btn-danger" onclick="location.href = '/Department/Index'" tabindex="4" />
+        </div>
+    </div>
+
+    <script>
+    var listcontrols = {
+        "DepartmentName": "true,allcharacters,1,100"
+    };
+
+    $(document).ready(function () {
+        $('#btnSubmit').click(function (e) {
+            if (listcontrols) {
+                var flag = 0;
+                var texttype = "";
+                $.each(listcontrols, function (key, value) {
+
+                    texttype = value.split(',')[1];
+                    var element = $('#' + key);
+                    if (texttype == "select") {
+                        if (typeof element.prev().attr('style') !== typeof undefined) {
+                            element.prev().removeAttr("style");
+                        }
+                    }
+                    if (validateControl(key, value.split(',')[0], value.split(',')[1], value.split(',')[2], value.split(',')[3]) == false) {
+                        flag = flag + 1;
+                    }
+                });
+
+                if (flag != 0) {
+                    this.disabled = false;
+                    return false;
+                }
+                else {
+                    this.disabled = true;
+                    $('form')[0].submit();
+                }
+            }
+        });
+    });
+    </script>
+}

@@ -1,0 +1,899 @@
+﻿@model NIMBOLE.Models.Models.EmployeeModel
+@using Kendo.Mvc.UI;
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.common.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.common-bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.mobile.all.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.dataviz.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2014.3.1411/kendo.dataviz.bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/kendo/2014.3.1411/jszip.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2014.3.1411/kendo.core.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2014.3.1411/kendo.web.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2014.3.1411/kendo.aspnetmvc.min.js")"></script>
+}
+<script>
+    var EmpId = 0;
+    var roleId = 0;
+</script>
+
+@using (Html.BeginForm("Edit", "Employees", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <main id="main-container" style="padding-left:10px;padding-right:10px;padding-top:45px">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="block block-themed">
+                    <div class="block-header bg-info">
+                        <ul class="block-options">
+                            <li>
+                                <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-refresh"></i></button>
+                            </li>
+                            <li>
+                                <button type="button" data-toggle="block-option" data-action="content_toggle"></button>
+                            </li>
+                        </ul>
+                        <h3 class="block-title">@NIMBOLE.GlobalResources.Resources.EditEmployee</h3>
+                    </div>
+                </div>
+                <div class="block-content">
+                    <div class="form-group">
+                        @*Left Column*@
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                @Html.HiddenFor(m => m.Id)
+                                <label for="InputFirstName">
+                                    @NIMBOLE.GlobalResources.Resources.FirstName <span class="text-danger">*</span>
+                                </label>
+                                @Html.TextBoxFor(model => model.FirstName, new { @placeholder = @NIMBOLE.GlobalResources.Resources.FirstName, @class = "form-control", @tabindex = "1" })
+                                @Html.ValidationMessageFor(m => m.FirstName)
+                            </div>
+                            <div class="form-group">
+                                <label for="Email">
+                                    @NIMBOLE.GlobalResources.Resources.Email <span class="text-danger">*</span>
+                                </label>
+                                @Html.TextBoxFor(model => model.EmployeeEmail, new { @placeholder = @NIMBOLE.GlobalResources.Resources.Email, @class = "form-control", @tabindex = "3", @readonly = "readonly" })
+                                @Html.ValidationMessageFor(m => m.objLoginModel.EmailAddress)
+                            </div>
+
+                            <div class="form-group">
+                                <label>
+                                    @NIMBOLE.GlobalResources.Resources.ReportsTo @NIMBOLE.GlobalResources.Resources.Designation <span class="text-danger">*</span>
+                                </label>
+                                @Html.HiddenFor(model => model.EmpDesiganationRoleId)
+                                <select class="form-control" id="EmpRoleDesignation" name=EmpDesignation size="1"><option value="">@NIMBOLE.GlobalResources.Resources.Select</option></select>
+                            </div>
+                            <div class="form-group">
+                                <label for=" InputAddress1">
+                                    @NIMBOLE.GlobalResources.Resources.Address1
+                                </label>
+                                @Html.TextBoxFor(model => model.objAddressModel.HouseNo, new { @placeholder = @NIMBOLE.GlobalResources.Resources.Address1, @class = "form-control", @tabindex = "8" })
+                                @Html.HiddenFor(model => model.objAddressModel.Id)
+                            </div>
+                            <div class="form-group">
+                                <label for="InputRoleId">
+                                    @NIMBOLE.GlobalResources.Resources.Location <span class="text-danger">*</span>
+                                </label>
+                                @Html.HiddenFor(model => model.Location)
+                                <select class="form-control" id="empLocation" name="Location">
+                                    <option value="">@NIMBOLE.GlobalResources.Resources.Select</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="InputState">
+                                    @NIMBOLE.GlobalResources.Resources.State
+                                </label>
+                                @Html.HiddenFor(model => model.objAddressModel.StateId)
+                                <select class="form-control" id="State" name="State" size="1"><option value="0">@NIMBOLE.GlobalResources.Resources.Select</option></select>
+                            </div>
+                            <div class="form-group">
+                                <label for="InputZip">
+                                    @NIMBOLE.GlobalResources.Resources.ZipCode
+                                </label>
+                                @Html.TextBoxFor(model => model.objAddressModel.ZipCode, new { @placeholder = @NIMBOLE.GlobalResources.Resources.ZipCode, @class = "form-control", @tabindex = "12", @minlength = 6, @maxlength = 6, @onkeydown = "return ValidateNumber(event);" })
+                            </div>
+                            <div class="form-group">
+                                <label for="InputMobile">
+                                    @NIMBOLE.GlobalResources.Resources.Mobile
+                                </label>
+                                @Html.TextBoxFor(model => model.objAddressModel.Mobile, new { @placeholder = @NIMBOLE.GlobalResources.Resources.Mobile, @class = "form-control", @tabindex = "14", @onkeydown = "return ValidateNumber(event);" })
+                            </div>
+                            <div class="form-group">
+                                <label for="InputSecondaryFax">
+                                    @NIMBOLE.GlobalResources.Resources.Fax
+                                </label>
+                                @Html.TextBoxFor(model => model.objAddressModel.Fax, new { @placeholder = @NIMBOLE.GlobalResources.Resources.Fax, @class = "form-control", @tabindex = "16", @minlength = 10, @maxlength = 10, @onkeydown = "return ValidateNumber(event);" })
+                            </div>
+                            <div class="form-group">
+                                <label for="InputBornPlace">
+                                    @NIMBOLE.GlobalResources.Resources.BornPlace
+                                </label>
+                                @Html.TextBoxFor(model => model.BornPlace, new { @placeholder = @NIMBOLE.GlobalResources.Resources.BornPlace, @class = "form-control", @tabindex = "18" })
+                            </div>
+                            <div class="form-group">
+                                <label for="InputJoinDate">
+                                    @NIMBOLE.GlobalResources.Resources.JoinDate
+                                </label>
+                                @(Html.Kendo().DatePickerFor(model => model.JoinDate)
+        //.Value(DateTime.Now)
+                                .HtmlAttributes(new { @style = "width: 100%;", @tabindex = "20", @onkeydown = "javascript:return false;" })
+                                )
+                                @*@Html.TextBoxFor(model => model.JoinDate, new { @placeholder = @NIMBOLE.GlobalResources.Resources.JoinDate, @class = "form-control", @tabindex = "20" })*@
+                            </div>
+                            <div class="form-group">
+                                <label for="InputBornPlace">
+                                    @NIMBOLE.GlobalResources.Resources.BankId
+                                </label>
+                                @Html.TextBoxFor(model => model.BankId, new { @placeholder = @NIMBOLE.GlobalResources.Resources.BankId, @class = "form-control", @tabindex = "22" })
+                            </div>
+                            <div class="form-group">
+                                <label for="InputBornPlace">
+                                    @NIMBOLE.GlobalResources.Resources.BankDetails
+                                </label>
+                                @Html.TextBoxFor(model => model.BankDetails, new { @placeholder = @NIMBOLE.GlobalResources.Resources.BankDetails, @class = "form-control", @tabindex = "24" })
+                            </div>
+                        </div>
+                        @*Right Column*@
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="InputLastName">
+                                    @NIMBOLE.GlobalResources.Resources.LastName
+                                </label>
+                                @Html.TextBoxFor(model => model.LastName, new { @placeholder = @NIMBOLE.GlobalResources.Resources.LastName, @class = "form-control", @tabindex = "2" })
+                                @Html.ValidationMessageFor(m => m.LastName)
+                            </div>
+
+                            <div class="form-group">
+                                <label>
+                                    @NIMBOLE.GlobalResources.Resources.Designation <span class="text-danger">*</span>
+                                </label>
+                                @Html.HiddenFor(model => model.EmpRoleId)
+                                <select class="form-control" id="EmpRole" name= "Designation">
+                                <option value="">@NIMBOLE.GlobalResources.Resources.Select</option></select>
+                            </div>
+                            <div class="form-group">
+                                <label for="InputReportsTo">
+                                    @NIMBOLE.GlobalResources.Resources.ReportsTo
+                                </label>
+                                @Html.HiddenFor(model => model.ReportingTo)
+                                <select class="form-control" id="empReports" name="ReportsToEmployee">
+                                    <option value="0">@NIMBOLE.GlobalResources.Resources.Select</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="InputStreet">
+                                    @NIMBOLE.GlobalResources.Resources.Address2
+                                </label>
+                                @Html.TextBoxFor(model => model.objAddressModel.StreetName, new { @placeholder = @NIMBOLE.GlobalResources.Resources.Address2, @class = "form-control", @tabindex = "8" })
+                            </div>
+                            <script>
+                                function BindLocation() {
+                                    $.ajax({
+                                        type: "GET",
+                                        contentType: "application/json; charset=utf-8",
+                                        // url: "/Employees/GetAllEmployeeRoles",
+                                        url: "/Location/SelectLocation",
+                                        data: "{}",
+                                        dataType: "json",
+                                        success: function (Result) {
+                                            $.each(Result, function (key, value) {
+                                                $("#empLocation").append($("<option></option>").html(value.Description).val(value.Id));
+                                            });
+                                            $("#empLocation").find("option").each(function () {
+                                                if ($(this).val() == '@Model.Location') {
+                                                    $(this).prop("selected", "selected");
+                                                }
+                                            });
+                                        },
+                                        error: function (Result) {
+                                        }
+                                    });
+                                }
+                                $("#empLocation").change(function () {
+                                    var value = this.value;
+                                    if (value != -1 || value != '') {
+                                        $('#Location').val(value);
+                                    }
+                                });
+                            </script>
+
+                            <div class="form-group">
+                                <label for="InputCountry">
+                                    @NIMBOLE.GlobalResources.Resources.Country
+                                </label>
+                                @Html.HiddenFor(model => model.objAddressModel.CountryId)
+                                <select class="form-control" id="Country" name="country" size="1"><option value="0">@NIMBOLE.GlobalResources.Resources.Select</option> </select>
+                            </div>
+                        
+                            <div class="form-group">
+                                <label for="InputCity">
+                                    @NIMBOLE.GlobalResources.Resources.City
+                                </label>
+                                @Html.HiddenFor(model => model.objAddressModel.CityId)
+                                <select class="form-control" id="City" name="City" size="1"><option value="0">@NIMBOLE.GlobalResources.Resources.Select</option></select>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="InputPhone">
+                                    @NIMBOLE.GlobalResources.Resources.OfficePhone
+                                </label>
+                                @Html.TextBoxFor(model => model.objAddressModel.Phone, new { @placeholder = @NIMBOLE.GlobalResources.Resources.OfficePhone, @class = "form-control", @tabindex = "13", @onkeydown = "return ValidateNumber(event);" })
+                            </div>
+                            <div class="form-group">
+                                <label for="InputHomePhone">
+                                    @NIMBOLE.GlobalResources.Resources.HomePhone
+                                </label>
+                                @Html.TextBoxFor(model => model.objAddressModel.HomePhone, new { @placeholder = @NIMBOLE.GlobalResources.Resources.HomePhone, @class = "form-control", @tabindex = "15", @onkeydown = "return ValidateNumber(event);" })
+                            </div>
+                            <div class="form-group">
+                                <label for="InputSkypeName">
+                                    @NIMBOLE.GlobalResources.Resources.SkypeName
+                                </label>
+                                @Html.TextBoxFor(model => model.objAddressModel.SkypeName, new { @placeholder = @NIMBOLE.GlobalResources.Resources.SkypeName, @class = "form-control", @tabindex = "17" })
+                            </div>
+
+                            <div class="form-group">
+                                <label for="InputBornDate">
+                                    @NIMBOLE.GlobalResources.Resources.BornDate
+                                </label>
+                                @(Html.Kendo().DatePickerFor(model => model.BornDate)
+        //.Value(DateTime.Now)
+                                .HtmlAttributes(new { @style = "width: 100%;", @tabindex = "19", @onkeydown = "javascript:return false;" })
+                                )
+                                @*@Html.TextBoxFor(model => model.BornDate, new { @placeholder = @NIMBOLE.GlobalResources.Resources.BornDate, @class = "form-control", @tabindex = "19" })
+            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>*@
+                            </div>
+                            <div class="form-group">
+                                <label for="InputResignDate">
+                                    @NIMBOLE.GlobalResources.Resources.ResignDate
+                                </label>
+                                @(Html.Kendo().DatePickerFor(model => model.ResignDate)
+        //.Value(DateTime.Now)
+                                .HtmlAttributes(new { @style = "width: 100%;", @tabindex = "21", @onkeydown = "javascript:return false;" })
+                                )
+                            </div>
+
+                            <div class="form-group">
+                                <label for="InputBornPlace">
+                                    @NIMBOLE.GlobalResources.Resources.BankNumber
+                                </label>
+                                @Html.TextBoxFor(model => model.BankNumber, new { @placeholder = @NIMBOLE.GlobalResources.Resources.BankNumber, @class = "form-control", @tabindex = "23" })
+                            </div>
+
+                            <div class="form-group">
+                                <label for="InputSecondaryFax">
+                                </label>
+                                @Html.CheckBoxFor(model => model.Status, new { @tabindex = "25" })
+                                @NIMBOLE.GlobalResources.Resources.ActiveInactive
+                                <label>
+                                    @NIMBOLE.GlobalResources.Resources.Status
+                                </label>
+                            </div>
+                            
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 form-group">
+                            <label for="Comments">
+                                @NIMBOLE.GlobalResources.Resources.Comments
+                            </label>
+                            @Html.TextAreaFor(model => model.Comments, new { @class = "form-control", @style = "width:100%;height:100px;resize:none;", maxlength = 6500, @tabindex = "26" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <input type="hidden" id="txtHdnProdId" name="txtHdnProdId" value="" />
+                        <div class="col-lg-12">
+                            <div id="divTargetCollapsable">
+                                @(Html.Kendo().PanelBar()
+                                 .Name("Employeetargets")
+                            .ExpandMode(PanelBarExpandMode.Single)
+                                    .Items(panelbar =>
+                                    {
+                                        panelbar.Add().Text(@NIMBOLE.GlobalResources.Resources.EmployeeTarget)
+                                            .Expanded(true)
+                                        .Content(@<text>
+                                                <div class="dataTable_wrapper">
+                                                    @(Html.Kendo().Grid<NIMBOLE.Models.Models.EmployeeTargetModel>()
+
+                            .Name("GridEmployeeTarget")
+                            .Columns(columns =>
+                            {
+                                columns.Bound(e => e.Id).Title(@NIMBOLE.GlobalResources.Resources.Id).Hidden();
+                                columns.Bound(e => e.FinancialYear).Title(@NIMBOLE.GlobalResources.Resources.FinancialYear).EditorTemplateName("FinancialYear").Width(110);
+                                columns.Bound(e => e.Description).Title(@NIMBOLE.GlobalResources.Resources.Role).EditorTemplateName("EmployeeRole").Width(150);
+                                columns.Bound(e => e.Budget).Title(@NIMBOLE.GlobalResources.Resources.Target).Format("{0:N}").HtmlAttributes(new { @style = "text-align: right;" }).Width(100);
+                                columns.Bound(e => e.TargetHike).Title("Target Hike(%)").Format("{0:N}").HtmlAttributes(new { @style = "text-align: right;" }).Width(125);
+                                columns.Bound(e => e.IsAutomatic).Title(@NIMBOLE.GlobalResources.Resources.IsAutomatic).EditorTemplateName("EmployeeTargetIsAuto").ClientTemplate("#if(data.IsAutomatic){#" + "Yes" + "# } else {#" + "No" + "# }#").Width(100);
+                                columns.Bound(e => e.QuarterlyTarget).Format("{0:N}").HtmlAttributes(new { @style = "text-align: right;" }).Title(@NIMBOLE.GlobalResources.Resources.Quarterly).Width(100);
+                                columns.Bound(e => e.MonthlyTarget).Format("{0:N}").HtmlAttributes(new { @style = "text-align: right;" }).Title(@NIMBOLE.GlobalResources.Resources.Monthly).Width(100);
+                                columns.Bound(e => e.WeeklyTarget).Format("{0:N}").HtmlAttributes(new { @style = "text-align: right;" }).Title(@NIMBOLE.GlobalResources.Resources.Weekly).Width(100);
+                                columns.Command(command => { command.Edit().Text(" ").CancelText(" ").UpdateText(" ").HtmlAttributes(new { onclick = "return validateEntries(this)" }); }).Title(@NIMBOLE.GlobalResources.Resources.Actions).Width(120);
+                            })
+                            //.ToolBar(toolbar => toolbar.Create().Text(@NIMBOLE.GlobalResources.Resources.Add).HtmlAttributes(new { id = "customEmpTargetCommand" }))
+                            .Editable(editable => { editable.Mode(GridEditMode.InLine).DisplayDeleteConfirmation(false); })
+                            .Pageable()
+                            .Scrollable(e => e.Enabled(true).Height("100%"))
+                            .Events(e => { e.DataBound("onEmployeeTargetDataBound"); e.Save("onSaveRecord"); })
+                            .DataSource(datasource => datasource
+                            .Ajax()
+                            .PageSize(20)
+                            .Sort(e => e.Add("FinancialYear"))
+                            .ServerOperation(false)
+                            .Model(model => model.Id(m => m.Id))
+                            .Events(events => events.Error("error_handler").RequestEnd("OnRequestEnd"))
+                                            .Read(e => e.Action("GetAllEmployeeTargets", "Employees").Data("Bindemptarget"))
+                                            .Create(e => e.Action("Create", "Employees"))
+                                                    .Update(e => e.Action("EditTarget", "Employees").Data("BindEmployeetarget"))
+                                            .Destroy(e => e.Action("Delete", "Employees"))
+                            )
+                                                    )
+                                                </div>
+                                        </text>);
+                                    })
+                                )
+                            </div>
+                        </div>
+                        <br />
+
+                        <script>
+                            function Bindemptarget() {
+                                roleId  = parseInt('@Model.EmpRoleId');
+                                EmpId = parseInt('@Model.Id');
+                                return { empId: EmpId, roleId: roleId };
+                            }
+                            function BindEmployeetarget() {
+                                EmpId = parseInt('@Model.Id');
+                                var roleId = $('#EmpRole').val();
+                                EmpType = "E";
+                                return { empid: EmpId, EmployeeType: EmpType };
+                            }
+                        </script>
+
+                        <script>
+                            var dataSource = {};
+                            var data = {};
+                            $('.k-grid-update').on("click", function () {
+                                $(this).addClass("k-state-disabled")
+                                    .bind("click", disable = function (e) {
+                                        e.preventDefault();
+                                        return false;
+                                    });
+                            });
+                            function onSaveRecord(e) {
+                                var grid = $("#GridEmployeeTarget").data("kendoGrid");
+                                this.editable.element.find(".k-grid-update").addClass("k-state-disabled").removeClass("k-grid-update");
+                                this.dataSource.one("requestEnd", function () {
+                                    $("[data-role=grid] .k-grid-update").removeClass("k-state-disabled");
+                                })
+                                var currentFinancialYear = e.model.FinancialYear;
+                                var currentEmpRole = e.model.EmployeeRole;
+                                var data = this.dataSource.data();
+
+                                $.each(data, function (key, value) {
+                                    if (value.FinancialYearId === 0 && value.EmployeeRoleId === 0) {
+                                        if (value.FinancialYear === currentFinancialYear && value.EmployeeRole === currentEmpRole && key != 0 && value.Id != 0) {
+                                            e.preventDefault();
+                                            alert("Duplicates not allowed");
+                                            var grid = $("#GridEmployeeTarget").data("kendoGrid");
+                                            grid.dataSource.read();
+                                        }
+                                    }
+                                    else {
+                                        if (value.FinancialYearId.toString() === currentFinancialYear && value.EmployeeRoleId.toString() === currentEmpRole && value.toString() != "0") {
+                                            e.preventDefault();
+                                            alert("Duplicates not allowed");
+                                            var grid = $("#GridEmployeeTarget").data("kendoGrid");
+                                            grid.dataSource.read();
+                                        }
+                                    }
+                                });
+                            }
+                            function OnRequestEnd(e) {
+                                var grid = $("#GridEmployeeTarget").data("kendoGrid");
+                                kendo.ui.progress(grid.wrapper, true);
+                                if (e.type == "create") {
+                                    grid.dataSource.read();
+                                    kendo.ui.progress(grid.wrapper, false);
+                                }
+                                kendo.ui.progress(grid.wrapper, false);
+                            }
+                            $("#customEmpTargetCommand").click(function (e) {
+                                setTimeout(function () {
+                                    var grid = $("#GridEmployeeTarget").data("kendoGrid");
+                                    grid.tbody.find("tr[role='row']").each(function () {
+                                        $(this).find(".k-grid-edit").remove();
+                                        $(this).find(".k-grid-delete").remove();
+                                    });
+                                    //grid.pager.element.hide();
+                                }, 1000);
+                            });
+                            function validateEntries(e) {
+                                var grid = $("#GridEmployeeTarget").data("kendoGrid");
+                                kendo.ui.progress(grid.wrapper, true);
+                                e.setAttribute("style", "pointer-events:none");
+                                if (e.className.toString().split(' ').indexOf("k-grid-update") > -1) {
+                                    var finYear = $('#FinancialYear').data('kendoDropDownList').text();
+                                    var role = $('#EmployeeRole').data('kendoDropDownList').text();
+                                    var budget = $('#Budget').val();
+                                    var quarterly = $('#QuarterlyTarget').val();
+                                    var monthly = $('#MonthlyTarget').val();
+                                    var weekly = $('#WeeklyTarget').val();
+                                    var grid = $("#GridEmployeeTarget").data("kendoGrid");
+                                    kendo.ui.progress(grid.wrapper, false);
+                                }
+                                else if (e.className.toString().split(' ').indexOf("k-grid-edit") > -1) {
+                                    var grid = $("#GridEmployeeTarget").data("kendoGrid");
+                                    setTimeout(function () {
+                                        var grid = $("#GridEmployeeTarget").data("kendoGrid");
+                                        grid.tbody.find("tr[role='row']").each(function () {
+                                            $(this).find(".k-grid-edit").remove();
+                                            $(this).find(".k-grid-delete").remove();
+                                        });
+                                        var model = grid.editable.options.model;
+                                        $('#FinancialYear').data("kendoDropDownList").text(model.FinancialYear);
+                                        $('#EmployeeRole').data("kendoDropDownList").text(model.Description);
+                                        $("#FinancialYear").data("kendoDropDownList").enable(false);
+                                        $("#EmployeeRole").data("kendoDropDownList").enable(false);
+                                        $("#Budget,#TargetHike").attr("onChange", "TargetHIke();");
+                                    }, 3000);
+                                    kendo.ui.progress(grid.wrapper, false);
+                                }
+                                if (e.className.toString().split(' ').indexOf("k-grid-cancel") > -1) {
+                                    kendo.ui.progress(grid.wrapper, true);
+                                    var grid = $("#GridEmployeeTarget").data("kendoGrid");
+                                    grid.dataSource.read();
+                                    grid.pager.element.show();
+                                    kendo.ui.progress(grid.wrapper, false);
+                                }
+                            }
+                            function TargetHIke() {
+                                var grid = $("#GridEmployeeTarget").data("kendoGrid");
+                                var target = parseInt($("#Budget").val());
+                                var hike = parseInt($("#TargetHike").val());
+                                if (isNaN(hike)) {
+                                    $("#TargetHike").val(0);
+                                }
+                                if (hike >= 0) {
+                                    var disccount = parseInt(target * hike / 100);
+                                    var ttarget = (target + disccount);
+                                    $("#Budget").val(ttarget);
+                                }
+                                if (hike < 0) {
+                                    var disccount = parseInt(target * hike / 100);
+                                    var ttarget = (target + (disccount));
+                                    $("#Budget").val(ttarget);
+                                }
+                                if ($("#ChckboxId").is(':checked')) {
+                                    var Target = $("#Budget").val();
+                                    var TargetHike = $("#TargetHike").val();
+                                    var yTarget = Target / 4;
+                                    var mTarget = Target / 12;
+                                    var wTarget = Target / 52;
+                                    yTarget = yTarget.toFixed(2);
+                                    mTarget = mTarget.toFixed(2);
+                                    wTarget = wTarget.toFixed(2);
+                                    $('#QuarterlyTarget').val(yTarget).attr('readonly', 'readonly');
+                                    $("#MonthlyTarget").val(mTarget).attr('readonly', 'readonly');
+                                    $("#WeeklyTarget").val(wTarget).attr('readonly', 'readonly');
+                                    var model = grid.editable.options.model;
+                                    model.Budget = Target;
+                                    model.MonthlyTarget = mTarget;
+                                    model.QuarterlyTarget = yTarget;
+                                    model.WeeklyTarget = wTarget;
+                                    model.TargetHike = TargetHike;
+                                } else {
+                                    model.TargetHike = TargetHike;
+                                }
+                            }
+                            function onEmployeeTargetDataBound(e) {
+                                var grid = $("#GridEmployeeTarget").data("kendoGrid");
+                                $("#GridEmployeeTarget tr.k-alt").removeClass("k-alt");
+                                //To Hide Edit buttons.
+                                grid.tbody.find("tr[role='row']").each(function () {
+                                });
+                                if (this.dataSource.view().length == 0) {
+                                    var currentPage = this.dataSource.page();
+                                    if (currentPage > 1) {
+                                        e.preventDefault();
+                                        this.dataSource.page(currentPage - 1);
+                                    }
+                                }
+                            }
+                            function calculateTarget(e) {
+                                $('.k-grid-update').removeAttr("style");
+                                var grid = $("#GridEmployeeTarget").data("kendoGrid");
+                                var dataItem = grid.dataItem($(e.target).closest("tr"));
+                                if (dataItem.IsAutomatic) {
+                                    var Target = $("#Budget").val();
+                                    var yTarget = Target / 4;
+                                    var mTarget = Target / 12;
+                                    var wTarget = Target / 52;
+
+                                    yTarget = yTarget.toFixed(2);
+                                    mTarget = mTarget.toFixed(2);
+                                    wTarget = wTarget.toFixed(2);
+
+                                    dataItem.QuarterlyTarget = yTarget;
+                                    dataItem.MonthlyTarget = mTarget;
+                                    dataItem.WeeklyTarget = wTarget;
+
+                                    $('#QuarterlyTarget').val(yTarget).attr('readonly', 'readonly');
+                                    $("#MonthlyTarget").val(mTarget).attr('readonly', 'readonly');
+                                    $("#WeeklyTarget").val(wTarget).attr('readonly', 'readonly');
+                                }
+                                else {
+                                    $("#QuarterlyTarget").val(0).removeAttr('readonly');
+                                    $("#MonthlyTarget").val(0).removeAttr('readonly');
+                                    $("#WeeklyTarget").val(0).removeAttr('readonly');
+
+                                    var QuarterlyTarget = $("#QuarterlyTarget").val();
+                                    var MonthlyTarget = $("#MonthlyTarget").val();
+                                    var WeeklyTarget = $("#WeeklyTarget").val();
+                                    var Target = $("#Budget").val();
+                                    var TargetHike = $("#TargetHike").val();
+                                    var model = grid.editable.options.model;
+                                    model.Budget = Target;
+                                    model.MonthlyTarget = MonthlyTarget;
+                                    model.QuarterlyTarget = QuarterlyTarget;
+                                    model.WeeklyTarget = WeeklyTarget;
+                                    model.TargetHike = TargetHike;
+                                }
+                            }
+                            $('#gridemployeetarget').on("change", "input[name = 'budget']", function (e) {
+                                calculatetarget(e);
+                            });
+
+                            $("#GridEmployeeTarget").on("change", "input[name='IsAutomatic']", function (e) {
+                                calculateTarget(e);
+                            });
+                            function error_handler(e) {
+                                if (e.errors) {
+                                    var message = "Errors:\n";
+                                    $.each(e.errors, function (key, value) {
+                                        if ('errors' in value) {
+                                            $.each(value.errors, function () {
+                                                message += this + "\n";
+                                            });
+                                        }
+                                    });
+                                    alert(message);
+                                }
+                            }
+                            function onFinancialYearChange(e) {
+                            }
+                            function onEmployeeTargetChange(e) {
+                            }
+                        </script>
+
+                    </div>
+                    <br />
+                    <br />
+                    <div class="row">
+                        <div class="col-lg-6 form-group">
+                            <label for="exampleInputPhoto">@NIMBOLE.GlobalResources.Resources.Image</label>
+                            <br />
+                            <input type="file" name="uploadFile" accept="image/*" style="display: inline;" onchange="readURL(this);" tabindex="27" />
+                        </div>
+                        <div id="divLogo" class="col-lg-6 form-group">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12" style="text-align: right;">
+                <input type="button" id="btnSubmit" class="btn btn-success" value=@NIMBOLE.GlobalResources.Resources.Update tabindex="28">
+                <input type="button" value=@NIMBOLE.GlobalResources.Resources.Cancel class="btn btn-danger" onclick="location.href = '/Employees/Index'" tabindex="29" />
+            </div>
+        </div>
+    </main>
+    //Employeetarget
+    @Html.Hidden("hdnDesignation")
+    <script>
+        $(document).ready(function () {
+            if ('@Model.EmployeeImageURL' !== '') {
+                var img = $('<img id="imgLogo" class="imageScale" height="99" width="150">');
+                img.attr('src', '@Model.EmployeeImageURL');
+                img.appendTo('#divLogo');
+            }
+            BindReportsToDesignation();
+            BindDesignation();
+            BindReportsTo('@Model.EmpDesiganationRoleId')
+            BindLocation();
+            BindCountries();
+            BindStates('@Model.objAddressModel.CountryId');
+            BindCities('@Model.objAddressModel.StateId');
+        });
+        function BindDesignation() {
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                url: "/Employees/GetAllEmployeeRoles",
+                data: "{}",
+                dataType: "json",
+                success: function (Result) {
+                    $.each(Result, function (key, value) {
+                        $("#EmpRole").append($("<option></option>").html(value.Name).val(value.Id));
+                    });
+                    $("#EmpRole").find("option").each(function () {
+                        if ($(this).val() == '@Model.EmpRoleId') {
+                            $(this).prop("selected", "selected");
+                        }
+                    });
+
+                },
+                error: function (Result) {
+                    //  alert("error");
+                }
+            });
+        }
+        $("#EmpRole").change(function () {
+            var value = this.value;
+            if (value != -1 || value != '') {
+                $('#EmpRoleId').val(value);
+                $('hdnDesignation').val(value);
+                //BindReportsTo(value);
+            }
+        });
+        function BindReportsToDesignation() {
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                url: "/Employees/GetAllEmployeeRoles",
+                data: "{}",
+                dataType: "json",
+                success: function (Result) {
+                    for (var i = 0; i < Result.length; i++) {
+                        $("#EmpRoleDesignation").append('<option value="'
+                                    + Result[i].Id + '">' +
+                                    Result[i].Name + '</option>');
+                    }
+                    $("#EmpRoleDesignation").find("option").each(function () {
+                        if ($(this).val() == '@Model.EmpDesiganationRoleId') {
+                            $(this).prop("selected", "selected");
+                        }
+                    });
+                },
+                error: function (Result) {
+                }
+            });
+        }
+        $("#EmpRoleDesignation").change(function () {
+            var value = this.value;
+            if (value != -1 || value != '') {
+                $('#EmpDesignation').val(value);
+                $('#ReportsToDesignation').val(value);
+                BindReportsTo(value);
+            }
+        });
+        function BindReportsTo(value) {
+            $('#empReports')
+             .find('option')
+             .remove()
+             .end()
+             .append('<option value="0">@NIMBOLE.GlobalResources.Resources.Select</option>')
+            ;
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                url: "/Employees/GetAllReportsEmployees?EmpRoleId=" + value,
+                data: "{}",
+                dataType: "json",
+                success: function (Result) {
+                    $.each(Result, function (key, value) {
+                        $("#empReports").append($("<option></option>").html(value.Name).val(value.Id));
+                    });
+                    $("#empReports").find("option").each(function () {
+                        if ($(this).val() == '@Model.ReportingTo') {
+                            $(this).prop("selected", "selected");
+                        }
+                    });
+                },
+                error: function (Result) {
+                }
+            });
+        }
+        $("#empReports").change(function () {
+            var value = this.value;
+            if (value != -1 || value != '') {
+                $('#ReportingTo').val(value);
+            }
+        });
+        function BindCountries() {
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                url: "/AddressAutoComplete/GetCountryNames",
+                data: "{}",
+                dataType: "json",
+                success: function (Result) {
+                    $.each(Result, function (key, value) {
+                        $("#Country").append($("<option></option>").html(value.CountryName).val(value.CountryId));
+                    });
+                    $("#Country").find("option").each(function () {
+                        if ($(this).val() == '@Model.objAddressModel.CountryId') {
+                            $(this).prop("selected", "selected");
+                        }
+                    });
+                },
+                error: function (Result) {
+                    // alert("error");
+                }
+            });
+        }
+        $("#Country").change(function () {
+            var value = this.value;
+            if (value != -1 || value != '') {
+                BindStates(value);
+                $('#objAddressModel_CountryId').val(parseInt(value));
+            }
+        });
+        function BindStates(countryId) {
+            $('#State')
+                .find('option')
+                .remove()
+                .end()
+                .append('<option value="0">@NIMBOLE.GlobalResources.Resources.Select</option>')
+            ;
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                url: "/AddressAutoComplete/GetStateNamesCreate?Countries=" + countryId,
+                data: "{}",
+                dataType: "json",
+                success: function (Result) {
+                    for (var i = 0; i < Result.length; i++) {
+                        $("#State").append('<option value="'
+                                    + Result[i].Id + '">' +
+                                    Result[i].Name + '</option>');
+                    }
+                    $("#State").find("option").each(function () {
+                        if ($(this).val() == '@Model.objAddressModel.StateId') {
+                            $(this).prop("selected", "selected");
+                        }
+                    });
+                },
+                error: function (Result) {
+                    // alert("error");
+                }
+            });
+        }
+        $("#State").change(function () {
+            var value = this.value;
+            if (value != -1 || value != '' || value != "") {
+                BindCities(value);
+                $('#objAddressModel_StateId').val(parseInt(value));
+            }
+        });
+        function BindCities(stateId) {
+            $('#City')
+              .find('option')
+              .remove()
+              .end()
+              .append('<option value="0">@NIMBOLE.GlobalResources.Resources.Select</option>');
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                url: "/AddressAutoComplete/GetCityNamesCreate?states=" + stateId,
+                data: "{}",
+                dataType: "json",
+                success: function (Result) {
+                    for (var i = 0; i < Result.length; i++) {
+                        $("#City").append('<option value="'
+                                    + Result[i].Id + '">' +
+                                    Result[i].Name + '</option>');
+                    }
+                    $("#City").find("option").each(function () {
+                        if ($(this).val() == '@Model.objAddressModel.CityId') {
+                            $(this).prop("selected", "selected");
+                        }
+                    });
+                },
+                error: function (Result) {
+                    // alert("error");
+                }
+            });
+        }
+        $("#City").change(function () {
+            var value = this.value;
+            if (value != -1 || value != '' || value != "") {
+                $('#objAddressModel_CityId').val(parseInt(value));
+            }
+        });
+    </script>
+
+    <script>
+        //Script for Validation
+        var listcontrols = {
+            "FirstName": "true,allcharacters,1,100"
+            , "EmployeeEmail": "true,email"
+            , "EmpRoleId": "true,select"
+            , "Location": "true,select"
+            , "objAddressModel_ZipCode": "false,zipcode,6,6"
+            , "LastName": "false,characters,1,100"
+            , "objAddressModel_HouseNo": "false,allcharacters,1,100"
+            , "objAddressModel_StreetName": "false,allcharacters,1,100"
+            , "objAddressModel_SkypeName": "false,allcharacters,1,100"
+        };
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    if ($('#imgLogo').length === 0) {
+                        $('#imgLogo').remove();
+                        var img = $('<img id="imgLogo" class="imageScale" height="99" width="150">');
+                        img.attr('src', e.target.result);
+                        img.appendTo('#divLogo');
+                    }
+                    else {
+                        $('#imgLogo').attr("src", e.target.result);
+                    }
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+            else {
+                $('#imgLogo').remove();
+            }
+        }
+
+        $(document).ready(function () {
+            $("#Status").click(function () {
+                var status = $("#Status").val();
+                if (status != "" && status === "true") {
+                    $.ajax({
+                        url: '/Employees/Delete',
+                        dataType: "json",
+                        type: "DELETE",
+                        contentType: 'application/json; charset=utf-8',
+                        data: JSON.stringify({ id: '@Model.Id', status: status }),
+                        async: true,
+                        processData: false,
+                        cache: false,
+                        success: function (data) {
+                            if (typeof data === "string") {
+                                if (data.lastIndexOf("associated") > -1) {
+                                    alert("This record is associated, you can't deactivate.");
+                                    $("#Status").prop('checked', true);
+                                }
+                            }
+                        },
+                        error: function (xhr) {
+                        }
+                    });
+                }
+            });
+        });
+        $('#btnSubmit').click(function (e) {
+            if (listcontrols) {
+                var flag = 0;
+                var texttype = "";
+                $.each(listcontrols, function (key, value) {
+                    texttype = value.split(',')[1];
+                    var element = $('#' + key);
+                    if (texttype == "select") {
+                        if (typeof element.prev().attr('style') !== typeof undefined) {
+                            element.prev().removeAttr("style");
+                        }
+                    }
+                    if (validateControl(key, value.split(',')[0], value.split(',')[1], value.split(',')[2], value.split(',')[3]) == false) {
+                        flag = flag + 1;
+                    }
+                });
+                $('#EmpRoleId').attr("style", "width:100%;display:none;");
+                $('#ReportingTo').attr("style", "width:100%;display:none;");
+                $('#Location').attr("style", "width:100%;display:none;");
+                if (flag != 0) {
+                    return false;
+                }
+                else {
+                    $('form')[0].submit();
+                }
+            }
+        });
+    </script>
+}

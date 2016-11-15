@@ -1,0 +1,222 @@
+﻿@model NIMBOLE.Models.Models.LeadModel
+@using Kendo.Mvc.UI;
+@using NIMBOLE.Entities;
+@{
+    Layout = string.Empty;
+    var val = Json.Encode(Model);
+    string DateFormat = System.Web.HttpContext.Current.Session["DateFormat"].ToString();
+    long iLeadId = Convert.ToInt64(Session["CurrentLeadId"]);
+    string employeeName = Session["EmployeeName"].ToString();
+    string currency = System.Web.HttpContext.Current.Session["Currency"].ToString();
+}
+
+
+<div id="divNewAcitvity" style="padding: 0px 0px 0px 20px;">
+    <div class=" row">
+    <div class="col-lg-10">
+        <h1 class="page-header">@NIMBOLE.GlobalResources.Resources.NewActivity</h1>
+    </div>
+</div>
+    <div class="row">
+        <div class="col-lg-10">
+            @*<div class="panel panel-default">
+                <div class="panel-body">*@
+                    <div class="row">
+                        @*Left Column*@
+                        <div class="col-lg-5">
+                            <div class="form-group">
+                                <label for="InputActivityType">
+                                    @NIMBOLE.GlobalResources.Resources.Title <span class="field-validation-error">*</span>
+                                </label>
+                                @Html.TextBoxFor(model => model.objActivityModel.Title, new { @placeholder = @NIMBOLE.GlobalResources.Resources.Title, @class = "k-textbox", @style = "width:100%;"})
+                            </div>
+                            <div class="form-group">
+                                <label for="InputActivityDate">
+                                    @NIMBOLE.GlobalResources.Resources.ActivityDate
+                                </label>
+                                @(Html.Kendo().DatePickerFor(model => model.objActivityModel.ActivityDate)
+                                    //.Format(DateFormat)
+                                    .HtmlAttributes(new { @style = "width: 100%;" })
+                                    .Value(DateTime.Now)
+                                )
+                            </div>                            
+                        </div>
+
+                        @*Right Column*@
+                        <div class="col-lg-5">
+                            <div class="form-group">
+                                <label for="InputActivityType">
+                                    @NIMBOLE.GlobalResources.Resources.Milestone <span class="field-validation-error">*</span>
+                                </label>
+                                @(Html.Kendo().DropDownListFor(model => model.objActivityModel.MileStoneId)
+                                .HtmlAttributes(new { @class = "form-control", style = "width:100%;" })
+                                .DataTextField("Description")
+                                .DataValueField("Id")
+                                .OptionLabel(@NIMBOLE.GlobalResources.Resources.Select)
+                                .AutoBind(true)
+                                .DataSource(source =>
+                                {
+                                    source.Read(read => { read.Action("GetAllMileStones", "Leads").Type(HttpVerbs.Get); });
+                                    source.ServerFiltering(true);
+                                })
+                                )
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-10">
+                                    <div class="col-lg-2">
+                                        <label for="InputNotify">@NIMBOLE.GlobalResources.Resources.Notify</label>
+                                        @*@(Html.Kendo().CheckBoxFor(m => m.objActivityModel.RequireNotify).Name("RequireNotify"))*@
+                                        <input id="Notify" type="checkbox" class="form-control" data-bind="checked: isChecked" />
+                                        @(Html.HiddenFor(x => x.objActivityModel.RequireNotify))
+                                    </div>
+                                    <div class="col-lg-7">
+                                        <label for="InputEmp">@NIMBOLE.GlobalResources.Resources.AssignResources</label>
+                                        @(Html.Kendo().MultiSelectFor(model => model.objActivityModel.ReferenceIds)
+                                            .DataTextField("Name")
+                                            .DataValueField("Id")
+                                            .Placeholder("Select - (MultiSelect)")
+                                            .HtmlAttributes(new { @style = "width:100%" })
+                                            .AutoBind(true)
+                                            .DataSource(source =>
+                                            {
+                                                source.Read(read =>
+                                                {
+                                                    read.Action("GetReferenceIds", "Activity");
+                                                })
+                                                .ServerFiltering(false);
+                                            })
+                                        )
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="col-lg-10 form-group">
+                            <label for="Inputcomments">
+                                @NIMBOLE.GlobalResources.Resources.Comments
+                            </label>
+                            @Html.TextAreaFor(model => model.objActivityModel.ActivityComments, new { @placeholder = @NIMBOLE.GlobalResources.Resources.Comments, @class = "k-textbox", @style = "width:100%;" })
+                        </div>
+                        <div class="col-lg-5 form-group">
+                            <div class="form-group">
+                                <label for="DocumentUploads">
+                                    @NIMBOLE.GlobalResources.Resources.Activity @NIMBOLE.GlobalResources.Resources.Documents
+                                </label>
+                                @(Html.Kendo().Upload()
+                                    .Name("files")
+                                    .TemplateId("activityFileTemplate")
+                                    .Async(a => a
+                                        .Save("CreateDocuments", "Leads", new { DocType = "Activity" })
+                                        .Remove("Remove", "Upload")
+                                        .AutoUpload(false)
+                                        .Batch(true)
+                                    )
+                                )
+                                <script id="activityFileTemplate" type="text/x-kendo-template">
+                                    <span class='k-progress'></span>
+                                    <div class='file-wrapper'>
+                                        <h4 class='file-heading file-name-heading'>Name: #=name#</h4>
+                                        <h4 class='file-heading file-size-heading'>Size: #=size# bytes</h4>
+                                        <button type='button' class='k-upload-action'></button>
+                                    </div>
+                                </script>
+                            </div>
+                        </div>
+
+                        <br />
+                        <div class="col-lg-10" style="text-align: right;">
+                            <input id="btnNewActivitySave" type="button" data-url="@Url.Action("Create", "Activity")" class="btn btn-success" value=@NIMBOLE.GlobalResources.Resources.Save>
+                            <input id="btnNewActivityCancel" type="button" value=@NIMBOLE.GlobalResources.Resources.Cancel class="btn btn-danger" />
+                        </div>
+                    </div>
+                @*</div>
+            </div>*@
+        </div>
+    </div>
+</div>
+
+<script>
+    var viewModel = kendo.observable({
+        isChecked: false
+    });
+
+    kendo.bind($("#Notify"), viewModel);
+    viewModel.bind("change", function (e) {
+        $("#objActivityModel_RequireNotify").val(this.get(e.field));
+        //alert($("#objActivityModel_RequireNotify").val());
+    });
+</script>
+
+
+
+<script>
+    //Script for Validation
+    var activityListControls = {
+        "objActivityModel_Title": "true,allcharacters,1,100",
+        "objActivityModel_MileStoneId": "true,select",
+    };
+
+    $(document).ready(function () {
+        $('#btnNewActivitySave').click(function () {
+            var File = $('#files').data("kendoUpload").wrapper.find(".k-file").length;
+            var Upload = $('.k-upload-status').text();
+            if (File == 1 && Upload == "") {
+                alert("Please upload file")
+                this.disabled = false;
+                return false;
+            }
+            if (activityListControls) {
+                var flag = 0;
+                var texttype = "";
+                $.each(activityListControls, function (key, value) {
+                    texttype = value.split(',')[1];
+                    var element = $('#' + key);
+                    if (texttype == "select") {
+                        if (typeof element.prev().attr('style') !== typeof undefined) {
+                            element.prev().removeAttr("style");
+                        }
+                    }
+                    if (validateControl(key, value.split(',')[0], value.split(',')[1], value.split(',')[2], value.split(',')[3]) == false) {
+                        flag = flag + 1;
+                    }
+                    $('#objActivityModel_MileStoneId').attr("style", "width:100%;display:none;");
+                });
+                if (flag != 0) {
+                    this.disabled = false;
+                    return false;
+                }
+                else {
+                    this.disabled = true;
+                    var url = $(this).data('url');
+                    var form = $(this).closest('form');
+
+                    $.ajax({
+                        url: url,
+                        data: form.serialize(),
+                        type: 'POST',
+                        success: function (data) {
+                            //alert(data);
+                            $("#divNewAcitvity").hide("slow");
+                            $("#btnAddActivity").prop('disabled', false);
+                            setTimeout(function () {
+                                $("#MileStoneGrid").data("kendoGrid").dataSource.read();
+                            }, 2000);
+                        }
+                    });
+                    $.get('@Url.Action("Index", "Activity")', function (data) {
+                        $("#divParialView").empty();
+                        $("#divParialView").html(data);
+                        $("#divNewAcitvity").hide("slow");
+                        $("#btnAddActivity").prop('disabled', false);
+                    });
+                }
+            }
+        });
+        $("#btnNewActivityCancel").click(function () {
+            $("#divParialView").empty();
+            $("#divNewAcitvity").hide("slow");
+            $("#btnAddActivity").prop('disabled', false);
+        });
+    });
+</script>
+

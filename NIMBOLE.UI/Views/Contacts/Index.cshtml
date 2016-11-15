@@ -1,0 +1,207 @@
+﻿@model IEnumerable<NIMBOLE.Models.Models.ContactModel>
+@using Kendo.Mvc.UI;
+@{
+    ViewBag.Title = "NIMBOLE | List Contacts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Excel_Export", "Contacts"))
+{
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">@NIMBOLE.GlobalResources.Resources.Contacts</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    @*List of Available Contacts.*@
+                </div>
+                <div class="panel-body">
+                        <div class="row">
+                            @*Left Column*@
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <a href="~/Contacts/Create">
+                                        <button class="btn btn-success" type="button">@NIMBOLE.GlobalResources.Resources.New</button>
+                                    </a>
+                                </div>
+                            </div>
+
+                            @*Right Column*@
+                            <div class="col-lg-6">
+                                <div class="form-group" style="text-align: right;">
+                                    <a href="~/Contacts/ExcelImport">
+                                        <button class="btn btn-success" type="button">
+                                            <img src="~/Content/images/xls.png" height="25px" />
+                                            @NIMBOLE.GlobalResources.Resources.Import
+                                        </button>
+                                    </a>
+                                    <a href="~/Contacts/Excel_Export">
+                                        <button name="btnSubmit" class="btn btn-success export" value="ExportExcel"><img src="~/Content/images/xls.png" height="25px" /> @NIMBOLE.GlobalResources.Resources.Export</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6" style="text-align: right;">
+                                <div class="form-group">
+
+                                    <label for="InputAccountCode">
+                                        @NIMBOLE.GlobalResources.Resources.AccountName
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-lg-6" style="text-align: left;">
+                                <div class="form-group">
+                                    @*@(Html.Kendo().ComboBox()
+                                        .Name("AccountName")
+                                        .HtmlAttributes(new { @style = "width: 100%;", @class = "form-control" })
+                                        .Filter("contains")
+                                        .Placeholder(@NIMBOLE.GlobalResources.Resources.Select)
+                                        .DataTextField("AccountName")
+                                        .DataValueField("Id")
+                                        .AutoBind(true)
+                                        .DataSource(source =>
+                                        {
+                                            source.Read(read =>
+                                            {
+                                                read.Action("GetAllAccounts", "NimboleAccounts");
+                                            })
+                                            .ServerFiltering(true);
+                                        })
+        //.Events(e => e.Change("onOwnershipChange"))
+        //.Suggest(true)
+                                    )*@
+
+                                    <input id="AccountName"  style="width: 100%" class="form-control" />
+                                   
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="dataTable_wrapper">
+                                    @(Html.Kendo().Grid<NIMBOLE.Models.Models.ContactViewModel>()
+                                    .Name("GridContact")
+                                    .Columns(columns =>
+                                    {
+
+                                        columns.Bound(m => m.FirstName).Width(70).Title(@NIMBOLE.GlobalResources.Resources.FirstName);
+                                        //columns.Bound(m => m.LastName).Width(70).Title(@NIMBOLE.GlobalResources.Resources.LastName);
+                                        //columns.Bound(m => m.ContactEmail).Width(20).Title(@NIMBOLE.GlobalResources.Resources.Email);
+                                        columns.Bound(m => m.WorkEmail).Width(20).Title(@NIMBOLE.GlobalResources.Resources.Email);
+                                        // columns.Bound(m => m.DepartmentName).Width(70).Title(@NIMBOLE.GlobalResources.Resources.Department);
+                                        columns.Bound(m => m.AccountName).Width(70).Title(@NIMBOLE.GlobalResources.Resources.AccountName);
+                                        columns.Template(@<text></text>).ClientTemplate("<a href='" + Url.Action("Edit", "Contacts") + "/#=Id#'>" + @NIMBOLE.GlobalResources.Resources.Edit + "</a>").HtmlAttributes(new { style = "text-align: center;" }).Width(50);
+                                        columns.Template(@<text></text>).ClientTemplate("<a href='javascript:deleteRecord(#=Id#)'>" + @NIMBOLE.GlobalResources.Resources.Delete + "</a>").HtmlAttributes(new { style = "text-align:center;" }).Width(70);
+                                    })
+                                    .Pageable()
+                                    .Sortable()
+                                    .Filterable()
+                                    .DataSource(datasource => datasource
+                                        .Ajax()
+                                        .PageSize(20)
+                                        .Sort(e => e.Add("Id").Descending())
+                                        .Model(model => model.Id(m => m.Id))
+                                        .Read(read => read.Action("Contact_Read", "Contacts")
+                                            .Data("GetAccountIdGridRead"))
+                                        )
+                                    )
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        $(document).ready(function () {
+
+            var dropdownlist1 = $("#status").data("kendoDropDownList");
+            dropdownlist1.trigger("change");
+
+            var accid = window.location.href.substr(window.location.href.lastIndexOf("/") + 1);
+            var accountname = $("#AccountName").kendoDropDownList({
+                optionLabel: "@NIMBOLE.GlobalResources.Resources.Select",
+                dataTextField: "AccountName",
+                dataValueField: "Id",
+                value:accid,
+                dataSource: {
+                    type: JSON,
+                    serverFiltering: true,
+                    transport: {
+                        read: '@Url.Action("GetAllAccounts", "NimboleAccounts")'
+                    }
+                },
+                //dataBound: function () {
+                //    
+                //    var accid = window.location.href.substr(window.location.href.lastIndexOf("/") + 1);
+                //    //this.dataValueField = accid;
+                //    //this.dataTextField = "IBM";
+                //    this.select(accid);
+                    
+                //},
+                change: AccountChange
+            }).data("kendoDropDownList");
+
+            var dropdownlist = $("#AccountName").data("kendoDropDownList");
+            dropdownlist.trigger("change");
+        });
+       
+        function deleteRecord(id) {
+            var deleteconfirm = confirm("Do you want to delete?");
+            if (deleteconfirm == true) {
+                $.ajax({
+                    url: '/Contacts/Delete',
+                    dataType: "json",
+                    type: "DELETE",
+                    contentType: 'application/json; charset=utf-8',
+                    data: JSON.stringify({ id: id }),
+                    async: true,
+                    processData: false,
+                    cache: false,
+                    success: function (data) {
+                        alert(data);
+                    },
+                    error: function (xhr) {
+                        //alert('error');
+                    }
+                });
+                setTimeout(function () { 
+                    window.location = "/Contacts/Index";
+                }, 2000);
+            }
+            //else
+            //    return false;
+        }
+        function removeprocessicon(mode) {
+            $("#GridContact").data("kendoGrid").dataSource.read();
+        }
+        var _accountId = -1;
+        
+        function GetAccountIdGridRead() {
+            var str = $("#AccountName").val();
+            return { str: str };
+        }
+        
+        function AccountChange() {
+            _accountId = $("#AccountName").val();
+            $("#GridContact").data("kendoGrid").dataSource.read();
+        }
+
+        //$("#AccountName").change(function () {
+        //    //alert('Contest Id Chage');
+        //    _accountId = $("#AccountName").val();
+        // //  alert(_accountId);
+        //    $("#GridContact").data("kendoGrid").dataSource.read();    
+        //});
+
+   </script>
+}

@@ -1,0 +1,170 @@
+﻿@model NIMBOLE.Models.Models.MySettingModel
+
+@{
+    ViewBag.Title = "NIMBOLE | Registration";
+    Layout = "~/Views/Shared/_EmptyLayout.cshtml";
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        //$(dvOtherTextBox).css("display", "none");
+    });
+
+</script>
+@using (Html.BeginForm())
+{
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="register-panel panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Account Registration</h3>
+                    </div>
+
+                    <fieldset>
+
+                        <div class="control-group">
+                            <div class="span10">
+                                <label class="control-label">Company Name</label>
+                                <div class="controls">
+                                    @Html.TextBoxFor(m => m.CompanyName, new { placeholder = "Company Name", @maxlength = "50", @class = "form-control" })
+                                    <div class="span10">
+                                        @Html.ValidationMessageFor(m => m.CompanyName)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="control-group">
+                            <div class="span10">
+                                <label class="control-label">Create User Name*</label>
+                                <div class="controls">
+                                    @Html.TextBoxFor(m => m.UserName, new { placeholder = "User Name", pattern = "^([_A-z0-9]){3,}$", @maxlength = "50", @class = "form-control" })
+                                    <div class="span10" style="color:red;">
+                                        @Html.ValidationMessageFor(m => m.UserName)
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="control-group">
+                            <div class="span10">
+                                <label class="control-label">Password*</label>
+                                <div class="controls">
+                                    @Html.PasswordFor(m => m.Password, new { placeholder = "Password", @maxlength = "50", @class = "form-control" })
+                                    <div class="span10" style="color:red;">
+                                        @Html.ValidationMessageFor(m => m.Password)
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="control-group">
+                            <div class="span10">
+                                <label class="control-label">Confirm Password*</label>
+                                <div class="controls">
+                                    @Html.PasswordFor(m => m.RetypePassword, new { placeholder = "Confirm Password", @maxlength = "50", @class = "form-control" })
+                                    <div class="span10" style="color:red;">
+                                        @Html.ValidationMessageFor(m => m.RetypePassword)
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="control-group">
+                            <div class="span10">
+
+                                <label class="control-label">Profile Name*</label>
+                                <div class="controls">
+                                    @Html.TextBoxFor(m => m.SettingName, new { placeholder = "Profile Name", @maxlength = "50", @class = "form-control" })
+                                    <div class="span10" style="color:red;">
+                                        @Html.ValidationMessageFor(m => m.SettingName)
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="control-group">
+                            <div class="span10">
+                                <label class="control-label">Language</label>
+
+                                @(Html.Kendo().DropDownListFor(model => model.LanguageName)
+
+                                  .BindTo(new List<SelectListItem>() {
+                                        new SelectListItem() {Value = "en",Text = "English"},
+                                        new SelectListItem() {Value = "hi",Text = "Hindi"},
+                                        new SelectListItem() {Value = "zh",Text = "Chinese"},
+                                        new SelectListItem() {Value = "ur",Text = "Urdu"}
+                                         })
+         .HtmlAttributes(new { @class = "form-control" })
+                                )
+
+                                <div class="span10">
+                                    @Html.ValidationMessageFor(m => m.LanguageName)
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <div class="span10">
+                                <label class="control-label">Time Zone</label>
+                                <div class="controls">
+                                    @(Html.Kendo().DropDownListFor(model => model.TimeZone)
+        //.HtmlAttributes(new { tabIndex = 26 })
+                                  .BindTo(new List<SelectListItem>() {
+                                        new SelectListItem() {Value = "IST",Text = "India Standard Time"},
+                                        new SelectListItem() {Value = "PST",Text = "Pacific Standard Time"},
+                                        new SelectListItem() {Value = "CST",Text = "Central Standard Time"}
+                                         })
+         .HtmlAttributes(new { @class = "form-control" })
+                                    )
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="control-group">
+                            <div class="span10" style="text-align:center;">
+                                <button class="btn btn-md btn-success" type="submit">Create Account</button>
+                                <a href="~/Home/Index">
+                                    <button class="btn btn-md" type="button">Cancel</button>
+                                </a>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="modal-footer">
+                            Already have an account? <a style="cursor: pointer;" href="@Url.Action("Login","Account")">&nbsp;Login!</a>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('input').focusin(function () {
+            // console.log('Welcome');
+            $("#verification").hide();
+        });
+        if(@ViewData["result"]!=null && ViewData["result"]!=0)
+        {
+            alert("Record Saved...");
+        }
+    });
+
+</script>
+

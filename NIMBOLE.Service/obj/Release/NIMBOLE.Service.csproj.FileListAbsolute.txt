@@ -1,0 +1,1091 @@
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\obj\Release\NIMBOLE.Service.csprojResolveAssemblyReference.cache
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\AutoMapper.Net4.dll
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\Antlr3.Runtime.dll
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\AutoMapper.dll
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\EntityFramework.dll
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\EntityFramework.SqlServer.dll
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\Microsoft.AspNet.Identity.Core.dll
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\Microsoft.Owin.dll
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\Microsoft.Owin.Security.Cookies.dll
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\Microsoft.Owin.Security.dll
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\Microsoft.Owin.Security.Facebook.dll
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\Microsoft.Owin.Security.Google.dll
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\Microsoft.Owin.Security.OAuth.dll
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\Microsoft.Owin.Security.Twitter.dll
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\Microsoft.Web.Infrastructure.dll
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\Newtonsoft.Json.dll
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\NIMBOLE.Common.dll
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\NIMBOLE.Entities.dll
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\Owin.dll
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\System.Net.Http.Formatting.dll
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\System.Web.Cors.dll
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\System.Web.Helpers.dll
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\System.Web.Http.Cors.dll
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\System.Web.Http.dll
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\System.Web.Http.Owin.dll
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\System.Web.Http.WebHost.dll
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\System.Web.Mvc.dll
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\System.Web.Optimization.dll
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\System.Web.Razor.dll
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\System.Web.WebPages.Deployment.dll
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\System.Web.WebPages.dll
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\System.Web.WebPages.Razor.dll
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\WebGrease.dll
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\NIMBOLE.Common.pdb
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\NIMBOLE.Entities.pdb
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\Antlr3.Runtime.pdb
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\AutoMapper.pdb
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\AutoMapper.xml
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\AutoMapper.Net4.pdb
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\EntityFramework.xml
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\EntityFramework.SqlServer.xml
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\Microsoft.AspNet.Identity.Core.xml
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\Microsoft.Owin.xml
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\Microsoft.Owin.Security.xml
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\Microsoft.Owin.Security.Cookies.xml
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\Microsoft.Owin.Security.Facebook.xml
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\Microsoft.Owin.Security.Google.xml
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\Microsoft.Owin.Security.OAuth.xml
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\Microsoft.Owin.Security.Twitter.xml
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\Newtonsoft.Json.xml
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\System.Net.Http.Formatting.xml
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\System.Web.Helpers.xml
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\System.Web.Http.xml
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\System.Web.Http.Cors.xml
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\System.Web.Http.Owin.xml
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\System.Web.Http.WebHost.xml
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\System.Web.Mvc.xml
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\System.Web.Razor.xml
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\System.Web.WebPages.xml
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\System.Web.WebPages.Deployment.xml
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\System.Web.WebPages.Razor.xml
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\System.Web.Optimization.xml
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\NEMBO.WebAPI.dll.config
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\NEMBO.WebAPI.dll
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\NEMBO.WebAPI.pdb
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\NIMBOLE.GlobalResources.dll
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\NIMBOLE.GlobalResources.pdb
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\ur\NIMBOLE.GlobalResources.resources.dll
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\zh\NIMBOLE.GlobalResources.resources.dll
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\bin\zh-SG\NIMBOLE.GlobalResources.resources.dll
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\obj\Release\NEMBO.WebAPI.dll
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Service\obj\Release\NEMBO.WebAPI.pdb
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\Antlr3.Runtime.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\EntityFramework.SqlServer.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\Microsoft.AspNet.Identity.Core.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\Microsoft.Owin.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\Microsoft.Owin.Security.Cookies.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\Microsoft.Owin.Security.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\Microsoft.Owin.Security.Facebook.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\Microsoft.Owin.Security.Google.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\Microsoft.Owin.Security.OAuth.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\Microsoft.Owin.Security.Twitter.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\Microsoft.Web.Infrastructure.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\Newtonsoft.Json.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\Owin.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\System.Net.Http.Formatting.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\System.Web.Cors.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\System.Web.Helpers.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\System.Web.Http.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\System.Web.Http.Owin.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\System.Web.Http.WebHost.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\System.Web.Mvc.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\System.Web.Optimization.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\System.Web.Razor.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\System.Web.WebPages.Deployment.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\System.Web.WebPages.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\System.Web.WebPages.Razor.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\WebGrease.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\Antlr3.Runtime.pdb
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\EntityFramework.SqlServer.xml
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\Microsoft.AspNet.Identity.Core.xml
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\Microsoft.Owin.xml
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\Microsoft.Owin.Security.xml
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\Microsoft.Owin.Security.Cookies.xml
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\Microsoft.Owin.Security.Facebook.xml
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\Microsoft.Owin.Security.Google.xml
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\Microsoft.Owin.Security.OAuth.xml
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\Microsoft.Owin.Security.Twitter.xml
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\Newtonsoft.Json.xml
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\System.Net.Http.Formatting.xml
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\System.Web.Helpers.xml
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\System.Web.Http.xml
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\System.Web.Http.Owin.xml
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\System.Web.Http.WebHost.xml
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\System.Web.Mvc.xml
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\System.Web.Razor.xml
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\System.Web.WebPages.xml
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\System.Web.WebPages.Deployment.xml
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\System.Web.WebPages.Razor.xml
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\System.Web.Optimization.xml
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\obj\Release\NIMBOLE.Service.csprojResolveAssemblyReference.cache
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\NIMBOLE.WebAPI.dll.config
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\NIMBOLE.WebAPI.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\NIMBOLE.WebAPI.pdb
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\Microsoft.Data.Edm.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\Microsoft.Data.OData.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\Microsoft.Data.Services.Client.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\Microsoft.WindowsAzure.Configuration.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\Microsoft.WindowsAzure.Diagnostics.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\Microsoft.WindowsAzure.Storage.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\System.Spatial.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\MonAgentListener.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\Microsoft.Data.Edm.xml
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\Microsoft.Data.OData.xml
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\Microsoft.Data.Services.Client.xml
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\Microsoft.WindowsAzure.Configuration.xml
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\Microsoft.WindowsAzure.Storage.xml
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\System.Spatial.xml
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\de\Microsoft.Data.Edm.resources.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\es\Microsoft.Data.Edm.resources.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\fr\Microsoft.Data.Edm.resources.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\it\Microsoft.Data.Edm.resources.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\ja\Microsoft.Data.Edm.resources.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\ko\Microsoft.Data.Edm.resources.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\ru\Microsoft.Data.Edm.resources.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\de\Microsoft.Data.OData.resources.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\es\Microsoft.Data.OData.resources.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\fr\Microsoft.Data.OData.resources.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\it\Microsoft.Data.OData.resources.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\ja\Microsoft.Data.OData.resources.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\ko\Microsoft.Data.OData.resources.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\ru\Microsoft.Data.OData.resources.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\de\Microsoft.Data.Services.Client.resources.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\es\Microsoft.Data.Services.Client.resources.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\fr\Microsoft.Data.Services.Client.resources.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\it\Microsoft.Data.Services.Client.resources.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\ja\Microsoft.Data.Services.Client.resources.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\ko\Microsoft.Data.Services.Client.resources.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\ru\Microsoft.Data.Services.Client.resources.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\zh-Hans\Microsoft.Data.Services.Client.resources.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\zh-Hant\Microsoft.Data.Services.Client.resources.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\de\System.Spatial.resources.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\es\System.Spatial.resources.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\fr\System.Spatial.resources.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\it\System.Spatial.resources.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\ja\System.Spatial.resources.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\ko\System.Spatial.resources.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\ru\System.Spatial.resources.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\zh-Hans\System.Spatial.resources.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\bin\zh-Hant\System.Spatial.resources.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\obj\Release\NIMBOLE.WebAPI.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.Service\obj\Release\NIMBOLE.WebAPI.pdb
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\AutoMapper.Net4.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\NIMBOLE.Service.dll.config
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\NIMBOLE.Service.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\NIMBOLE.Service.pdb
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\Antlr3.Runtime.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\EntityFramework.SqlServer.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\Microsoft.AspNet.Identity.Core.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\Microsoft.Data.Edm.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\Microsoft.Data.OData.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\Microsoft.Data.Services.Client.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\Microsoft.Owin.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\Microsoft.Owin.Security.Cookies.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\Microsoft.Owin.Security.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\Microsoft.Owin.Security.Facebook.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\Microsoft.Owin.Security.Google.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\Microsoft.Owin.Security.OAuth.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\Microsoft.Owin.Security.Twitter.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\Microsoft.Web.Infrastructure.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\Microsoft.WindowsAzure.Configuration.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\Microsoft.WindowsAzure.Diagnostics.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\Microsoft.WindowsAzure.Storage.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\Newtonsoft.Json.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\NIMBOLE.Entities.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\Owin.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\System.Net.Http.Formatting.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\System.Spatial.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\System.Web.Cors.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\System.Web.Helpers.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\System.Web.Http.Cors.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\System.Web.Http.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\System.Web.Http.Owin.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\System.Web.Http.WebHost.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\System.Web.Mvc.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\System.Web.Optimization.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\System.Web.Razor.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\System.Web.WebPages.Deployment.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\System.Web.WebPages.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\System.Web.WebPages.Razor.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\WebGrease.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\MonAgentListener.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\NIMBOLE.Entities.pdb
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\Microsoft.AspNet.Identity.Core.xml
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\Microsoft.Data.Edm.xml
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\Microsoft.Data.OData.xml
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\Microsoft.Data.Services.Client.xml
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\Microsoft.Owin.xml
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\Microsoft.Owin.Security.xml
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\Microsoft.Owin.Security.Cookies.xml
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\Microsoft.Owin.Security.Facebook.xml
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\Microsoft.Owin.Security.Google.xml
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\Microsoft.Owin.Security.OAuth.xml
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\Microsoft.Owin.Security.Twitter.xml
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\Microsoft.WindowsAzure.Configuration.xml
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\Microsoft.WindowsAzure.Storage.xml
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\System.Net.Http.Formatting.xml
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\System.Spatial.xml
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\System.Web.Http.xml
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\System.Web.Http.Cors.xml
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\System.Web.Http.Owin.xml
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\Newtonsoft.Json.xml
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\System.Web.Helpers.xml
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\System.Web.Http.WebHost.xml
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\System.Web.Mvc.xml
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\System.Web.Optimization.xml
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\System.Web.Razor.xml
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\System.Web.WebPages.xml
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\System.Web.WebPages.Deployment.xml
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\System.Web.WebPages.Razor.xml
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\Antlr3.Runtime.pdb
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\EntityFramework.SqlServer.xml
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\de\Microsoft.Data.Edm.resources.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\es\Microsoft.Data.Edm.resources.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\fr\Microsoft.Data.Edm.resources.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\it\Microsoft.Data.Edm.resources.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\ja\Microsoft.Data.Edm.resources.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\ko\Microsoft.Data.Edm.resources.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\ru\Microsoft.Data.Edm.resources.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\de\Microsoft.Data.OData.resources.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\es\Microsoft.Data.OData.resources.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\fr\Microsoft.Data.OData.resources.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\it\Microsoft.Data.OData.resources.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\ja\Microsoft.Data.OData.resources.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\ko\Microsoft.Data.OData.resources.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\ru\Microsoft.Data.OData.resources.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\de\Microsoft.Data.Services.Client.resources.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\es\Microsoft.Data.Services.Client.resources.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\fr\Microsoft.Data.Services.Client.resources.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\it\Microsoft.Data.Services.Client.resources.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\ja\Microsoft.Data.Services.Client.resources.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\ko\Microsoft.Data.Services.Client.resources.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\ru\Microsoft.Data.Services.Client.resources.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\zh-Hans\Microsoft.Data.Services.Client.resources.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\zh-Hant\Microsoft.Data.Services.Client.resources.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\de\System.Spatial.resources.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\es\System.Spatial.resources.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\fr\System.Spatial.resources.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\it\System.Spatial.resources.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\ja\System.Spatial.resources.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\ko\System.Spatial.resources.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\ru\System.Spatial.resources.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\zh-Hans\System.Spatial.resources.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\bin\zh-Hant\System.Spatial.resources.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\obj\Release\NIMBOLE.Service.csprojResolveAssemblyReference.cache
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\obj\Release\NIMBOLE.Service.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Service\obj\Release\NIMBOLE.Service.pdb
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.Service\bin\AutoMapper.Net4.dll
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.Service\bin\NIMBOLE.Service.dll.config
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.Service\bin\NIMBOLE.Service.dll
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.Service\bin\NIMBOLE.Service.pdb
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.Service\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.Service\bin\Microsoft.WindowsAzure.Diagnostics.dll
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.Service\bin\NIMBOLE.Entities.dll
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.Service\bin\System.Web.Mvc.dll
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.Service\bin\System.Web.WebPages.Razor.dll
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.Service\bin\MonAgentListener.dll
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.Service\bin\NIMBOLE.Entities.pdb
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.Service\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.Service\bin\System.Web.WebPages.Razor.xml
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.Service\bin\System.Web.Mvc.xml
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.Service\obj\Release\NIMBOLE.Service.csprojResolveAssemblyReference.cache
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.Service\obj\Release\NIMBOLE.Service.dll
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.Service\obj\Release\NIMBOLE.Service.pdb
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.Service\bin\Microsoft.Data.Edm.dll
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.Service\bin\System.Spatial.dll
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.Service\bin\Microsoft.Data.Edm.xml
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.Service\bin\System.Spatial.xml
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.Service\bin\de\Microsoft.Data.Edm.resources.dll
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.Service\bin\es\Microsoft.Data.Edm.resources.dll
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.Service\bin\fr\Microsoft.Data.Edm.resources.dll
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.Service\bin\it\Microsoft.Data.Edm.resources.dll
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.Service\bin\ja\Microsoft.Data.Edm.resources.dll
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.Service\bin\ko\Microsoft.Data.Edm.resources.dll
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.Service\bin\ru\Microsoft.Data.Edm.resources.dll
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.Service\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.Service\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.Service\bin\de\System.Spatial.resources.dll
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.Service\bin\es\System.Spatial.resources.dll
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.Service\bin\fr\System.Spatial.resources.dll
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.Service\bin\it\System.Spatial.resources.dll
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.Service\bin\ja\System.Spatial.resources.dll
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.Service\bin\ko\System.Spatial.resources.dll
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.Service\bin\ru\System.Spatial.resources.dll
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.Service\bin\zh-Hans\System.Spatial.resources.dll
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.Service\bin\zh-Hant\System.Spatial.resources.dll
+D:\Repository\Production\NIMBOLE.Service\bin\AutoMapper.Net4.dll
+D:\Repository\Production\NIMBOLE.Service\bin\NIMBOLE.Service.dll.config
+D:\Repository\Production\NIMBOLE.Service\bin\NIMBOLE.Service.dll
+D:\Repository\Production\NIMBOLE.Service\bin\NIMBOLE.Service.pdb
+D:\Repository\Production\NIMBOLE.Service\bin\Antlr3.Runtime.dll
+D:\Repository\Production\NIMBOLE.Service\bin\AutoMapper.dll
+D:\Repository\Production\NIMBOLE.Service\bin\DocumentFormat.OpenXml.dll
+D:\Repository\Production\NIMBOLE.Service\bin\Elmah.dll
+D:\Repository\Production\NIMBOLE.Service\bin\Microsoft.AspNet.Identity.Core.dll
+D:\Repository\Production\NIMBOLE.Service\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Repository\Production\NIMBOLE.Service\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\Repository\Production\NIMBOLE.Service\bin\Microsoft.Azure.AppService.ApiApps.Service.dll
+D:\Repository\Production\NIMBOLE.Service\bin\Microsoft.CSharp.dll
+D:\Repository\Production\NIMBOLE.Service\bin\Microsoft.Data.Edm.dll
+D:\Repository\Production\NIMBOLE.Service\bin\Microsoft.Data.OData.dll
+D:\Repository\Production\NIMBOLE.Service\bin\Microsoft.Data.Services.Client.dll
+D:\Repository\Production\NIMBOLE.Service\bin\Microsoft.Owin.dll
+D:\Repository\Production\NIMBOLE.Service\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\Repository\Production\NIMBOLE.Service\bin\Microsoft.Owin.Security.Cookies.dll
+D:\Repository\Production\NIMBOLE.Service\bin\Microsoft.Owin.Security.dll
+D:\Repository\Production\NIMBOLE.Service\bin\Microsoft.Owin.Security.Facebook.dll
+D:\Repository\Production\NIMBOLE.Service\bin\Microsoft.Owin.Security.Google.dll
+D:\Repository\Production\NIMBOLE.Service\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+D:\Repository\Production\NIMBOLE.Service\bin\Microsoft.Owin.Security.OAuth.dll
+D:\Repository\Production\NIMBOLE.Service\bin\Microsoft.Owin.Security.Twitter.dll
+D:\Repository\Production\NIMBOLE.Service\bin\Microsoft.Web.Infrastructure.dll
+D:\Repository\Production\NIMBOLE.Service\bin\Microsoft.WindowsAzure.Configuration.dll
+D:\Repository\Production\NIMBOLE.Service\bin\Microsoft.WindowsAzure.Diagnostics.dll
+D:\Repository\Production\NIMBOLE.Service\bin\Microsoft.WindowsAzure.Storage.dll
+D:\Repository\Production\NIMBOLE.Service\bin\Microsoft.WindowsAzure.StorageClient.dll
+D:\Repository\Production\NIMBOLE.Service\bin\Newtonsoft.Json.dll
+D:\Repository\Production\NIMBOLE.Service\bin\NIMBOLE.Entities.dll
+D:\Repository\Production\NIMBOLE.Service\bin\NIMBOLE.Models.dll
+D:\Repository\Production\NIMBOLE.Service\bin\Owin.dll
+D:\Repository\Production\NIMBOLE.Service\bin\Swashbuckle.Core.dll
+D:\Repository\Production\NIMBOLE.Service\bin\System.ComponentModel.DataAnnotations.dll
+D:\Repository\Production\NIMBOLE.Service\bin\System.Configuration.dll
+D:\Repository\Production\NIMBOLE.Service\bin\System.Data.DataSetExtensions.dll
+D:\Repository\Production\NIMBOLE.Service\bin\System.Data.dll
+D:\Repository\Production\NIMBOLE.Service\bin\System.dll
+D:\Repository\Production\NIMBOLE.Service\bin\System.Drawing.dll
+D:\Repository\Production\NIMBOLE.Service\bin\System.IdentityModel.Tokens.Jwt.dll
+D:\Repository\Production\NIMBOLE.Service\bin\System.Net.Http.dll
+D:\Repository\Production\NIMBOLE.Service\bin\System.Net.Http.Formatting.dll
+D:\Repository\Production\NIMBOLE.Service\bin\System.Net.Http.WebRequest.dll
+D:\Repository\Production\NIMBOLE.Service\bin\System.Runtime.Serialization.dll
+D:\Repository\Production\NIMBOLE.Service\bin\System.Spatial.dll
+D:\Repository\Production\NIMBOLE.Service\bin\System.Web.Abstractions.dll
+D:\Repository\Production\NIMBOLE.Service\bin\System.Web.ApplicationServices.dll
+D:\Repository\Production\NIMBOLE.Service\bin\System.Web.Cors.dll
+D:\Repository\Production\NIMBOLE.Service\bin\System.Web.dll
+D:\Repository\Production\NIMBOLE.Service\bin\System.Web.Entity.dll
+D:\Repository\Production\NIMBOLE.Service\bin\System.Web.Helpers.dll
+D:\Repository\Production\NIMBOLE.Service\bin\System.Web.Http.Cors.dll
+D:\Repository\Production\NIMBOLE.Service\bin\System.Web.Http.dll
+D:\Repository\Production\NIMBOLE.Service\bin\System.Web.Http.Owin.dll
+D:\Repository\Production\NIMBOLE.Service\bin\System.Web.Http.WebHost.dll
+D:\Repository\Production\NIMBOLE.Service\bin\System.Web.Mvc.dll
+D:\Repository\Production\NIMBOLE.Service\bin\System.Web.Optimization.dll
+D:\Repository\Production\NIMBOLE.Service\bin\System.Web.Razor.dll
+D:\Repository\Production\NIMBOLE.Service\bin\System.Web.Routing.dll
+D:\Repository\Production\NIMBOLE.Service\bin\System.Web.WebPages.Deployment.dll
+D:\Repository\Production\NIMBOLE.Service\bin\System.Web.WebPages.dll
+D:\Repository\Production\NIMBOLE.Service\bin\System.Web.WebPages.Razor.dll
+D:\Repository\Production\NIMBOLE.Service\bin\System.Xml.dll
+D:\Repository\Production\NIMBOLE.Service\bin\System.Xml.Linq.dll
+D:\Repository\Production\NIMBOLE.Service\bin\WebActivatorEx.dll
+D:\Repository\Production\NIMBOLE.Service\bin\WebGrease.dll
+D:\Repository\Production\NIMBOLE.Service\bin\MonAgentListener.dll
+D:\Repository\Production\NIMBOLE.Service\bin\NIMBOLE.Entities.pdb
+D:\Repository\Production\NIMBOLE.Service\bin\NIMBOLE.Models.pdb
+D:\Repository\Production\NIMBOLE.Service\bin\Antlr3.Runtime.pdb
+D:\Repository\Production\NIMBOLE.Service\bin\AutoMapper.pdb
+D:\Repository\Production\NIMBOLE.Service\bin\AutoMapper.xml
+D:\Repository\Production\NIMBOLE.Service\bin\AutoMapper.Net4.pdb
+D:\Repository\Production\NIMBOLE.Service\bin\Microsoft.AspNet.Identity.Core.xml
+D:\Repository\Production\NIMBOLE.Service\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Repository\Production\NIMBOLE.Service\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\Repository\Production\NIMBOLE.Service\bin\Microsoft.Data.Edm.xml
+D:\Repository\Production\NIMBOLE.Service\bin\Microsoft.Data.OData.xml
+D:\Repository\Production\NIMBOLE.Service\bin\Microsoft.Data.Services.Client.xml
+D:\Repository\Production\NIMBOLE.Service\bin\Microsoft.Owin.xml
+D:\Repository\Production\NIMBOLE.Service\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\Repository\Production\NIMBOLE.Service\bin\Microsoft.Owin.Security.xml
+D:\Repository\Production\NIMBOLE.Service\bin\Microsoft.Owin.Security.Cookies.xml
+D:\Repository\Production\NIMBOLE.Service\bin\Microsoft.Owin.Security.Facebook.xml
+D:\Repository\Production\NIMBOLE.Service\bin\Microsoft.Owin.Security.Google.xml
+D:\Repository\Production\NIMBOLE.Service\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\Repository\Production\NIMBOLE.Service\bin\Microsoft.Owin.Security.OAuth.xml
+D:\Repository\Production\NIMBOLE.Service\bin\Microsoft.Owin.Security.Twitter.xml
+D:\Repository\Production\NIMBOLE.Service\bin\Microsoft.WindowsAzure.Configuration.xml
+D:\Repository\Production\NIMBOLE.Service\bin\Microsoft.WindowsAzure.Storage.xml
+D:\Repository\Production\NIMBOLE.Service\bin\Newtonsoft.Json.xml
+D:\Repository\Production\NIMBOLE.Service\bin\System.IdentityModel.Tokens.Jwt.xml
+D:\Repository\Production\NIMBOLE.Service\bin\System.Net.Http.Formatting.xml
+D:\Repository\Production\NIMBOLE.Service\bin\System.Spatial.xml
+D:\Repository\Production\NIMBOLE.Service\bin\System.Web.Http.xml
+D:\Repository\Production\NIMBOLE.Service\bin\System.Web.Http.Cors.xml
+D:\Repository\Production\NIMBOLE.Service\bin\System.Web.Http.Owin.xml
+D:\Repository\Production\NIMBOLE.Service\bin\System.Web.Razor.xml
+D:\Repository\Production\NIMBOLE.Service\bin\System.Web.WebPages.xml
+D:\Repository\Production\NIMBOLE.Service\bin\System.Web.WebPages.Deployment.xml
+D:\Repository\Production\NIMBOLE.Service\bin\System.Web.WebPages.Razor.xml
+D:\Repository\Production\NIMBOLE.Service\bin\System.Web.Helpers.xml
+D:\Repository\Production\NIMBOLE.Service\bin\System.Web.Http.WebHost.xml
+D:\Repository\Production\NIMBOLE.Service\bin\System.Web.Mvc.xml
+D:\Repository\Production\NIMBOLE.Service\bin\System.Web.Optimization.xml
+D:\Repository\Production\NIMBOLE.Service\bin\de\Microsoft.Data.Edm.resources.dll
+D:\Repository\Production\NIMBOLE.Service\bin\es\Microsoft.Data.Edm.resources.dll
+D:\Repository\Production\NIMBOLE.Service\bin\fr\Microsoft.Data.Edm.resources.dll
+D:\Repository\Production\NIMBOLE.Service\bin\it\Microsoft.Data.Edm.resources.dll
+D:\Repository\Production\NIMBOLE.Service\bin\ja\Microsoft.Data.Edm.resources.dll
+D:\Repository\Production\NIMBOLE.Service\bin\ko\Microsoft.Data.Edm.resources.dll
+D:\Repository\Production\NIMBOLE.Service\bin\ru\Microsoft.Data.Edm.resources.dll
+D:\Repository\Production\NIMBOLE.Service\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+D:\Repository\Production\NIMBOLE.Service\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+D:\Repository\Production\NIMBOLE.Service\bin\de\Microsoft.Data.OData.resources.dll
+D:\Repository\Production\NIMBOLE.Service\bin\es\Microsoft.Data.OData.resources.dll
+D:\Repository\Production\NIMBOLE.Service\bin\fr\Microsoft.Data.OData.resources.dll
+D:\Repository\Production\NIMBOLE.Service\bin\it\Microsoft.Data.OData.resources.dll
+D:\Repository\Production\NIMBOLE.Service\bin\ja\Microsoft.Data.OData.resources.dll
+D:\Repository\Production\NIMBOLE.Service\bin\ko\Microsoft.Data.OData.resources.dll
+D:\Repository\Production\NIMBOLE.Service\bin\ru\Microsoft.Data.OData.resources.dll
+D:\Repository\Production\NIMBOLE.Service\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+D:\Repository\Production\NIMBOLE.Service\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+D:\Repository\Production\NIMBOLE.Service\bin\de\Microsoft.Data.Services.Client.resources.dll
+D:\Repository\Production\NIMBOLE.Service\bin\es\Microsoft.Data.Services.Client.resources.dll
+D:\Repository\Production\NIMBOLE.Service\bin\fr\Microsoft.Data.Services.Client.resources.dll
+D:\Repository\Production\NIMBOLE.Service\bin\it\Microsoft.Data.Services.Client.resources.dll
+D:\Repository\Production\NIMBOLE.Service\bin\ja\Microsoft.Data.Services.Client.resources.dll
+D:\Repository\Production\NIMBOLE.Service\bin\ko\Microsoft.Data.Services.Client.resources.dll
+D:\Repository\Production\NIMBOLE.Service\bin\ru\Microsoft.Data.Services.Client.resources.dll
+D:\Repository\Production\NIMBOLE.Service\bin\zh-Hans\Microsoft.Data.Services.Client.resources.dll
+D:\Repository\Production\NIMBOLE.Service\bin\zh-Hant\Microsoft.Data.Services.Client.resources.dll
+D:\Repository\Production\NIMBOLE.Service\bin\de\System.Spatial.resources.dll
+D:\Repository\Production\NIMBOLE.Service\bin\es\System.Spatial.resources.dll
+D:\Repository\Production\NIMBOLE.Service\bin\fr\System.Spatial.resources.dll
+D:\Repository\Production\NIMBOLE.Service\bin\it\System.Spatial.resources.dll
+D:\Repository\Production\NIMBOLE.Service\bin\ja\System.Spatial.resources.dll
+D:\Repository\Production\NIMBOLE.Service\bin\ko\System.Spatial.resources.dll
+D:\Repository\Production\NIMBOLE.Service\bin\ru\System.Spatial.resources.dll
+D:\Repository\Production\NIMBOLE.Service\bin\zh-Hans\System.Spatial.resources.dll
+D:\Repository\Production\NIMBOLE.Service\bin\zh-Hant\System.Spatial.resources.dll
+D:\Repository\Production\NIMBOLE.Service\obj\Release\NIMBOLE.Service.csprojResolveAssemblyReference.cache
+D:\Repository\Production\NIMBOLE.Service\obj\Release\NIMBOLE.Service.dll
+D:\Repository\Production\NIMBOLE.Service\obj\Release\NIMBOLE.Service.pdb
+D:\Repository\Nstaging\NIMBOLE.Service\bin\AutoMapper.Net4.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\NIMBOLE.Service.dll.config
+D:\Repository\Nstaging\NIMBOLE.Service\bin\NIMBOLE.Service.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\NIMBOLE.Service.pdb
+D:\Repository\Nstaging\NIMBOLE.Service\bin\Antlr3.Runtime.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\AutoMapper.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\DocumentFormat.OpenXml.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\Elmah.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\Microsoft.AspNet.Identity.Core.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\Microsoft.Azure.AppService.ApiApps.Service.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\Microsoft.CSharp.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\Microsoft.Data.Edm.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\Microsoft.Data.OData.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\Microsoft.Data.Services.Client.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\Microsoft.Owin.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\Microsoft.Owin.Security.Cookies.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\Microsoft.Owin.Security.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\Microsoft.Owin.Security.Facebook.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\Microsoft.Owin.Security.Google.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\Microsoft.Owin.Security.OAuth.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\Microsoft.Owin.Security.Twitter.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\Microsoft.Web.Infrastructure.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\Microsoft.WindowsAzure.Configuration.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\Microsoft.WindowsAzure.Diagnostics.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\Microsoft.WindowsAzure.Storage.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\Microsoft.WindowsAzure.StorageClient.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\Newtonsoft.Json.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\NIMBOLE.Entities.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\NIMBOLE.Models.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\Owin.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\Swashbuckle.Core.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\System.ComponentModel.DataAnnotations.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\System.Configuration.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\System.Data.DataSetExtensions.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\System.Data.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\System.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\System.Drawing.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\System.IdentityModel.Tokens.Jwt.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\System.Net.Http.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\System.Net.Http.Formatting.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\System.Net.Http.WebRequest.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\System.Runtime.Serialization.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\System.Spatial.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\System.Web.Abstractions.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\System.Web.ApplicationServices.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\System.Web.Cors.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\System.Web.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\System.Web.Entity.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\System.Web.Helpers.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\System.Web.Http.Cors.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\System.Web.Http.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\System.Web.Http.Owin.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\System.Web.Http.WebHost.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\System.Web.Mvc.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\System.Web.Optimization.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\System.Web.Razor.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\System.Web.Routing.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\System.Web.WebPages.Deployment.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\System.Web.WebPages.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\System.Web.WebPages.Razor.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\System.Xml.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\System.Xml.Linq.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\WebActivatorEx.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\WebGrease.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\MonAgentListener.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\NIMBOLE.Entities.pdb
+D:\Repository\Nstaging\NIMBOLE.Service\bin\NIMBOLE.Models.pdb
+D:\Repository\Nstaging\NIMBOLE.Service\bin\Antlr3.Runtime.pdb
+D:\Repository\Nstaging\NIMBOLE.Service\bin\AutoMapper.pdb
+D:\Repository\Nstaging\NIMBOLE.Service\bin\AutoMapper.xml
+D:\Repository\Nstaging\NIMBOLE.Service\bin\AutoMapper.Net4.pdb
+D:\Repository\Nstaging\NIMBOLE.Service\bin\Microsoft.AspNet.Identity.Core.xml
+D:\Repository\Nstaging\NIMBOLE.Service\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Repository\Nstaging\NIMBOLE.Service\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\Repository\Nstaging\NIMBOLE.Service\bin\Microsoft.Data.Edm.xml
+D:\Repository\Nstaging\NIMBOLE.Service\bin\Microsoft.Data.OData.xml
+D:\Repository\Nstaging\NIMBOLE.Service\bin\Microsoft.Data.Services.Client.xml
+D:\Repository\Nstaging\NIMBOLE.Service\bin\Microsoft.Owin.xml
+D:\Repository\Nstaging\NIMBOLE.Service\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\Repository\Nstaging\NIMBOLE.Service\bin\Microsoft.Owin.Security.xml
+D:\Repository\Nstaging\NIMBOLE.Service\bin\Microsoft.Owin.Security.Cookies.xml
+D:\Repository\Nstaging\NIMBOLE.Service\bin\Microsoft.Owin.Security.Facebook.xml
+D:\Repository\Nstaging\NIMBOLE.Service\bin\Microsoft.Owin.Security.Google.xml
+D:\Repository\Nstaging\NIMBOLE.Service\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\Repository\Nstaging\NIMBOLE.Service\bin\Microsoft.Owin.Security.OAuth.xml
+D:\Repository\Nstaging\NIMBOLE.Service\bin\Microsoft.Owin.Security.Twitter.xml
+D:\Repository\Nstaging\NIMBOLE.Service\bin\Microsoft.WindowsAzure.Configuration.xml
+D:\Repository\Nstaging\NIMBOLE.Service\bin\Microsoft.WindowsAzure.Storage.xml
+D:\Repository\Nstaging\NIMBOLE.Service\bin\Newtonsoft.Json.xml
+D:\Repository\Nstaging\NIMBOLE.Service\bin\System.IdentityModel.Tokens.Jwt.xml
+D:\Repository\Nstaging\NIMBOLE.Service\bin\System.Net.Http.Formatting.xml
+D:\Repository\Nstaging\NIMBOLE.Service\bin\System.Spatial.xml
+D:\Repository\Nstaging\NIMBOLE.Service\bin\System.Web.Http.xml
+D:\Repository\Nstaging\NIMBOLE.Service\bin\System.Web.Http.Cors.xml
+D:\Repository\Nstaging\NIMBOLE.Service\bin\System.Web.Http.Owin.xml
+D:\Repository\Nstaging\NIMBOLE.Service\bin\System.Web.Razor.xml
+D:\Repository\Nstaging\NIMBOLE.Service\bin\System.Web.WebPages.xml
+D:\Repository\Nstaging\NIMBOLE.Service\bin\System.Web.WebPages.Deployment.xml
+D:\Repository\Nstaging\NIMBOLE.Service\bin\System.Web.WebPages.Razor.xml
+D:\Repository\Nstaging\NIMBOLE.Service\bin\System.Web.Helpers.xml
+D:\Repository\Nstaging\NIMBOLE.Service\bin\System.Web.Http.WebHost.xml
+D:\Repository\Nstaging\NIMBOLE.Service\bin\System.Web.Mvc.xml
+D:\Repository\Nstaging\NIMBOLE.Service\bin\System.Web.Optimization.xml
+D:\Repository\Nstaging\NIMBOLE.Service\bin\de\Microsoft.Data.Edm.resources.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\es\Microsoft.Data.Edm.resources.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\fr\Microsoft.Data.Edm.resources.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\it\Microsoft.Data.Edm.resources.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\ja\Microsoft.Data.Edm.resources.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\ko\Microsoft.Data.Edm.resources.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\ru\Microsoft.Data.Edm.resources.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\de\Microsoft.Data.OData.resources.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\es\Microsoft.Data.OData.resources.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\fr\Microsoft.Data.OData.resources.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\it\Microsoft.Data.OData.resources.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\ja\Microsoft.Data.OData.resources.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\ko\Microsoft.Data.OData.resources.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\ru\Microsoft.Data.OData.resources.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\de\Microsoft.Data.Services.Client.resources.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\es\Microsoft.Data.Services.Client.resources.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\fr\Microsoft.Data.Services.Client.resources.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\it\Microsoft.Data.Services.Client.resources.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\ja\Microsoft.Data.Services.Client.resources.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\ko\Microsoft.Data.Services.Client.resources.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\ru\Microsoft.Data.Services.Client.resources.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\zh-Hans\Microsoft.Data.Services.Client.resources.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\zh-Hant\Microsoft.Data.Services.Client.resources.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\de\System.Spatial.resources.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\es\System.Spatial.resources.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\fr\System.Spatial.resources.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\it\System.Spatial.resources.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\ja\System.Spatial.resources.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\ko\System.Spatial.resources.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\ru\System.Spatial.resources.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\zh-Hans\System.Spatial.resources.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\zh-Hant\System.Spatial.resources.dll
+D:\Repository\Nstaging\NIMBOLE.Service\obj\Release\NIMBOLE.Service.csprojResolveAssemblyReference.cache
+D:\Repository\Nstaging\NIMBOLE.Service\obj\Release\NIMBOLE.Service.dll
+D:\Repository\Nstaging\NIMBOLE.Service\obj\Release\NIMBOLE.Service.pdb
+D:\Repository\Nstaging\NIMBOLE.Service\bin\NIMBOLE.Common.dll
+D:\Repository\Nstaging\NIMBOLE.Service\bin\NIMBOLE.Common.pdb
+E:\Projects\Nstaging\NIMBOLE.Service\bin\AutoMapper.Net4.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\NIMBOLE.Service.dll.config
+E:\Projects\Nstaging\NIMBOLE.Service\bin\NIMBOLE.Service.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\NIMBOLE.Service.pdb
+E:\Projects\Nstaging\NIMBOLE.Service\bin\Antlr3.Runtime.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\AutoMapper.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\DocumentFormat.OpenXml.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\Elmah.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\Microsoft.AspNet.Identity.Core.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\Microsoft.Azure.AppService.ApiApps.Service.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\Microsoft.CSharp.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\Microsoft.Data.Edm.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\Microsoft.Data.OData.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\Microsoft.Data.Services.Client.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\Microsoft.Owin.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\Microsoft.Owin.Security.Cookies.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\Microsoft.Owin.Security.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\Microsoft.Owin.Security.Facebook.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\Microsoft.Owin.Security.Google.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\Microsoft.Owin.Security.OAuth.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\Microsoft.Owin.Security.Twitter.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\Microsoft.Web.Infrastructure.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\Microsoft.WindowsAzure.Configuration.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\Microsoft.WindowsAzure.Diagnostics.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\Microsoft.WindowsAzure.Storage.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\Microsoft.WindowsAzure.StorageClient.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\Newtonsoft.Json.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\NIMBOLE.Common.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\NIMBOLE.Entities.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\NIMBOLE.Models.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\Owin.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\Swashbuckle.Core.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\System.ComponentModel.DataAnnotations.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\System.Configuration.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\System.Data.DataSetExtensions.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\System.Data.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\System.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\System.Drawing.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\System.IdentityModel.Tokens.Jwt.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\System.Net.Http.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\System.Net.Http.Formatting.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\System.Net.Http.WebRequest.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\System.Runtime.Serialization.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\System.Spatial.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\System.Web.Abstractions.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\System.Web.ApplicationServices.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\System.Web.Cors.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\System.Web.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\System.Web.Entity.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\System.Web.Helpers.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\System.Web.Http.Cors.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\System.Web.Http.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\System.Web.Http.Owin.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\System.Web.Http.WebHost.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\System.Web.Mvc.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\System.Web.Optimization.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\System.Web.Razor.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\System.Web.Routing.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\System.Web.WebPages.Deployment.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\System.Web.WebPages.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\System.Web.WebPages.Razor.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\System.Xml.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\System.Xml.Linq.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\WebActivatorEx.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\WebGrease.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\MonAgentListener.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\NIMBOLE.Common.pdb
+E:\Projects\Nstaging\NIMBOLE.Service\bin\NIMBOLE.Entities.pdb
+E:\Projects\Nstaging\NIMBOLE.Service\bin\NIMBOLE.Models.pdb
+E:\Projects\Nstaging\NIMBOLE.Service\bin\Antlr3.Runtime.pdb
+E:\Projects\Nstaging\NIMBOLE.Service\bin\AutoMapper.pdb
+E:\Projects\Nstaging\NIMBOLE.Service\bin\AutoMapper.xml
+E:\Projects\Nstaging\NIMBOLE.Service\bin\AutoMapper.Net4.pdb
+E:\Projects\Nstaging\NIMBOLE.Service\bin\Microsoft.AspNet.Identity.Core.xml
+E:\Projects\Nstaging\NIMBOLE.Service\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\Projects\Nstaging\NIMBOLE.Service\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\Projects\Nstaging\NIMBOLE.Service\bin\Microsoft.Data.Edm.xml
+E:\Projects\Nstaging\NIMBOLE.Service\bin\Microsoft.Data.OData.xml
+E:\Projects\Nstaging\NIMBOLE.Service\bin\Microsoft.Data.Services.Client.xml
+E:\Projects\Nstaging\NIMBOLE.Service\bin\Microsoft.Owin.xml
+E:\Projects\Nstaging\NIMBOLE.Service\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\Projects\Nstaging\NIMBOLE.Service\bin\Microsoft.Owin.Security.xml
+E:\Projects\Nstaging\NIMBOLE.Service\bin\Microsoft.Owin.Security.Cookies.xml
+E:\Projects\Nstaging\NIMBOLE.Service\bin\Microsoft.Owin.Security.Facebook.xml
+E:\Projects\Nstaging\NIMBOLE.Service\bin\Microsoft.Owin.Security.Google.xml
+E:\Projects\Nstaging\NIMBOLE.Service\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+E:\Projects\Nstaging\NIMBOLE.Service\bin\Microsoft.Owin.Security.OAuth.xml
+E:\Projects\Nstaging\NIMBOLE.Service\bin\Microsoft.Owin.Security.Twitter.xml
+E:\Projects\Nstaging\NIMBOLE.Service\bin\Microsoft.WindowsAzure.Configuration.xml
+E:\Projects\Nstaging\NIMBOLE.Service\bin\Microsoft.WindowsAzure.Storage.xml
+E:\Projects\Nstaging\NIMBOLE.Service\bin\Newtonsoft.Json.xml
+E:\Projects\Nstaging\NIMBOLE.Service\bin\System.IdentityModel.Tokens.Jwt.xml
+E:\Projects\Nstaging\NIMBOLE.Service\bin\System.Net.Http.Formatting.xml
+E:\Projects\Nstaging\NIMBOLE.Service\bin\System.Spatial.xml
+E:\Projects\Nstaging\NIMBOLE.Service\bin\System.Web.Http.xml
+E:\Projects\Nstaging\NIMBOLE.Service\bin\System.Web.Http.Cors.xml
+E:\Projects\Nstaging\NIMBOLE.Service\bin\System.Web.Http.Owin.xml
+E:\Projects\Nstaging\NIMBOLE.Service\bin\System.Web.Razor.xml
+E:\Projects\Nstaging\NIMBOLE.Service\bin\System.Web.WebPages.xml
+E:\Projects\Nstaging\NIMBOLE.Service\bin\System.Web.WebPages.Deployment.xml
+E:\Projects\Nstaging\NIMBOLE.Service\bin\System.Web.WebPages.Razor.xml
+E:\Projects\Nstaging\NIMBOLE.Service\bin\System.Web.Helpers.xml
+E:\Projects\Nstaging\NIMBOLE.Service\bin\System.Web.Http.WebHost.xml
+E:\Projects\Nstaging\NIMBOLE.Service\bin\System.Web.Mvc.xml
+E:\Projects\Nstaging\NIMBOLE.Service\bin\System.Web.Optimization.xml
+E:\Projects\Nstaging\NIMBOLE.Service\bin\de\Microsoft.Data.Edm.resources.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\es\Microsoft.Data.Edm.resources.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\fr\Microsoft.Data.Edm.resources.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\it\Microsoft.Data.Edm.resources.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\ja\Microsoft.Data.Edm.resources.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\ko\Microsoft.Data.Edm.resources.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\ru\Microsoft.Data.Edm.resources.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\de\Microsoft.Data.OData.resources.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\es\Microsoft.Data.OData.resources.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\fr\Microsoft.Data.OData.resources.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\it\Microsoft.Data.OData.resources.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\ja\Microsoft.Data.OData.resources.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\ko\Microsoft.Data.OData.resources.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\ru\Microsoft.Data.OData.resources.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\de\Microsoft.Data.Services.Client.resources.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\es\Microsoft.Data.Services.Client.resources.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\fr\Microsoft.Data.Services.Client.resources.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\it\Microsoft.Data.Services.Client.resources.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\ja\Microsoft.Data.Services.Client.resources.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\ko\Microsoft.Data.Services.Client.resources.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\ru\Microsoft.Data.Services.Client.resources.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\zh-Hans\Microsoft.Data.Services.Client.resources.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\zh-Hant\Microsoft.Data.Services.Client.resources.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\de\System.Spatial.resources.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\es\System.Spatial.resources.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\fr\System.Spatial.resources.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\it\System.Spatial.resources.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\ja\System.Spatial.resources.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\ko\System.Spatial.resources.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\ru\System.Spatial.resources.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\zh-Hans\System.Spatial.resources.dll
+E:\Projects\Nstaging\NIMBOLE.Service\bin\zh-Hant\System.Spatial.resources.dll
+E:\Projects\Nstaging\NIMBOLE.Service\obj\Release\NIMBOLE.Service.csprojResolveAssemblyReference.cache
+E:\Projects\Nstaging\NIMBOLE.Service\obj\Release\NIMBOLE.Service.dll
+E:\Projects\Nstaging\NIMBOLE.Service\obj\Release\NIMBOLE.Service.pdb
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\AutoMapper.Net4.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\NIMBOLE.Service.dll.config
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\NIMBOLE.Service.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\NIMBOLE.Service.pdb
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\Antlr3.Runtime.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\AutoMapper.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\DocumentFormat.OpenXml.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\Elmah.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.AspNet.Identity.Core.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.Azure.AppService.ApiApps.Service.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.CSharp.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.Data.Edm.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.Data.OData.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.Data.Services.Client.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.Owin.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.Owin.Security.Cookies.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.Owin.Security.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.Owin.Security.Facebook.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.Owin.Security.Google.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.Owin.Security.OAuth.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.Owin.Security.Twitter.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.Web.Infrastructure.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.WindowsAzure.Configuration.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.WindowsAzure.Diagnostics.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.WindowsAzure.Storage.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.WindowsAzure.StorageClient.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\Newtonsoft.Json.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\NIMBOLE.Common.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\NIMBOLE.Entities.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\NIMBOLE.Models.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\Owin.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\Swashbuckle.Core.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\System.ComponentModel.DataAnnotations.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\System.Configuration.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\System.Data.DataSetExtensions.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\System.Data.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\System.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\System.Drawing.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\System.IdentityModel.Tokens.Jwt.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\System.Net.Http.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\System.Net.Http.Formatting.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\System.Net.Http.WebRequest.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\System.Runtime.Serialization.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\System.Spatial.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\System.Web.Abstractions.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\System.Web.ApplicationServices.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\System.Web.Cors.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\System.Web.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\System.Web.Entity.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\System.Web.Helpers.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\System.Web.Http.Cors.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\System.Web.Http.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\System.Web.Http.Owin.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\System.Web.Http.WebHost.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\System.Web.Mvc.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\System.Web.Optimization.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\System.Web.Razor.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\System.Web.Routing.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\System.Web.WebPages.Deployment.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\System.Web.WebPages.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\System.Web.WebPages.Razor.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\System.Xml.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\System.Xml.Linq.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\WebActivatorEx.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\WebGrease.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\MonAgentListener.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\NIMBOLE.Common.pdb
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\NIMBOLE.Entities.pdb
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\NIMBOLE.Models.pdb
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\Antlr3.Runtime.pdb
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\AutoMapper.pdb
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\AutoMapper.xml
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\AutoMapper.Net4.pdb
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.AspNet.Identity.Core.xml
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.Data.Edm.xml
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.Data.OData.xml
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.Data.Services.Client.xml
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.Owin.xml
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.Owin.Security.xml
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.Owin.Security.Cookies.xml
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.Owin.Security.Facebook.xml
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.Owin.Security.Google.xml
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.Owin.Security.OAuth.xml
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.Owin.Security.Twitter.xml
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.WindowsAzure.Configuration.xml
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.WindowsAzure.Storage.xml
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\Newtonsoft.Json.xml
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\System.IdentityModel.Tokens.Jwt.xml
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\System.Net.Http.Formatting.xml
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\System.Spatial.xml
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\System.Web.Http.xml
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\System.Web.Http.Cors.xml
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\System.Web.Http.Owin.xml
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\System.Web.Razor.xml
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\System.Web.WebPages.xml
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\System.Web.WebPages.Deployment.xml
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\System.Web.WebPages.Razor.xml
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\System.Web.Helpers.xml
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\System.Web.Http.WebHost.xml
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\System.Web.Mvc.xml
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\System.Web.Optimization.xml
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\de\Microsoft.Data.Edm.resources.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\es\Microsoft.Data.Edm.resources.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\fr\Microsoft.Data.Edm.resources.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\it\Microsoft.Data.Edm.resources.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\ja\Microsoft.Data.Edm.resources.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\ko\Microsoft.Data.Edm.resources.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\ru\Microsoft.Data.Edm.resources.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\de\Microsoft.Data.OData.resources.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\es\Microsoft.Data.OData.resources.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\fr\Microsoft.Data.OData.resources.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\it\Microsoft.Data.OData.resources.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\ja\Microsoft.Data.OData.resources.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\ko\Microsoft.Data.OData.resources.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\ru\Microsoft.Data.OData.resources.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\de\Microsoft.Data.Services.Client.resources.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\es\Microsoft.Data.Services.Client.resources.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\fr\Microsoft.Data.Services.Client.resources.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\it\Microsoft.Data.Services.Client.resources.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\ja\Microsoft.Data.Services.Client.resources.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\ko\Microsoft.Data.Services.Client.resources.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\ru\Microsoft.Data.Services.Client.resources.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\zh-Hans\Microsoft.Data.Services.Client.resources.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\zh-Hant\Microsoft.Data.Services.Client.resources.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\de\System.Spatial.resources.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\es\System.Spatial.resources.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\fr\System.Spatial.resources.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\it\System.Spatial.resources.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\ja\System.Spatial.resources.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\ko\System.Spatial.resources.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\ru\System.Spatial.resources.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\zh-Hans\System.Spatial.resources.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\bin\zh-Hant\System.Spatial.resources.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\obj\Release\NIMBOLE.Service.csprojResolveAssemblyReference.cache
+E:\Projects\NimboleHTML5\NIMBOLE.Service\obj\Release\NIMBOLE.Service.dll
+E:\Projects\NimboleHTML5\NIMBOLE.Service\obj\Release\NIMBOLE.Service.pdb
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\AutoMapper.Net4.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\NIMBOLE.Service.dll.config
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\NIMBOLE.Service.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\NIMBOLE.Service.pdb
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\Antlr3.Runtime.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\AutoMapper.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\DocumentFormat.OpenXml.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\Elmah.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.AspNet.Identity.Core.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.Azure.AppService.ApiApps.Service.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.CSharp.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.Data.Edm.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.Data.OData.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.Data.Services.Client.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.Owin.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.Owin.Security.Cookies.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.Owin.Security.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.Owin.Security.Facebook.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.Owin.Security.Google.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.Owin.Security.OAuth.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.Owin.Security.Twitter.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.Web.Infrastructure.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.WindowsAzure.Configuration.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.WindowsAzure.Diagnostics.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.WindowsAzure.Storage.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.WindowsAzure.StorageClient.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\Newtonsoft.Json.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\NIMBOLE.Common.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\NIMBOLE.Entities.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\NIMBOLE.Models.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\Owin.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\Swashbuckle.Core.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\System.ComponentModel.DataAnnotations.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\System.Configuration.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\System.Data.DataSetExtensions.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\System.Data.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\System.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\System.Drawing.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\System.IdentityModel.Tokens.Jwt.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\System.Net.Http.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\System.Net.Http.Formatting.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\System.Net.Http.WebRequest.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\System.Runtime.Serialization.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\System.Spatial.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\System.Web.Abstractions.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\System.Web.ApplicationServices.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\System.Web.Cors.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\System.Web.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\System.Web.Entity.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\System.Web.Helpers.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\System.Web.Http.Cors.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\System.Web.Http.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\System.Web.Http.Owin.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\System.Web.Http.WebHost.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\System.Web.Mvc.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\System.Web.Optimization.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\System.Web.Razor.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\System.Web.Routing.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\System.Web.WebPages.Deployment.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\System.Web.WebPages.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\System.Web.WebPages.Razor.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\System.Xml.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\System.Xml.Linq.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\WebActivatorEx.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\WebGrease.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\MonAgentListener.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\NIMBOLE.Common.pdb
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\NIMBOLE.Entities.pdb
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\NIMBOLE.Models.pdb
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\Antlr3.Runtime.pdb
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\AutoMapper.pdb
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\AutoMapper.xml
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\AutoMapper.Net4.pdb
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.AspNet.Identity.Core.xml
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.Data.Edm.xml
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.Data.OData.xml
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.Data.Services.Client.xml
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.Owin.xml
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.Owin.Security.xml
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.Owin.Security.Cookies.xml
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.Owin.Security.Facebook.xml
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.Owin.Security.Google.xml
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.Owin.Security.OAuth.xml
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.Owin.Security.Twitter.xml
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.WindowsAzure.Configuration.xml
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.WindowsAzure.Storage.xml
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\Newtonsoft.Json.xml
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\System.IdentityModel.Tokens.Jwt.xml
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\System.Net.Http.Formatting.xml
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\System.Spatial.xml
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\System.Web.Http.xml
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\System.Web.Http.Cors.xml
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\System.Web.Http.Owin.xml
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\System.Web.Razor.xml
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\System.Web.WebPages.xml
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\System.Web.WebPages.Deployment.xml
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\System.Web.WebPages.Razor.xml
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\System.Web.Helpers.xml
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\System.Web.Http.WebHost.xml
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\System.Web.Mvc.xml
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\System.Web.Optimization.xml
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\de\Microsoft.Data.Edm.resources.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\es\Microsoft.Data.Edm.resources.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\fr\Microsoft.Data.Edm.resources.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\it\Microsoft.Data.Edm.resources.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\ja\Microsoft.Data.Edm.resources.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\ko\Microsoft.Data.Edm.resources.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\ru\Microsoft.Data.Edm.resources.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\de\Microsoft.Data.OData.resources.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\es\Microsoft.Data.OData.resources.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\fr\Microsoft.Data.OData.resources.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\it\Microsoft.Data.OData.resources.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\ja\Microsoft.Data.OData.resources.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\ko\Microsoft.Data.OData.resources.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\ru\Microsoft.Data.OData.resources.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\de\Microsoft.Data.Services.Client.resources.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\es\Microsoft.Data.Services.Client.resources.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\fr\Microsoft.Data.Services.Client.resources.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\it\Microsoft.Data.Services.Client.resources.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\ja\Microsoft.Data.Services.Client.resources.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\ko\Microsoft.Data.Services.Client.resources.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\ru\Microsoft.Data.Services.Client.resources.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\zh-Hans\Microsoft.Data.Services.Client.resources.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\zh-Hant\Microsoft.Data.Services.Client.resources.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\de\System.Spatial.resources.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\es\System.Spatial.resources.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\fr\System.Spatial.resources.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\it\System.Spatial.resources.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\ja\System.Spatial.resources.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\ko\System.Spatial.resources.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\ru\System.Spatial.resources.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\zh-Hans\System.Spatial.resources.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\zh-Hant\System.Spatial.resources.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\obj\Release\NIMBOLE.Service.csprojResolveAssemblyReference.cache
+D:\Repository\NimboleHTML5\NIMBOLE.Service\obj\Release\NIMBOLE.Service.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\obj\Release\NIMBOLE.Service.pdb
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.ReportViewer.Common.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.ReportViewer.DataVisualization.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.ReportViewer.ProcessingObjectModel.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.ReportViewer.WebForms.DLL
+D:\Repository\NimboleHTML5\NIMBOLE.Service\bin\Microsoft.WindowsAzure.ServiceRuntime.dll

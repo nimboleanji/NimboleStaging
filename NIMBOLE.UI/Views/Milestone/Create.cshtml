@@ -1,0 +1,140 @@
+﻿@model NIMBOLE.Models.Models.MilestoneModel
+@using Kendo.Mvc.UI;
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("CreateMilestone", "Leads", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+    <div class="form-group">
+        <div class="col-md-12">
+            <div class="block-header bg-info">
+                <h3 class="block-title">@NIMBOLE.GlobalResources.Resources.New @NIMBOLE.GlobalResources.Resources.Milestone </h3>
+            </div>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="form-group">
+        <div class="col-sm-6">
+                @*  <input class="form-control" type="text" id="Code" name="MilestoneCode" placeholder=@NIMBOLE.GlobalResources.Resources.MilestoneCode tabindex="1" minlength=1 maxlength=25>*@
+                <label for="MilestoneCode">
+                    @NIMBOLE.GlobalResources.Resources.MilestoneCode
+                </label>
+                @Html.TextBoxFor(m => m.Code, new { @placeholder = @NIMBOLE.GlobalResources.Resources.MilestoneCode, @class = "form-control", @tabindex = "1", @minlength = 1, @maxlength = 25 })
+        </div>
+        <div class="col-sm-6">
+            @*<div class="form-material">*@
+                @*   <input class="form-control" type="text" id="Description" name="Description" placeholder=@NIMBOLE.GlobalResources.Resources.Description tabindex="2" minlength=1 maxlength=500>*@
+                <label for="InputDescription">
+                    @NIMBOLE.GlobalResources.Resources.Description <span class="text-danger">*</span>
+                </label>
+                @Html.TextBoxFor(m => m.Description, new { @placeholder = @NIMBOLE.GlobalResources.Resources.Description, @class = "form-control firstAlphabetOnly", @tabindex = "2", @minlength = 1, @maxlength = 500 })
+            @*</div>*@
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-xs-6">
+            <div class="form-material">
+                @Html.HiddenFor(m => m.MSOrder)
+                <div id="divStages" class="form-group" tabindex="3">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <div class="col-xs-12" style="text-align: right;">
+            <input type="button" id="btnSubmit" class="btn btn-success" value=@NIMBOLE.GlobalResources.Resources.Save tabindex="4">
+            <input type="button" value=@NIMBOLE.GlobalResources.Resources.Cancel class="btn btn-danger" onclick="location.href = '/Milestone/Index'" tabindex="5" />
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            var url = '/MilestoneStages/GetMilestoneStageList';
+            $.getJSON(url, function (data) {
+                $.each(data, function (key, val) {
+                    switch (key) {
+                        case 0:
+                            var user = "<label style='width:45%;'><input type='radio' id='" + val.Id + "' onClick='javascript:checkboxClick(this)' name='SelectedModule' value='" + val.Id + "'> " + val.MileStoneStage + " </input></label>"
+                            break;
+                        case 1:
+                            var user = "<label style='width:25%;'><input type='radio' id='" + val.Id + "' onClick='javascript:checkboxClick(this)' name='SelectedModule' value='" + val.Id + "'> " + val.MileStoneStage + " </input></label>"
+                            break;
+                        case 2:
+                            var user = "<label style='width:30%;'><input type='radio' id='" + val.Id + "' onClick='javascript:checkboxClick(this)' name='SelectedModule' value='" + val.Id + "'> " + val.MileStoneStage + " </input></label>"
+                            break;
+                    }
+                    $('#divStages').append(user);
+                });
+            });
+        });
+        function checkboxClick(e) {
+            var $box = $(e);
+            if ($box.is(":checked")) {
+                var group = "input:radio[name='" + $box.attr("name") + "']";
+                $(group).prop("checked", false);
+                $box.prop("checked", true);
+                // $('#LeadStage').val(e.value);
+                $('#MSOrder').val(e.value);
+            } else {
+                $box.prop("checked", false);
+                // $('#LeadStage').val(0);
+                $('#MSOrder').val(e.value);
+            }
+        }
+    </script>
+
+    @*<script>
+        $('#btnSubmit').click(function (e) {
+            if ($("#Description").val() === "") {
+                alert("Please enter description");
+                this.disabled = false;
+            }
+            else {
+                this.disabled = true;
+                $('form')[0].submit();
+            }
+        });
+    </script>*@
+
+ 
+  <script>
+    var listcontrols = {
+        "Description": "true,allcharacters,1,100"
+    };
+
+    $(document).ready(function () {
+        $('#btnSubmit').click(function (e) {
+            if (listcontrols) {
+                var flag = 0;
+                var texttype = "";
+                $.each(listcontrols, function (key, value) {
+
+                    texttype = value.split(',')[1];
+                    var element = $('#' + key);
+                    if (texttype == "select") {
+                        if (typeof element.prev().attr('style') !== typeof undefined) {
+                            element.prev().removeAttr("style");
+                        }
+                    }
+                    if (validateControl(key, value.split(',')[0], value.split(',')[1], value.split(',')[2], value.split(',')[3]) == false) {
+                        flag = flag + 1;
+                    }
+                });
+
+                if (flag != 0) {
+                    this.disabled = false;
+                    return false;
+                }
+                else {
+                    this.disabled = true;
+                    $('form')[0].submit();
+                }
+            }
+        });
+    });
+    </script>
+    }

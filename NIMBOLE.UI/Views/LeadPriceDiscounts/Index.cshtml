@@ -1,0 +1,54 @@
+﻿
+@model IEnumerable<NIMBOLE.Models.Models.LeadPriceDiscountModel>
+@using Kendo.Mvc.UI;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm())
+{
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="span12 form-horizontal well">
+                <div class="row-fluid">
+                    <div class="span12">
+                        <a href="~/LeadPriceDiscounts/Create">
+                            <button class="btn btn-success" type="button">@NIMBOLE.GlobalResources.Resources.New</button>
+                        </a>
+                    </div>
+                </div>
+                <div class="row-fluid">
+                    <div class="span12">
+                        @(Html.Kendo().Grid<NIMBOLE.Models.Models.LeadPriceDiscountModel>()
+                            .Name("GridLeadPriceDiscounts")
+                            .Columns(columns =>
+                            {
+                                columns.Bound(m => m.LeadId).Width(20).Title(@NIMBOLE.GlobalResources.Resources.LeadId);
+                                columns.Bound(m => m.DiscountedDate).Width(70).Title(@NIMBOLE.GlobalResources.Resources.DiscountDate).Format("{0:dd/MM/yyyy}");
+                                columns.Bound(m => m.DiscountedPrice).Width(50).Title(@NIMBOLE.GlobalResources.Resources.DiscountPrice);
+                                columns.Bound(m => m.EmployeeId).Width(50).Title(@NIMBOLE.GlobalResources.Resources.EmployeeId);
+                                columns.Bound(m => m.ApprovalStatus).Width(50).Title(@NIMBOLE.GlobalResources.Resources.ApproveStatus);
+                                columns.Bound(m => m.ApprovedBy).Width(50).Title(@NIMBOLE.GlobalResources.Resources.ApprovedBy);
+                                columns.Bound(m => m.ApprovedDate).Width(50).Title(@NIMBOLE.GlobalResources.Resources.ApprovedDate).Format("{0:dd/MM/yyyy}");
+                                columns.Bound(m => m.Comments).Width(50).Title(@NIMBOLE.GlobalResources.Resources.Comments);
+                                columns.Template(@<text></text>).ClientTemplate("<a href='" + Url.Action("Edit", "LeadPriceDiscounts") + "/#=Id#'>" + @NIMBOLE.GlobalResources.Resources.Edit + "</a>").HtmlAttributes(new { style = "text-align: center;" }).Width(50);
+                                columns.Template(@<text></text>).ClientTemplate("<a href='javascript:deleteRecord(#=Id#)'>" + @NIMBOLE.GlobalResources.Resources.Delete + "</a>").HtmlAttributes(new { style = "text-align:center;" }).Width(70);
+                            })
+.Pageable()
+.Sortable()
+.Filterable()
+.DataSource(datasource => datasource
+.Ajax()
+.PageSize(20)
+.Sort(e => e.Add("Id").Descending())
+.Model(model => model.Id(m => m.Id))
+.Read(read => read.Action("LeadPriceDiscount_Read", "LeadPriceDiscounts"))
+)
+                        )
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

@@ -1,0 +1,217 @@
+﻿@model NIMBOLE.Models.Models.ActualVsExpectedModel
+@{
+    ViewBag.Title = "Index";
+    string FullName = Session["EmployeeId"] != null ? Session["EmployeeId"].ToString() : "";
+    string finYear = Session["FinYear"] != null ? Session["FinYear"].ToString() : "";
+}
+
+@using (Html.BeginForm("ActualVsExpected", "Leads", FormMethod.Post, new { enctype = "multipart/form-data", onsubmit = "return employee();" }))
+{
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Employee Name :</label> <span class="field-validation-error">*</span>
+                                @(Html.Kendo().DropDownList()
+                                    .Name("ddlEmployees")
+                                    .HtmlAttributes(new { @style = "width: 100%;", @tabindex = "1" })
+                                    .OptionLabel(new { Role = @NIMBOLE.GlobalResources.Resources.Select, Name = @NIMBOLE.GlobalResources.Resources.Select })
+                                    .DataTextField("Name")
+                                    .DataValueField("Id")
+                                    //.Events(e => e.DataBound("onEmployeesDataBound").Change("EmployeeChange"))
+                                    .Events(e => e.DataBound("onEmployeesDataBound"))
+                                    .DataSource(source =>
+                                    {
+                                        source.Read(read =>
+                                        {
+                                            read.Action("GetEmployeesForDropdown", "Leads");
+                                        });
+                                    })
+                                )
+                                <script>
+                                    function onEmployeesDataBound(e) {
+                                        if (this._selectedValue === undefined || this._selectedValue === "" || this._selectedValue === "Select") {
+                                            var empddl = $("#ddlEmployees").data("kendoDropDownList");
+                                            var selectedName = "0";
+                                            if (this.dataSource._data.some(elem => elem.Id == '@FullName'))
+                                            {
+                                                selectedName = '@FullName'
+                                            }
+                                            empddl.value(selectedName);
+                                        }
+                                    }
+                                </script>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Financial Year :</label> <span class="field-validation-error">*</span>
+                                @*<input id="ddlFinYear" style="width: 50%" class="form-control" />*@
+                                @(Html.Kendo().DropDownList()
+                                    .Name("ddlFinYear")
+                                    .HtmlAttributes(new { @style = "width: 100%;", @tabindex = "2" })
+                                    .DataTextField("Text")
+                                    .DataValueField("Value")
+                                    //.Events(e => e.DataBound("onFinYearDataBound").Change("FinYearChange"))
+                                    .Events(e => e.DataBound("onFinYearDataBound"))
+                                    .OptionLabel(@NIMBOLE.GlobalResources.Resources.Select)
+                                    .AutoBind(true)
+                                    .BindTo(ViewData["FinYears"] as SelectList)
+                                )
+                                <script>
+                                    function onFinYearDataBound(e) {
+                                        if (this._selectedValue === undefined || this._selectedValue === "" || this._selectedValue === "Select") {
+                                            var combo = $("#ddlFinYear").data("kendoDropDownList");
+                                            combo.value('@finYear' != "" ? '@finYear' : "");
+                                        }
+                                    }
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 form-group" style="text-align: right;">
+                            <input type="submit" id="btnSubmit" name="btnFilter" class="btn btn-success" tabindex="3" value="Show Report" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div id="rptResult" class="form-group">
+                                @Html.Partial("RptIndex")
+                                @Html.Hidden("hdnEmployee")
+                                @Html.Hidden("hdnFinYear")
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<script>
+    function employee() {
+        $('#hdnFinYear').val($("#ddlFinYear").val());
+        $('#hdnEmployee').val($("#ddlEmployees").val()=="0"?"":$("#ddlEmployees").val());
+        return $("#ddlFinYear").val();
+    }
+    function EmployeeChange(e) {
+        //$('#hdnEmployee').val($("#ddlEmployees").val());
+        $('#hdnEmployee').val(e.sender.value());
+    }
+    function FinYearChange(e) {
+        $('#hdnFinYear').val($("#ddlFinYear").val());
+        //$('#hdnFinYear').val(e.sender.value());
+    }
+</script>
+
+<script>
+    //Script for Validation
+    var listcontrols = {
+        "ddlFinYear": "true,select"
+    };
+    $(document).ready(function () {
+        $('#btnSubmit').click(function (e) {
+            if (listcontrols) {
+                var flag = 0;
+                var texttype = "";
+                $.each(listcontrols, function (key, value) {
+                    texttype = value.split(',')[1];
+                    var element = $('#' + key);
+                    if (texttype === "select") {
+                        if (typeof element.prev().attr('style') !== typeof undefined) {
+                            element.prev().removeAttr("style");
+                        }
+                    }
+                    if (validateControl(key, value.split(',')[0], value.split(',')[1], value.split(',')[2], value.split(',')[3]) == false) {
+                        flag = flag + 1;
+                    }
+                });
+                $('#ddlEmployees').attr("style", "width:100%;display:none;");
+                $('#ddlFinYear').attr("style", "width:100%;display:none;");
+                if (flag != 0)
+                {
+                    return false;
+                }
+
+                else {
+                    $('form')[0].submit();
+                }
+            }
+        });
+    });
+</script>
+
+<style>
+    .dropdown-header {
+        font-size: 1.2em;
+    }
+
+    .dropdown-header > span {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        text-align: left;
+        display: inline-block;
+        border-style: solid;
+        border-width: 0 0 1px 1px;
+        padding: .3em .6em;
+        width: 360px;
+    }
+
+    .dropdown-header > span:first-child {
+        width: 62px;
+        border-left-width: 0;
+    }
+
+    .demo-section {
+        width: 400px;
+        margin: 35px auto 50px;
+        padding: 30px;
+    }
+
+    .demo-section h2 {
+        text-transform: uppercase;
+        font-size: 1.2em;
+        margin-bottom: 10px;
+    }
+
+    .selected-value {
+        float: left;
+        width: 16px;
+        margin: 0 4px;
+    }
+
+    #ddlEmployees-list .k-item > span {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        display: inline-block;
+        border-style: solid;
+        border-width: 0 0 1px 1px;
+        vertical-align: top;
+        min-height: 35px;
+        width: 79%;
+        padding: .6em 0 0 .6em;
+    }
+
+    #ddlEmployees-list .k-item > span:first-child {
+        width: 77px;
+        border-left-width: 0;
+        padding: .6em 0 0 0;
+    }
+
+    #ddlEmployees-list h3 {
+        font-size: 1.6em;
+        margin: 0;
+        padding: 0;
+    }
+
+    #ddlEmployees-list p {
+        margin: 0;
+        padding: 0;
+    }
+</style>
+

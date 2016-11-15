@@ -1,0 +1,109 @@
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.csproj.GenerateResource.Cache
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.csprojResolveAssemblyReference.cache
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.GlobalResources\bin\Release\NIMBOLE.GlobalResources.dll
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.GlobalResources\bin\Release\NIMBOLE.GlobalResources.pdb
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.GlobalResources\bin\Release\zh\NIMBOLE.GlobalResources.resources.dll
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.GlobalResources\bin\Release\zh-SG\NIMBOLE.GlobalResources.resources.dll
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.GlobalResources\bin\Release\ur\NIMBOLE.GlobalResources.resources.dll
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.Resources.resources
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.Resources.zh.resources
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.Resources.zh-SG.resources
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.Resources.ur.resources
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.GlobalResources\obj\Release\zh\NIMBOLE.GlobalResources.resources.dll
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.GlobalResources\obj\Release\zh-SG\NIMBOLE.GlobalResources.resources.dll
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.GlobalResources\obj\Release\ur\NIMBOLE.GlobalResources.resources.dll
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.dll
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.pdb
+D:\Ravi\Nimbole\Final Application\NIMBOLE.GlobalResources\bin\Release\NIMBOLE.GlobalResources.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.GlobalResources\bin\Release\NIMBOLE.GlobalResources.pdb
+D:\Ravi\Nimbole\Final Application\NIMBOLE.GlobalResources\bin\Release\zh\NIMBOLE.GlobalResources.resources.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.GlobalResources\bin\Release\zh-SG\NIMBOLE.GlobalResources.resources.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.GlobalResources\bin\Release\ur\NIMBOLE.GlobalResources.resources.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.csprojResolveAssemblyReference.cache
+D:\Ravi\Nimbole\Final Application\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.Resources.resources
+D:\Ravi\Nimbole\Final Application\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.Resources.zh.resources
+D:\Ravi\Nimbole\Final Application\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.Resources.zh-SG.resources
+D:\Ravi\Nimbole\Final Application\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.Resources.ur.resources
+D:\Ravi\Nimbole\Final Application\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.csproj.GenerateResource.Cache
+D:\Ravi\Nimbole\Final Application\NIMBOLE.GlobalResources\obj\Release\zh\NIMBOLE.GlobalResources.resources.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.GlobalResources\obj\Release\zh-SG\NIMBOLE.GlobalResources.resources.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.GlobalResources\obj\Release\ur\NIMBOLE.GlobalResources.resources.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.dll
+D:\Ravi\Nimbole\Final Application\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.pdb
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.GlobalResources\bin\Release\NIMBOLE.GlobalResources.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.GlobalResources\bin\Release\NIMBOLE.GlobalResources.pdb
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.GlobalResources\bin\Release\zh\NIMBOLE.GlobalResources.resources.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.GlobalResources\bin\Release\zh-SG\NIMBOLE.GlobalResources.resources.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.GlobalResources\bin\Release\ur\NIMBOLE.GlobalResources.resources.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.csprojResolveAssemblyReference.cache
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.Resources.resources
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.Resources.zh.resources
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.Resources.zh-SG.resources
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.Resources.ur.resources
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.csproj.GenerateResource.Cache
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.GlobalResources\obj\Release\zh\NIMBOLE.GlobalResources.resources.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.GlobalResources\obj\Release\zh-SG\NIMBOLE.GlobalResources.resources.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.GlobalResources\obj\Release\ur\NIMBOLE.GlobalResources.resources.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.pdb
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.GlobalResources\bin\Release\NIMBOLE.GlobalResources.dll
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.GlobalResources\bin\Release\NIMBOLE.GlobalResources.pdb
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.GlobalResources\bin\Release\zh\NIMBOLE.GlobalResources.resources.dll
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.GlobalResources\bin\Release\ur\NIMBOLE.GlobalResources.resources.dll
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.csprojResolveAssemblyReference.cache
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.Resources.resources
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.Resources.zh.resources
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.Resources.ur.resources
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.csproj.GenerateResource.Cache
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.GlobalResources\obj\Release\zh\NIMBOLE.GlobalResources.resources.dll
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.GlobalResources\obj\Release\ur\NIMBOLE.GlobalResources.resources.dll
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.dll
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.pdb
+D:\Repository\Production\NIMBOLE.GlobalResources\bin\Release\NIMBOLE.GlobalResources.dll
+D:\Repository\Production\NIMBOLE.GlobalResources\bin\Release\NIMBOLE.GlobalResources.pdb
+D:\Repository\Production\NIMBOLE.GlobalResources\bin\Release\zh\NIMBOLE.GlobalResources.resources.dll
+D:\Repository\Production\NIMBOLE.GlobalResources\bin\Release\ur\NIMBOLE.GlobalResources.resources.dll
+D:\Repository\Production\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.Resources.resources
+D:\Repository\Production\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.Resources.zh.resources
+D:\Repository\Production\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.Resources.ur.resources
+D:\Repository\Production\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.csproj.GenerateResource.Cache
+D:\Repository\Production\NIMBOLE.GlobalResources\obj\Release\zh\NIMBOLE.GlobalResources.resources.dll
+D:\Repository\Production\NIMBOLE.GlobalResources\obj\Release\ur\NIMBOLE.GlobalResources.resources.dll
+D:\Repository\Production\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.dll
+D:\Repository\Production\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.pdb
+D:\Repository\Nstaging\NIMBOLE.GlobalResources\bin\Release\NIMBOLE.GlobalResources.dll
+D:\Repository\Nstaging\NIMBOLE.GlobalResources\bin\Release\NIMBOLE.GlobalResources.pdb
+D:\Repository\Nstaging\NIMBOLE.GlobalResources\bin\Release\zh\NIMBOLE.GlobalResources.resources.dll
+D:\Repository\Nstaging\NIMBOLE.GlobalResources\bin\Release\ur\NIMBOLE.GlobalResources.resources.dll
+D:\Repository\Nstaging\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.Resources.resources
+D:\Repository\Nstaging\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.Resources.zh.resources
+D:\Repository\Nstaging\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.Resources.ur.resources
+D:\Repository\Nstaging\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.csproj.GenerateResource.Cache
+D:\Repository\Nstaging\NIMBOLE.GlobalResources\obj\Release\zh\NIMBOLE.GlobalResources.resources.dll
+D:\Repository\Nstaging\NIMBOLE.GlobalResources\obj\Release\ur\NIMBOLE.GlobalResources.resources.dll
+D:\Repository\Nstaging\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.dll
+D:\Repository\Nstaging\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.pdb
+E:\Projects\Nstaging\NIMBOLE.GlobalResources\bin\Release\NIMBOLE.GlobalResources.dll
+E:\Projects\Nstaging\NIMBOLE.GlobalResources\bin\Release\NIMBOLE.GlobalResources.pdb
+E:\Projects\Nstaging\NIMBOLE.GlobalResources\bin\Release\zh\NIMBOLE.GlobalResources.resources.dll
+E:\Projects\Nstaging\NIMBOLE.GlobalResources\bin\Release\ur\NIMBOLE.GlobalResources.resources.dll
+E:\Projects\Nstaging\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.Resources.resources
+E:\Projects\Nstaging\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.Resources.zh.resources
+E:\Projects\Nstaging\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.Resources.ur.resources
+E:\Projects\Nstaging\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.csproj.GenerateResource.Cache
+E:\Projects\Nstaging\NIMBOLE.GlobalResources\obj\Release\zh\NIMBOLE.GlobalResources.resources.dll
+E:\Projects\Nstaging\NIMBOLE.GlobalResources\obj\Release\ur\NIMBOLE.GlobalResources.resources.dll
+E:\Projects\Nstaging\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.dll
+E:\Projects\Nstaging\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.pdb
+D:\Repository\NimboleHTML5\NIMBOLE.GlobalResources\bin\Release\NIMBOLE.GlobalResources.dll
+D:\Repository\NimboleHTML5\NIMBOLE.GlobalResources\bin\Release\NIMBOLE.GlobalResources.pdb
+D:\Repository\NimboleHTML5\NIMBOLE.GlobalResources\bin\Release\zh\NIMBOLE.GlobalResources.resources.dll
+D:\Repository\NimboleHTML5\NIMBOLE.GlobalResources\bin\Release\ur\NIMBOLE.GlobalResources.resources.dll
+D:\Repository\NimboleHTML5\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.Resources.resources
+D:\Repository\NimboleHTML5\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.Resources.zh.resources
+D:\Repository\NimboleHTML5\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.Resources.ur.resources
+D:\Repository\NimboleHTML5\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.csproj.GenerateResource.Cache
+D:\Repository\NimboleHTML5\NIMBOLE.GlobalResources\obj\Release\zh\NIMBOLE.GlobalResources.resources.dll
+D:\Repository\NimboleHTML5\NIMBOLE.GlobalResources\obj\Release\ur\NIMBOLE.GlobalResources.resources.dll
+D:\Repository\NimboleHTML5\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.dll
+D:\Repository\NimboleHTML5\NIMBOLE.GlobalResources\obj\Release\NIMBOLE.GlobalResources.pdb

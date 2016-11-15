@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+
+<hgroup class="title">
+    <h1>@ViewBag.Title.</h1>
+    <h2>@ViewBag.Message</h2>
+</hgroup>
+<div id="grid"></div>
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
+<script>
+        $(function() {
+            $("#grid").kendoGrid({
+                transport: {
+                    read: "api/Contacts"
+                }
+            });
+        });
+</script>
+
+<aside>
+    <h3>Telerik UI for ASP.NET MVC TreeView</h3>
+    <p>
+        Use this area to provide additional information.
+    </p>
+
+    @(Html.Kendo().TreeView()
+        .Name("LinksTreeView")
+        .Items(items =>
+        {
+            items.Add()
+                .Text("Home")
+                .Action("Index", "Home");
+            items.Add()
+                .Text("About")
+                .Action("About", "Home");
+            items.Add()
+                .Text("Contact")
+                .Action("Contact", "Home");
+        })
+    )
+
+</aside>

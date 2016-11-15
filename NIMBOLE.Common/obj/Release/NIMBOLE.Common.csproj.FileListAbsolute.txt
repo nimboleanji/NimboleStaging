@@ -1,0 +1,41 @@
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Common\bin\Release\NIMBOLE.Common.dll
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Common\bin\Release\NIMBOLE.Common.pdb
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Common\obj\Release\NIMBOLE.Common.dll
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Common\obj\Release\NIMBOLE.Common.pdb
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Common\obj\Release\NIMBOLE.Common.csprojResolveAssemblyReference.cache
+D:\Ravi\Nimbole\11May\Application\NIMBOLE.Common\bin\Release\AutoMapper.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Common\bin\Release\NIMBOLE.Common.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Common\bin\Release\NIMBOLE.Common.pdb
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Common\bin\Release\AutoMapper.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Common\obj\Release\NIMBOLE.Common.csprojResolveAssemblyReference.cache
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Common\obj\Release\NIMBOLE.Common.dll
+D:\Ravi\Nimbole\Final Application\NimboleFramework\NIMBOLE.Common\obj\Release\NIMBOLE.Common.pdb
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.Common\bin\Release\NIMBOLE.Common.dll
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.Common\bin\Release\NIMBOLE.Common.pdb
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.Common\obj\Release\NIMBOLE.Common.csprojResolveAssemblyReference.cache
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.Common\obj\Release\NIMBOLE.Common.dll
+E:\Projects\NImbole\Repository\NIMBOLE_FRAMEWORK\NIMBOLE.Common\obj\Release\NIMBOLE.Common.pdb
+D:\Repository\Production\NIMBOLE.Common\bin\Release\NIMBOLE.Common.dll
+D:\Repository\Production\NIMBOLE.Common\bin\Release\NIMBOLE.Common.pdb
+D:\Repository\Production\NIMBOLE.Common\bin\Release\DocumentFormat.OpenXml.dll
+D:\Repository\Production\NIMBOLE.Common\bin\Release\DocumentFormat.OpenXml.xml
+D:\Repository\Production\NIMBOLE.Common\obj\Release\NIMBOLE.Common.dll
+D:\Repository\Production\NIMBOLE.Common\obj\Release\NIMBOLE.Common.pdb
+D:\Repository\Nstaging\NIMBOLE.Common\bin\Release\NIMBOLE.Common.dll
+D:\Repository\Nstaging\NIMBOLE.Common\bin\Release\NIMBOLE.Common.pdb
+D:\Repository\Nstaging\NIMBOLE.Common\bin\Release\DocumentFormat.OpenXml.dll
+D:\Repository\Nstaging\NIMBOLE.Common\bin\Release\DocumentFormat.OpenXml.xml
+D:\Repository\Nstaging\NIMBOLE.Common\obj\Release\NIMBOLE.Common.dll
+D:\Repository\Nstaging\NIMBOLE.Common\obj\Release\NIMBOLE.Common.pdb
+E:\Projects\Nstaging\NIMBOLE.Common\bin\Release\NIMBOLE.Common.dll
+E:\Projects\Nstaging\NIMBOLE.Common\bin\Release\NIMBOLE.Common.pdb
+E:\Projects\Nstaging\NIMBOLE.Common\bin\Release\DocumentFormat.OpenXml.dll
+E:\Projects\Nstaging\NIMBOLE.Common\bin\Release\DocumentFormat.OpenXml.xml
+E:\Projects\Nstaging\NIMBOLE.Common\obj\Release\NIMBOLE.Common.dll
+E:\Projects\Nstaging\NIMBOLE.Common\obj\Release\NIMBOLE.Common.pdb
+D:\Repository\NimboleHTML5\NIMBOLE.Common\bin\Release\NIMBOLE.Common.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Common\bin\Release\NIMBOLE.Common.pdb
+D:\Repository\NimboleHTML5\NIMBOLE.Common\bin\Release\DocumentFormat.OpenXml.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Common\bin\Release\DocumentFormat.OpenXml.xml
+D:\Repository\NimboleHTML5\NIMBOLE.Common\obj\Release\NIMBOLE.Common.dll
+D:\Repository\NimboleHTML5\NIMBOLE.Common\obj\Release\NIMBOLE.Common.pdb
